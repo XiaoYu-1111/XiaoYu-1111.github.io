@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>基于GPU Computer Shader波场模拟技术文档</title>
-    <url>/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
+    <url>/2026/01/20/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a><strong>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</strong></h1><p><strong>高性能二维弹性波动力学模拟与可视化平台</strong></p>
 <hr>
 <h2 id="1-系统概述-System-Overview"><a href="#1-系统概述-System-Overview" class="headerlink" title="1. 系统概述 (System Overview)"></a><strong>1. 系统概述 (System Overview)</strong></h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 <strong>GPU 原生并行架构</strong>，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时弹性波场模拟。</p>
@@ -379,7 +379,11 @@
   <entry>
     <title>SeisMonitor实时地震台站监测系统技术文档</title>
     <url>/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
+    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><p><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"></p>
+<p><strong>台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
+<p><strong>波形与时频分析瀑布图</strong><br><img src="波形与时频分析瀑布图.png" alt="台站显示"></p>
+<p><strong>异常信号检测</strong><br><img src="人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
+<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
 <h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
 <li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
 <li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
