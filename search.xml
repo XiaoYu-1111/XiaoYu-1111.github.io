@@ -3,8 +3,7 @@
   <entry>
     <title>基于GPU Computer Shader波场模拟技术文档</title>
     <url>/2026/01/19/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a><strong>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</strong></h1><p><strong>高性能二维弹性波动力学模拟与可视化平台</strong></p>
-<span id="more"></span>
+    <content><![CDATA[<h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</h1><h1 id="高性能二维弹性波动力学模拟与可视化平台"><a href="#高性能二维弹性波动力学模拟与可视化平台" class="headerlink" title="高性能二维弹性波动力学模拟与可视化平台"></a>高性能二维弹性波动力学模拟与可视化平台</h1><span id="more"></span>
 <h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>欢迎页面</strong><br><img src="/.com//main.png" alt="欢迎页面"><br><strong>marmousi_model</strong><br><img src="/.com//marmousi_model.png" alt="marmousi_model"><br><strong>sim_parmeter</strong><br><img src="/.com//sim_parmeter.png" alt="sim_parmeter"><br><strong>模拟过程</strong><br><img src="/.com//marmousi_model3.png" alt="模拟过程"><br><strong>检波器布设</strong><br><img src="/.com//检波器布设.png" alt="检波器布设"><br><strong>模拟结果</strong><br><img src="/.com//data_analyse.png" alt="模拟结果"></p>
 <h2 id="1-系统概述-System-Overview"><a href="#1-系统概述-System-Overview" class="headerlink" title="1. 系统概述 (System Overview)"></a><strong>1. 系统概述 (System Overview)</strong></h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 <strong>GPU 原生并行架构</strong>，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时弹性波场模拟。</p>
 <h3 id="1-1-核心价值-Core-Value"><a href="#1-1-核心价值-Core-Value" class="headerlink" title="1.1 核心价值 (Core Value)"></a><strong>1.1 核心价值 (Core Value)</strong></h3><ul>
@@ -381,9 +380,324 @@
       </tags>
   </entry>
   <entry>
+    <title>SeisMonitor实时地震台站监测系统技术文档</title>
+    <url>/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><span id="more"></span>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页布局</strong><br><img src="/.com//0_主页面布局_light.png" alt="系统架构图light"><br><img src="/.com//0_主页面布局_night.png" alt="系统架构图night"><br><strong>监测台站显示</strong><br><img src="/.com//台站显示地图.png" alt="台站显示"></p>
+<p><strong>波形与时频分析瀑布图</strong><br><img src="/.com//波形与时频分析瀑布图.png" alt="台站显示"></p>
+<p><strong>异常信号检测</strong><br><img src="/.com//人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
+<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
+<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
+<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
+<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
+<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
+</ul>
+<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
+<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
+<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
+<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
+</ul>
+<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
+<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
+<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
+<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
+</ul>
+<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
+<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
+<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
+<li><strong>多维联动</strong>：<ul>
+<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
+<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
+<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
+<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
+<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
+</ul>
+<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
+<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
+<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
+<li><strong>交互操作</strong>：<ul>
+<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
+<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
+<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
+<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
+<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
+<li><strong>状态可视化</strong>：<ul>
+<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
+<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
+<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
+<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
+</ul>
+</li>
+<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
+</ul>
+<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
+<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
+<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
+</ul>
+<hr>
+<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:left">技术选型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>开发框架</strong></td>
+<td style="text-align:left">Qt 6.6.3 (C++)</td>
+<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>网络协议</strong></td>
+<td style="text-align:left">TCP / HTTP</td>
+<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据解析</strong></td>
+<td style="text-align:left">libmseed v3</td>
+<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>绘图引擎</strong></td>
+<td style="text-align:left">QCustomPlot 2.1</td>
+<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>地图引擎</strong></td>
+<td style="text-align:left">Qt Location / QML</td>
+<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据结构</strong></td>
+<td style="text-align:left">哈希表 (QHash)</td>
+<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
+<li><strong>启动连接</strong>：<ul>
+<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
+<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
+<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
+<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
+</ul>
+</li>
+<li><strong>调整视图</strong>：<ul>
+<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
+<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
+</ul>
+</li>
+<li><strong>信号处理</strong>：<ul>
+<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
+<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
+</ul>
+</li>
+<li><strong>设置预警</strong>：<ul>
+<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
+<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>SeisMonitor</tag>
+        <tag>seedlink</tag>
+        <tag>地震台站</tag>
+        <tag>信号监测</tag>
+        <tag>数据处理</tag>
+        <tag>数据分析</tag>
+        <tag>数据可视化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VTK三维数据可视化模块</title>
+    <url>/2026/01/18/VTK%E4%B8%89%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<h1 id="VTK-三维数据可视化模块说明文档"><a href="#VTK-三维数据可视化模块说明文档" class="headerlink" title="VTK 三维数据可视化模块说明文档"></a>VTK 三维数据可视化模块说明文档</h1><span id="more"></span>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="/.com//程序主页.png" alt="程序主页"><br><strong>初始界面</strong><br><img src="/.com//初始界面.png" alt="初始界面"><br><strong>起伏地表模型规则化显示</strong><br><img src="/.com//起伏地表模型规则化显示.png" alt="起伏地表模型规则化显示"><br><strong>参数调整面板</strong><br><img src="/.com//参数调整面板_色标.png" alt="参数调整面板"><br><strong>速度模型</strong><br><img src="/.com//速度模型.png" alt="速度模型"><br><strong>速度模型阈值显示1</strong><br><img src="/.com//速度模型阈值显示1.png" alt="速度模型阈值显示1"><br><strong>速度模型阈值显示2</strong><br><img src="/.com//速度模型阈值显示2.png" alt="速度模型阈值显示2"><br><strong>速度模型阈值显示3</strong><br><img src="/.com//速度模型阈值显示3.png" alt="速度模型阈值显示3"></p>
+<p><strong>任意切片显示</strong><br><img src="/.com//任意切片显示.png" alt="任意切片显示"><br><strong>多切片显示3</strong><br><img src="/.com//多切片显示3.png" alt="多切片显示3"></p>
+<h2 id="1-模块概述-Overview"><a href="#1-模块概述-Overview" class="headerlink" title="1. 模块概述 (Overview)"></a>1. 模块概述 (Overview)</h2><p>本模块是 <strong>Qt_VTK</strong> 系统的核心组件，基于 <strong>VTK 9.3</strong> 构建。它提供了一个高性能的交互式三维渲染窗口，专门用于展示地质勘探、气象数据及通用科学计算数据。</p>
+<p>主要能力包括：</p>
+<ul>
+<li><strong>多源数据解析</strong>：支持点云、规则网格、非结构化网格及显式结构化网格 (ESG)。</li>
+<li><strong>体数据渲染</strong>：支持标量映射、阈值过滤及透明度控制。</li>
+<li><strong>切片分析</strong>：提供交互式三轴切片和任意平面切割功能。</li>
+<li><strong>场景交互</strong>：支持标准的鼠标交互、相机控制及辅助坐标显示。</li>
+</ul>
+<hr>
+<h2 id="2-界面布局-Interface-Layout"><a href="#2-界面布局-Interface-Layout" class="headerlink" title="2. 界面布局 (Interface Layout)"></a>2. 界面布局 (Interface Layout)</h2><p>可视化窗口主要由以下几个部分组成：</p>
+<ol>
+<li><p><strong>3D 渲染主视图 (Main Viewport)</strong>：</p>
+<ul>
+<li>占据窗口核心区域，显示三维模型。</li>
+<li><strong>左下角</strong>：固定坐标轴指示器 (Orientation Marker)，指示全局 XYZ 方向。</li>
+<li><strong>右上角</strong>：交互式相机导航器 (Camera Cube)，点击不同面可快速切换视角（如 Top, Front, Left）。</li>
+<li><strong>右侧</strong>：颜色标尺 (Scalar Bar)，显示数值与颜色的对应关系。</li>
+</ul>
+</li>
+<li><p><strong>顶部工具栏 (Toolbar)</strong>：</p>
+<ul>
+<li><code>打开文件</code>：加载数据文件。</li>
+<li><code>参数面板</code>：开启/隐藏侧边控制面板。</li>
+<li><code>视图</code>：切换透视/正交投影，或复位视角。</li>
+<li><code>保存</code>：截图保存当前渲染画面。</li>
+<li><code>帮助</code>：显示操作说明。</li>
+</ul>
+</li>
+<li><p><strong>底部状态栏 (Status Bar)</strong>：</p>
+<ul>
+<li>实时显示当前操作状态、加载进度及错误提示。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-操作指南-User-Guide"><a href="#3-操作指南-User-Guide" class="headerlink" title="3. 操作指南 (User Guide)"></a>3. 操作指南 (User Guide)</h2><h3 id="3-1-鼠标交互"><a href="#3-1-鼠标交互" class="headerlink" title="3.1 鼠标交互"></a>3.1 鼠标交互</h3><ul>
+<li><strong>左键拖拽</strong>：旋转模型 (Rotate)。</li>
+<li><strong>中键拖拽</strong> / <strong>Shift + 左键</strong>：平移模型 (Pan)。</li>
+<li><strong>右键拖拽</strong> / <strong>滚轮滚动</strong>：缩放模型 (Zoom)。</li>
+<li><strong>Ctrl + 左键</strong>：在切片模式下，用于旋转切片平面（视具体 Widget 而定）。</li>
+</ul>
+<h3 id="3-2-右键菜单-Context-Menu"><a href="#3-2-右键菜单-Context-Menu" class="headerlink" title="3.2 右键菜单 (Context Menu)"></a>3.2 右键菜单 (Context Menu)</h3><p>在渲染区域点击右键，可弹出快捷菜单：</p>
+<ul>
+<li><strong>Color Settings</strong>：快速切换背景颜色或重置颜色映射。</li>
+<li><strong>Toggle 2D Plane</strong>：显示/隐藏底部的基础参考网格。</li>
+<li><strong>Scale Z</strong>：快速反转 Z 轴（针对某些深度为正的地质数据）。</li>
+<li><strong>Clear Object</strong>：清空当前场景。</li>
+</ul>
+<hr>
+<h2 id="4-参数调整面板-Parameter-Panel"><a href="#4-参数调整面板-Parameter-Panel" class="headerlink" title="4. 参数调整面板 (Parameter Panel)"></a>4. 参数调整面板 (Parameter Panel)</h2><p>点击工具栏的 <strong>“参数面板”</strong> 按钮可打开侧边栏，包含四个核心选项卡：</p>
+<h3 id="4-1-缩放调整-Scale-amp-Camera"><a href="#4-1-缩放调整-Scale-amp-Camera" class="headerlink" title="4.1 缩放调整 (Scale &amp; Camera)"></a>4.1 缩放调整 (Scale &amp; Camera)</h3><p>用于处理地质数据中常见的 <strong>Z 轴压缩</strong> 问题。</p>
+<ul>
+<li><strong>Model Scale (X/Y/Z)</strong>：设置各轴的缩放比例。<ul>
+<li><em>应用场景</em>：地质数据的水平跨度通常为几千米，而深度只有几百米。将 Z 轴 Scale 设为 5.0 或 10.0 可夸张显示深度变化。</li>
+</ul>
+</li>
+<li><strong>Camera ViewUp</strong>：手动设置相机的“向上”向量，用于修正视角倾斜。</li>
+</ul>
+<h3 id="4-2-颜色调整-Color-Adjustment"><a href="#4-2-颜色调整-Color-Adjustment" class="headerlink" title="4.2 颜色调整 (Color Adjustment)"></a>4.2 颜色调整 (Color Adjustment)</h3><p>控制数值到颜色的映射关系。</p>
+<ul>
+<li><strong>Scalar Range (Min/Max)</strong>：设置颜色映射的数值范围。<ul>
+<li>超出范围的数值将被钳位到两端颜色。</li>
+</ul>
+</li>
+<li><strong>Hue Range</strong>：调整色相范围（默认从蓝色到红色）。</li>
+<li><strong>Global Opacity</strong>：调整整个网格的透明度（0~100%）。</li>
+<li><strong>Color Presets</strong>：右侧提供预设颜色表（如 <code>Rainbow</code>, <code>Jet</code>, <code>Seismic</code> 等），支持加载 <code>.cpt</code> 文件。</li>
+</ul>
+<h3 id="4-3-对象显示-Object-Display"><a href="#4-3-对象显示-Object-Display" class="headerlink" title="4.3 对象显示 (Object Display)"></a>4.3 对象显示 (Object Display)</h3><p>控制不同渲染图元的可见性。</p>
+<ul>
+<li><strong>Point Cloud</strong>：以离散点形式显示数据。</li>
+<li><strong>Outline</strong>：显示数据的外包围盒（Bounding Box）。</li>
+<li><strong>Cube Axes</strong>：显示带刻度的三维坐标轴网格。</li>
+<li><strong>Grid Options</strong>：<ul>
+<li><code>Cell &lt;-&gt; Point</code>：切换渲染模式。<strong>Cell 模式</strong>显示原始网格格子（马赛克感）；<strong>Point 模式</strong>进行平滑插值渲染。</li>
+<li><code>Edge Line</code>：显示/隐藏网格单元的边缘线。</li>
+<li><code>Threshold</code>：开启阈值过滤，只显示特定数值范围内的数据（如只显示高波速区域）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-切片显示-Slicing"><a href="#4-4-切片显示-Slicing" class="headerlink" title="4.4 切片显示 (Slicing)"></a>4.4 切片显示 (Slicing)</h3><p>提供三种切片模式用于查看体数据内部：</p>
+<ol>
+<li><strong>任意切片 (Arbitrary Slice)</strong>：<ul>
+<li>输入 <code>Origin</code> (原点) 和 <code>Normal</code> (法线方向)，点击 Add 生成切片。</li>
+</ul>
+</li>
+<li><strong>三轴交互切片 (Tri-axial Slice)</strong>：<ul>
+<li>勾选 <code>clip-plane-X/Y/Z</code>，场景中会出现交互式平面。</li>
+<li>鼠标拖动平面边框可移动切片位置。</li>
+</ul>
+</li>
+<li><strong>多重切片 (Multi-Slice)</strong>：<ul>
+<li>设定切片数量（如 10 层），点击 <code>Show</code>，自动沿指定轴向生成等间距切片组。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-支持的数据格式-Supported-Data-Formats"><a href="#5-支持的数据格式-Supported-Data-Formats" class="headerlink" title="5. 支持的数据格式 (Supported Data Formats)"></a>5. 支持的数据格式 (Supported Data Formats)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">后缀名</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>.xyzv</strong></td>
+<td style="text-align:left">自定义网格</td>
+<td style="text-align:left">文本格式。前4行头信息，第5行维度(Nx Ny Nz Nv)，后续为 <code>x y z value</code> 数据。程序会自动构建显式结构化网格。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>.vtk</strong></td>
+<td style="text-align:left">VTK Legacy</td>
+<td style="text-align:left">标准 VTK 格式，支持 StructuredPoints, PolyData, UnstructuredGrid。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>.ply</strong></td>
+<td style="text-align:left">多边形文件</td>
+<td style="text-align:left">常用于点云或表面网格存储，程序会自动根据 Z 值生成颜色标量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>.dem / .tif</strong></td>
+<td style="text-align:left">数字高程</td>
+<td style="text-align:left">光栅高程数据，程序会自动转换为地形表面 (PolyData)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>.iter / .txt</strong></td>
+<td style="text-align:left">离散点云</td>
+<td style="text-align:left">简单的点列表，程序将按点云方式渲染。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="6-技术实现细节-Technical-Details"><a href="#6-技术实现细节-Technical-Details" class="headerlink" title="6. 技术实现细节 (Technical Details)"></a>6. 技术实现细节 (Technical Details)</h2><h3 id="6-1-渲染管线-Pipeline"><a href="#6-1-渲染管线-Pipeline" class="headerlink" title="6.1 渲染管线 (Pipeline)"></a>6.1 渲染管线 (Pipeline)</h3><p>本模块采用了标准的 VTK 可视化管线设计：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Source / Reader] --&gt; B[Filter: Transform]</span><br><span class="line">B --&gt; C&#123;Mode Selection&#125;</span><br><span class="line">C --&gt;|Point Mode| D[Filter: CellDataToPointData]</span><br><span class="line">C --&gt;|Cell Mode| E[Pass Through]</span><br><span class="line">D --&gt; F[Mapper: DataSetMapper]</span><br><span class="line">E --&gt; F</span><br><span class="line">F --&gt;|LookupTable| G[Actor]</span><br><span class="line">G --&gt; H[Renderer]</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-2-显式结构化网格-Explicit-Structured-Grid"><a href="#6-2-显式结构化网格-Explicit-Structured-Grid" class="headerlink" title="6.2 显式结构化网格 (Explicit Structured Grid)"></a>6.2 显式结构化网格 (Explicit Structured Grid)</h3><p>对于 <code>.xyzv</code> 数据，系统使用 <code>vtkExplicitStructuredGrid</code> 进行构建。</p>
+<ul>
+<li><strong>优势</strong>：既保留了结构化网格的拓扑关系（I, J, K 索引），又允许节点在空间中任意分布（非正交、起伏地表）。</li>
+<li><strong>实现</strong>：通过 <code>GridUtils::CreateExplicitStructuredGrid</code> 算法，将一维的数据数组映射为三维的六面体（Hexahedron）单元集合。</li>
+</ul>
+<h3 id="6-3-内存与性能管理"><a href="#6-3-内存与性能管理" class="headerlink" title="6.3 内存与性能管理"></a>6.3 内存与性能管理</h3><ul>
+<li><strong>懒加载 (Lazy Initialization)</strong>：参数面板、辅助窗口及大型 Filter 仅在首次使用时创建，减少启动内存占用。</li>
+<li><strong>智能指针</strong>：全面使用 <code>vtkSmartPointer</code> 和 <code>vtkNew</code> 管理 VTK 对象生命周期，防止内存泄漏。</li>
+<li><strong>数据复用</strong>：切片操作中使用 <code>SetInputData</code> 而非 <code>SetInputConnection</code> 断开临时 Filter 连接，实现“快照式”切片，防止管线冲突。</li>
+</ul>
+<hr>
+<h2 id="7-常见问题-FAQ"><a href="#7-常见问题-FAQ" class="headerlink" title="7. 常见问题 (FAQ)"></a>7. 常见问题 (FAQ)</h2><p><strong>Q: 打开文件后屏幕是黑的？</strong><br>A: 请尝试以下操作：</p>
+<ol>
+<li>点击工具栏的 <strong>视图 -&gt; 透视/正交</strong> 切换一下投影方式。</li>
+<li>滚动鼠标滚轮缩放，或者按 <code>R</code> 键重置相机 (Reset Camera)。</li>
+<li>检查参数面板中 <code>Opacity</code> 是否被设为了 0。</li>
+</ol>
+<p><strong>Q: 为什么左下角的坐标轴不显示？</strong><br>A: 这通常是因为渲染层级被覆盖。尝试稍微旋转一下视图，或者重新加载一次文件。系统已内置自动修复逻辑，会在场景更新时自动重启 Widget。</p>
+<p><strong>Q: .xyzv 文件加载失败？</strong><br>A: 请检查文件头是否符合格式要求（前4行跳过，第5行为维度信息）。确保路径中不包含乱码字符（虽然程序已支持中文路径，但部分系统环境可能仍有兼容性问题）。</p>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>三维数据可视化</tag>
+        <tag>VTK</tag>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Seis_Simulation地震波场模拟</title>
     <url>/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/</url>
-    <content><![CDATA[<h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统技术手册"><a href="#高性能二维弹性波场模拟系统技术手册" class="headerlink" title="高性能二维弹性波场模拟系统技术手册"></a>高性能二维弹性波场模拟系统技术手册</h1><span id="more"></span>
+    <content><![CDATA[<h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统-CPU-技术手册"><a href="#高性能二维弹性波场模拟系统-CPU-技术手册" class="headerlink" title="高性能二维弹性波场模拟系统(CPU)技术手册"></a>高性能二维弹性波场模拟系统(CPU)技术手册</h1><span id="more"></span>
 <h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="/.com//home.png" alt="程序主页"><br><strong>模型参数页面</strong><br><img src="/.com//page1.png" alt="模型参数页面"><br><strong>波场输出</strong><br><img src="/.com//record_snap_2.png" alt="波场输出"><br><strong>地震记录输出</strong><br><img src="/.com//record_vx.png" alt="地震记录输出"></p>
 <p><img src="https://img.shields.io/badge/Build-v2.1-blue" alt="Build Status"> <img src="https://img.shields.io/badge/Qt-5.15%2B-green" alt="Qt"> <img src="https://img.shields.io/badge/Parallel-OpenMP-orange" alt="OpenMP"> <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform"></p>
 <hr>
@@ -557,327 +871,12 @@
 <h2 id="8-致谢-Acknowledgements"><a href="#8-致谢-Acknowledgements" class="headerlink" title="8. 致谢 (Acknowledgements)"></a>8. 致谢 (Acknowledgements)</h2>]]></content>
       <tags>
         <tag>C++</tag>
+        <tag>Qt</tag>
         <tag>Seis Tool</tag>
         <tag>地震</tag>
         <tag>弹性波模拟</tag>
         <tag>有限差分法</tag>
-        <tag>Qt</tag>
         <tag>OpenMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VTK三维数据可视化模块</title>
-    <url>/2026/01/18/VTK%E4%B8%89%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<h1 id="VTK-三维数据可视化模块说明文档"><a href="#VTK-三维数据可视化模块说明文档" class="headerlink" title="VTK 三维数据可视化模块说明文档"></a>VTK 三维数据可视化模块说明文档</h1><span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="/.com//程序主页.png" alt="程序主页"><br><strong>初始界面</strong><br><img src="/.com//初始界面.png" alt="初始界面"><br><strong>起伏地表模型规则化显示</strong><br><img src="/.com//起伏地表模型规则化显示.png" alt="起伏地表模型规则化显示"><br><strong>参数调整面板</strong><br><img src="/.com//参数调整面板_色标.png" alt="参数调整面板"><br><strong>速度模型</strong><br><img src="/.com//速度模型.png" alt="速度模型"><br><strong>速度模型阈值显示1</strong><br><img src="/.com//速度模型阈值显示1.png" alt="速度模型阈值显示1"><br><strong>速度模型阈值显示2</strong><br><img src="/.com//速度模型阈值显示2.png" alt="速度模型阈值显示2"><br><strong>速度模型阈值显示3</strong><br><img src="/.com//速度模型阈值显示3.png" alt="速度模型阈值显示3"></p>
-<p><strong>任意切片显示</strong><br><img src="/.com//任意切片显示.png" alt="任意切片显示"><br><strong>多切片显示3</strong><br><img src="/.com//多切片显示3.png" alt="多切片显示3"></p>
-<h2 id="1-模块概述-Overview"><a href="#1-模块概述-Overview" class="headerlink" title="1. 模块概述 (Overview)"></a>1. 模块概述 (Overview)</h2><p>本模块是 <strong>Qt_VTK</strong> 系统的核心组件，基于 <strong>VTK 9.3</strong> 构建。它提供了一个高性能的交互式三维渲染窗口，专门用于展示地质勘探、气象数据及通用科学计算数据。</p>
-<p>主要能力包括：</p>
-<ul>
-<li><strong>多源数据解析</strong>：支持点云、规则网格、非结构化网格及显式结构化网格 (ESG)。</li>
-<li><strong>体数据渲染</strong>：支持标量映射、阈值过滤及透明度控制。</li>
-<li><strong>切片分析</strong>：提供交互式三轴切片和任意平面切割功能。</li>
-<li><strong>场景交互</strong>：支持标准的鼠标交互、相机控制及辅助坐标显示。</li>
-</ul>
-<hr>
-<h2 id="2-界面布局-Interface-Layout"><a href="#2-界面布局-Interface-Layout" class="headerlink" title="2. 界面布局 (Interface Layout)"></a>2. 界面布局 (Interface Layout)</h2><p>可视化窗口主要由以下几个部分组成：</p>
-<ol>
-<li><p><strong>3D 渲染主视图 (Main Viewport)</strong>：</p>
-<ul>
-<li>占据窗口核心区域，显示三维模型。</li>
-<li><strong>左下角</strong>：固定坐标轴指示器 (Orientation Marker)，指示全局 XYZ 方向。</li>
-<li><strong>右上角</strong>：交互式相机导航器 (Camera Cube)，点击不同面可快速切换视角（如 Top, Front, Left）。</li>
-<li><strong>右侧</strong>：颜色标尺 (Scalar Bar)，显示数值与颜色的对应关系。</li>
-</ul>
-</li>
-<li><p><strong>顶部工具栏 (Toolbar)</strong>：</p>
-<ul>
-<li><code>打开文件</code>：加载数据文件。</li>
-<li><code>参数面板</code>：开启/隐藏侧边控制面板。</li>
-<li><code>视图</code>：切换透视/正交投影，或复位视角。</li>
-<li><code>保存</code>：截图保存当前渲染画面。</li>
-<li><code>帮助</code>：显示操作说明。</li>
-</ul>
-</li>
-<li><p><strong>底部状态栏 (Status Bar)</strong>：</p>
-<ul>
-<li>实时显示当前操作状态、加载进度及错误提示。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="3-操作指南-User-Guide"><a href="#3-操作指南-User-Guide" class="headerlink" title="3. 操作指南 (User Guide)"></a>3. 操作指南 (User Guide)</h2><h3 id="3-1-鼠标交互"><a href="#3-1-鼠标交互" class="headerlink" title="3.1 鼠标交互"></a>3.1 鼠标交互</h3><ul>
-<li><strong>左键拖拽</strong>：旋转模型 (Rotate)。</li>
-<li><strong>中键拖拽</strong> / <strong>Shift + 左键</strong>：平移模型 (Pan)。</li>
-<li><strong>右键拖拽</strong> / <strong>滚轮滚动</strong>：缩放模型 (Zoom)。</li>
-<li><strong>Ctrl + 左键</strong>：在切片模式下，用于旋转切片平面（视具体 Widget 而定）。</li>
-</ul>
-<h3 id="3-2-右键菜单-Context-Menu"><a href="#3-2-右键菜单-Context-Menu" class="headerlink" title="3.2 右键菜单 (Context Menu)"></a>3.2 右键菜单 (Context Menu)</h3><p>在渲染区域点击右键，可弹出快捷菜单：</p>
-<ul>
-<li><strong>Color Settings</strong>：快速切换背景颜色或重置颜色映射。</li>
-<li><strong>Toggle 2D Plane</strong>：显示/隐藏底部的基础参考网格。</li>
-<li><strong>Scale Z</strong>：快速反转 Z 轴（针对某些深度为正的地质数据）。</li>
-<li><strong>Clear Object</strong>：清空当前场景。</li>
-</ul>
-<hr>
-<h2 id="4-参数调整面板-Parameter-Panel"><a href="#4-参数调整面板-Parameter-Panel" class="headerlink" title="4. 参数调整面板 (Parameter Panel)"></a>4. 参数调整面板 (Parameter Panel)</h2><p>点击工具栏的 <strong>“参数面板”</strong> 按钮可打开侧边栏，包含四个核心选项卡：</p>
-<h3 id="4-1-缩放调整-Scale-amp-Camera"><a href="#4-1-缩放调整-Scale-amp-Camera" class="headerlink" title="4.1 缩放调整 (Scale &amp; Camera)"></a>4.1 缩放调整 (Scale &amp; Camera)</h3><p>用于处理地质数据中常见的 <strong>Z 轴压缩</strong> 问题。</p>
-<ul>
-<li><strong>Model Scale (X/Y/Z)</strong>：设置各轴的缩放比例。<ul>
-<li><em>应用场景</em>：地质数据的水平跨度通常为几千米，而深度只有几百米。将 Z 轴 Scale 设为 5.0 或 10.0 可夸张显示深度变化。</li>
-</ul>
-</li>
-<li><strong>Camera ViewUp</strong>：手动设置相机的“向上”向量，用于修正视角倾斜。</li>
-</ul>
-<h3 id="4-2-颜色调整-Color-Adjustment"><a href="#4-2-颜色调整-Color-Adjustment" class="headerlink" title="4.2 颜色调整 (Color Adjustment)"></a>4.2 颜色调整 (Color Adjustment)</h3><p>控制数值到颜色的映射关系。</p>
-<ul>
-<li><strong>Scalar Range (Min/Max)</strong>：设置颜色映射的数值范围。<ul>
-<li>超出范围的数值将被钳位到两端颜色。</li>
-</ul>
-</li>
-<li><strong>Hue Range</strong>：调整色相范围（默认从蓝色到红色）。</li>
-<li><strong>Global Opacity</strong>：调整整个网格的透明度（0~100%）。</li>
-<li><strong>Color Presets</strong>：右侧提供预设颜色表（如 <code>Rainbow</code>, <code>Jet</code>, <code>Seismic</code> 等），支持加载 <code>.cpt</code> 文件。</li>
-</ul>
-<h3 id="4-3-对象显示-Object-Display"><a href="#4-3-对象显示-Object-Display" class="headerlink" title="4.3 对象显示 (Object Display)"></a>4.3 对象显示 (Object Display)</h3><p>控制不同渲染图元的可见性。</p>
-<ul>
-<li><strong>Point Cloud</strong>：以离散点形式显示数据。</li>
-<li><strong>Outline</strong>：显示数据的外包围盒（Bounding Box）。</li>
-<li><strong>Cube Axes</strong>：显示带刻度的三维坐标轴网格。</li>
-<li><strong>Grid Options</strong>：<ul>
-<li><code>Cell &lt;-&gt; Point</code>：切换渲染模式。<strong>Cell 模式</strong>显示原始网格格子（马赛克感）；<strong>Point 模式</strong>进行平滑插值渲染。</li>
-<li><code>Edge Line</code>：显示/隐藏网格单元的边缘线。</li>
-<li><code>Threshold</code>：开启阈值过滤，只显示特定数值范围内的数据（如只显示高波速区域）。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-4-切片显示-Slicing"><a href="#4-4-切片显示-Slicing" class="headerlink" title="4.4 切片显示 (Slicing)"></a>4.4 切片显示 (Slicing)</h3><p>提供三种切片模式用于查看体数据内部：</p>
-<ol>
-<li><strong>任意切片 (Arbitrary Slice)</strong>：<ul>
-<li>输入 <code>Origin</code> (原点) 和 <code>Normal</code> (法线方向)，点击 Add 生成切片。</li>
-</ul>
-</li>
-<li><strong>三轴交互切片 (Tri-axial Slice)</strong>：<ul>
-<li>勾选 <code>clip-plane-X/Y/Z</code>，场景中会出现交互式平面。</li>
-<li>鼠标拖动平面边框可移动切片位置。</li>
-</ul>
-</li>
-<li><strong>多重切片 (Multi-Slice)</strong>：<ul>
-<li>设定切片数量（如 10 层），点击 <code>Show</code>，自动沿指定轴向生成等间距切片组。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="5-支持的数据格式-Supported-Data-Formats"><a href="#5-支持的数据格式-Supported-Data-Formats" class="headerlink" title="5. 支持的数据格式 (Supported Data Formats)"></a>5. 支持的数据格式 (Supported Data Formats)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">后缀名</th>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>.xyzv</strong></td>
-<td style="text-align:left">自定义网格</td>
-<td style="text-align:left">文本格式。前4行头信息，第5行维度(Nx Ny Nz Nv)，后续为 <code>x y z value</code> 数据。程序会自动构建显式结构化网格。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>.vtk</strong></td>
-<td style="text-align:left">VTK Legacy</td>
-<td style="text-align:left">标准 VTK 格式，支持 StructuredPoints, PolyData, UnstructuredGrid。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>.ply</strong></td>
-<td style="text-align:left">多边形文件</td>
-<td style="text-align:left">常用于点云或表面网格存储，程序会自动根据 Z 值生成颜色标量。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>.dem / .tif</strong></td>
-<td style="text-align:left">数字高程</td>
-<td style="text-align:left">光栅高程数据，程序会自动转换为地形表面 (PolyData)。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>.iter / .txt</strong></td>
-<td style="text-align:left">离散点云</td>
-<td style="text-align:left">简单的点列表，程序将按点云方式渲染。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="6-技术实现细节-Technical-Details"><a href="#6-技术实现细节-Technical-Details" class="headerlink" title="6. 技术实现细节 (Technical Details)"></a>6. 技术实现细节 (Technical Details)</h2><h3 id="6-1-渲染管线-Pipeline"><a href="#6-1-渲染管线-Pipeline" class="headerlink" title="6.1 渲染管线 (Pipeline)"></a>6.1 渲染管线 (Pipeline)</h3><p>本模块采用了标准的 VTK 可视化管线设计：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Source / Reader] --&gt; B[Filter: Transform]</span><br><span class="line">B --&gt; C&#123;Mode Selection&#125;</span><br><span class="line">C --&gt;|Point Mode| D[Filter: CellDataToPointData]</span><br><span class="line">C --&gt;|Cell Mode| E[Pass Through]</span><br><span class="line">D --&gt; F[Mapper: DataSetMapper]</span><br><span class="line">E --&gt; F</span><br><span class="line">F --&gt;|LookupTable| G[Actor]</span><br><span class="line">G --&gt; H[Renderer]</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-2-显式结构化网格-Explicit-Structured-Grid"><a href="#6-2-显式结构化网格-Explicit-Structured-Grid" class="headerlink" title="6.2 显式结构化网格 (Explicit Structured Grid)"></a>6.2 显式结构化网格 (Explicit Structured Grid)</h3><p>对于 <code>.xyzv</code> 数据，系统使用 <code>vtkExplicitStructuredGrid</code> 进行构建。</p>
-<ul>
-<li><strong>优势</strong>：既保留了结构化网格的拓扑关系（I, J, K 索引），又允许节点在空间中任意分布（非正交、起伏地表）。</li>
-<li><strong>实现</strong>：通过 <code>GridUtils::CreateExplicitStructuredGrid</code> 算法，将一维的数据数组映射为三维的六面体（Hexahedron）单元集合。</li>
-</ul>
-<h3 id="6-3-内存与性能管理"><a href="#6-3-内存与性能管理" class="headerlink" title="6.3 内存与性能管理"></a>6.3 内存与性能管理</h3><ul>
-<li><strong>懒加载 (Lazy Initialization)</strong>：参数面板、辅助窗口及大型 Filter 仅在首次使用时创建，减少启动内存占用。</li>
-<li><strong>智能指针</strong>：全面使用 <code>vtkSmartPointer</code> 和 <code>vtkNew</code> 管理 VTK 对象生命周期，防止内存泄漏。</li>
-<li><strong>数据复用</strong>：切片操作中使用 <code>SetInputData</code> 而非 <code>SetInputConnection</code> 断开临时 Filter 连接，实现“快照式”切片，防止管线冲突。</li>
-</ul>
-<hr>
-<h2 id="7-常见问题-FAQ"><a href="#7-常见问题-FAQ" class="headerlink" title="7. 常见问题 (FAQ)"></a>7. 常见问题 (FAQ)</h2><p><strong>Q: 打开文件后屏幕是黑的？</strong><br>A: 请尝试以下操作：</p>
-<ol>
-<li>点击工具栏的 <strong>视图 -&gt; 透视/正交</strong> 切换一下投影方式。</li>
-<li>滚动鼠标滚轮缩放，或者按 <code>R</code> 键重置相机 (Reset Camera)。</li>
-<li>检查参数面板中 <code>Opacity</code> 是否被设为了 0。</li>
-</ol>
-<p><strong>Q: 为什么左下角的坐标轴不显示？</strong><br>A: 这通常是因为渲染层级被覆盖。尝试稍微旋转一下视图，或者重新加载一次文件。系统已内置自动修复逻辑，会在场景更新时自动重启 Widget。</p>
-<p><strong>Q: .xyzv 文件加载失败？</strong><br>A: 请检查文件头是否符合格式要求（前4行跳过，第5行为维度信息）。确保路径中不包含乱码字符（虽然程序已支持中文路径，但部分系统环境可能仍有兼容性问题）。</p>
-]]></content>
-      <tags>
-        <tag>C++</tag>
-        <tag>Qt</tag>
-        <tag>三维数据可视化</tag>
-        <tag>VTK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SeisMonitor实时地震台站监测系统技术文档</title>
-    <url>/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页布局</strong><br><img src="/.com//0_主页面布局_light.png" alt="系统架构图light"><br><img src="/.com//0_主页面布局_night.png" alt="系统架构图night"><br><strong>监测台站显示</strong><br><img src="/.com//台站显示地图.png" alt="台站显示"></p>
-<p><strong>波形与时频分析瀑布图</strong><br><img src="/.com//波形与时频分析瀑布图.png" alt="台站显示"></p>
-<p><strong>异常信号检测</strong><br><img src="/.com//人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
-<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
-<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
-<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
-<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
-<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
-</ul>
-<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
-<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
-<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
-<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
-</ul>
-<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
-<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
-<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
-<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
-</ul>
-<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
-<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
-<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
-<li><strong>多维联动</strong>：<ul>
-<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
-<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
-<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
-<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
-<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
-</ul>
-<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
-<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
-<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
-<li><strong>交互操作</strong>：<ul>
-<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
-<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
-<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
-<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
-<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
-<li><strong>状态可视化</strong>：<ul>
-<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
-<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
-<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
-<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
-</ul>
-</li>
-<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
-</ul>
-<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
-<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
-<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
-</ul>
-<hr>
-<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">组件</th>
-<th style="text-align:left">技术选型</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>开发框架</strong></td>
-<td style="text-align:left">Qt 6.6.3 (C++)</td>
-<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>网络协议</strong></td>
-<td style="text-align:left">TCP / HTTP</td>
-<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据解析</strong></td>
-<td style="text-align:left">libmseed v3</td>
-<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>绘图引擎</strong></td>
-<td style="text-align:left">QCustomPlot 2.1</td>
-<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>地图引擎</strong></td>
-<td style="text-align:left">Qt Location / QML</td>
-<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据结构</strong></td>
-<td style="text-align:left">哈希表 (QHash)</td>
-<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
-<li><strong>启动连接</strong>：<ul>
-<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
-<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
-<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
-<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
-</ul>
-</li>
-<li><strong>调整视图</strong>：<ul>
-<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
-<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
-</ul>
-</li>
-<li><strong>信号处理</strong>：<ul>
-<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
-<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
-</ul>
-</li>
-<li><strong>设置预警</strong>：<ul>
-<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
-<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>C++</tag>
-        <tag>SeisMonitor</tag>
-        <tag>seedlink</tag>
-        <tag>地震台站</tag>
-        <tag>信号监测</tag>
-        <tag>数据处理</tag>
-        <tag>数据分析</tag>
-        <tag>数据可视化</tag>
       </tags>
   </entry>
 </search>
