@@ -20,22 +20,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="冒牌書生的个人博客">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator高性能二维弹性波动力学模拟与可视化平台  1. 系统概述 (System Overview)HPEW-Sim v3.0 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 GPU 原生并行架构，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于GPU Computer Shader波场模拟技术文档">
+<meta property="og:url" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
+<meta property="og:description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator高性能二维弹性波动力学模拟与可视化平台  1. 系统概述 (System Overview)HPEW-Sim v3.0 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 GPU 原生并行架构，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-21T05:01:56.000Z">
+<meta property="article:modified_time" content="2026-01-21T05:19:45.447Z">
 <meta property="article:author" content="XIAO YU">
+<meta property="article:tag" content="Computer Shader">
+<meta property="article:tag" content="GPU">
+<meta property="article:tag" content="Wave Simulator">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/","path":"2026/01/21/GPU波场模拟技术文档/","title":"基于GPU Computer Shader波场模拟技术文档"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>冒牌書生的个人博客</title>
+<title>基于GPU Computer Shader波场模拟技术文档 | 冒牌書生的个人博客</title>
   
 
 
@@ -88,7 +95,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">冒牌書生的个人博客</h1>
+      <p class="site-title">冒牌書生的个人博客</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -110,7 +117,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -123,6 +130,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><span class="nav-number">1.</span> <span class="nav-text">HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0-System-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">1. 系统概述 (System Overview)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC-Core-Value"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 核心价值 (Core Value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7%E6%B8%85%E5%8D%95-Feature-List"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 关键特性清单 (Feature List)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%89%A9%E7%90%86%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86-Physics-amp-Mathematics"><span class="nav-number">1.2.</span> <span class="nav-text">2. 物理与数学原理 (Physics &amp; Mathematics)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8E%A7%E5%88%B6%E6%96%B9%E7%A8%8B-Governing-Equations"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 控制方程 (Governing Equations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%AB%98%E9%98%B6%E6%95%B0%E5%80%BC%E7%A6%BB%E6%95%A3-Numerical-Scheme"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 高阶数值离散 (Numerical Scheme)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6-Boundary-Conditions"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 边界条件 (Boundary Conditions)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C-User-Manual"><span class="nav-number">1.3.</span> <span class="nav-text">3. 用户操作手册 (User Manual)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%95%8C%E9%9D%A2%E6%A6%82%E8%A7%88-Interface-Layout"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 界面概览 (Interface Layout)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5-Shortcuts"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 快捷键速查 (Shortcuts)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%B7%A5%E5%85%B7%E6%A8%A1%E5%BC%8F-Tool-Modes-%E6%95%B0%E5%AD%97%E9%94%AE-1-8"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 工具模式 (Tool Modes - 数字键 1-8)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Feature-Modules"><span class="nav-number">1.4.</span> <span class="nav-text">4. 功能模块详解 (Feature Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Simulation-%E6%A8%A1%E6%8B%9F%E6%A0%B8%E5%BF%83%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">A. Simulation (模拟核心设置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Data-Export-%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F-%E6%A0%B8%E5%BF%83"><span class="nav-number">1.4.2.</span> <span class="nav-text">B. Data Export (数据采集系统 - 核心)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Random-Source-%E9%9A%8F%E6%9C%BA%E9%9C%87%E6%BA%90-%E5%BE%AE%E9%9C%87"><span class="nav-number">1.4.3.</span> <span class="nav-text">C. Random Source (随机震源&#x2F;微震)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Visualization-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.4.4.</span> <span class="nav-text">D. Visualization (可视化)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%B8%E5%9E%8B%E5%B7%A5%E4%BD%9C%E6%B5%81-Workflows"><span class="nav-number">1.5.</span> <span class="nav-text">5. 典型工作流 (Workflows)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-A%EF%BC%9A%E5%90%88%E6%88%90%E5%9C%B0%E9%9C%87%E8%AE%B0%E5%BD%95%E7%94%9F%E6%88%90-Seismic-Data-Acquisition"><span class="nav-number">1.5.1.</span> <span class="nav-text">场景 A：合成地震记录生成 (Seismic Data Acquisition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-B%EF%BC%9A%E5%A4%8D%E6%9D%82%E4%BB%8B%E8%B4%A8%E6%B3%A2%E5%9C%BA%E4%BC%A0%E6%92%AD%E6%95%99%E5%AD%A6"><span class="nav-number">1.5.2.</span> <span class="nav-text">场景 B：复杂介质波场传播教学</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4-Troubleshooting"><span class="nav-number">1.6.</span> <span class="nav-text">6. 故障排除 (Troubleshooting)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%BA%94%E7%94%A8%E5%89%8D%E6%99%AF-Applications"><span class="nav-number">1.7.</span> <span class="nav-text">7. 应用前景 (Applications)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -158,16 +166,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,13 +190,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 冒牌書生的个人博客">
+      <meta itemprop="name" content="基于GPU Computer Shader波场模拟技术文档 | 冒牌書生的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" class="post-title-link" itemprop="url">基于GPU Computer Shader波场模拟技术文档</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          基于GPU Computer Shader波场模拟技术文档
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -210,8 +219,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a><strong>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</strong></h1><p><strong>高性能二维弹性波动力学模拟与可视化平台</strong></p>
+    <div class="post-body" itemprop="articleBody"><h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a><strong>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</strong></h1><p><strong>高性能二维弹性波动力学模拟与可视化平台</strong></p>
 <hr>
 <h2 id="1-系统概述-System-Overview"><a href="#1-系统概述-System-Overview" class="headerlink" title="1. 系统概述 (System Overview)"></a><strong>1. 系统概述 (System Overview)</strong></h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 <strong>GPU 原生并行架构</strong>，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时弹性波场模拟。</p>
 <h3 id="1-1-核心价值-Core-Value"><a href="#1-1-核心价值-Core-Value" class="headerlink" title="1.1 核心价值 (Core Value)"></a><strong>1.1 核心价值 (Core Value)</strong></h3><ul>
@@ -578,7 +586,6 @@
 </li>
 </ol>
 
-      
     </div>
 
     
@@ -586,206 +593,27 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/Wave-Simulator/" rel="tag"># Wave Simulator</a>
+              <a href="/tags/GPU/" rel="tag"># GPU</a>
+              <a href="/tags/Computer-Shader/" rel="tag"># Computer Shader</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="prev" title="SeisMonitor实时地震台站监测系统技术文档">
+                  <i class="fa fa-angle-left"></i> SeisMonitor实时地震台站监测系统技术文档
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xiaoyu_base.png">
-      <meta itemprop="name" content="XIAO YU">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冒牌書生的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 冒牌書生的个人博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" class="post-title-link" itemprop="url">SeisMonitor实时地震台站监测系统技术文档</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2026-01-21 12:51:31 / 修改时间：13:19:20" itemprop="dateCreated datePublished" datetime="2026-01-21T12:51:31+08:00">2026-01-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
-<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
-<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
-<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
-<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
-</ul>
-<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
-<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
-<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
-<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
-</ul>
-<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
-<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
-<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
-<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
-</ul>
-<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
-<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
-<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
-<li><strong>多维联动</strong>：<ul>
-<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
-<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
-<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
-<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
-<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
-</ul>
-<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
-<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
-<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
-<li><strong>交互操作</strong>：<ul>
-<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
-<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
-<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
-<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
-<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
-<li><strong>状态可视化</strong>：<ul>
-<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
-<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
-<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
-<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
-</ul>
-</li>
-<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
-</ul>
-<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
-<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
-<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
-</ul>
-<hr>
-<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">组件</th>
-<th style="text-align:left">技术选型</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>开发框架</strong></td>
-<td style="text-align:left">Qt 6.6.3 (C++)</td>
-<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>网络协议</strong></td>
-<td style="text-align:left">TCP / HTTP</td>
-<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据解析</strong></td>
-<td style="text-align:left">libmseed v3</td>
-<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>绘图引擎</strong></td>
-<td style="text-align:left">QCustomPlot 2.1</td>
-<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>地图引擎</strong></td>
-<td style="text-align:left">Qt Location / QML</td>
-<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据结构</strong></td>
-<td style="text-align:left">哈希表 (QHash)</td>
-<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
-<li><strong>启动连接</strong>：<ul>
-<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
-<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
-<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
-<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
-</ul>
-</li>
-<li><strong>调整视图</strong>：<ul>
-<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
-<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
-</ul>
-</li>
-<li><strong>信号处理</strong>：<ul>
-<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
-<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
-</ul>
-</li>
-<li><strong>设置预警</strong>：<ul>
-<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
-<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
