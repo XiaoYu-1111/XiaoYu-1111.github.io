@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="SeisMonitor - 实时地震台站监测系统技术文档 台站显示 波形与时频分析瀑布图 异常信号检测 1. 产品概述 (Product Overview)SeisMonitor 是一款基于 Qt 6 (C++) 和 OpenGL 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 SeedLink 协议 实时接入全球地震台网（如">
+    <meta name="description" content="SeisMonitor - 实时地震台站监测系统技术文档界面展示主页布局监测台站显示 波形与时频分析瀑布图 异常信号检测 1. 产品概述 (Product Overview)SeisMonitor 是一款基于 Qt 6 (C++) 和 OpenGL 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 SeedLink 协议 实时接入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SeisMonitor实时地震台站监测系统技术文档">
 <meta property="og:url" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="SeisMonitor - 实时地震台站监测系统技术文档 台站显示 波形与时频分析瀑布图 异常信号检测 1. 产品概述 (Product Overview)SeisMonitor 是一款基于 Qt 6 (C++) 和 OpenGL 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 SeedLink 协议 实时接入全球地震台网（如">
+<meta property="og:description" content="SeisMonitor - 实时地震台站监测系统技术文档界面展示主页布局监测台站显示 波形与时频分析瀑布图 异常信号检测 1. 产品概述 (Product Overview)SeisMonitor 是一款基于 Qt 6 (C++) 和 OpenGL 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 SeedLink 协议 实时接入">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/0_%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80_light.png">
 <meta property="og:image" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/0_%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80_night.png">
@@ -33,11 +33,16 @@
 <meta property="og:image" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%BD%A2%E4%B8%8E%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90%E7%80%91%E5%B8%83%E5%9B%BE.png">
 <meta property="og:image" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E4%BA%BA%E5%B7%A5%E4%BF%A1%E5%8F%B7%E5%9C%B0%E9%9C%87%E9%A2%84%E8%AD%A6%E6%B5%8B%E8%AF%95.png">
 <meta property="article:published_time" content="2026-01-21T04:51:31.000Z">
-<meta property="article:modified_time" content="2026-01-21T06:18:30.033Z">
+<meta property="article:modified_time" content="2026-01-21T08:29:52.812Z">
 <meta property="article:author" content="XIAO YU">
+<meta property="article:tag" content="C++">
 <meta property="article:tag" content="SeisMonitor">
+<meta property="article:tag" content="seedlink">
 <meta property="article:tag" content="信号监测">
-<meta property="article:tag" content="地震学">
+<meta property="article:tag" content="地震台站">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="数据可视化">
+<meta property="article:tag" content="数据处理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/0_%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80_light.png">
 
@@ -173,7 +178,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisMonitor-%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">SeisMonitor - 实时地震台站监测系统技术文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0-Product-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">1. 产品概述 (Product Overview)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BD%AF%E4%BB%B6%E7%89%B9%E7%82%B9%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF-Key-Features-amp-Advantages"><span class="nav-number">1.2.</span> <span class="nav-text">2. 软件特点与核心优势 (Key Features &amp; Advantages)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%AB%98%E6%80%A7%E8%83%BD%E5%AE%9E%E6%97%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 高性能实时渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%B8%93%E4%B8%9A%E7%BA%A7%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86-DSP-Pipeline"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 专业级信号处理 (DSP Pipeline)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%99%BA%E8%83%BD%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B-Smart-Detection"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 智能事件检测 (Smart Detection)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%8E%B0%E4%BB%A3%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C-Modern-UX"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 现代交互体验 (Modern UX)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Functional-Modules"><span class="nav-number">1.3.</span> <span class="nav-text">3. 功能模块详解 (Functional Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%AE%A1%E7%90%86-Connection-Manager"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 数据连接与管理 (Connection Manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%9E%E6%97%B6%E6%B3%A2%E5%BD%A2%E8%A7%86%E5%9B%BE-Waveform-Viewer"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 实时波形视图 (Waveform Viewer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%85%A8%E7%90%83%E5%8F%B0%E7%AB%99%E5%9C%B0%E5%9B%BE-GIS-Module"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 全球台站地图 (GIS Module)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%95%B0%E6%8D%AE%E5%BD%95%E5%88%B6%E4%B8%8E%E6%97%A5%E5%BF%97-Recording-amp-Logging"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 数据录制与日志 (Recording &amp; Logging)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-Technical-Architecture"><span class="nav-number">1.4.</span> <span class="nav-text">4. 技术架构 (Technical Architecture)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97-Quick-Start"><span class="nav-number">1.5.</span> <span class="nav-text">5. 快速操作指南 (Quick Start)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisMonitor-%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">SeisMonitor - 实时地震台站监测系统技术文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">界面展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0-Product-Overview"><span class="nav-number">2.1.</span> <span class="nav-text">1. 产品概述 (Product Overview)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BD%AF%E4%BB%B6%E7%89%B9%E7%82%B9%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF-Key-Features-amp-Advantages"><span class="nav-number">2.2.</span> <span class="nav-text">2. 软件特点与核心优势 (Key Features &amp; Advantages)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%AB%98%E6%80%A7%E8%83%BD%E5%AE%9E%E6%97%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 高性能实时渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%B8%93%E4%B8%9A%E7%BA%A7%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86-DSP-Pipeline"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 专业级信号处理 (DSP Pipeline)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%99%BA%E8%83%BD%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B-Smart-Detection"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 智能事件检测 (Smart Detection)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%8E%B0%E4%BB%A3%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C-Modern-UX"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 现代交互体验 (Modern UX)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Functional-Modules"><span class="nav-number">2.3.</span> <span class="nav-text">3. 功能模块详解 (Functional Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%AE%A1%E7%90%86-Connection-Manager"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 数据连接与管理 (Connection Manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%9E%E6%97%B6%E6%B3%A2%E5%BD%A2%E8%A7%86%E5%9B%BE-Waveform-Viewer"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 实时波形视图 (Waveform Viewer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%85%A8%E7%90%83%E5%8F%B0%E7%AB%99%E5%9C%B0%E5%9B%BE-GIS-Module"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 全球台站地图 (GIS Module)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%95%B0%E6%8D%AE%E5%BD%95%E5%88%B6%E4%B8%8E%E6%97%A5%E5%BF%97-Recording-amp-Logging"><span class="nav-number">2.3.4.</span> <span class="nav-text">3.4 数据录制与日志 (Recording &amp; Logging)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-Technical-Architecture"><span class="nav-number">2.4.</span> <span class="nav-text">4. 技术架构 (Technical Architecture)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97-Quick-Start"><span class="nav-number">2.5.</span> <span class="nav-text">5. 快速操作指南 (Quick Start)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,12 +193,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -258,7 +263,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-01-21 12:51:31 / 修改时间：14:18:30" itemprop="dateCreated datePublished" datetime="2026-01-21T12:51:31+08:00">2026-01-21</time>
+      <time title="创建时间：2026-01-21 12:51:31 / 修改时间：16:29:52" itemprop="dateCreated datePublished" datetime="2026-01-21T12:51:31+08:00">2026-01-21</time>
     </span>
 
   
@@ -277,8 +282,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><p><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"></p>
-<p><strong>台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
+    <div class="post-body" itemprop="articleBody"><h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页布局</strong><br><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"><br><strong>监测台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
 <p><strong>波形与时频分析瀑布图</strong><br><img src="波形与时频分析瀑布图.png" alt="台站显示"></p>
 <p><strong>异常信号检测</strong><br><img src="人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
 <h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
@@ -417,16 +421,21 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/SeisMonitor/" rel="tag"># SeisMonitor</a>
-              <a href="/tags/%E5%9C%B0%E9%9C%87%E5%AD%A6/" rel="tag"># 地震学</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/seedlink/" rel="tag"># seedlink</a>
+              <a href="/tags/%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99/" rel="tag"># 地震台站</a>
               <a href="/tags/%E4%BF%A1%E5%8F%B7%E7%9B%91%E6%B5%8B/" rel="tag"># 信号监测</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="tag"># 数据处理</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag"># 数据可视化</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2026/01/20/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="prev" title="基于GPU Computer Shader波场模拟技术文档">
-                  <i class="fa fa-angle-left"></i> 基于GPU Computer Shader波场模拟技术文档
+                <a href="/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/" rel="prev" title="Seis_Simulation地震波场模拟">
+                  <i class="fa fa-angle-left"></i> Seis_Simulation地震波场模拟
                 </a>
             </div>
             <div class="post-nav-item">

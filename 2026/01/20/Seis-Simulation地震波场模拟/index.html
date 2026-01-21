@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation高性能二维弹性波场模拟系统技术手册界面展示程序主页模型参数页面波场输出地震记录输出      1. 项目简介 (Introduction)Seis-FDM-Tool 是一款专为地球物理研究和教学设计的专业级桌面应用程序。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seis_Simulation地震波场模拟">
+<meta property="og:url" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:site_name" content="冒牌書生的个人博客">
+<meta property="og:description" content="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation高性能二维弹性波场模拟系统技术手册界面展示程序主页模型参数页面波场输出地震记录输出      1. 项目简介 (Introduction)Seis-FDM-Tool 是一款专为地球物理研究和教学设计的专业级桌面应用程序。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/home.png">
+<meta property="og:image" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/page1.png">
+<meta property="og:image" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/record_snap_2.png">
+<meta property="og:image" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/record_vx.png">
+<meta property="og:image" content="https://img.shields.io/badge/Build-v2.1-blue">
+<meta property="og:image" content="https://img.shields.io/badge/Qt-5.15%2B-green">
+<meta property="og:image" content="https://img.shields.io/badge/Parallel-OpenMP-orange">
+<meta property="og:image" content="https://img.shields.io/badge/Platform-Windows-blue">
+<meta property="article:published_time" content="2026-01-20T07:23:22.000Z">
+<meta property="article:modified_time" content="2026-01-21T08:29:22.299Z">
+<meta property="article:author" content="XIAO YU">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="OpenMP">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="Seis Tool">
+<meta property="article:tag" content="地震">
+<meta property="article:tag" content="弹性波模拟">
+<meta property="article:tag" content="有限差分法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/home.png">
+
+
+<link rel="canonical" href="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/","path":"2026/01/20/Seis-Simulation地震波场模拟/","title":"Seis_Simulation地震波场模拟"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Seis_Simulation地震波场模拟 | 冒牌書生的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冒牌書生的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><span class="nav-number">1.</span> <span class="nav-text">Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C"><span class="nav-number">2.</span> <span class="nav-text">高性能二维弹性波场模拟系统技术手册</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">界面展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B-Introduction"><span class="nav-number">3.1.</span> <span class="nav-text">1. 项目简介 (Introduction)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80-Theoretical-Background"><span class="nav-number">3.2.</span> <span class="nav-text">2. 理论基础 (Theoretical Background)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%9C%B0%E9%9C%87%E5%8B%98%E6%8E%A2%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 地震勘探原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95-FDM-%E6%A0%B8%E5%BF%83"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 有限差分法 (FDM) 核心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%BA%AE%E7%82%B9-Key-Features"><span class="nav-number">3.3.</span> <span class="nav-text">3. 核心技术亮点 (Key Features)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%9A%80-%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E5%86%85%E6%A0%B8-HPC-Kernel"><span class="nav-number">3.3.1.</span> <span class="nav-text">🚀 高性能计算内核 (HPC Kernel)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%8C%8A-%E5%A4%8D%E6%9D%82%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6-Boundary-Conditions"><span class="nav-number">3.3.2.</span> <span class="nav-text">🌊 复杂边界条件 (Boundary Conditions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%96%A5%EF%B8%8F-%E7%8E%B0%E4%BB%A3%E5%8C%96%E4%BA%A4%E4%BA%92%E7%95%8C%E9%9D%A2-Modern-UI-UX"><span class="nav-number">3.3.3.</span> <span class="nav-text">🖥️ 现代化交互界面 (Modern UI&#x2F;UX)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8A-%E4%B8%93%E4%B8%9A%E7%BA%A7%E5%8F%AF%E8%A7%86%E5%8C%96-Visualization"><span class="nav-number">3.3.4.</span> <span class="nav-text">📊 专业级可视化 (Visualization)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84-Software-Architecture"><span class="nav-number">3.4.</span> <span class="nav-text">4. 软件架构 (Software Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A8%A1%E5%9D%97%E5%88%92%E5%88%86"><span class="nav-number">3.4.1.</span> <span class="nav-text">4.1 模块划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B-Threading-Model"><span class="nav-number">3.4.2.</span> <span class="nav-text">4.2 线程模型 (Threading Model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">3.4.3.</span> <span class="nav-text">4.3 文件结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-User-Guide"><span class="nav-number">3.5.</span> <span class="nav-text">5. 使用指南 (User Guide)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">3.5.1.</span> <span class="nav-text">5.1 启动与配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E8%BF%90%E8%A1%8C%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.5.2.</span> <span class="nav-text">5.2 运行模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">3.5.3.</span> <span class="nav-text">5.3 数据可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E4%B8%8E%E6%9E%84%E5%BB%BA-Build-amp-Install"><span class="nav-number">3.6.</span> <span class="nav-text">6. 环境依赖与构建 (Build &amp; Install)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E8%A6%81%E6%B1%82-Prerequisites"><span class="nav-number">3.6.1.</span> <span class="nav-text">前置要求 (Prerequisites)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4-Steps"><span class="nav-number">3.6.2.</span> <span class="nav-text">编译步骤 (Steps)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%89%88%E6%9D%83%E4%B8%8E%E6%8E%88%E6%9D%83%E8%AF%B4%E6%98%8E-License"><span class="nav-number">3.7.</span> <span class="nav-text">7. 版权与授权说明 (License)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E6%8E%88%E6%9D%83"><span class="nav-number">3.7.1.</span> <span class="nav-text">项目源码授权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%8E%88%E6%9D%83"><span class="nav-number">3.7.2.</span> <span class="nav-text">第三方库授权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E8%87%B4%E8%B0%A2-Acknowledgements"><span class="nav-number">3.8.</span> <span class="nav-text">8. 致谢 (Acknowledgements)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XIAO YU"
+      src="/images/xiaoyu_base.png">
+  <p class="site-author-name" itemprop="name">XIAO YU</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XiaoYu-1111" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XiaoYu-1111" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/324621201?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;324621201?spm_id_from&#x3D;333.1007.0.0" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/20/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaoyu_base.png">
+      <meta itemprop="name" content="XIAO YU">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Seis_Simulation地震波场模拟 | 冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Seis_Simulation地震波场模拟
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-01-20 15:23:22" itemprop="dateCreated datePublished" datetime="2026-01-20T15:23:22+08:00">2026-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-21 16:29:22" itemprop="dateModified" datetime="2026-01-21T16:29:22+08:00">2026-01-21</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统技术手册"><a href="#高性能二维弹性波场模拟系统技术手册" class="headerlink" title="高性能二维弹性波场模拟系统技术手册"></a>高性能二维弹性波场模拟系统技术手册</h1><h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="home.png" alt="程序主页"><br><strong>模型参数页面</strong><br><img src="page1.png" alt="模型参数页面"><br><strong>波场输出</strong><br><img src="record_snap_2.png" alt="波场输出"><br><strong>地震记录输出</strong><br><img src="record_vx.png" alt="地震记录输出"></p>
+<p><img src="https://img.shields.io/badge/Build-v2.1-blue" alt="Build Status"> <img src="https://img.shields.io/badge/Qt-5.15%2B-green" alt="Qt"> <img src="https://img.shields.io/badge/Parallel-OpenMP-orange" alt="OpenMP"> <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform"></p>
+<hr>
+<h2 id="1-项目简介-Introduction"><a href="#1-项目简介-Introduction" class="headerlink" title="1. 项目简介 (Introduction)"></a>1. 项目简介 (Introduction)</h2><p><strong>Seis-FDM-Tool</strong> 是一款专为地球物理研究和教学设计的专业级桌面应用程序。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。</p>
+<p>该软件结合了 <strong>C++17</strong> 的高性能计算能力与 <strong>Qt</strong> 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 <strong>OpenMP</strong> 并行加速和 <strong>内存扁平化</strong> 技术，能够在大规模网格下实现近实时的波场模拟。</p>
+<p><strong>Seis-FDM-Tool</strong> is a professional-grade desktop application for 2D elastic wavefield forward modeling. Built with <strong>C++17</strong> and <strong>Qt</strong>, it combines a modern user interface with a highly optimized Finite Difference Method (FDM) engine, featuring <strong>8th-order spatial accuracy</strong> and advanced boundary conditions.</p>
+<hr>
+<h2 id="2-理论基础-Theoretical-Background"><a href="#2-理论基础-Theoretical-Background" class="headerlink" title="2. 理论基础 (Theoretical Background)"></a>2. 理论基础 (Theoretical Background)</h2><h3 id="2-1-地震勘探原理"><a href="#2-1-地震勘探原理" class="headerlink" title="2.1 地震勘探原理"></a>2.1 地震勘探原理</h3><p>利用人工激发的地震波在地下介质中传播的规律，推断地下岩层的性质和形态。</p>
+<ul>
+<li><strong>震源 (Source)</strong>: Ricker 子波，支持集中力源 (Point Force)。</li>
+<li><strong>传播 (Propagation)</strong>: 波在非均匀介质中传播，产生反射、折射、转换波。</li>
+<li><strong>接收 (Receiver)</strong>: 模拟检波器阵列记录地面质点振动速度 ($v_x, v_z$)。</li>
+</ul>
+<h3 id="2-2-有限差分法-FDM-核心"><a href="#2-2-有限差分法-FDM-核心" class="headerlink" title="2.2 有限差分法 (FDM) 核心"></a>2.2 有限差分法 (FDM) 核心</h3><p>本程序采用 <strong>交错网格有限差分法 (Staggered-Grid FDM)</strong> 求解速度-应力方程组。</p>
+<ul>
+<li><strong>波动方程 (P-SV波)</strong>:<script type="math/tex; mode=display">
+\begin{cases}
+\rho \frac{\partial v_x}{\partial t} = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} \\
+\rho \frac{\partial v_z}{\partial t} = \frac{\partial \sigma_{xz}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} \\
+\frac{\partial \sigma_{xx}}{\partial t} = (\lambda + 2\mu)\frac{\partial v_x}{\partial x} + \lambda\frac{\partial v_z}{\partial z} \\
+\frac{\partial \sigma_{zz}}{\partial t} = \lambda\frac{\partial v_x}{\partial x} + (\lambda + 2\mu)\frac{\partial v_z}{\partial z} \\
+\frac{\partial \sigma_{xz}}{\partial t} = \mu(\frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x})
+\end{cases}</script></li>
+<li><strong>离散化精度</strong>: <ul>
+<li><strong>空间</strong>: <strong>8阶精度 (8th-Order)</strong>。采用长模板差分算子 (C1~C4)，极大压制数值频散，适用于大网格步长模拟。</li>
+<li><strong>时间</strong>: 2阶精度差分 (Leap-frog)。</li>
+</ul>
+</li>
+<li><strong>稳定性</strong>: 需满足 Courant-Friedrichs-Lewy (CFL) 条件：<script type="math/tex; mode=display">\Delta t \le \frac{0.606 \cdot h}{v_{max}}</script></li>
+</ul>
+<hr>
+<h2 id="3-核心技术亮点-Key-Features"><a href="#3-核心技术亮点-Key-Features" class="headerlink" title="3. 核心技术亮点 (Key Features)"></a>3. 核心技术亮点 (Key Features)</h2><h3 id="🚀-高性能计算内核-HPC-Kernel"><a href="#🚀-高性能计算内核-HPC-Kernel" class="headerlink" title="🚀 高性能计算内核 (HPC Kernel)"></a>🚀 高性能计算内核 (HPC Kernel)</h3><ul>
+<li><strong>1D Flattening (内存扁平化)</strong>: <ul>
+<li>放弃传统的 <code>vector&lt;vector&gt;</code> 二维数组，将所有场变量展平为一维 <code>std::vector</code>。</li>
+<li><strong>优势</strong>: 保证内存连续性，最大化 CPU 缓存命中率 (Cache Hit Rate)，消除指针跳转开销。</li>
+</ul>
+</li>
+<li><strong>OpenMP 并行化</strong>:<ul>
+<li>核心差分循环采用 <code>#pragma omp parallel for</code> 进行多线程加速。</li>
+<li>支持根据 CPU 核心数动态调整并行度，充分利用现代多核处理器的算力。</li>
+</ul>
+</li>
+<li><strong>极速 I/O</strong>:<ul>
+<li>自定义二进制格式 (<code>.bin</code>) 存储波场快照，读写速度比文本格式快 50 倍以上。</li>
+</ul>
+</li>
+</ul>
+<h3 id="🌊-复杂边界条件-Boundary-Conditions"><a href="#🌊-复杂边界条件-Boundary-Conditions" class="headerlink" title="🌊 复杂边界条件 (Boundary Conditions)"></a>🌊 复杂边界条件 (Boundary Conditions)</h3><ul>
+<li><strong>PML (完全匹配层)</strong>: <ul>
+<li>实现了基于分裂场 (Split-Field) 的 PML 边界条件，有效吸收来自人工截断边界的反射波。</li>
+</ul>
+</li>
+<li><strong>Free Surface (自由表面)</strong>: <ul>
+<li>针对地表模拟，实现了 <strong>应力镜像法 (Stress Image Method)</strong>。</li>
+<li>通过在表面上方设置“幽灵点”并赋予反对称应力值 ($\sigma<em>{zz}^{ghost} = -\sigma</em>{zz}^{inner}$)，精确满足地表牵引力为零 ($\sigma<em>{zz}=0, \sigma</em>{xz}=0$) 的物理条件。</li>
+<li>特别优化了 <strong>8阶差分</strong> 在自由表面的实现，确保高阶精度下边界依然稳定。</li>
+</ul>
+</li>
+</ul>
+<h3 id="🖥️-现代化交互界面-Modern-UI-UX"><a href="#🖥️-现代化交互界面-Modern-UI-UX" class="headerlink" title="🖥️ 现代化交互界面 (Modern UI/UX)"></a>🖥️ 现代化交互界面 (Modern UI/UX)</h3><ul>
+<li><strong>沉浸式布局</strong>: 采用 VS Code 风格的侧边栏导航 (Sidebar) + 多页堆叠 (Stacked Widget) 设计。</li>
+<li><strong>实时监控</strong>: 底部集成全局控制台 (Console) 和进度条，实时反馈计算状态，界面不卡顿（多线程架构）。</li>
+<li><strong>参数配置</strong>: <ul>
+<li>支持从 <code>FDM2D_par.txt</code> 自动加载默认参数。</li>
+<li><strong>Check &amp; Preview</strong>: 运行前自动校验参数稳定性 (CFL条件)，防止计算发散。</li>
+<li><strong>Thread Control</strong>: 可在设置页面动态调整 OpenMP 线程数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="📊-专业级可视化-Visualization"><a href="#📊-专业级可视化-Visualization" class="headerlink" title="📊 专业级可视化 (Visualization)"></a>📊 专业级可视化 (Visualization)</h3><ul>
+<li><strong>全能地震视图 (Seismic View)</strong>:<ul>
+<li><strong>Overlay 技术</strong>: 独创的 <strong>变密度图 (Image) + 波形图 (Wiggle)</strong> 叠加显示模式。</li>
+<li><strong>双重控制</strong>: 底部提供独立的滑块，分别调节 Image 的对比度 (Contrast) 和 Wiggle 的增益 (Gain)。</li>
+</ul>
+</li>
+<li><strong>专业的色标系统</strong>:<ul>
+<li>内置 <strong>Seismic (Red-White-Blue)</strong>, <strong>Grayscale</strong>, <strong>Jet</strong>, <strong>Terrain</strong> 等多种地质色标。</li>
+<li>支持对称归一化显示，确保零值对应白色背景。</li>
+</ul>
+</li>
+<li><strong>交互操作</strong>: 鼠标滚轮缩放、拖拽平移、右键菜单复位、所见即所得截图。</li>
+</ul>
+<hr>
+<h2 id="4-软件架构-Software-Architecture"><a href="#4-软件架构-Software-Architecture" class="headerlink" title="4. 软件架构 (Software Architecture)"></a>4. 软件架构 (Software Architecture)</h2><h3 id="4-1-模块划分"><a href="#4-1-模块划分" class="headerlink" title="4.1 模块划分"></a>4.1 模块划分</h3><p>该项目采用模块化设计，实现 UI 与计算逻辑的彻底解耦：</p>
+<ul>
+<li><strong>GUI 层 (<code>Qt_Seismic_fdm2d</code>)</strong>: <ul>
+<li>负责界面渲染、用户交互、信号槽连接。</li>
+<li>管理 <code>QStackedWidget</code> 页面切换 (Home, Simulation, Visualization, Settings)。</li>
+</ul>
+</li>
+<li><strong>数据层 (<code>SimulationContext</code> / <code>Parameters</code>)</strong>: <ul>
+<li>封装模拟所需的所有参数（网格、系数、模型）。</li>
+<li><code>SimulationContext</code> 在计算开始前初始化，包含了所有预计算的中间变量（如 PML 衰减系数、展平后的模型参数）。</li>
+</ul>
+</li>
+<li><strong>计算层 (<code>SeismicUtils</code> / <code>FDM_elastic_2D</code>)</strong>: <ul>
+<li><code>SeismicUtils</code>: 提供数学工具（如 Ricker 子波生成、8阶差分系数计算、网格重采样）。</li>
+<li><code>FDM_elastic_2D</code>: 核心物理引擎，不依赖任何 UI 组件，纯 C++ 实现。</li>
+</ul>
+</li>
+<li><strong>绘图层 (<code>QCustomPlot</code> / <code>QCPSeismicWiggle</code>)</strong>: <ul>
+<li>继承 <code>QCPAbstractPlottable</code> 实现高性能地震波形绘制。</li>
+<li>实现了 <strong>LOD (Level of Detail)</strong> 降采样算法，保证在大数据量下的流畅显示。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-线程模型-Threading-Model"><a href="#4-2-线程模型-Threading-Model" class="headerlink" title="4.2 线程模型 (Threading Model)"></a>4.2 线程模型 (Threading Model)</h3><p>为了防止界面假死，软件采用了 <strong>Worker Thread</strong> 模式：</p>
+<ol>
+<li><strong>主线程 (GUI)</strong>: 处理点击事件、绘图刷新、参数设置。</li>
+<li><strong>工作线程 (Worker)</strong>: 通过 <code>QtConcurrent::run</code> 启动，执行 <code>FDM_elastic_2D</code> 计算密集型任务。</li>
+<li><strong>通信机制</strong>: 工作线程通过 <code>emit signals</code> (如 <code>sig_updateProgress</code>, <code>sig_appendLog</code>) 通知主线程更新 UI，实现线程安全。</li>
+</ol>
+<h3 id="4-3-文件结构"><a href="#4-3-文件结构" class="headerlink" title="4.3 文件结构"></a>4.3 文件结构</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Qt_Seismic_fdm2d/</span><br><span class="line">├── Qt_Seismic_fdm2d.h      # 主窗口类及数据结构定义</span><br><span class="line">├── Qt_Seismic_fdm2d.cpp    # UI 逻辑与信号槽实现</span><br><span class="line">├── SeismicUtils.cpp        # 核心算法库 (FDM Kernel, IO)</span><br><span class="line">├── QCPSeismicWiggle.h/.cpp # 自定义地震绘图控件</span><br><span class="line">├── data/</span><br><span class="line">│   ├── model_segy/         # 输入模型文件 (.sgy)</span><br><span class="line">│   └── snap/               # 输出快照与记录 (.bin/.sgy)</span><br><span class="line">└── FDM2D_par.txt           # 默认配置文件</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-使用指南-User-Guide"><a href="#5-使用指南-User-Guide" class="headerlink" title="5. 使用指南 (User Guide)"></a>5. 使用指南 (User Guide)</h2><h3 id="5-1-启动与配置"><a href="#5-1-启动与配置" class="headerlink" title="5.1 启动与配置"></a>5.1 启动与配置</h3><ol>
+<li>进入 <strong>Simulation</strong> 页面。</li>
+<li><strong>Grid &amp; Model</strong>: 设置网格大小 (<code>NX</code>, <code>NZ</code>) 和间距 (<code>dx</code>, <code>dz</code>)。可点击 “Load Vp Model” 预览速度模型。</li>
+<li><strong>Geometry</strong>: 设置震源位置 (<code>Source X/Z</code>)、检波器排列范围。</li>
+<li><strong>Numerical</strong>: 设置时间步长 (<code>dt</code>)、总步数 (<code>nt</code>)、边界条件类型。<ul>
+<li><code>Type 1</code>: 全区域 PML (适合无界空间)。</li>
+<li><code>Type 2</code>: 仅边界 PML (节省计算量)。</li>
+<li><code>Type 3</code>: 上表面自由边界 + 其他三面 PML (适合地表模拟)。</li>
+</ul>
+</li>
+<li>点击 <strong>Verify</strong> 按钮：检查参数是否满足稳定性条件。</li>
+</ol>
+<h3 id="5-2-运行模拟"><a href="#5-2-运行模拟" class="headerlink" title="5.2 运行模拟"></a>5.2 运行模拟</h3><ol>
+<li>点击 <strong>Run</strong>。</li>
+<li>观察底部 <strong>Console Output</strong> 和 <strong>Progress</strong> 条。</li>
+<li>模拟过程中，界面保持响应，可随时切换到 Settings 页面调整线程数。</li>
+<li>完成后，数据会自动保存到 <code>data/snap/</code>。</li>
+</ol>
+<h3 id="5-3-数据可视化"><a href="#5-3-数据可视化" class="headerlink" title="5.3 数据可视化"></a>5.3 数据可视化</h3><p>进入 <strong>Visualization</strong> 页面，提供多种查看方式：</p>
+<ul>
+<li><strong>Load SEGY Model</strong>: 查看输入的速度/密度模型。</li>
+<li><strong>Wavefield Snapshots</strong>: 加载 <code>.bin</code> 快照文件，拖动时间滑块查看波场传播。</li>
+<li><strong>Seismic Records</strong>: 加载地震记录（共炮点道集）。<ul>
+<li>使用 <strong>Overlay View</strong> 模式，同时观察波形细节和能量强弱。</li>
+<li>支持导出标准 SEGY 格式数据。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="6-环境依赖与构建-Build-amp-Install"><a href="#6-环境依赖与构建-Build-amp-Install" class="headerlink" title="6. 环境依赖与构建 (Build &amp; Install)"></a>6. 环境依赖与构建 (Build &amp; Install)</h2><h3 id="前置要求-Prerequisites"><a href="#前置要求-Prerequisites" class="headerlink" title="前置要求 (Prerequisites)"></a>前置要求 (Prerequisites)</h3><ul>
+<li><strong>IDE</strong>: Visual Studio 2019 或 2022 (推荐)。</li>
+<li><strong>Qt</strong>: 安装 Qt 5.15 或更高版本，并配置 VS Qt Tools 插件。</li>
+<li><strong>Libraries</strong>:<ul>
+<li><strong>Eigen 3</strong>: 需将头文件路径添加到项目包含目录。</li>
+<li><strong>QCustomPlot 2.1</strong>: 用于绘图（已集成在源码中）。</li>
+<li><strong>OpenMP</strong>: 必须在编译器选项中开启 (<code>/openmp</code>)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="编译步骤-Steps"><a href="#编译步骤-Steps" class="headerlink" title="编译步骤 (Steps)"></a>编译步骤 (Steps)</h3><ol>
+<li>使用 Visual Studio 打开 <code>.sln</code> 或 <code>.pro</code> 文件。</li>
+<li>确保构建模式为 <strong>Release</strong> (Debug 模式下大量循环计算会非常慢)。</li>
+<li>点击 <strong>Build Solution (生成解决方案)</strong>。</li>
+<li>运行生成的可执行文件。</li>
+</ol>
+<hr>
+<h2 id="7-版权与授权说明-License"><a href="#7-版权与授权说明-License" class="headerlink" title="7. 版权与授权说明 (License)"></a>7. 版权与授权说明 (License)</h2><h3 id="项目源码授权"><a href="#项目源码授权" class="headerlink" title="项目源码授权"></a>项目源码授权</h3><p>本项目（Seis-FDM-Tool）的源代码采用 <strong>MIT License</strong>。允许个人及商业用途的自由修改和分发，但需保留原始版权声明。</p>
+<h3 id="第三方库授权"><a href="#第三方库授权" class="headerlink" title="第三方库授权"></a>第三方库授权</h3><p>本项目依赖以下第三方库，它们拥有各自的授权协议：</p>
+<ul>
+<li><strong>Qt 6</strong>: 遵循 <strong>LGPL v3</strong> (GNU Lesser General Public License v3)。</li>
+<li><strong>QCustomPlot</strong>: 遵循 <strong>GPL v3</strong>。</li>
+<li><strong>Eigen 3</strong>: 遵循 <strong>MPL2</strong> (Mozilla Public License 2.0)。</li>
+</ul>
+<p>在使用、分发或商业化本软件时，请务必遵守上述第三方库的许可协议。</p>
+<p><strong>主要维护者</strong>: XYU<br><strong>当前版本</strong>: v2.1.0 Stable</p>
+<hr>
+<h2 id="8-致谢-Acknowledgements"><a href="#8-致谢-Acknowledgements" class="headerlink" title="8. 致谢 (Acknowledgements)"></a>8. 致谢 (Acknowledgements)</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
+              <a href="/tags/Seis-Tool/" rel="tag"># Seis Tool</a>
+              <a href="/tags/%E5%9C%B0%E9%9C%87/" rel="tag"># 地震</a>
+              <a href="/tags/%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/" rel="tag"># 弹性波模拟</a>
+              <a href="/tags/%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95/" rel="tag"># 有限差分法</a>
+              <a href="/tags/OpenMP/" rel="tag"># OpenMP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/19/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="prev" title="基于GPU Computer Shader波场模拟技术文档">
+                  <i class="fa fa-angle-left"></i> 基于GPU Computer Shader波场模拟技术文档
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="next" title="SeisMonitor实时地震台站监测系统技术文档">
+                  SeisMonitor实时地震台站监测系统技术文档 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">XIAO YU</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
