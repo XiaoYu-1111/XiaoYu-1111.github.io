@@ -20,19 +20,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="SignalProcessingUtils——信号处理工具箱_C++_S变换">
+    <meta name="description" content="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils简介SignalProcessingUtils 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SignalProcessingUtils">
+<meta property="og:title" content="基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils">
 <meta property="og:url" content="http://example.com/2026/01/17/SignalProcessingUtils/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="SignalProcessingUtils——信号处理工具箱_C++_S变换">
+<meta property="og:description" content="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils简介SignalProcessingUtils 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2026/01/17/SignalProcessingUtils/%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2.png">
 <meta property="og:image" content="http://example.com/2026/01/17/SignalProcessingUtils/%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90_%E7%9F%AD%E6%97%B6%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A22.png">
 <meta property="og:image" content="http://example.com/2026/01/17/SignalProcessingUtils/%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90_S%E5%8F%98%E6%8D%A2.png">
 <meta property="og:image" content="http://example.com/2026/01/17/SignalProcessingUtils/%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90_CWT.png">
 <meta property="article:published_time" content="2026-01-17T12:58:51.000Z">
-<meta property="article:modified_time" content="2026-01-21T13:25:46.592Z">
+<meta property="article:modified_time" content="2026-01-22T04:19:01.902Z">
 <meta property="article:author" content="XIAO YU">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="FFT">
@@ -46,10 +46,10 @@
 <link rel="canonical" href="http://example.com/2026/01/17/SignalProcessingUtils/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/17/SignalProcessingUtils/","path":"2026/01/17/SignalProcessingUtils/","title":"SignalProcessingUtils"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/17/SignalProcessingUtils/","path":"2026/01/17/SignalProcessingUtils/","title":"基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SignalProcessingUtils | 冒牌書生的个人博客</title>
+<title>基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils | 冒牌書生的个人博客</title>
   
 
 
@@ -161,7 +161,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -174,6 +174,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EC-%E3%80%81omp%E5%B9%B6%E8%A1%8C%E7%9A%84%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E7%AE%B1%E2%80%94%E2%80%94SignalProcessingUtils"><span class="nav-number">1.</span> <span class="nav-text">基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -247,12 +248,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SignalProcessingUtils | 冒牌書生的个人博客">
+      <meta itemprop="name" content="基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils | 冒牌書生的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SignalProcessingUtils
+          基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils
         </h1>
 
         <div class="post-meta-container">
@@ -270,7 +271,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-21 21:25:46" itemprop="dateModified" datetime="2026-01-21T21:25:46+08:00">2026-01-21</time>
+      <time title="修改时间：2026-01-22 12:19:01" itemprop="dateModified" datetime="2026-01-22T12:19:01+08:00">2026-01-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -278,7 +279,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/SignalProcessing%E2%80%94%E2%80%94%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">SignalProcessing——信号处理</span></a>
+          <a href="/categories/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">信号处理</span></a>
         </span>
     </span>
 
@@ -298,9 +299,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>SignalProcessingUtils——信号处理工具箱_C++_S变换</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="基于C-、omp并行的信号处理工具箱——SignalProcessingUtils"><a href="#基于C-、omp并行的信号处理工具箱——SignalProcessingUtils" class="headerlink" title="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils"></a>基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>SignalProcessingUtils</strong> 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。</p>
 <span id="more"></span>
-<p><strong>变换示例-STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换.png" alt="变换示例-STFT短时傅里叶变换"><br><strong>STFT短时傅里叶变换_合成信号Components: 10Hz, 50Hz, 100Hz, 200Hz</strong><br><img src="时频分析_短时傅里叶变换2.png" alt="变换示例-STFT短时傅里叶变换2"></p>
+<p><strong>变换示例选取部分数据，使用Qcustomplot绘制STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换.png" alt="变换示例-STFT短时傅里叶变换"><br><strong>合成信号Components: 10Hz, 50Hz, 100Hz, 200Hz-STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换2.png" alt="变换示例-STFT短时傅里叶变换2"></p>
 <p><strong>变换示例-S变换</strong><br><img src="时频分析_S变换.png" alt="变换示例-S变换"></p>
 <p><strong>变换示例-CWT连续小波变换</strong><br><img src="时频分析_CWT.png" alt="变换示例-CWT连续小波变换"></p>
 <p><strong>STFT代码</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据处理函数 STFT变换</span></span><br><span class="line"><span class="comment">// STFT变换</span></span><br><span class="line">std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">stft_fft</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; x,</span><br><span class="line">	<span class="type">double</span> fs,</span><br><span class="line">	<span class="type">int</span> winSize,</span><br><span class="line">	<span class="type">int</span> hop,</span><br><span class="line">	<span class="type">int</span> nfft)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> N = (<span class="type">int</span>)x.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 自动修正 nfft，必须大于等于 winSize 且通常为 2 的幂</span></span><br><span class="line">	<span class="keyword">if</span> (nfft &lt; winSize) nfft = winSize;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 基础参数检查</span></span><br><span class="line">	<span class="keyword">if</span> (N &lt; winSize || hop &lt;= <span class="number">0</span>) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> nFrames = (N - winSize) / hop + <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> nFreq = nfft / <span class="number">2</span> + <span class="number">1</span>; <span class="comment">// 单边谱 (0 到 fs/2)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 结果矩阵：[频率行][时间列]</span></span><br><span class="line">	std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">spec</span>(</span><br><span class="line">		nFreq, std::<span class="built_in">vector</span>&lt;<span class="type">double</span>&gt;(nFrames, <span class="number">0.0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 生成汉宁窗 (Hann Window)</span></span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">double</span>&gt; <span class="title">win</span><span class="params">(winSize)</span></span>;</span><br><span class="line">	<span class="type">double</span> winSumSq = <span class="number">0.0</span>; <span class="comment">// 用于能量归一化</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; winSize; ++i) &#123;</span><br><span class="line">		win[i] = <span class="number">0.5</span> * (<span class="number">1.0</span> - std::<span class="built_in">cos</span>(<span class="number">2.0</span> * M_PI * i / (winSize - <span class="number">1</span>)));</span><br><span class="line">		winSumSq += win[i] * win[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 归一化系数 (Amplitude Spectrum)</span></span><br><span class="line">	<span class="comment">// 如果想要功率谱密度(PSD)，系数计算方式不同。这里按幅度谱计算方便可视化。</span></span><br><span class="line">	<span class="comment">// 对于加窗信号，恢复幅值通常除以 sum(win)/2 或者 sqrt(sum(win^2))</span></span><br><span class="line">	<span class="comment">// 这里使用简单的幅值恢复，使得正弦波峰值接近真实振幅</span></span><br><span class="line">	<span class="type">double</span> scale = <span class="number">1.0</span>;</span><br><span class="line">	<span class="type">double</span> winSum = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">double</span> w : win) winSum += w;</span><br><span class="line">	<span class="keyword">if</span> (winSum &gt; <span class="number">0</span>) scale = <span class="number">2.0</span> / winSum;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// OpenMP 并行计算</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel</span></span><br><span class="line">	&#123;</span><br><span class="line">		Eigen::FFT&lt;<span class="type">double</span>&gt; fft;</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">timeBuf</span>(nfft);</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">freqBuf</span>(nfft);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp for schedule(static)</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nFrames; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> pos = i * hop;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 填充数据并加窗</span></span><br><span class="line">			std::<span class="built_in">fill</span>(timeBuf.<span class="built_in">begin</span>(), timeBuf.<span class="built_in">end</span>(), std::<span class="built_in">complex</span>&lt;<span class="type">double</span>&gt;(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; winSize; ++j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (pos + j &lt; N) &#123;</span><br><span class="line">					timeBuf[j] = x[pos + j] * win[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 执行 FFT</span></span><br><span class="line">			fft.<span class="built_in">fwd</span>(freqBuf, timeBuf);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 计算幅值 (取前 nFreq 个点)</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; nFreq; ++k)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">double</span> mag = std::<span class="built_in">abs</span>(freqBuf[k]) * scale;</span><br><span class="line">				spec[k][i] = mag; <span class="comment">// 这里存幅值，如果颜色太暗可以在绘图时取对数</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> spec;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -328,8 +329,8 @@
             <div class="post-nav-item">
             </div>
             <div class="post-nav-item">
-                <a href="/2026/01/18/VTK%E4%B8%89%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%9D%97/" rel="next" title="VTK三维数据可视化模块">
-                  VTK三维数据可视化模块 <i class="fa fa-angle-right"></i>
+                <a href="/2026/01/18/VTK%E4%B8%89%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%9D%97/" rel="next" title="基于QT、VTK的三维数据可视化模块">
+                  基于QT、VTK的三维数据可视化模块 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
