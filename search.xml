@@ -1,195 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>基于Qt、C++的Seis_Simulation地震波场模拟软件</title>
-    <url>/2026/01/19/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/</url>
-    <content><![CDATA[<h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统-CPU-技术手册"><a href="#高性能二维弹性波场模拟系统-CPU-技术手册" class="headerlink" title="高性能二维弹性波场模拟系统(CPU)技术手册"></a>高性能二维弹性波场模拟系统(CPU)技术手册</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Seis-FDM-Tool 是一款基于 Qt、C++ 的高性能二维弹性波场模拟软件。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。<br>该软件结合了 C++17 的高性能计算能力与 Qt 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 OpenMP 并行加速和内存扁平化技术，能够在大规模网格下实现近实时的波场模拟。</p>
-<span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="home.png" alt="程序主页"><br><strong>模型参数页面</strong><br><img src="page1.png" alt="模型参数页面"><br><strong>波场输出</strong><br><img src="record_snap_2.png" alt="波场输出"><br><strong>地震记录输出</strong><br><img src="record_vx.png" alt="地震记录输出"></p>
-<p><img src="https://img.shields.io/badge/Build-v2.1-blue" alt="Build Status"> <img src="https://img.shields.io/badge/Qt-5.15%2B-green" alt="Qt"> <img src="https://img.shields.io/badge/Parallel-OpenMP-orange" alt="OpenMP"> <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform"></p>
-<hr>
-<h2 id="1-项目简介-Introduction"><a href="#1-项目简介-Introduction" class="headerlink" title="1. 项目简介 (Introduction)"></a>1. 项目简介 (Introduction)</h2><p><strong>Seis-FDM-Tool</strong> 是一款专为地球物理研究和教学设计的专业级桌面应用程序。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。</p>
-<p>该软件结合了 <strong>C++17</strong> 的高性能计算能力与 <strong>Qt</strong> 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 <strong>OpenMP</strong> 并行加速和 <strong>内存扁平化</strong> 技术，能够在大规模网格下实现近实时的波场模拟。</p>
-<p><strong>Seis-FDM-Tool</strong> is a professional-grade desktop application for 2D elastic wavefield forward modeling. Built with <strong>C++17</strong> and <strong>Qt</strong>, it combines a modern user interface with a highly optimized Finite Difference Method (FDM) engine, featuring <strong>8th-order spatial accuracy</strong> and advanced boundary conditions.</p>
-<hr>
-<h2 id="2-理论基础-Theoretical-Background"><a href="#2-理论基础-Theoretical-Background" class="headerlink" title="2. 理论基础 (Theoretical Background)"></a>2. 理论基础 (Theoretical Background)</h2><h3 id="2-1-地震勘探原理"><a href="#2-1-地震勘探原理" class="headerlink" title="2.1 地震勘探原理"></a>2.1 地震勘探原理</h3><p>利用人工激发的地震波在地下介质中传播的规律，推断地下岩层的性质和形态。</p>
-<ul>
-<li><strong>震源 (Source)</strong>: Ricker 子波，支持集中力源 (Point Force)。</li>
-<li><strong>传播 (Propagation)</strong>: 波在非均匀介质中传播，产生反射、折射、转换波。</li>
-<li><strong>接收 (Receiver)</strong>: 模拟检波器阵列记录地面质点振动速度 ($v_x, v_z$)。</li>
-</ul>
-<h3 id="2-2-有限差分法-FDM-核心"><a href="#2-2-有限差分法-FDM-核心" class="headerlink" title="2.2 有限差分法 (FDM) 核心"></a>2.2 有限差分法 (FDM) 核心</h3><p>本程序采用 <strong>交错网格有限差分法 (Staggered-Grid FDM)</strong> 求解速度-应力方程组。</p>
-<ul>
-<li><strong>波动方程 (P-SV波)</strong>:<script type="math/tex; mode=display">
-\begin{cases}
-\rho \frac{\partial v_x}{\partial t} = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} \\
-\rho \frac{\partial v_z}{\partial t} = \frac{\partial \sigma_{xz}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} \\
-\frac{\partial \sigma_{xx}}{\partial t} = (\lambda + 2\mu)\frac{\partial v_x}{\partial x} + \lambda\frac{\partial v_z}{\partial z} \\
-\frac{\partial \sigma_{zz}}{\partial t} = \lambda\frac{\partial v_x}{\partial x} + (\lambda + 2\mu)\frac{\partial v_z}{\partial z} \\
-\frac{\partial \sigma_{xz}}{\partial t} = \mu(\frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x})
-\end{cases}</script></li>
-<li><strong>离散化精度</strong>: <ul>
-<li><strong>空间</strong>: <strong>8阶精度 (8th-Order)</strong>。采用长模板差分算子 (C1~C4)，极大压制数值频散，适用于大网格步长模拟。</li>
-<li><strong>时间</strong>: 2阶精度差分 (Leap-frog)。</li>
-</ul>
-</li>
-<li><strong>稳定性</strong>: 需满足 Courant-Friedrichs-Lewy (CFL) 条件：<script type="math/tex; mode=display">\Delta t \le \frac{0.606 \cdot h}{v_{max}}</script></li>
-</ul>
-<hr>
-<h2 id="3-核心技术亮点-Key-Features"><a href="#3-核心技术亮点-Key-Features" class="headerlink" title="3. 核心技术亮点 (Key Features)"></a>3. 核心技术亮点 (Key Features)</h2><h3 id="🚀-高性能计算内核-HPC-Kernel"><a href="#🚀-高性能计算内核-HPC-Kernel" class="headerlink" title="🚀 高性能计算内核 (HPC Kernel)"></a>🚀 高性能计算内核 (HPC Kernel)</h3><ul>
-<li><strong>1D Flattening (内存扁平化)</strong>: <ul>
-<li>放弃传统的 <code>vector&lt;vector&gt;</code> 二维数组，将所有场变量展平为一维 <code>std::vector</code>。</li>
-<li><strong>优势</strong>: 保证内存连续性，最大化 CPU 缓存命中率 (Cache Hit Rate)，消除指针跳转开销。</li>
-</ul>
-</li>
-<li><strong>OpenMP 并行化</strong>:<ul>
-<li>核心差分循环采用 <code>#pragma omp parallel for</code> 进行多线程加速。</li>
-<li>支持根据 CPU 核心数动态调整并行度，充分利用现代多核处理器的算力。</li>
-</ul>
-</li>
-<li><strong>极速 I/O</strong>:<ul>
-<li>自定义二进制格式 (<code>.bin</code>) 存储波场快照，读写速度比文本格式快 50 倍以上。</li>
-</ul>
-</li>
-</ul>
-<h3 id="🌊-复杂边界条件-Boundary-Conditions"><a href="#🌊-复杂边界条件-Boundary-Conditions" class="headerlink" title="🌊 复杂边界条件 (Boundary Conditions)"></a>🌊 复杂边界条件 (Boundary Conditions)</h3><ul>
-<li><strong>PML (完全匹配层)</strong>: <ul>
-<li>实现了基于分裂场 (Split-Field) 的 PML 边界条件，有效吸收来自人工截断边界的反射波。</li>
-</ul>
-</li>
-<li><strong>Free Surface (自由表面)</strong>: <ul>
-<li>针对地表模拟，实现了 <strong>应力镜像法 (Stress Image Method)</strong>。</li>
-<li>通过在表面上方设置“幽灵点”并赋予反对称应力值 ($\sigma<em>{zz}^{ghost} = -\sigma</em>{zz}^{inner}$)，精确满足地表牵引力为零 ($\sigma<em>{zz}=0, \sigma</em>{xz}=0$) 的物理条件。</li>
-<li>特别优化了 <strong>8阶差分</strong> 在自由表面的实现，确保高阶精度下边界依然稳定。</li>
-</ul>
-</li>
-</ul>
-<h3 id="🖥️-现代化交互界面-Modern-UI-UX"><a href="#🖥️-现代化交互界面-Modern-UI-UX" class="headerlink" title="🖥️ 现代化交互界面 (Modern UI/UX)"></a>🖥️ 现代化交互界面 (Modern UI/UX)</h3><ul>
-<li><strong>沉浸式布局</strong>: 采用 VS Code 风格的侧边栏导航 (Sidebar) + 多页堆叠 (Stacked Widget) 设计。</li>
-<li><strong>实时监控</strong>: 底部集成全局控制台 (Console) 和进度条，实时反馈计算状态，界面不卡顿（多线程架构）。</li>
-<li><strong>参数配置</strong>: <ul>
-<li>支持从 <code>FDM2D_par.txt</code> 自动加载默认参数。</li>
-<li><strong>Check &amp; Preview</strong>: 运行前自动校验参数稳定性 (CFL条件)，防止计算发散。</li>
-<li><strong>Thread Control</strong>: 可在设置页面动态调整 OpenMP 线程数。</li>
-</ul>
-</li>
-</ul>
-<h3 id="📊-专业级可视化-Visualization"><a href="#📊-专业级可视化-Visualization" class="headerlink" title="📊 专业级可视化 (Visualization)"></a>📊 专业级可视化 (Visualization)</h3><ul>
-<li><strong>全能地震视图 (Seismic View)</strong>:<ul>
-<li><strong>Overlay 技术</strong>: 独创的 <strong>变密度图 (Image) + 波形图 (Wiggle)</strong> 叠加显示模式。</li>
-<li><strong>双重控制</strong>: 底部提供独立的滑块，分别调节 Image 的对比度 (Contrast) 和 Wiggle 的增益 (Gain)。</li>
-</ul>
-</li>
-<li><strong>专业的色标系统</strong>:<ul>
-<li>内置 <strong>Seismic (Red-White-Blue)</strong>, <strong>Grayscale</strong>, <strong>Jet</strong>, <strong>Terrain</strong> 等多种地质色标。</li>
-<li>支持对称归一化显示，确保零值对应白色背景。</li>
-</ul>
-</li>
-<li><strong>交互操作</strong>: 鼠标滚轮缩放、拖拽平移、右键菜单复位、所见即所得截图。</li>
-</ul>
-<hr>
-<h2 id="4-软件架构-Software-Architecture"><a href="#4-软件架构-Software-Architecture" class="headerlink" title="4. 软件架构 (Software Architecture)"></a>4. 软件架构 (Software Architecture)</h2><h3 id="4-1-模块划分"><a href="#4-1-模块划分" class="headerlink" title="4.1 模块划分"></a>4.1 模块划分</h3><p>该项目采用模块化设计，实现 UI 与计算逻辑的彻底解耦：</p>
-<ul>
-<li><strong>GUI 层 (<code>Qt_Seismic_fdm2d</code>)</strong>: <ul>
-<li>负责界面渲染、用户交互、信号槽连接。</li>
-<li>管理 <code>QStackedWidget</code> 页面切换 (Home, Simulation, Visualization, Settings)。</li>
-</ul>
-</li>
-<li><strong>数据层 (<code>SimulationContext</code> / <code>Parameters</code>)</strong>: <ul>
-<li>封装模拟所需的所有参数（网格、系数、模型）。</li>
-<li><code>SimulationContext</code> 在计算开始前初始化，包含了所有预计算的中间变量（如 PML 衰减系数、展平后的模型参数）。</li>
-</ul>
-</li>
-<li><strong>计算层 (<code>SeismicUtils</code> / <code>FDM_elastic_2D</code>)</strong>: <ul>
-<li><code>SeismicUtils</code>: 提供数学工具（如 Ricker 子波生成、8阶差分系数计算、网格重采样）。</li>
-<li><code>FDM_elastic_2D</code>: 核心物理引擎，不依赖任何 UI 组件，纯 C++ 实现。</li>
-</ul>
-</li>
-<li><strong>绘图层 (<code>QCustomPlot</code> / <code>QCPSeismicWiggle</code>)</strong>: <ul>
-<li>继承 <code>QCPAbstractPlottable</code> 实现高性能地震波形绘制。</li>
-<li>实现了 <strong>LOD (Level of Detail)</strong> 降采样算法，保证在大数据量下的流畅显示。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-2-线程模型-Threading-Model"><a href="#4-2-线程模型-Threading-Model" class="headerlink" title="4.2 线程模型 (Threading Model)"></a>4.2 线程模型 (Threading Model)</h3><p>为了防止界面假死，软件采用了 <strong>Worker Thread</strong> 模式：</p>
-<ol>
-<li><strong>主线程 (GUI)</strong>: 处理点击事件、绘图刷新、参数设置。</li>
-<li><strong>工作线程 (Worker)</strong>: 通过 <code>QtConcurrent::run</code> 启动，执行 <code>FDM_elastic_2D</code> 计算密集型任务。</li>
-<li><strong>通信机制</strong>: 工作线程通过 <code>emit signals</code> (如 <code>sig_updateProgress</code>, <code>sig_appendLog</code>) 通知主线程更新 UI，实现线程安全。</li>
-</ol>
-<h3 id="4-3-文件结构"><a href="#4-3-文件结构" class="headerlink" title="4.3 文件结构"></a>4.3 文件结构</h3><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Qt_Seismic_fdm2d/</span><br><span class="line">├── Qt_Seismic_fdm2d.h      # 主窗口类及数据结构定义</span><br><span class="line">├── Qt_Seismic_fdm2d.cpp    # UI 逻辑与信号槽实现</span><br><span class="line">├── SeismicUtils.cpp        # 核心算法库 (FDM Kernel, IO)</span><br><span class="line">├── QCPSeismicWiggle.h/.cpp # 自定义地震绘图控件</span><br><span class="line">├── data/</span><br><span class="line">│   ├── model_segy/         # 输入模型文件 (.sgy)</span><br><span class="line">│   └── snap/               # 输出快照与记录 (.bin/.sgy)</span><br><span class="line">└── FDM2D_par.txt           # 默认配置文件</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="5-使用指南-User-Guide"><a href="#5-使用指南-User-Guide" class="headerlink" title="5. 使用指南 (User Guide)"></a>5. 使用指南 (User Guide)</h2><h3 id="5-1-启动与配置"><a href="#5-1-启动与配置" class="headerlink" title="5.1 启动与配置"></a>5.1 启动与配置</h3><ol>
-<li>进入 <strong>Simulation</strong> 页面。</li>
-<li><strong>Grid &amp; Model</strong>: 设置网格大小 (<code>NX</code>, <code>NZ</code>) 和间距 (<code>dx</code>, <code>dz</code>)。可点击 “Load Vp Model” 预览速度模型。</li>
-<li><strong>Geometry</strong>: 设置震源位置 (<code>Source X/Z</code>)、检波器排列范围。</li>
-<li><strong>Numerical</strong>: 设置时间步长 (<code>dt</code>)、总步数 (<code>nt</code>)、边界条件类型。<ul>
-<li><code>Type 1</code>: 全区域 PML (适合无界空间)。</li>
-<li><code>Type 2</code>: 仅边界 PML (节省计算量)。</li>
-<li><code>Type 3</code>: 上表面自由边界 + 其他三面 PML (适合地表模拟)。</li>
-</ul>
-</li>
-<li>点击 <strong>Verify</strong> 按钮：检查参数是否满足稳定性条件。</li>
-</ol>
-<h3 id="5-2-运行模拟"><a href="#5-2-运行模拟" class="headerlink" title="5.2 运行模拟"></a>5.2 运行模拟</h3><ol>
-<li>点击 <strong>Run</strong>。</li>
-<li>观察底部 <strong>Console Output</strong> 和 <strong>Progress</strong> 条。</li>
-<li>模拟过程中，界面保持响应，可随时切换到 Settings 页面调整线程数。</li>
-<li>完成后，数据会自动保存到 <code>data/snap/</code>。</li>
-</ol>
-<h3 id="5-3-数据可视化"><a href="#5-3-数据可视化" class="headerlink" title="5.3 数据可视化"></a>5.3 数据可视化</h3><p>进入 <strong>Visualization</strong> 页面，提供多种查看方式：</p>
-<ul>
-<li><strong>Load SEGY Model</strong>: 查看输入的速度/密度模型。</li>
-<li><strong>Wavefield Snapshots</strong>: 加载 <code>.bin</code> 快照文件，拖动时间滑块查看波场传播。</li>
-<li><strong>Seismic Records</strong>: 加载地震记录（共炮点道集）。<ul>
-<li>使用 <strong>Overlay View</strong> 模式，同时观察波形细节和能量强弱。</li>
-<li>支持导出标准 SEGY 格式数据。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="6-环境依赖与构建-Build-amp-Install"><a href="#6-环境依赖与构建-Build-amp-Install" class="headerlink" title="6. 环境依赖与构建 (Build &amp; Install)"></a>6. 环境依赖与构建 (Build &amp; Install)</h2><h3 id="前置要求-Prerequisites"><a href="#前置要求-Prerequisites" class="headerlink" title="前置要求 (Prerequisites)"></a>前置要求 (Prerequisites)</h3><ul>
-<li><strong>IDE</strong>: Visual Studio 2019 或 2022 (推荐)。</li>
-<li><strong>Qt</strong>: 安装 Qt 5.15 或更高版本，并配置 VS Qt Tools 插件。</li>
-<li><strong>Libraries</strong>:<ul>
-<li><strong>Eigen 3</strong>: 需将头文件路径添加到项目包含目录。</li>
-<li><strong>QCustomPlot 2.1</strong>: 用于绘图（已集成在源码中）。</li>
-<li><strong>OpenMP</strong>: 必须在编译器选项中开启 (<code>/openmp</code>)。</li>
-</ul>
-</li>
-</ul>
-<h3 id="编译步骤-Steps"><a href="#编译步骤-Steps" class="headerlink" title="编译步骤 (Steps)"></a>编译步骤 (Steps)</h3><ol>
-<li>使用 Visual Studio 打开 <code>.sln</code> 或 <code>.pro</code> 文件。</li>
-<li>确保构建模式为 <strong>Release</strong> (Debug 模式下大量循环计算会非常慢)。</li>
-<li>点击 <strong>Build Solution (生成解决方案)</strong>。</li>
-<li>运行生成的可执行文件。</li>
-</ol>
-<hr>
-<h2 id="7-版权与授权说明-License"><a href="#7-版权与授权说明-License" class="headerlink" title="7. 版权与授权说明 (License)"></a>7. 版权与授权说明 (License)</h2><h3 id="项目源码授权"><a href="#项目源码授权" class="headerlink" title="项目源码授权"></a>项目源码授权</h3><p>本项目（Seis-FDM-Tool）的源代码采用 <strong>MIT License</strong>。允许个人及商业用途的自由修改和分发，但需保留原始版权声明。</p>
-<h3 id="第三方库授权"><a href="#第三方库授权" class="headerlink" title="第三方库授权"></a>第三方库授权</h3><p>本项目依赖以下第三方库，它们拥有各自的授权协议：</p>
-<ul>
-<li><strong>Qt 6</strong>: 遵循 <strong>LGPL v3</strong> (GNU Lesser General Public License v3)。</li>
-<li><strong>QCustomPlot</strong>: 遵循 <strong>GPL v3</strong>。</li>
-<li><strong>Eigen 3</strong>: 遵循 <strong>MPL2</strong> (Mozilla Public License 2.0)。</li>
-</ul>
-<p>在使用、分发或商业化本软件时，请务必遵守上述第三方库的许可协议。</p>
-<p><strong>主要维护者</strong>: XYU<br><strong>当前版本</strong>: v2.1.0 Stable</p>
-<hr>
-<h2 id="8-致谢-Acknowledgements"><a href="#8-致谢-Acknowledgements" class="headerlink" title="8. 致谢 (Acknowledgements)"></a>8. 致谢 (Acknowledgements)</h2>]]></content>
-      <categories>
-        <category>技术项目</category>
-      </categories>
-      <tags>
-        <tag>Seis Tool</tag>
-        <tag>地震</tag>
-        <tag>弹性波模拟</tag>
-        <tag>有限差分法</tag>
-        <tag>Qt</tag>
-        <tag>C++</tag>
-        <tag>OpenMP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pysider6_无边框_DEMO</title>
     <url>/2026/01/18/Pysider6-%E6%97%A0%E8%BE%B9%E6%A1%86-DEMO/</url>
     <content><![CDATA[<h1 id="Modern-PySide6-System-Dashboard"><a href="#Modern-PySide6-System-Dashboard" class="headerlink" title="Modern PySide6 System Dashboard"></a>Modern PySide6 System Dashboard</h1><blockquote>
@@ -260,161 +71,12 @@
       </tags>
   </entry>
   <entry>
-    <title>基于Qt、C++的SeisMonitor实时地震台站监测模块</title>
-    <url>/2026/01/21/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>SeisMonitor是一款基于Qt、C++开发的实时地震台站监测系统，主要用于对地震台站的信号进行实时监测、数据处理、数据分析、数据可视化，并提供数据导出功能。</p>
-<span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页</strong><br><img src="home.png" alt="主页"><br><strong>主页布局</strong><br><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"></p>
-<p><strong>监测台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
-<p><strong>波形与时频分析瀑布图</strong><br><img src="波形与时频分析瀑布图.png" alt="台站显示"></p>
-<p><strong>异常信号检测</strong><br><img src="人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
-<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
-<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
-<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
-<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
-<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
-</ul>
-<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
-<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
-<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
-<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
-</ul>
-<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
-<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
-<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
-<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
-</ul>
-<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
-<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
-<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
-<li><strong>多维联动</strong>：<ul>
-<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
-<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
-<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
-<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
-<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
-</ul>
-<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
-<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
-<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
-<li><strong>交互操作</strong>：<ul>
-<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
-<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
-<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
-<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
-<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
-<li><strong>状态可视化</strong>：<ul>
-<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
-<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
-<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
-<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
-</ul>
-</li>
-<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
-</ul>
-<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
-<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
-<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
-</ul>
-<hr>
-<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">组件</th>
-<th style="text-align:left">技术选型</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>开发框架</strong></td>
-<td style="text-align:left">Qt 6.6.3 (C++)</td>
-<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>网络协议</strong></td>
-<td style="text-align:left">TCP / HTTP</td>
-<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据解析</strong></td>
-<td style="text-align:left">libmseed v3</td>
-<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>绘图引擎</strong></td>
-<td style="text-align:left">QCustomPlot 2.1</td>
-<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>地图引擎</strong></td>
-<td style="text-align:left">Qt Location / QML</td>
-<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据结构</strong></td>
-<td style="text-align:left">哈希表 (QHash)</td>
-<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
-<li><strong>启动连接</strong>：<ul>
-<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
-<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
-<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
-<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
-</ul>
-</li>
-<li><strong>调整视图</strong>：<ul>
-<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
-<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
-</ul>
-</li>
-<li><strong>信号处理</strong>：<ul>
-<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
-<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
-</ul>
-</li>
-<li><strong>设置预警</strong>：<ul>
-<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
-<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术项目</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>SeisMonitor</tag>
-        <tag>seedlink</tag>
-        <tag>地震台站</tag>
-        <tag>信号监测</tag>
-        <tag>数据处理</tag>
-        <tag>数据分析</tag>
-        <tag>数据可视化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于GPU Computer Shader的高性能弹性波场模拟软件</title>
-    <url>/2026/01/20/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</h1><h1 id="高性能二维弹性波动力学模拟-GPU-Computer-Shader-与可视化平台"><a href="#高性能二维弹性波动力学模拟-GPU-Computer-Shader-与可视化平台" class="headerlink" title="高性能二维弹性波动力学模拟(GPU Computer Shader)与可视化平台"></a>高性能二维弹性波动力学模拟(GPU Computer Shader)与可视化平台</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>HPEW-Sim 是一款基于 GPU 原生并行架构的高性能二维弹性波动力学模拟软件。它采用空间 8 阶 / 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。该软件支持实时修改介质属性（$V_p, V_s, \rho$），内置高精度合成地震记录系统，支持大规模阵列数据采集与导出。<br>HPEW-Sim 还支持多种可视化技术，包括速度/应力场切换、P/S 波场分离、实时频谱分析（FFT）、多种科学/艺术色谱。它还支持多种震源类型，包括单点脉冲、线震源、随机微震源、旋转定向力源（Tensor Rotation）。<br>HPEW-Sim 还具备稳定性保障，采用硬件级数值溢出检测（Explosion Detection）、自动熔断与参数修正等技术，确保模拟结果的可靠性。<br>HPEW-Sim 还支持模型导入/导出、地震数据SEGY格式导出、4K 序列帧录制、实时截图等功能，为地球物理勘探、地震学研究及波动物理教学提供一站式解决方案。</p>
+    <url>/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</h1><h1 id="高性能弹性波动力学波场模拟-基于GPU-Computer-Shader-与可视化平台"><a href="#高性能弹性波动力学波场模拟-基于GPU-Computer-Shader-与可视化平台" class="headerlink" title="高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台"></a>高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>HPEW-Sim 是一款基于 GPU 原生并行架构的高性能二维弹性波动力学模拟软件。它采用空间 8 阶 / 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。该软件支持实时修改介质属性（$V_p, V_s, \rho$），内置高精度合成地震记录系统，支持大规模阵列数据采集与导出。<br>HPEW-Sim 还支持多种可视化技术，包括速度/应力场切换、P/S 波场分离、实时频谱分析（FFT）、多种科学/艺术色谱。它还支持多种震源类型，包括单点脉冲、线震源、随机微震源、旋转定向力源（Tensor Rotation）。<br>HPEW-Sim 还具备稳定性保障，采用硬件级数值溢出检测（Explosion Detection）、自动熔断与参数修正等技术，确保模拟结果的可靠性。<br>HPEW-Sim 还支持模型导入/导出、地震数据SEGY格式导出、4K 序列帧录制、实时截图等功能，为地球物理勘探、地震学研究及波动物理教学提供一站式解决方案。</p>
 <span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>欢迎页面</strong><br><img src="main.png" alt="欢迎页面"><br><strong>marmousi_model</strong><br><img src="marmousi_model.png" alt="marmousi_model"><br><strong>sim_parmeter</strong><br><img src="sim_parmeter.png" alt="sim_parmeter"><br><strong>marmousi_c2</strong><br><img src="marmousi_c2.png" alt="marmousi_c2"><br><strong>data_analyse</strong><br><img src="data_analyse.png" alt="data_analyse"><br><strong>marmousi_record_vz_snap</strong><br><img src="marmousi_record_vz_snap.png" alt="marmousi_record_vz_snap"><br><strong>marmousi_record_vz</strong><br><img src="marmousi_record_vz.png" alt="marmousi_record_vz"><br><strong>不同类型震源激发</strong><br><img src="不同类型震源激发.png" alt="不同类型震源激发"><br><strong>鼠标连续激发</strong><br><img src="鼠标连续激发.png" alt="鼠标连续激发"><br><strong>基于marmousi模型的正演模拟</strong><br><img src="marmousi_model3.png" alt="模拟过程"><br><strong>检波器布设</strong><br><img src="检波器布设.png" alt="检波器布设"></p>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>欢迎页面</strong><br><img src="main.png" alt="欢迎页面"><br><strong>模拟主界面</strong><br><img src="marmousi_model.png" alt="marmousi_model"><br><strong>模拟参数调整面板</strong><br><img src="sim_parmeter.png" alt="sim_parmeter"><br><strong>重采样后marmousi模型显示</strong><br><img src="marmousi_c2.png" alt="marmousi_c2"><br><strong>模拟计算速度展示（英伟达 GeForce RTX4060笔记本电脑显卡）, 512x512分辨率下2000+fps</strong><br><strong>实时计算+渲染</strong><br><strong>在长时间模拟下子波波形稳点性良好，未发生频散</strong><br><img src="计算速度测试_512_512.png" alt="计算速度测试_512_512"><br><strong>在不同模型下模拟计算速度对比</strong><br><strong>2048x2048分辨率下稳定240+fps，4096x4096分辨率下稳定60+fps</strong><br><img src="计算速度测试_对比图.png" alt="计算速度测试_对比图"></p>
+<p><strong>内置数据导出与可视化</strong><br><img src="data_analyse.png" alt="data_analyse"><br><strong>marmousi模型波场导出与可视化</strong><br><img src="marmousi_record_vz_snap.png" alt="marmousi_record_vz_snap"><br><strong>marmousi模型模拟地震记录与可视化</strong><br><img src="marmousi_record_vz.png" alt="marmousi_record_vz"><br><strong>不同类型震源激发(主频100Hz)</strong><br><img src="不同类型震源激发.png" alt="不同类型震源激发"><br><strong>实时交互_鼠标点击位置作为震源进行激发</strong><br><img src="鼠标连续激发.png" alt="鼠标连续激发"><br><strong>基于marmousi模型的正演模拟</strong><br><img src="marmousi_model3.png" alt="模拟过程"><br><strong>检波器布设+曲界面模型模拟</strong><br><img src="检波器布设.png" alt="检波器布设"></p>
 <h2 id="1-系统概述-System-Overview"><a href="#1-系统概述-System-Overview" class="headerlink" title="1. 系统概述 (System Overview)"></a><strong>1. 系统概述 (System Overview)</strong></h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 <strong>GPU 原生并行架构</strong>，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时弹性波场模拟。</p>
 <h3 id="1-1-核心价值-Core-Value"><a href="#1-1-核心价值-Core-Value" class="headerlink" title="1.1 核心价值 (Core Value)"></a><strong>1.1 核心价值 (Core Value)</strong></h3><ul>
 <li><strong>科研级精度</strong>: 空间 8 阶 / 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。</li>
@@ -784,12 +446,224 @@
         <category>技术项目</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Wave Simulator</tag>
         <tag>GPU</tag>
         <tag>Computer Shader</tag>
+        <tag>C++</tag>
         <tag>OpenGL</tag>
         <tag>Imgui</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于Qt、C++的Seis_Simulation地震波场模拟软件</title>
+    <url>/2026/01/19/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/</url>
+    <content><![CDATA[<h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统-CPU-技术手册"><a href="#高性能二维弹性波场模拟系统-CPU-技术手册" class="headerlink" title="高性能二维弹性波场模拟系统(CPU)技术手册"></a>高性能二维弹性波场模拟系统(CPU)技术手册</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Seis-FDM-Tool 是一款基于 Qt、C++ 的高性能二维弹性波场模拟软件。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。<br>该软件结合了 C++17 的高性能计算能力与 Qt 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 OpenMP 并行加速和内存扁平化技术，能够在大规模网格下实现近实时的波场模拟。</p>
+<span id="more"></span>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>程序主页</strong><br><img src="home.png" alt="程序主页"><br><strong>模型参数页面</strong><br><img src="page1.png" alt="模型参数页面"><br><strong>波场输出</strong><br><img src="record_snap_2.png" alt="波场输出"><br><strong>地震记录输出</strong><br><img src="record_vx.png" alt="地震记录输出"></p>
+<p><img src="https://img.shields.io/badge/Build-v2.1-blue" alt="Build Status"> <img src="https://img.shields.io/badge/Qt-5.15%2B-green" alt="Qt"> <img src="https://img.shields.io/badge/Parallel-OpenMP-orange" alt="OpenMP"> <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform"></p>
+<hr>
+<h2 id="1-项目简介-Introduction"><a href="#1-项目简介-Introduction" class="headerlink" title="1. 项目简介 (Introduction)"></a>1. 项目简介 (Introduction)</h2><p><strong>Seis-FDM-Tool</strong> 是一款专为地球物理研究和教学设计的专业级桌面应用程序。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。</p>
+<p>该软件结合了 <strong>C++17</strong> 的高性能计算能力与 <strong>Qt</strong> 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 <strong>OpenMP</strong> 并行加速和 <strong>内存扁平化</strong> 技术，能够在大规模网格下实现近实时的波场模拟。</p>
+<p><strong>Seis-FDM-Tool</strong> is a professional-grade desktop application for 2D elastic wavefield forward modeling. Built with <strong>C++17</strong> and <strong>Qt</strong>, it combines a modern user interface with a highly optimized Finite Difference Method (FDM) engine, featuring <strong>8th-order spatial accuracy</strong> and advanced boundary conditions.</p>
+<hr>
+<h2 id="2-理论基础-Theoretical-Background"><a href="#2-理论基础-Theoretical-Background" class="headerlink" title="2. 理论基础 (Theoretical Background)"></a>2. 理论基础 (Theoretical Background)</h2><h3 id="2-1-地震勘探原理"><a href="#2-1-地震勘探原理" class="headerlink" title="2.1 地震勘探原理"></a>2.1 地震勘探原理</h3><p>利用人工激发的地震波在地下介质中传播的规律，推断地下岩层的性质和形态。</p>
+<ul>
+<li><strong>震源 (Source)</strong>: Ricker 子波，支持集中力源 (Point Force)。</li>
+<li><strong>传播 (Propagation)</strong>: 波在非均匀介质中传播，产生反射、折射、转换波。</li>
+<li><strong>接收 (Receiver)</strong>: 模拟检波器阵列记录地面质点振动速度 ($v_x, v_z$)。</li>
+</ul>
+<h3 id="2-2-有限差分法-FDM-核心"><a href="#2-2-有限差分法-FDM-核心" class="headerlink" title="2.2 有限差分法 (FDM) 核心"></a>2.2 有限差分法 (FDM) 核心</h3><p>本程序采用 <strong>交错网格有限差分法 (Staggered-Grid FDM)</strong> 求解速度-应力方程组。</p>
+<ul>
+<li><strong>波动方程 (P-SV波)</strong>:<script type="math/tex; mode=display">
+\begin{cases}
+\rho \frac{\partial v_x}{\partial t} = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} \\
+\rho \frac{\partial v_z}{\partial t} = \frac{\partial \sigma_{xz}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} \\
+\frac{\partial \sigma_{xx}}{\partial t} = (\lambda + 2\mu)\frac{\partial v_x}{\partial x} + \lambda\frac{\partial v_z}{\partial z} \\
+\frac{\partial \sigma_{zz}}{\partial t} = \lambda\frac{\partial v_x}{\partial x} + (\lambda + 2\mu)\frac{\partial v_z}{\partial z} \\
+\frac{\partial \sigma_{xz}}{\partial t} = \mu(\frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x})
+\end{cases}</script></li>
+<li><strong>离散化精度</strong>: <ul>
+<li><strong>空间</strong>: <strong>8阶精度 (8th-Order)</strong>。采用长模板差分算子 (C1~C4)，极大压制数值频散，适用于大网格步长模拟。</li>
+<li><strong>时间</strong>: 2阶精度差分 (Leap-frog)。</li>
+</ul>
+</li>
+<li><strong>稳定性</strong>: 需满足 Courant-Friedrichs-Lewy (CFL) 条件：<script type="math/tex; mode=display">\Delta t \le \frac{0.606 \cdot h}{v_{max}}</script></li>
+</ul>
+<hr>
+<h2 id="3-核心技术亮点-Key-Features"><a href="#3-核心技术亮点-Key-Features" class="headerlink" title="3. 核心技术亮点 (Key Features)"></a>3. 核心技术亮点 (Key Features)</h2><h3 id="🚀-高性能计算内核-HPC-Kernel"><a href="#🚀-高性能计算内核-HPC-Kernel" class="headerlink" title="🚀 高性能计算内核 (HPC Kernel)"></a>🚀 高性能计算内核 (HPC Kernel)</h3><ul>
+<li><strong>1D Flattening (内存扁平化)</strong>: <ul>
+<li>放弃传统的 <code>vector&lt;vector&gt;</code> 二维数组，将所有场变量展平为一维 <code>std::vector</code>。</li>
+<li><strong>优势</strong>: 保证内存连续性，最大化 CPU 缓存命中率 (Cache Hit Rate)，消除指针跳转开销。</li>
+</ul>
+</li>
+<li><strong>OpenMP 并行化</strong>:<ul>
+<li>核心差分循环采用 <code>#pragma omp parallel for</code> 进行多线程加速。</li>
+<li>支持根据 CPU 核心数动态调整并行度，充分利用现代多核处理器的算力。</li>
+</ul>
+</li>
+<li><strong>极速 I/O</strong>:<ul>
+<li>自定义二进制格式 (<code>.bin</code>) 存储波场快照，读写速度比文本格式快 50 倍以上。</li>
+</ul>
+</li>
+</ul>
+<h3 id="🌊-复杂边界条件-Boundary-Conditions"><a href="#🌊-复杂边界条件-Boundary-Conditions" class="headerlink" title="🌊 复杂边界条件 (Boundary Conditions)"></a>🌊 复杂边界条件 (Boundary Conditions)</h3><ul>
+<li><strong>PML (完全匹配层)</strong>: <ul>
+<li>实现了基于分裂场 (Split-Field) 的 PML 边界条件，有效吸收来自人工截断边界的反射波。</li>
+</ul>
+</li>
+<li><strong>Free Surface (自由表面)</strong>: <ul>
+<li>针对地表模拟，实现了 <strong>应力镜像法 (Stress Image Method)</strong>。</li>
+<li>通过在表面上方设置“幽灵点”并赋予反对称应力值 ($\sigma<em>{zz}^{ghost} = -\sigma</em>{zz}^{inner}$)，精确满足地表牵引力为零 ($\sigma<em>{zz}=0, \sigma</em>{xz}=0$) 的物理条件。</li>
+<li>特别优化了 <strong>8阶差分</strong> 在自由表面的实现，确保高阶精度下边界依然稳定。</li>
+</ul>
+</li>
+</ul>
+<h3 id="🖥️-现代化交互界面-Modern-UI-UX"><a href="#🖥️-现代化交互界面-Modern-UI-UX" class="headerlink" title="🖥️ 现代化交互界面 (Modern UI/UX)"></a>🖥️ 现代化交互界面 (Modern UI/UX)</h3><ul>
+<li><strong>沉浸式布局</strong>: 采用 VS Code 风格的侧边栏导航 (Sidebar) + 多页堆叠 (Stacked Widget) 设计。</li>
+<li><strong>实时监控</strong>: 底部集成全局控制台 (Console) 和进度条，实时反馈计算状态，界面不卡顿（多线程架构）。</li>
+<li><strong>参数配置</strong>: <ul>
+<li>支持从 <code>FDM2D_par.txt</code> 自动加载默认参数。</li>
+<li><strong>Check &amp; Preview</strong>: 运行前自动校验参数稳定性 (CFL条件)，防止计算发散。</li>
+<li><strong>Thread Control</strong>: 可在设置页面动态调整 OpenMP 线程数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="📊-专业级可视化-Visualization"><a href="#📊-专业级可视化-Visualization" class="headerlink" title="📊 专业级可视化 (Visualization)"></a>📊 专业级可视化 (Visualization)</h3><ul>
+<li><strong>全能地震视图 (Seismic View)</strong>:<ul>
+<li><strong>Overlay 技术</strong>: 独创的 <strong>变密度图 (Image) + 波形图 (Wiggle)</strong> 叠加显示模式。</li>
+<li><strong>双重控制</strong>: 底部提供独立的滑块，分别调节 Image 的对比度 (Contrast) 和 Wiggle 的增益 (Gain)。</li>
+</ul>
+</li>
+<li><strong>专业的色标系统</strong>:<ul>
+<li>内置 <strong>Seismic (Red-White-Blue)</strong>, <strong>Grayscale</strong>, <strong>Jet</strong>, <strong>Terrain</strong> 等多种地质色标。</li>
+<li>支持对称归一化显示，确保零值对应白色背景。</li>
+</ul>
+</li>
+<li><strong>交互操作</strong>: 鼠标滚轮缩放、拖拽平移、右键菜单复位、所见即所得截图。</li>
+</ul>
+<hr>
+<h2 id="4-软件架构-Software-Architecture"><a href="#4-软件架构-Software-Architecture" class="headerlink" title="4. 软件架构 (Software Architecture)"></a>4. 软件架构 (Software Architecture)</h2><h3 id="4-1-模块划分"><a href="#4-1-模块划分" class="headerlink" title="4.1 模块划分"></a>4.1 模块划分</h3><p>该项目采用模块化设计，实现 UI 与计算逻辑的彻底解耦：</p>
+<ul>
+<li><strong>GUI 层 (<code>Qt_Seismic_fdm2d</code>)</strong>: <ul>
+<li>负责界面渲染、用户交互、信号槽连接。</li>
+<li>管理 <code>QStackedWidget</code> 页面切换 (Home, Simulation, Visualization, Settings)。</li>
+</ul>
+</li>
+<li><strong>数据层 (<code>SimulationContext</code> / <code>Parameters</code>)</strong>: <ul>
+<li>封装模拟所需的所有参数（网格、系数、模型）。</li>
+<li><code>SimulationContext</code> 在计算开始前初始化，包含了所有预计算的中间变量（如 PML 衰减系数、展平后的模型参数）。</li>
+</ul>
+</li>
+<li><strong>计算层 (<code>SeismicUtils</code> / <code>FDM_elastic_2D</code>)</strong>: <ul>
+<li><code>SeismicUtils</code>: 提供数学工具（如 Ricker 子波生成、8阶差分系数计算、网格重采样）。</li>
+<li><code>FDM_elastic_2D</code>: 核心物理引擎，不依赖任何 UI 组件，纯 C++ 实现。</li>
+</ul>
+</li>
+<li><strong>绘图层 (<code>QCustomPlot</code> / <code>QCPSeismicWiggle</code>)</strong>: <ul>
+<li>继承 <code>QCPAbstractPlottable</code> 实现高性能地震波形绘制。</li>
+<li>实现了 <strong>LOD (Level of Detail)</strong> 降采样算法，保证在大数据量下的流畅显示。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-线程模型-Threading-Model"><a href="#4-2-线程模型-Threading-Model" class="headerlink" title="4.2 线程模型 (Threading Model)"></a>4.2 线程模型 (Threading Model)</h3><p>为了防止界面假死，软件采用了 <strong>Worker Thread</strong> 模式：</p>
+<ol>
+<li><strong>主线程 (GUI)</strong>: 处理点击事件、绘图刷新、参数设置。</li>
+<li><strong>工作线程 (Worker)</strong>: 通过 <code>QtConcurrent::run</code> 启动，执行 <code>FDM_elastic_2D</code> 计算密集型任务。</li>
+<li><strong>通信机制</strong>: 工作线程通过 <code>emit signals</code> (如 <code>sig_updateProgress</code>, <code>sig_appendLog</code>) 通知主线程更新 UI，实现线程安全。</li>
+</ol>
+<h3 id="4-3-文件结构"><a href="#4-3-文件结构" class="headerlink" title="4.3 文件结构"></a>4.3 文件结构</h3><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Qt_Seismic_fdm2d/</span><br><span class="line">├── Qt_Seismic_fdm2d.h      # 主窗口类及数据结构定义</span><br><span class="line">├── Qt_Seismic_fdm2d.cpp    # UI 逻辑与信号槽实现</span><br><span class="line">├── SeismicUtils.cpp        # 核心算法库 (FDM Kernel, IO)</span><br><span class="line">├── QCPSeismicWiggle.h/.cpp # 自定义地震绘图控件</span><br><span class="line">├── data/</span><br><span class="line">│   ├── model_segy/         # 输入模型文件 (.sgy)</span><br><span class="line">│   └── snap/               # 输出快照与记录 (.bin/.sgy)</span><br><span class="line">└── FDM2D_par.txt           # 默认配置文件</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-使用指南-User-Guide"><a href="#5-使用指南-User-Guide" class="headerlink" title="5. 使用指南 (User Guide)"></a>5. 使用指南 (User Guide)</h2><h3 id="5-1-启动与配置"><a href="#5-1-启动与配置" class="headerlink" title="5.1 启动与配置"></a>5.1 启动与配置</h3><ol>
+<li>进入 <strong>Simulation</strong> 页面。</li>
+<li><strong>Grid &amp; Model</strong>: 设置网格大小 (<code>NX</code>, <code>NZ</code>) 和间距 (<code>dx</code>, <code>dz</code>)。可点击 “Load Vp Model” 预览速度模型。</li>
+<li><strong>Geometry</strong>: 设置震源位置 (<code>Source X/Z</code>)、检波器排列范围。</li>
+<li><strong>Numerical</strong>: 设置时间步长 (<code>dt</code>)、总步数 (<code>nt</code>)、边界条件类型。<ul>
+<li><code>Type 1</code>: 全区域 PML (适合无界空间)。</li>
+<li><code>Type 2</code>: 仅边界 PML (节省计算量)。</li>
+<li><code>Type 3</code>: 上表面自由边界 + 其他三面 PML (适合地表模拟)。</li>
+</ul>
+</li>
+<li>点击 <strong>Verify</strong> 按钮：检查参数是否满足稳定性条件。</li>
+</ol>
+<h3 id="5-2-运行模拟"><a href="#5-2-运行模拟" class="headerlink" title="5.2 运行模拟"></a>5.2 运行模拟</h3><ol>
+<li>点击 <strong>Run</strong>。</li>
+<li>观察底部 <strong>Console Output</strong> 和 <strong>Progress</strong> 条。</li>
+<li>模拟过程中，界面保持响应，可随时切换到 Settings 页面调整线程数。</li>
+<li>完成后，数据会自动保存到 <code>data/snap/</code>。</li>
+</ol>
+<h3 id="5-3-数据可视化"><a href="#5-3-数据可视化" class="headerlink" title="5.3 数据可视化"></a>5.3 数据可视化</h3><p>进入 <strong>Visualization</strong> 页面，提供多种查看方式：</p>
+<ul>
+<li><strong>Load SEGY Model</strong>: 查看输入的速度/密度模型。</li>
+<li><strong>Wavefield Snapshots</strong>: 加载 <code>.bin</code> 快照文件，拖动时间滑块查看波场传播。</li>
+<li><strong>Seismic Records</strong>: 加载地震记录（共炮点道集）。<ul>
+<li>使用 <strong>Overlay View</strong> 模式，同时观察波形细节和能量强弱。</li>
+<li>支持导出标准 SEGY 格式数据。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="6-环境依赖与构建-Build-amp-Install"><a href="#6-环境依赖与构建-Build-amp-Install" class="headerlink" title="6. 环境依赖与构建 (Build &amp; Install)"></a>6. 环境依赖与构建 (Build &amp; Install)</h2><h3 id="前置要求-Prerequisites"><a href="#前置要求-Prerequisites" class="headerlink" title="前置要求 (Prerequisites)"></a>前置要求 (Prerequisites)</h3><ul>
+<li><strong>IDE</strong>: Visual Studio 2019 或 2022 (推荐)。</li>
+<li><strong>Qt</strong>: 安装 Qt 5.15 或更高版本，并配置 VS Qt Tools 插件。</li>
+<li><strong>Libraries</strong>:<ul>
+<li><strong>Eigen 3</strong>: 需将头文件路径添加到项目包含目录。</li>
+<li><strong>QCustomPlot 2.1</strong>: 用于绘图（已集成在源码中）。</li>
+<li><strong>OpenMP</strong>: 必须在编译器选项中开启 (<code>/openmp</code>)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="编译步骤-Steps"><a href="#编译步骤-Steps" class="headerlink" title="编译步骤 (Steps)"></a>编译步骤 (Steps)</h3><ol>
+<li>使用 Visual Studio 打开 <code>.sln</code> 或 <code>.pro</code> 文件。</li>
+<li>确保构建模式为 <strong>Release</strong> (Debug 模式下大量循环计算会非常慢)。</li>
+<li>点击 <strong>Build Solution (生成解决方案)</strong>。</li>
+<li>运行生成的可执行文件。</li>
+</ol>
+<hr>
+<h2 id="7-版权与授权说明-License"><a href="#7-版权与授权说明-License" class="headerlink" title="7. 版权与授权说明 (License)"></a>7. 版权与授权说明 (License)</h2><h3 id="项目源码授权"><a href="#项目源码授权" class="headerlink" title="项目源码授权"></a>项目源码授权</h3><p>本项目（Seis-FDM-Tool）的源代码采用 <strong>MIT License</strong>。允许个人及商业用途的自由修改和分发，但需保留原始版权声明。</p>
+<h3 id="第三方库授权"><a href="#第三方库授权" class="headerlink" title="第三方库授权"></a>第三方库授权</h3><p>本项目依赖以下第三方库，它们拥有各自的授权协议：</p>
+<ul>
+<li><strong>Qt 6</strong>: 遵循 <strong>LGPL v3</strong> (GNU Lesser General Public License v3)。</li>
+<li><strong>QCustomPlot</strong>: 遵循 <strong>GPL v3</strong>。</li>
+<li><strong>Eigen 3</strong>: 遵循 <strong>MPL2</strong> (Mozilla Public License 2.0)。</li>
+</ul>
+<p>在使用、分发或商业化本软件时，请务必遵守上述第三方库的许可协议。</p>
+<p><strong>主要维护者</strong>: XYU<br><strong>当前版本</strong>: v2.1.0 Stable</p>
+<hr>
+<h2 id="8-致谢-Acknowledgements"><a href="#8-致谢-Acknowledgements" class="headerlink" title="8. 致谢 (Acknowledgements)"></a>8. 致谢 (Acknowledgements)</h2>]]></content>
+      <categories>
+        <category>技术项目</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Seis Tool</tag>
+        <tag>地震</tag>
+        <tag>弹性波模拟</tag>
+        <tag>有限差分法</tag>
+        <tag>Qt</tag>
+        <tag>OpenMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils</title>
+    <url>/2026/01/17/SignalProcessingUtils/</url>
+    <content><![CDATA[<h1 id="基于C-、omp并行的信号处理工具箱——SignalProcessingUtils"><a href="#基于C-、omp并行的信号处理工具箱——SignalProcessingUtils" class="headerlink" title="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils"></a>基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>SignalProcessingUtils</strong> 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。</p>
+<span id="more"></span>
+<h2 id="示例图片"><a href="#示例图片" class="headerlink" title="示例图片"></a>示例图片</h2><p><strong>变换示例选取部分数据，使用Qcustomplot绘制STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换.png" alt="变换示例-STFT短时傅里叶变换"><br><strong>合成信号Components: 10Hz, 50Hz, 100Hz, 200Hz-STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换2.png" alt="变换示例-STFT短时傅里叶变换2"></p>
+<p><strong>变换示例-S变换</strong><br><img src="时频分析_S变换.png" alt="变换示例-S变换"></p>
+<p><strong>变换示例-CWT连续小波变换</strong><br><img src="时频分析_CWT.png" alt="变换示例-CWT连续小波变换"></p>
+<h2 id="代码分享"><a href="#代码分享" class="headerlink" title="代码分享"></a>代码分享</h2><p><strong>STFT代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据处理函数 STFT变换</span></span><br><span class="line"><span class="comment">// STFT变换</span></span><br><span class="line">std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">stft_fft</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; x,</span><br><span class="line">	<span class="type">double</span> fs,</span><br><span class="line">	<span class="type">int</span> winSize,</span><br><span class="line">	<span class="type">int</span> hop,</span><br><span class="line">	<span class="type">int</span> nfft)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> N = (<span class="type">int</span>)x.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 自动修正 nfft，必须大于等于 winSize 且通常为 2 的幂</span></span><br><span class="line">	<span class="keyword">if</span> (nfft &lt; winSize) nfft = winSize;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 基础参数检查</span></span><br><span class="line">	<span class="keyword">if</span> (N &lt; winSize || hop &lt;= <span class="number">0</span>) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> nFrames = (N - winSize) / hop + <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> nFreq = nfft / <span class="number">2</span> + <span class="number">1</span>; <span class="comment">// 单边谱 (0 到 fs/2)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 结果矩阵：[频率行][时间列]</span></span><br><span class="line">	std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">spec</span>(</span><br><span class="line">		nFreq, std::<span class="built_in">vector</span>&lt;<span class="type">double</span>&gt;(nFrames, <span class="number">0.0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 生成汉宁窗 (Hann Window)</span></span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">double</span>&gt; <span class="title">win</span><span class="params">(winSize)</span></span>;</span><br><span class="line">	<span class="type">double</span> winSumSq = <span class="number">0.0</span>; <span class="comment">// 用于能量归一化</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; winSize; ++i) &#123;</span><br><span class="line">		win[i] = <span class="number">0.5</span> * (<span class="number">1.0</span> - std::<span class="built_in">cos</span>(<span class="number">2.0</span> * M_PI * i / (winSize - <span class="number">1</span>)));</span><br><span class="line">		winSumSq += win[i] * win[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 归一化系数 (Amplitude Spectrum)</span></span><br><span class="line">	<span class="comment">// 如果想要功率谱密度(PSD)，系数计算方式不同。这里按幅度谱计算方便可视化。</span></span><br><span class="line">	<span class="comment">// 对于加窗信号，恢复幅值通常除以 sum(win)/2 或者 sqrt(sum(win^2))</span></span><br><span class="line">	<span class="comment">// 这里使用简单的幅值恢复，使得正弦波峰值接近真实振幅</span></span><br><span class="line">	<span class="type">double</span> scale = <span class="number">1.0</span>;</span><br><span class="line">	<span class="type">double</span> winSum = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">double</span> w : win) winSum += w;</span><br><span class="line">	<span class="keyword">if</span> (winSum &gt; <span class="number">0</span>) scale = <span class="number">2.0</span> / winSum;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// OpenMP 并行计算</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel</span></span><br><span class="line">	&#123;</span><br><span class="line">		Eigen::FFT&lt;<span class="type">double</span>&gt; fft;</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">timeBuf</span>(nfft);</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">freqBuf</span>(nfft);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp for schedule(static)</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nFrames; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> pos = i * hop;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 填充数据并加窗</span></span><br><span class="line">			std::<span class="built_in">fill</span>(timeBuf.<span class="built_in">begin</span>(), timeBuf.<span class="built_in">end</span>(), std::<span class="built_in">complex</span>&lt;<span class="type">double</span>&gt;(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; winSize; ++j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (pos + j &lt; N) &#123;</span><br><span class="line">					timeBuf[j] = x[pos + j] * win[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 执行 FFT</span></span><br><span class="line">			fft.<span class="built_in">fwd</span>(freqBuf, timeBuf);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 计算幅值 (取前 nFreq 个点)</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; nFreq; ++k)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">double</span> mag = std::<span class="built_in">abs</span>(freqBuf[k]) * scale;</span><br><span class="line">				spec[k][i] = mag; <span class="comment">// 这里存幅值，如果颜色太暗可以在绘图时取对数</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> spec;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>S变换代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据处理函数 S变换</span></span><br><span class="line">std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">st_transform</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; t,</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; Sig,</span><br><span class="line">	<span class="type">double</span> freqlow, <span class="type">double</span> freqhigh, <span class="type">double</span> alpha)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.14159265358979323846</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 基础参数计算</span></span><br><span class="line">	<span class="type">int</span> nLevel = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;((freqhigh - freqlow) / alpha) + <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> TimeLen = t.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">if</span> (TimeLen == <span class="number">0</span>) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="type">double</span> dt = t[<span class="number">1</span>] - t[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 预分配结果矩阵 (避免 push_back)</span></span><br><span class="line">	<span class="comment">// wcoefs[freq_index][time_index]</span></span><br><span class="line">	std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">wcoefs</span>(nLevel);</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> processed_count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. OpenMP 并行计算</span></span><br><span class="line">	<span class="comment">// shared: 共享变量, private: 私有变量</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> m = <span class="number">0</span>; m &lt; nLevel; ++m) &#123;</span><br><span class="line">		<span class="comment">// 每个线程分配内存</span></span><br><span class="line">		wcoefs[m].<span class="built_in">resize</span>(TimeLen);</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> f = freqlow + m * alpha;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 避免 f=0 导致除零 (S变换中 f=0 通常处理为直流分量或跳过)</span></span><br><span class="line">		<span class="keyword">if</span> (std::<span class="built_in">abs</span>(f) &lt; <span class="number">1e-6</span>) f = <span class="number">1e-6</span>;</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> sigma_f = <span class="number">1.0</span> / std::<span class="built_in">abs</span>(f);</span><br><span class="line">		<span class="type">double</span> factor = <span class="number">1.0</span> / (<span class="built_in">sqrt</span>(<span class="number">2</span> * PI) * sigma_f);</span><br><span class="line">		<span class="type">double</span> sigma_sq_inv = <span class="number">1.0</span> / (sigma_f * sigma_f); <span class="comment">// 预计算 1/sigma^2</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 时间平移循环 (tau) - 对应 n</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> n = <span class="number">0</span>; n &lt; TimeLen; ++n) &#123;</span><br><span class="line">			<span class="function">std::complex&lt;<span class="type">double</span>&gt; <span class="title">sum</span><span class="params">(<span class="number">0.0</span>, <span class="number">0.0</span>)</span></span>;</span><br><span class="line">			<span class="type">double</span> tau = t[n]; <span class="comment">// 当前平移时间</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 积分循环 (t) - 对应 k</span></span><br><span class="line">			<span class="comment">// 注意：这种直接卷积是 O(N^2)，数据量大时仍较慢，FFT方法是 O(NlogN)</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; TimeLen; ++k) &#123;</span><br><span class="line">				<span class="type">double</span> time_diff = tau - t[k]; <span class="comment">// (tau - t) 或 (n*dt - t[k])</span></span><br><span class="line"></span><br><span class="line">				<span class="comment">// 高斯窗部分</span></span><br><span class="line">				<span class="type">double</span> exponent = <span class="number">-0.5</span> * (time_diff * time_diff) * sigma_sq_inv;</span><br><span class="line">				<span class="comment">// 如果 exponent 太小，exp 接近0，可以剪枝优化</span></span><br><span class="line">				<span class="keyword">if</span> (exponent &lt; <span class="number">-10.0</span>) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">				<span class="type">double</span> gauss_val = factor * std::<span class="built_in">exp</span>(exponent);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 复指数部分 e^(-i * 2 * PI * f * t[k])</span></span><br><span class="line">				<span class="type">double</span> phase = <span class="number">-2</span> * PI * f * t[k];</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 欧拉公式: exp(ix) = cos(x) + i*sin(x)</span></span><br><span class="line">				<span class="function">std::complex&lt;<span class="type">double</span>&gt; <span class="title">complex_exp</span><span class="params">(std::cos(phase), std::sin(phase))</span></span>;</span><br><span class="line"></span><br><span class="line">				sum += Sig[k] * gauss_val * complex_exp;</span><br><span class="line">			&#125;</span><br><span class="line">			wcoefs[m][n] = sum * dt;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> wcoefs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>CWT代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 连续小波变换 (CWT) - 基于 Morlet 小波</span></span><br><span class="line"><span class="comment"> * @param sig 输入信号</span></span><br><span class="line"><span class="comment"> * @param fs 采样率</span></span><br><span class="line"><span class="comment"> * @param f_min 最小分析频率</span></span><br><span class="line"><span class="comment"> * @param f_max 最大分析频率</span></span><br><span class="line"><span class="comment"> * @param num_freqs 频率点数 (决定纵轴分辨率)</span></span><br><span class="line"><span class="comment"> * @param omega0 Morlet 参数 (通常取 6.0, 类似地震子波)</span></span><br><span class="line"><span class="comment"> * @return 结果矩阵 [频率行][时间列] (复数结果)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">cwt_morlet</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; sig,</span><br><span class="line">	<span class="type">double</span> fs,</span><br><span class="line">	<span class="type">double</span> f_min,</span><br><span class="line">	<span class="type">double</span> f_max,</span><br><span class="line">	<span class="type">int</span> num_freqs,</span><br><span class="line">	<span class="type">double</span> omega0 = <span class="number">6.0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n = sig.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 为了消除循环卷积的边缘效应，进行补零到 2 的幂次 (Next Power of 2)</span></span><br><span class="line">	<span class="type">int</span> n_padded = std::<span class="built_in">pow</span>(<span class="number">2</span>, std::<span class="built_in">ceil</span>(std::<span class="built_in">log2</span>(n)));</span><br><span class="line">	<span class="comment">// 如果数据太短，至少补到一定长度</span></span><br><span class="line">	<span class="keyword">if</span> (n_padded &lt; <span class="number">2</span> * n) n_padded *= <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 预计算信号的 FFT</span></span><br><span class="line">	Eigen::FFT&lt;<span class="type">double</span>&gt; fft;</span><br><span class="line">	std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">sig_padded</span>(n_padded, <span class="number">0.0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) sig_padded[i] = sig[i];</span><br><span class="line"></span><br><span class="line">	std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; sig_fft;</span><br><span class="line">	fft.<span class="built_in">fwd</span>(sig_fft, sig_padded);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 构建角频率轴 (Angular Frequency Axis)</span></span><br><span class="line">	<span class="comment">// 对应 FFT 的频率分布: [0, 1, ..., N/2, -N/2+1, ..., -1] * (2*pi*fs/N)</span></span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">double</span>&gt; <span class="title">omega</span><span class="params">(n_padded)</span></span>;</span><br><span class="line">	<span class="type">double</span> dw = <span class="number">2.0</span> * M_PI * fs / n_padded;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n_padded; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i &lt;= n_padded / <span class="number">2</span>)</span><br><span class="line">			omega[i] = i * dw;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			omega[i] = (i - n_padded) * dw;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. 准备结果矩阵</span></span><br><span class="line">	std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">cwt_matrix</span>(num_freqs);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5. 并行循环计算每个尺度的 CWT</span></span><br><span class="line">	<span class="comment">// 我们按照线性频率分布来计算，这样画图时纵轴是线性的</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num_freqs; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 当前分析频率</span></span><br><span class="line">		<span class="type">double</span> f = f_min + i * (f_max - f_min) / (num_freqs - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span> (f &lt;= <span class="number">1e-6</span>) f = <span class="number">1e-6</span>; <span class="comment">// 保护</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 将频率转换为尺度 (Scale)</span></span><br><span class="line">		<span class="comment">// 对于 Morlet (omega0=6), scale = (omega0 + sqrt(2 + omega0^2)) / (4 * pi * f) </span></span><br><span class="line">		<span class="comment">// 简化近似公式: scale = omega0 / (2 * pi * f)</span></span><br><span class="line">		<span class="type">double</span> scale = omega0 / (<span class="number">2.0</span> * M_PI * f);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 构造 Morlet 小波的频域响应 (Analytical Morlet)</span></span><br><span class="line">		<span class="comment">// Psi_hat(w) = pi^0.25 * sqrt(2*s) * exp(-0.5 * (s*w - w0)^2) * step(w)</span></span><br><span class="line">		<span class="comment">// 注意：CWT 定义为 IFFT( X(w) * sqrt(s) * Psi_hat*(s*w) )</span></span><br><span class="line">		<span class="comment">// 为了保持能量守恒或幅度物理意义，归一化系数会有所不同。</span></span><br><span class="line">		<span class="comment">// 这里使用幅度归一化，使得正弦波的 CWT 幅值接近真实幅值。</span></span><br><span class="line"></span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">wavelet_fft</span>(n_padded, <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> norm_factor = std::<span class="built_in">pow</span>(M_PI, <span class="number">0.25</span>) * std::<span class="built_in">sqrt</span>(<span class="number">2.0</span> * scale); <span class="comment">// 标准因子</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; n_padded; ++k)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// Analytic Wavelet 只有正频率部分</span></span><br><span class="line">			<span class="keyword">if</span> (k &gt; <span class="number">0</span> &amp;&amp; k &lt; n_padded / <span class="number">2</span> + <span class="number">1</span>) <span class="comment">// omega[k] &gt; 0</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">double</span> sw = scale * omega[k];</span><br><span class="line">				<span class="type">double</span> exponent = <span class="number">-0.5</span> * std::<span class="built_in">pow</span>(sw - omega0, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 优化：太小的指数直接忽略</span></span><br><span class="line">				<span class="keyword">if</span> (exponent &gt; <span class="number">-20.0</span>) &#123;</span><br><span class="line">					<span class="comment">// 频域乘法: Signal_FFT * Wavelet_FFT</span></span><br><span class="line">					<span class="comment">// 乘以 (2/fs) 甚至更多是为了幅值恢复，这里先算标准定义</span></span><br><span class="line">					wavelet_fft[k] = sig_fft[k] * std::<span class="built_in">exp</span>(exponent);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// IFFT 变换回时域</span></span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; time_domain_out;</span><br><span class="line">		fft.<span class="built_in">inv</span>(time_domain_out, wavelet_fft);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 截取原始长度并归一化</span></span><br><span class="line">		cwt_matrix[i].<span class="built_in">resize</span>(n);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 经验归一化系数，使得幅值看起来物理意义更强</span></span><br><span class="line">		<span class="comment">// CWT 的幅值物理意义比较复杂，通常看相对值</span></span><br><span class="line">		<span class="type">double</span> output_scale = std::<span class="built_in">sqrt</span>(scale) * (dw / std::<span class="built_in">sqrt</span>(<span class="number">2</span> * M_PI));</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> t = <span class="number">0</span>; t &lt; n; ++t) &#123;</span><br><span class="line">			cwt_matrix[i][t] = time_domain_out[t] * output_scale;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> cwt_matrix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>信号处理</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>SignalProcessing</tag>
+        <tag>S-Transform</tag>
+        <tag>FFT</tag>
+        <tag>时频分析</tag>
       </tags>
   </entry>
   <entry>
@@ -960,33 +834,160 @@
         <category>技术项目</category>
       </categories>
       <tags>
-        <tag>Qt</tag>
         <tag>C++</tag>
+        <tag>Qt</tag>
         <tag>三维数据可视化</tag>
         <tag>VTK</tag>
       </tags>
   </entry>
   <entry>
-    <title>基于C++、omp并行计算的数字信号处理工具箱——SignalProcessingUtils</title>
-    <url>/2026/01/17/SignalProcessingUtils/</url>
-    <content><![CDATA[<h1 id="基于C-、omp并行的信号处理工具箱——SignalProcessingUtils"><a href="#基于C-、omp并行的信号处理工具箱——SignalProcessingUtils" class="headerlink" title="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils"></a>基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>SignalProcessingUtils</strong> 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。</p>
+    <title>基于Qt、C++的SeisMonitor实时地震台站监测模块</title>
+    <url>/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>SeisMonitor是一款基于Qt、C++开发的实时地震台站监测系统，主要用于对地震台站的信号进行实时监测、数据处理、数据分析、数据可视化，并提供数据导出功能。</p>
 <span id="more"></span>
-<h2 id="示例图片"><a href="#示例图片" class="headerlink" title="示例图片"></a>示例图片</h2><p><strong>变换示例选取部分数据，使用Qcustomplot绘制STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换.png" alt="变换示例-STFT短时傅里叶变换"><br><strong>合成信号Components: 10Hz, 50Hz, 100Hz, 200Hz-STFT短时傅里叶变换</strong><br><img src="时频分析_短时傅里叶变换2.png" alt="变换示例-STFT短时傅里叶变换2"></p>
-<p><strong>变换示例-S变换</strong><br><img src="时频分析_S变换.png" alt="变换示例-S变换"></p>
-<p><strong>变换示例-CWT连续小波变换</strong><br><img src="时频分析_CWT.png" alt="变换示例-CWT连续小波变换"></p>
-<h2 id="代码分享"><a href="#代码分享" class="headerlink" title="代码分享"></a>代码分享</h2><p><strong>STFT代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据处理函数 STFT变换</span></span><br><span class="line"><span class="comment">// STFT变换</span></span><br><span class="line">std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">stft_fft</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; x,</span><br><span class="line">	<span class="type">double</span> fs,</span><br><span class="line">	<span class="type">int</span> winSize,</span><br><span class="line">	<span class="type">int</span> hop,</span><br><span class="line">	<span class="type">int</span> nfft)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> N = (<span class="type">int</span>)x.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 自动修正 nfft，必须大于等于 winSize 且通常为 2 的幂</span></span><br><span class="line">	<span class="keyword">if</span> (nfft &lt; winSize) nfft = winSize;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 基础参数检查</span></span><br><span class="line">	<span class="keyword">if</span> (N &lt; winSize || hop &lt;= <span class="number">0</span>) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> nFrames = (N - winSize) / hop + <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> nFreq = nfft / <span class="number">2</span> + <span class="number">1</span>; <span class="comment">// 单边谱 (0 到 fs/2)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 结果矩阵：[频率行][时间列]</span></span><br><span class="line">	std::vector&lt;std::vector&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">spec</span>(</span><br><span class="line">		nFreq, std::<span class="built_in">vector</span>&lt;<span class="type">double</span>&gt;(nFrames, <span class="number">0.0</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 生成汉宁窗 (Hann Window)</span></span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">double</span>&gt; <span class="title">win</span><span class="params">(winSize)</span></span>;</span><br><span class="line">	<span class="type">double</span> winSumSq = <span class="number">0.0</span>; <span class="comment">// 用于能量归一化</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; winSize; ++i) &#123;</span><br><span class="line">		win[i] = <span class="number">0.5</span> * (<span class="number">1.0</span> - std::<span class="built_in">cos</span>(<span class="number">2.0</span> * M_PI * i / (winSize - <span class="number">1</span>)));</span><br><span class="line">		winSumSq += win[i] * win[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 归一化系数 (Amplitude Spectrum)</span></span><br><span class="line">	<span class="comment">// 如果想要功率谱密度(PSD)，系数计算方式不同。这里按幅度谱计算方便可视化。</span></span><br><span class="line">	<span class="comment">// 对于加窗信号，恢复幅值通常除以 sum(win)/2 或者 sqrt(sum(win^2))</span></span><br><span class="line">	<span class="comment">// 这里使用简单的幅值恢复，使得正弦波峰值接近真实振幅</span></span><br><span class="line">	<span class="type">double</span> scale = <span class="number">1.0</span>;</span><br><span class="line">	<span class="type">double</span> winSum = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">double</span> w : win) winSum += w;</span><br><span class="line">	<span class="keyword">if</span> (winSum &gt; <span class="number">0</span>) scale = <span class="number">2.0</span> / winSum;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// OpenMP 并行计算</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel</span></span><br><span class="line">	&#123;</span><br><span class="line">		Eigen::FFT&lt;<span class="type">double</span>&gt; fft;</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">timeBuf</span>(nfft);</span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">freqBuf</span>(nfft);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp for schedule(static)</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nFrames; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> pos = i * hop;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 填充数据并加窗</span></span><br><span class="line">			std::<span class="built_in">fill</span>(timeBuf.<span class="built_in">begin</span>(), timeBuf.<span class="built_in">end</span>(), std::<span class="built_in">complex</span>&lt;<span class="type">double</span>&gt;(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; winSize; ++j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (pos + j &lt; N) &#123;</span><br><span class="line">					timeBuf[j] = x[pos + j] * win[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 执行 FFT</span></span><br><span class="line">			fft.<span class="built_in">fwd</span>(freqBuf, timeBuf);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 计算幅值 (取前 nFreq 个点)</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; nFreq; ++k)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">double</span> mag = std::<span class="built_in">abs</span>(freqBuf[k]) * scale;</span><br><span class="line">				spec[k][i] = mag; <span class="comment">// 这里存幅值，如果颜色太暗可以在绘图时取对数</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> spec;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>S变换代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据处理函数 S变换</span></span><br><span class="line">std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">st_transform</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; t,</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; Sig,</span><br><span class="line">	<span class="type">double</span> freqlow, <span class="type">double</span> freqhigh, <span class="type">double</span> alpha)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.14159265358979323846</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 基础参数计算</span></span><br><span class="line">	<span class="type">int</span> nLevel = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;((freqhigh - freqlow) / alpha) + <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> TimeLen = t.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">if</span> (TimeLen == <span class="number">0</span>) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="type">double</span> dt = t[<span class="number">1</span>] - t[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 预分配结果矩阵 (避免 push_back)</span></span><br><span class="line">	<span class="comment">// wcoefs[freq_index][time_index]</span></span><br><span class="line">	std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">wcoefs</span>(nLevel);</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> processed_count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. OpenMP 并行计算</span></span><br><span class="line">	<span class="comment">// shared: 共享变量, private: 私有变量</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> m = <span class="number">0</span>; m &lt; nLevel; ++m) &#123;</span><br><span class="line">		<span class="comment">// 每个线程分配内存</span></span><br><span class="line">		wcoefs[m].<span class="built_in">resize</span>(TimeLen);</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> f = freqlow + m * alpha;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 避免 f=0 导致除零 (S变换中 f=0 通常处理为直流分量或跳过)</span></span><br><span class="line">		<span class="keyword">if</span> (std::<span class="built_in">abs</span>(f) &lt; <span class="number">1e-6</span>) f = <span class="number">1e-6</span>;</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> sigma_f = <span class="number">1.0</span> / std::<span class="built_in">abs</span>(f);</span><br><span class="line">		<span class="type">double</span> factor = <span class="number">1.0</span> / (<span class="built_in">sqrt</span>(<span class="number">2</span> * PI) * sigma_f);</span><br><span class="line">		<span class="type">double</span> sigma_sq_inv = <span class="number">1.0</span> / (sigma_f * sigma_f); <span class="comment">// 预计算 1/sigma^2</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 时间平移循环 (tau) - 对应 n</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> n = <span class="number">0</span>; n &lt; TimeLen; ++n) &#123;</span><br><span class="line">			<span class="function">std::complex&lt;<span class="type">double</span>&gt; <span class="title">sum</span><span class="params">(<span class="number">0.0</span>, <span class="number">0.0</span>)</span></span>;</span><br><span class="line">			<span class="type">double</span> tau = t[n]; <span class="comment">// 当前平移时间</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">// 积分循环 (t) - 对应 k</span></span><br><span class="line">			<span class="comment">// 注意：这种直接卷积是 O(N^2)，数据量大时仍较慢，FFT方法是 O(NlogN)</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; TimeLen; ++k) &#123;</span><br><span class="line">				<span class="type">double</span> time_diff = tau - t[k]; <span class="comment">// (tau - t) 或 (n*dt - t[k])</span></span><br><span class="line"></span><br><span class="line">				<span class="comment">// 高斯窗部分</span></span><br><span class="line">				<span class="type">double</span> exponent = <span class="number">-0.5</span> * (time_diff * time_diff) * sigma_sq_inv;</span><br><span class="line">				<span class="comment">// 如果 exponent 太小，exp 接近0，可以剪枝优化</span></span><br><span class="line">				<span class="keyword">if</span> (exponent &lt; <span class="number">-10.0</span>) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">				<span class="type">double</span> gauss_val = factor * std::<span class="built_in">exp</span>(exponent);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 复指数部分 e^(-i * 2 * PI * f * t[k])</span></span><br><span class="line">				<span class="type">double</span> phase = <span class="number">-2</span> * PI * f * t[k];</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 欧拉公式: exp(ix) = cos(x) + i*sin(x)</span></span><br><span class="line">				<span class="function">std::complex&lt;<span class="type">double</span>&gt; <span class="title">complex_exp</span><span class="params">(std::cos(phase), std::sin(phase))</span></span>;</span><br><span class="line"></span><br><span class="line">				sum += Sig[k] * gauss_val * complex_exp;</span><br><span class="line">			&#125;</span><br><span class="line">			wcoefs[m][n] = sum * dt;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> wcoefs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>CWT代码</strong><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 连续小波变换 (CWT) - 基于 Morlet 小波</span></span><br><span class="line"><span class="comment"> * @param sig 输入信号</span></span><br><span class="line"><span class="comment"> * @param fs 采样率</span></span><br><span class="line"><span class="comment"> * @param f_min 最小分析频率</span></span><br><span class="line"><span class="comment"> * @param f_max 最大分析频率</span></span><br><span class="line"><span class="comment"> * @param num_freqs 频率点数 (决定纵轴分辨率)</span></span><br><span class="line"><span class="comment"> * @param omega0 Morlet 参数 (通常取 6.0, 类似地震子波)</span></span><br><span class="line"><span class="comment"> * @return 结果矩阵 [频率行][时间列] (复数结果)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">cwt_morlet</span>(</span><br><span class="line">	<span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; sig,</span><br><span class="line">	<span class="type">double</span> fs,</span><br><span class="line">	<span class="type">double</span> f_min,</span><br><span class="line">	<span class="type">double</span> f_max,</span><br><span class="line">	<span class="type">int</span> num_freqs,</span><br><span class="line">	<span class="type">double</span> omega0 = <span class="number">6.0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n = sig.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 为了消除循环卷积的边缘效应，进行补零到 2 的幂次 (Next Power of 2)</span></span><br><span class="line">	<span class="type">int</span> n_padded = std::<span class="built_in">pow</span>(<span class="number">2</span>, std::<span class="built_in">ceil</span>(std::<span class="built_in">log2</span>(n)));</span><br><span class="line">	<span class="comment">// 如果数据太短，至少补到一定长度</span></span><br><span class="line">	<span class="keyword">if</span> (n_padded &lt; <span class="number">2</span> * n) n_padded *= <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 预计算信号的 FFT</span></span><br><span class="line">	Eigen::FFT&lt;<span class="type">double</span>&gt; fft;</span><br><span class="line">	std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">sig_padded</span>(n_padded, <span class="number">0.0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) sig_padded[i] = sig[i];</span><br><span class="line"></span><br><span class="line">	std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; sig_fft;</span><br><span class="line">	fft.<span class="built_in">fwd</span>(sig_fft, sig_padded);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 构建角频率轴 (Angular Frequency Axis)</span></span><br><span class="line">	<span class="comment">// 对应 FFT 的频率分布: [0, 1, ..., N/2, -N/2+1, ..., -1] * (2*pi*fs/N)</span></span><br><span class="line">	<span class="function">std::vector&lt;<span class="type">double</span>&gt; <span class="title">omega</span><span class="params">(n_padded)</span></span>;</span><br><span class="line">	<span class="type">double</span> dw = <span class="number">2.0</span> * M_PI * fs / n_padded;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n_padded; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i &lt;= n_padded / <span class="number">2</span>)</span><br><span class="line">			omega[i] = i * dw;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			omega[i] = (i - n_padded) * dw;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. 准备结果矩阵</span></span><br><span class="line">	std::vector&lt;std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt;&gt; <span class="built_in">cwt_matrix</span>(num_freqs);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5. 并行循环计算每个尺度的 CWT</span></span><br><span class="line">	<span class="comment">// 我们按照线性频率分布来计算，这样画图时纵轴是线性的</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num_freqs; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 当前分析频率</span></span><br><span class="line">		<span class="type">double</span> f = f_min + i * (f_max - f_min) / (num_freqs - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span> (f &lt;= <span class="number">1e-6</span>) f = <span class="number">1e-6</span>; <span class="comment">// 保护</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 将频率转换为尺度 (Scale)</span></span><br><span class="line">		<span class="comment">// 对于 Morlet (omega0=6), scale = (omega0 + sqrt(2 + omega0^2)) / (4 * pi * f) </span></span><br><span class="line">		<span class="comment">// 简化近似公式: scale = omega0 / (2 * pi * f)</span></span><br><span class="line">		<span class="type">double</span> scale = omega0 / (<span class="number">2.0</span> * M_PI * f);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 构造 Morlet 小波的频域响应 (Analytical Morlet)</span></span><br><span class="line">		<span class="comment">// Psi_hat(w) = pi^0.25 * sqrt(2*s) * exp(-0.5 * (s*w - w0)^2) * step(w)</span></span><br><span class="line">		<span class="comment">// 注意：CWT 定义为 IFFT( X(w) * sqrt(s) * Psi_hat*(s*w) )</span></span><br><span class="line">		<span class="comment">// 为了保持能量守恒或幅度物理意义，归一化系数会有所不同。</span></span><br><span class="line">		<span class="comment">// 这里使用幅度归一化，使得正弦波的 CWT 幅值接近真实幅值。</span></span><br><span class="line"></span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; <span class="built_in">wavelet_fft</span>(n_padded, <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line">		<span class="type">double</span> norm_factor = std::<span class="built_in">pow</span>(M_PI, <span class="number">0.25</span>) * std::<span class="built_in">sqrt</span>(<span class="number">2.0</span> * scale); <span class="comment">// 标准因子</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; n_padded; ++k)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// Analytic Wavelet 只有正频率部分</span></span><br><span class="line">			<span class="keyword">if</span> (k &gt; <span class="number">0</span> &amp;&amp; k &lt; n_padded / <span class="number">2</span> + <span class="number">1</span>) <span class="comment">// omega[k] &gt; 0</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="type">double</span> sw = scale * omega[k];</span><br><span class="line">				<span class="type">double</span> exponent = <span class="number">-0.5</span> * std::<span class="built_in">pow</span>(sw - omega0, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 优化：太小的指数直接忽略</span></span><br><span class="line">				<span class="keyword">if</span> (exponent &gt; <span class="number">-20.0</span>) &#123;</span><br><span class="line">					<span class="comment">// 频域乘法: Signal_FFT * Wavelet_FFT</span></span><br><span class="line">					<span class="comment">// 乘以 (2/fs) 甚至更多是为了幅值恢复，这里先算标准定义</span></span><br><span class="line">					wavelet_fft[k] = sig_fft[k] * std::<span class="built_in">exp</span>(exponent);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// IFFT 变换回时域</span></span><br><span class="line">		std::vector&lt;std::complex&lt;<span class="type">double</span>&gt;&gt; time_domain_out;</span><br><span class="line">		fft.<span class="built_in">inv</span>(time_domain_out, wavelet_fft);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 截取原始长度并归一化</span></span><br><span class="line">		cwt_matrix[i].<span class="built_in">resize</span>(n);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 经验归一化系数，使得幅值看起来物理意义更强</span></span><br><span class="line">		<span class="comment">// CWT 的幅值物理意义比较复杂，通常看相对值</span></span><br><span class="line">		<span class="type">double</span> output_scale = std::<span class="built_in">sqrt</span>(scale) * (dw / std::<span class="built_in">sqrt</span>(<span class="number">2</span> * M_PI));</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> t = <span class="number">0</span>; t &lt; n; ++t) &#123;</span><br><span class="line">			cwt_matrix[i][t] = time_domain_out[t] * output_scale;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> cwt_matrix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页</strong><br><img src="home.png" alt="主页"><br><strong>主页布局</strong><br><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"></p>
+<p><strong>监测台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
+<p><strong>波形与时频分析瀑布图</strong><br><img src="波形与时频分析瀑布图.png" alt="台站显示"></p>
+<p><strong>异常信号检测</strong><br><img src="人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
+<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
+<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
+<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
+<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
+<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
+</ul>
+<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
+<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
+<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
+<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
+</ul>
+<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
+<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
+<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
+<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
+</ul>
+<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
+<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
+<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
+<li><strong>多维联动</strong>：<ul>
+<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
+<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
+<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
+<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
+<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
+</ul>
+<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
+<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
+<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
+<li><strong>交互操作</strong>：<ul>
+<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
+<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
+<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
+<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
+<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
+<li><strong>状态可视化</strong>：<ul>
+<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
+<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
+<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
+<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
+</ul>
+</li>
+<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
+</ul>
+<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
+<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
+<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
+</ul>
+<hr>
+<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:left">技术选型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>开发框架</strong></td>
+<td style="text-align:left">Qt 6.6.3 (C++)</td>
+<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>网络协议</strong></td>
+<td style="text-align:left">TCP / HTTP</td>
+<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据解析</strong></td>
+<td style="text-align:left">libmseed v3</td>
+<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>绘图引擎</strong></td>
+<td style="text-align:left">QCustomPlot 2.1</td>
+<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>地图引擎</strong></td>
+<td style="text-align:left">Qt Location / QML</td>
+<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据结构</strong></td>
+<td style="text-align:left">哈希表 (QHash)</td>
+<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
+<li><strong>启动连接</strong>：<ul>
+<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
+<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
+<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
+<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
+</ul>
+</li>
+<li><strong>调整视图</strong>：<ul>
+<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
+<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
+</ul>
+</li>
+<li><strong>信号处理</strong>：<ul>
+<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
+<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
+</ul>
+</li>
+<li><strong>设置预警</strong>：<ul>
+<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
+<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>信号处理</category>
+        <category>技术项目</category>
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>SignalProcessing</tag>
-        <tag>S-Transform</tag>
-        <tag>FFT</tag>
-        <tag>时频分析</tag>
+        <tag>SeisMonitor</tag>
+        <tag>seedlink</tag>
+        <tag>地震台站</tag>
+        <tag>信号监测</tag>
+        <tag>数据处理</tag>
+        <tag>数据分析</tag>
+        <tag>数据可视化</tag>
       </tags>
   </entry>
 </search>

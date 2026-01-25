@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="SeisMonitor - 实时地震台站监测系统技术文档简介SeisMonitor是一款基于Qt、C++开发的实时地震台站监测系统，主要用于对地震台站的信号进行实时监测、数据处理、数据分析、数据可视化，并提供数据导出功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Qt、C++的SeisMonitor实时地震台站监测模块">
+<meta property="og:url" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="冒牌書生的个人博客">
+<meta property="og:description" content="SeisMonitor - 实时地震台站监测系统技术文档简介SeisMonitor是一款基于Qt、C++开发的实时地震台站监测系统，主要用于对地震台站的信号进行实时监测、数据处理、数据分析、数据可视化，并提供数据导出功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/home.png">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/0_%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80_light.png">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/0_%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80_night.png">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E5%8F%B0%E7%AB%99%E6%98%BE%E7%A4%BA%E5%9C%B0%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%BD%A2%E4%B8%8E%E6%97%B6%E9%A2%91%E5%88%86%E6%9E%90%E7%80%91%E5%B8%83%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E4%BA%BA%E5%B7%A5%E4%BF%A1%E5%8F%B7%E5%9C%B0%E9%9C%87%E9%A2%84%E8%AD%A6%E6%B5%8B%E8%AF%95.png">
+<meta property="article:published_time" content="2026-01-20T04:51:31.000Z">
+<meta property="article:modified_time" content="2026-01-25T14:51:00.971Z">
+<meta property="article:author" content="XIAO YU">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="SeisMonitor">
+<meta property="article:tag" content="seedlink">
+<meta property="article:tag" content="信号监测">
+<meta property="article:tag" content="地震台站">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="数据可视化">
+<meta property="article:tag" content="数据处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/home.png">
+
+
+<link rel="canonical" href="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/","path":"2026/01/20/SeisMonitor实时地震台站监测系统技术文档/","title":"基于Qt、C++的SeisMonitor实时地震台站监测模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于Qt、C++的SeisMonitor实时地震台站监测模块 | 冒牌書生的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冒牌書生的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisMonitor-%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">SeisMonitor - 实时地震台站监测系统技术文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">界面展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0-Product-Overview"><span class="nav-number">2.1.</span> <span class="nav-text">1. 产品概述 (Product Overview)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BD%AF%E4%BB%B6%E7%89%B9%E7%82%B9%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF-Key-Features-amp-Advantages"><span class="nav-number">2.2.</span> <span class="nav-text">2. 软件特点与核心优势 (Key Features &amp; Advantages)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%AB%98%E6%80%A7%E8%83%BD%E5%AE%9E%E6%97%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 高性能实时渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%B8%93%E4%B8%9A%E7%BA%A7%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86-DSP-Pipeline"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 专业级信号处理 (DSP Pipeline)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%99%BA%E8%83%BD%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B-Smart-Detection"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 智能事件检测 (Smart Detection)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%8E%B0%E4%BB%A3%E4%BA%A4%E4%BA%92%E4%BD%93%E9%AA%8C-Modern-UX"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 现代交互体验 (Modern UX)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Functional-Modules"><span class="nav-number">2.3.</span> <span class="nav-text">3. 功能模块详解 (Functional Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%AE%A1%E7%90%86-Connection-Manager"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 数据连接与管理 (Connection Manager)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%9E%E6%97%B6%E6%B3%A2%E5%BD%A2%E8%A7%86%E5%9B%BE-Waveform-Viewer"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 实时波形视图 (Waveform Viewer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%85%A8%E7%90%83%E5%8F%B0%E7%AB%99%E5%9C%B0%E5%9B%BE-GIS-Module"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 全球台站地图 (GIS Module)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%95%B0%E6%8D%AE%E5%BD%95%E5%88%B6%E4%B8%8E%E6%97%A5%E5%BF%97-Recording-amp-Logging"><span class="nav-number">2.3.4.</span> <span class="nav-text">3.4 数据录制与日志 (Recording &amp; Logging)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-Technical-Architecture"><span class="nav-number">2.4.</span> <span class="nav-text">4. 技术架构 (Technical Architecture)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97-Quick-Start"><span class="nav-number">2.5.</span> <span class="nav-text">5. 快速操作指南 (Quick Start)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XIAO YU"
+      src="/images/xiaoyu_base.png">
+  <p class="site-author-name" itemprop="name">XIAO YU</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XiaoYu-1111" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XiaoYu-1111" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/324621201?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;324621201?spm_id_from&#x3D;333.1007.0.0" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/20/SeisMonitor%E5%AE%9E%E6%97%B6%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99%E7%9B%91%E6%B5%8B%E7%B3%BB%E7%BB%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaoyu_base.png">
+      <meta itemprop="name" content="XIAO YU">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于Qt、C++的SeisMonitor实时地震台站监测模块 | 冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Qt、C++的SeisMonitor实时地震台站监测模块
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-01-20 12:51:31" itemprop="dateCreated datePublished" datetime="2026-01-20T12:51:31+08:00">2026-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-25 22:51:00" itemprop="dateModified" datetime="2026-01-25T22:51:00+08:00">2026-01-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">技术项目</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="SeisMonitor-实时地震台站监测系统技术文档"><a href="#SeisMonitor-实时地震台站监测系统技术文档" class="headerlink" title="SeisMonitor - 实时地震台站监测系统技术文档"></a>SeisMonitor - 实时地震台站监测系统技术文档</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>SeisMonitor是一款基于Qt、C++开发的实时地震台站监测系统，主要用于对地震台站的信号进行实时监测、数据处理、数据分析、数据可视化，并提供数据导出功能。</p>
+<span id="more"></span>
+<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>主页</strong><br><img src="home.png" alt="主页"><br><strong>主页布局</strong><br><img src="0_主页面布局_light.png" alt="系统架构图light"><br><img src="0_主页面布局_night.png" alt="系统架构图night"></p>
+<p><strong>监测台站显示</strong><br><img src="台站显示地图.png" alt="台站显示"></p>
+<p><strong>波形与时频分析瀑布图</strong><br><img src="波形与时频分析瀑布图.png" alt="台站显示"></p>
+<p><strong>异常信号检测</strong><br><img src="人工信号地震预警测试.png" alt="人工信号地震预警测试"></p>
+<h2 id="1-产品概述-Product-Overview"><a href="#1-产品概述-Product-Overview" class="headerlink" title="1. 产品概述 (Product Overview)"></a>1. 产品概述 (Product Overview)</h2><p><strong>SeisMonitor</strong> 是一款基于 <strong>Qt 6 (C++)</strong> 和 <strong>OpenGL</strong> 技术构建的专业级地球物理数据监测终端。该软件专为地震学研究人员、台网监测人员及地球科学爱好者设计，支持通过国际通用的 <strong>SeedLink 协议</strong> 实时接入全球地震台网（如 GEOFON, IRIS 等），提供毫秒级延迟的波形显示、实时信号处理、时频分析及全球台站地理信息可视化功能。</p>
+<h2 id="2-软件特点与核心优势-Key-Features-amp-Advantages"><a href="#2-软件特点与核心优势-Key-Features-amp-Advantages" class="headerlink" title="2. 软件特点与核心优势 (Key Features &amp; Advantages)"></a>2. 软件特点与核心优势 (Key Features &amp; Advantages)</h2><h3 id="2-1-高性能实时渲染"><a href="#2-1-高性能实时渲染" class="headerlink" title="2.1 高性能实时渲染"></a>2.1 高性能实时渲染</h3><ul>
+<li><strong>极速绘图引擎</strong>：基于深度优化的 <code>QCustomPlot</code> 和 <code>QML</code> 技术，支持在大数据量下流畅显示三分量（Z/N/E）波形及高分辨率瀑布图。</li>
+<li><strong>低延迟架构</strong>：采用异步 TCP Socket 通信与双缓冲机制，确保数据包到达与屏幕刷新之间的延迟降至最低。</li>
+<li><strong>海量地图标记</strong>：利用 QML <code>Instantiator</code> 与纹理优化技术，实现在地图上流畅渲染 <strong>17,000+</strong> 个台站节点，支持毫秒级交互响应。</li>
+</ul>
+<h3 id="2-2-专业级信号处理-DSP-Pipeline"><a href="#2-2-专业级信号处理-DSP-Pipeline" class="headerlink" title="2.2 专业级信号处理 (DSP Pipeline)"></a>2.2 专业级信号处理 (DSP Pipeline)</h3><ul>
+<li><strong>实时滤波管道</strong>：内置 <strong>IIR 巴特沃斯滤波器</strong>（低通、高通、带通），支持用户动态调整截止频率，实时去除背景噪声。</li>
+<li><strong>基线校正</strong>：支持实时 <strong>去均值 (Demean)</strong>，自动消除仪器零漂，确保波形居中显示。</li>
+<li><strong>时频分析</strong>：集成实时 <strong>短时傅里叶变换 (STFT)</strong>，以瀑布图（Spectrogram）形式直观展示频率能量随时间的变化，辅助识别干扰信号（如 50Hz 工频干扰）。</li>
+</ul>
+<h3 id="2-3-智能事件检测-Smart-Detection"><a href="#2-3-智能事件检测-Smart-Detection" class="headerlink" title="2.3 智能事件检测 (Smart Detection)"></a>2.3 智能事件检测 (Smart Detection)</h3><ul>
+<li><strong>STA/LTA 触发算法</strong>：内置经典的短时/长时平均比法自动检测算法。</li>
+<li><strong>可视化报警</strong>：当地震发生时，波形图自动绘制 <strong>红色触发线 (ON)</strong> 和 <strong>绿色结束线 (OFF)</strong>，并在状态栏显示警报。</li>
+<li><strong>参数可调</strong>：支持用户针对不同环境噪声水平，实时调整 STA/LTA 窗口长度及触发阈值。</li>
+</ul>
+<h3 id="2-4-现代交互体验-Modern-UX"><a href="#2-4-现代交互体验-Modern-UX" class="headerlink" title="2.4 现代交互体验 (Modern UX)"></a>2.4 现代交互体验 (Modern UX)</h3><ul>
+<li><strong>Dock 布局系统</strong>：采用 Visual Studio 风格的可停靠窗口设计，用户可自由拖拽、重组波形图、地图、控制台和设置面板，支持多屏工作。</li>
+<li><strong>深色/浅色主题</strong>：内置专业的“科研白”与“暗黑监测”模式，适应白天办公与夜间值守场景，图表配色（如 Viridis, Turbo, Seismic）符合科学可视化标准。</li>
+<li><strong>多维联动</strong>：<ul>
+<li><strong>光标同步</strong>：在波形图上移动鼠标，Z/N/E 分量及瀑布图的光标线精准同步，便于对比相位。</li>
+<li><strong>图地联动</strong>：点击地图台站 -&gt; 自动切换数据流；切换数据流 -&gt; 地图自动高亮定位。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-功能模块详解-Functional-Modules"><a href="#3-功能模块详解-Functional-Modules" class="headerlink" title="3. 功能模块详解 (Functional Modules)"></a>3. 功能模块详解 (Functional Modules)</h2><h3 id="3-1-数据连接与管理-Connection-Manager"><a href="#3-1-数据连接与管理-Connection-Manager" class="headerlink" title="3.1 数据连接与管理 (Connection Manager)"></a>3.1 数据连接与管理 (Connection Manager)</h3><ul>
+<li><strong>多服务器预设</strong>：内置 GEOFON (德国)、IRIS (美国)、RESIF (欧洲) 等主流数据中心地址，支持一键切换。</li>
+<li><strong>FDSN 元数据同步</strong>：后台自动下载最新的台站经纬度信息，构建本地台站数据库。</li>
+<li><strong>智能列表</strong>：自动获取当前服务器可用的实时流列表，支持通过下拉框快速检索。</li>
+</ul>
+<h3 id="3-2-实时波形视图-Waveform-Viewer"><a href="#3-2-实时波形视图-Waveform-Viewer" class="headerlink" title="3.2 实时波形视图 (Waveform Viewer)"></a>3.2 实时波形视图 (Waveform Viewer)</h3><ul>
+<li><strong>三分量显示</strong>：独立显示垂直 (Z)、北向 (N)、东向 (E) 分量，支持独立或同步缩放。</li>
+<li><strong>自适应量程</strong>：支持 <strong>Auto-Scale</strong>（根据振幅自动调整 Y 轴）和手动指定量程（如 ±2000 Counts）。</li>
+<li><strong>交互操作</strong>：<ul>
+<li><strong>平移/缩放</strong>：鼠标拖拽平移，滚轮缩放时间轴。</li>
+<li><strong>数据框选</strong>：按住 Shift 键框选特定波形段进行高亮分析。</li>
+<li><strong>通道控制</strong>：可通过底部复选框快速隐藏/显示特定分量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-全球台站地图-GIS-Module"><a href="#3-3-全球台站地图-GIS-Module" class="headerlink" title="3.3 全球台站地图 (GIS Module)"></a>3.3 全球台站地图 (GIS Module)</h3><ul>
+<li><strong>混合地图源</strong>：集成高德地图（AutoNavi），支持 <strong>标准矢量图</strong> 和 <strong>卫星影像图</strong> 一键切换。</li>
+<li><strong>坐标纠偏</strong>：内置 <strong>WGS-84 到 GCJ-02</strong> 转换算法，确保中国境内台站位置与高德底图精准重合。</li>
+<li><strong>状态可视化</strong>：<ul>
+<li>🔴 <strong>红色三角形</strong>：离线台站（元数据存在，但无实时流）。</li>
+<li>🟢 <strong>绿色三角形</strong>：在线台站（服务器当前可用）。</li>
+<li>🟡 <strong>黄色三角形</strong>：当前正在监测的台站。</li>
+<li>🔵 <strong>青色高亮</strong>：鼠标选中的台站。</li>
+</ul>
+</li>
+<li><strong>性能优化</strong>：支持图层过滤（显示/隐藏离线台站），极大提升渲染性能。</li>
+</ul>
+<h3 id="3-4-数据录制与日志-Recording-amp-Logging"><a href="#3-4-数据录制与日志-Recording-amp-Logging" class="headerlink" title="3.4 数据录制与日志 (Recording &amp; Logging)"></a>3.4 数据录制与日志 (Recording &amp; Logging)</h3><ul>
+<li><strong>Mini-SEED 录制</strong>：支持将接收到的原始二进制数据包直接保存为标准的 <code>.mseed</code> 文件，兼容 ObsPy、SAC 等专业软件。</li>
+<li><strong>系统控制台</strong>：底部集成日志输出窗口，实时记录连接状态、数据包到达时间、采样率变更及触发事件，支持日志导出。</li>
+</ul>
+<hr>
+<h2 id="4-技术架构-Technical-Architecture"><a href="#4-技术架构-Technical-Architecture" class="headerlink" title="4. 技术架构 (Technical Architecture)"></a>4. 技术架构 (Technical Architecture)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:left">技术选型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>开发框架</strong></td>
+<td style="text-align:left">Qt 6.6.3 (C++)</td>
+<td style="text-align:left">跨平台 GUI 框架，利用信号槽机制实现模块解耦。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>网络协议</strong></td>
+<td style="text-align:left">TCP / HTTP</td>
+<td style="text-align:left"><code>QTcpSocket</code> 实现 SeedLink 协议；<code>QNetworkAccessManager</code> 实现 FDSN REST API 请求。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据解析</strong></td>
+<td style="text-align:left">libmseed v3</td>
+<td style="text-align:left">行业标准库，用于解析 Mini-SEED 格式及 Steim-2 压缩数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>绘图引擎</strong></td>
+<td style="text-align:left">QCustomPlot 2.1</td>
+<td style="text-align:left">定制化的高性能 2D 绘图库，支持 GPU 加速和图层管理。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>地图引擎</strong></td>
+<td style="text-align:left">Qt Location / QML</td>
+<td style="text-align:left">利用 OpenGL 硬件加速渲染地图瓦片和海量标记点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据结构</strong></td>
+<td style="text-align:left">哈希表 (QHash)</td>
+<td style="text-align:left">优化台站查找算法，将地图交互的时间复杂度从 O(N) 降至 O(1)。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="5-快速操作指南-Quick-Start"><a href="#5-快速操作指南-Quick-Start" class="headerlink" title="5. 快速操作指南 (Quick Start)"></a>5. 快速操作指南 (Quick Start)</h2><ol>
+<li><strong>启动连接</strong>：<ul>
+<li>在顶部工具栏选择服务器（如 “GEOFON”）。</li>
+<li>点击 <strong>“Get Stations”</strong> 获取可用台站列表。</li>
+<li>在下拉框中选择一个台站（或在地图上点击绿色三角形）。</li>
+<li>点击 <strong>“Start Stream”</strong> 开始接收数据。</li>
+</ul>
+</li>
+<li><strong>调整视图</strong>：<ul>
+<li>使用底部 <strong>“View Settings”</strong> 面板切换颜色主题或隐藏不需要的分量。</li>
+<li>使用 <strong>“Amplitude Scale”</strong> 调整波形振幅显示范围。</li>
+</ul>
+</li>
+<li><strong>信号处理</strong>：<ul>
+<li>在 <strong>“Signal Processing”</strong> 面板中，勾选 <strong>“Demean”</strong> 去除基线漂移。</li>
+<li>选择 <strong>“Bandpass”</strong>，设置频率为 <code>0.1</code> - <code>5.0</code> Hz，点击 <strong>“Apply”</strong> 以滤除噪声。</li>
+</ul>
+</li>
+<li><strong>设置预警</strong>：<ul>
+<li>在 <strong>“Event Trigger”</strong> 面板设置 <code>ON=4.0</code>, <code>OFF=1.5</code>。</li>
+<li>点击 <strong>“Set Trigger”</strong>。当地震发生时，系统将自动画红线并报警。</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/SeisMonitor/" rel="tag"># SeisMonitor</a>
+              <a href="/tags/seedlink/" rel="tag"># seedlink</a>
+              <a href="/tags/%E5%9C%B0%E9%9C%87%E5%8F%B0%E7%AB%99/" rel="tag"># 地震台站</a>
+              <a href="/tags/%E4%BF%A1%E5%8F%B7%E7%9B%91%E6%B5%8B/" rel="tag"># 信号监测</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="tag"># 数据处理</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag"># 数据可视化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/19/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/" rel="prev" title="基于Qt、C++的Seis_Simulation地震波场模拟软件">
+                  <i class="fa fa-angle-left"></i> 基于Qt、C++的Seis_Simulation地震波场模拟软件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="next" title="基于GPU Computer Shader的高性能弹性波场模拟软件">
+                  基于GPU Computer Shader的高性能弹性波场模拟软件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">XIAO YU</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
