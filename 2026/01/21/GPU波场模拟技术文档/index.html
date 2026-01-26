@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台简介HPEW-Sim 是一款基于 GPU 原生并行架构的高性能二维弹性波动力学模拟软件。它采用空间 8 阶 &#x2F; 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。该软件支持实时修改介质属性">
+    <meta name="description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator基于 GPU Compute Shader 的高阶精度弹性波场模拟与成像系统摘要 (Abstract)HPEW-Sim v3.0 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 Open">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于GPU Computer Shader的高性能弹性波场模拟软件">
+<meta property="og:title" content="基于 GPU 原生架构的高性能二维弹性波动力学模拟平台">
 <meta property="og:url" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台简介HPEW-Sim 是一款基于 GPU 原生并行架构的高性能二维弹性波动力学模拟软件。它采用空间 8 阶 &#x2F; 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。该软件支持实时修改介质属性">
+<meta property="og:description" content="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator基于 GPU Compute Shader 的高阶精度弹性波场模拟与成像系统摘要 (Abstract)HPEW-Sim v3.0 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 Open">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/main.png">
 <meta property="og:image" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/marmousi_model.png">
@@ -43,14 +43,13 @@
 <meta property="og:image" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/marmousi_model3.png">
 <meta property="og:image" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/%E6%A3%80%E6%B3%A2%E5%99%A8%E5%B8%83%E8%AE%BE.png">
 <meta property="article:published_time" content="2026-01-21T05:01:56.000Z">
-<meta property="article:modified_time" content="2026-01-25T15:00:40.107Z">
+<meta property="article:modified_time" content="2026-01-26T05:15:10.672Z">
 <meta property="article:author" content="XIAO YU">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Computer Shader">
-<meta property="article:tag" content="GPU">
-<meta property="article:tag" content="Imgui">
-<meta property="article:tag" content="OpenGL">
-<meta property="article:tag" content="Wave Simulator">
+<meta property="article:tag" content="Computational Geophysics">
+<meta property="article:tag" content="Elastic Wave">
+<meta property="article:tag" content="FDTD">
+<meta property="article:tag" content="GPU Computing">
+<meta property="article:tag" content="Visualization">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/main.png">
 
@@ -58,10 +57,10 @@
 <link rel="canonical" href="http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/","path":"2026/01/21/GPU波场模拟技术文档/","title":"基于GPU Computer Shader的高性能弹性波场模拟软件"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/","path":"2026/01/21/GPU波场模拟技术文档/","title":"基于 GPU 原生架构的高性能二维弹性波动力学模拟平台"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>基于GPU Computer Shader的高性能弹性波场模拟软件 | 冒牌書生的个人博客</title>
+<title>基于 GPU 原生架构的高性能二维弹性波动力学模拟平台 | 冒牌書生的个人博客</title>
   
 
 
@@ -187,7 +186,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><span class="nav-number">1.</span> <span class="nav-text">HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E5%BC%B9%E6%80%A7%E6%B3%A2%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F-%E5%9F%BA%E4%BA%8EGPU-Computer-Shader-%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.</span> <span class="nav-text">高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">界面展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0-System-Overview"><span class="nav-number">3.1.</span> <span class="nav-text">1. 系统概述 (System Overview)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC-Core-Value"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 核心价值 (Core Value)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7%E6%B8%85%E5%8D%95-Feature-List"><span class="nav-number">3.1.2.</span> <span class="nav-text">1.2 关键特性清单 (Feature List)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%89%A9%E7%90%86%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86-Physics-amp-Mathematics"><span class="nav-number">3.2.</span> <span class="nav-text">2. 物理与数学原理 (Physics &amp; Mathematics)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8E%A7%E5%88%B6%E6%96%B9%E7%A8%8B-Governing-Equations"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 控制方程 (Governing Equations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%AB%98%E9%98%B6%E6%95%B0%E5%80%BC%E7%A6%BB%E6%95%A3-Numerical-Scheme"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 高阶数值离散 (Numerical Scheme)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6-Boundary-Conditions"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.3 边界条件 (Boundary Conditions)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C-User-Manual"><span class="nav-number">3.3.</span> <span class="nav-text">3. 用户操作手册 (User Manual)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%95%8C%E9%9D%A2%E6%A6%82%E8%A7%88-Interface-Layout"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.1 界面概览 (Interface Layout)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9F%E6%9F%A5-Shortcuts"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.2 快捷键速查 (Shortcuts)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%B7%A5%E5%85%B7%E6%A8%A1%E5%BC%8F-Tool-Modes-%E6%95%B0%E5%AD%97%E9%94%AE-1-8"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3 工具模式 (Tool Modes - 数字键 1-8)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Feature-Modules"><span class="nav-number">3.4.</span> <span class="nav-text">4. 功能模块详解 (Feature Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Simulation-%E6%A8%A1%E6%8B%9F%E6%A0%B8%E5%BF%83%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.4.1.</span> <span class="nav-text">A. Simulation (模拟核心设置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Data-Export-%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F-%E6%A0%B8%E5%BF%83"><span class="nav-number">3.4.2.</span> <span class="nav-text">B. Data Export (数据采集系统 - 核心)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Random-Source-%E9%9A%8F%E6%9C%BA%E9%9C%87%E6%BA%90-%E5%BE%AE%E9%9C%87"><span class="nav-number">3.4.3.</span> <span class="nav-text">C. Random Source (随机震源&#x2F;微震)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Visualization-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">3.4.4.</span> <span class="nav-text">D. Visualization (可视化)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%B8%E5%9E%8B%E5%B7%A5%E4%BD%9C%E6%B5%81-Workflows"><span class="nav-number">3.5.</span> <span class="nav-text">5. 典型工作流 (Workflows)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-A%EF%BC%9A%E5%90%88%E6%88%90%E5%9C%B0%E9%9C%87%E8%AE%B0%E5%BD%95%E7%94%9F%E6%88%90-Seismic-Data-Acquisition"><span class="nav-number">3.5.1.</span> <span class="nav-text">场景 A：合成地震记录生成 (Seismic Data Acquisition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-B%EF%BC%9A%E5%A4%8D%E6%9D%82%E4%BB%8B%E8%B4%A8%E6%B3%A2%E5%9C%BA%E4%BC%A0%E6%92%AD%E6%95%99%E5%AD%A6"><span class="nav-number">3.5.2.</span> <span class="nav-text">场景 B：复杂介质波场传播教学</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4-Troubleshooting"><span class="nav-number">3.6.</span> <span class="nav-text">6. 故障排除 (Troubleshooting)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%BA%94%E7%94%A8%E5%89%8D%E6%99%AF-Applications"><span class="nav-number">3.7.</span> <span class="nav-text">7. 应用前景 (Applications)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><span class="nav-number">1.</span> <span class="nav-text">HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-GPU-Compute-Shader-%E7%9A%84%E9%AB%98%E9%98%B6%E7%B2%BE%E5%BA%A6%E5%BC%B9%E6%80%A7%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%88%90%E5%83%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">基于 GPU Compute Shader 的高阶精度弹性波场模拟与成像系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81-Abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">摘要 (Abstract)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA-Interface-Gallery"><span class="nav-number">2.</span> <span class="nav-text">界面展示 (Interface Gallery)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-Core-Technology-Architecture"><span class="nav-number">2.1.</span> <span class="nav-text">1. 核心技术架构 (Core Technology Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%AB%98%E9%98%B6%E6%95%B0%E5%80%BC%E7%A6%BB%E6%95%A3%E5%86%85%E6%A0%B8-High-Order-Numerical-Kernel"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 高阶数值离散内核 (High-Order Numerical Kernel)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-GPU-%E5%8E%9F%E7%94%9F%E5%B9%B6%E8%A1%8C%E5%8A%A0%E9%80%9F-GPU-Parallel-Acceleration"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 GPU 原生并行加速 (GPU Parallel Acceleration)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%85%A8%E6%B3%A2%E5%9C%BA%E7%89%A9%E7%90%86%E6%B1%82%E8%A7%A3-Full-Wavefield-Physics"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 全波场物理求解 (Full-Wavefield Physics)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3-Functional-Modules"><span class="nav-number">2.2.</span> <span class="nav-text">2. 功能模块详解 (Functional Modules)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%AD%A3%E6%BC%94%E6%A8%A1%E6%8B%9F%E4%B8%8E%E5%8F%8D%E6%BC%94%E6%88%90%E5%83%8F-Forward-Modeling-amp-RTM"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 正演模拟与反演成像 (Forward Modeling &amp; RTM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E4%B8%8E%E8%A7%82%E6%B5%8B%E7%B3%BB%E7%BB%9F-Data-Acquisition"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 数据采集与观测系统 (Data Acquisition)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E9%9C%87%E6%BA%90%E7%B3%BB%E7%BB%9F-Source-System"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 震源系统 (Source System)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1-Visualization-amp-Interaction"><span class="nav-number">2.3.</span> <span class="nav-text">3. 可视化与交互设计 (Visualization &amp; Interaction)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A4%9A%E7%BB%B4%E6%B3%A2%E5%9C%BA%E5%88%86%E6%9E%90"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 多维波场分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%89%BA%E6%9C%AF%E5%8C%96%E7%A7%91%E5%AD%A6%E6%B8%B2%E6%9F%93-Scientific-amp-Artistic-Rendering"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 艺术化科学渲染 (Scientific &amp; Artistic Rendering)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%BB%BA%E6%A8%A1-Interactive-Modeling"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 交互式建模 (Interactive Modeling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%BF%9D%E9%9A%9C-System-Stability"><span class="nav-number">2.4.</span> <span class="nav-text">4. 系统稳定性保障 (System Stability)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86-Mathematical-Formulation"><span class="nav-number">2.5.</span> <span class="nav-text">5. 数学原理 (Mathematical Formulation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%8E%A7%E5%88%B6%E6%96%B9%E7%A8%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text">5.1 控制方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%95%B0%E5%80%BC%E7%A6%BB%E6%95%A3%E6%96%B9%E6%A1%88"><span class="nav-number">2.5.2.</span> <span class="nav-text">5.2 数值离散方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%BA%94%E7%94%A8%E5%89%8D%E6%99%AF-Potential-Applications"><span class="nav-number">2.6.</span> <span class="nav-text">6. 应用前景 (Potential Applications)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +207,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -265,12 +264,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="基于GPU Computer Shader的高性能弹性波场模拟软件 | 冒牌書生的个人博客">
+      <meta itemprop="name" content="基于 GPU 原生架构的高性能二维弹性波动力学模拟平台 | 冒牌書生的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          基于GPU Computer Shader的高性能弹性波场模拟软件
+          基于 GPU 原生架构的高性能二维弹性波动力学模拟平台
         </h1>
 
         <div class="post-meta-container">
@@ -288,7 +287,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-25 23:00:40" itemprop="dateModified" datetime="2026-01-25T23:00:40+08:00">2026-01-25</time>
+      <time title="修改时间：2026-01-26 13:15:10" itemprop="dateModified" datetime="2026-01-26T13:15:10+08:00">2026-01-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,7 +295,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">技术项目</span></a>
+          <a href="/categories/%E5%AD%A6%E6%9C%AF%E7%A0%94%E7%A9%B6%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">学术研究与技术项目</span></a>
         </span>
     </span>
 
@@ -316,371 +315,93 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</h1><h1 id="高性能弹性波动力学波场模拟-基于GPU-Computer-Shader-与可视化平台"><a href="#高性能弹性波动力学波场模拟-基于GPU-Computer-Shader-与可视化平台" class="headerlink" title="高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台"></a>高性能弹性波动力学波场模拟(基于GPU Computer Shader)与可视化平台</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>HPEW-Sim 是一款基于 GPU 原生并行架构的高性能二维弹性波动力学模拟软件。它采用空间 8 阶 / 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。该软件支持实时修改介质属性（$V_p, V_s, \rho$），内置高精度合成地震记录系统，支持大规模阵列数据采集与导出。<br>HPEW-Sim 还支持多种可视化技术，包括速度/应力场切换、P/S 波场分离、实时频谱分析（FFT）、多种科学/艺术色谱。它还支持多种震源类型，包括单点脉冲、线震源、随机微震源、旋转定向力源（Tensor Rotation）。<br>HPEW-Sim 还具备稳定性保障，采用硬件级数值溢出检测（Explosion Detection）、自动熔断与参数修正等技术，确保模拟结果的可靠性。<br>HPEW-Sim 还支持模型导入/导出、地震数据SEGY格式导出、4K 序列帧录制、实时截图等功能，为地球物理勘探、地震学研究及波动物理教学提供一站式解决方案。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator"><a href="#HPEW-Sim-v3-0-High-Performance-Elastic-Wave-Simulator" class="headerlink" title="HPEW-Sim v3.0: High-Performance Elastic Wave Simulator"></a>HPEW-Sim v3.0: High-Performance Elastic Wave Simulator</h1><h2 id="基于-GPU-Compute-Shader-的高阶精度弹性波场模拟与成像系统"><a href="#基于-GPU-Compute-Shader-的高阶精度弹性波场模拟与成像系统" class="headerlink" title="基于 GPU Compute Shader 的高阶精度弹性波场模拟与成像系统"></a>基于 GPU Compute Shader 的高阶精度弹性波场模拟与成像系统</h2><h3 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h3><p><strong>HPEW-Sim v3.0</strong> 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 <strong>OpenGL Compute Shader</strong> 的 <strong>GPU 原生并行架构</strong>，实现了在千万级网格规模(实现了在 <strong>1600 万 (1.6 $\times$ 10^7)</strong> 网格节点规模)下的实时、高精度弹性波场模拟。系统内核集成了空间 8 阶/时间 2 阶交错网格有限差分（FDTD）算法，有效抑制了数值频散。此外，平台融合了逆时偏移（RTM）成像、实时波场分离及艺术化渲染技术，为复杂介质中的波传播研究提供了一站式的高性能解决方案。</p>
 <span id="more"></span>
-<h1 id="界面展示"><a href="#界面展示" class="headerlink" title="界面展示"></a>界面展示</h1><p><strong>欢迎页面</strong><br><img src="main.png" alt="欢迎页面"><br><strong>模拟主界面</strong><br><img src="marmousi_model.png" alt="marmousi_model"><br><strong>模拟参数调整面板</strong><br><img src="sim_parmeter.png" alt="sim_parmeter"><br><strong>重采样后marmousi模型显示</strong><br><img src="marmousi_c2.png" alt="marmousi_c2"><br><strong>模拟计算速度展示（英伟达 GeForce RTX4060笔记本电脑显卡）, 512x512分辨率下2000+fps</strong><br><strong>实时计算+渲染</strong><br><strong>在长时间模拟下子波波形稳点性良好，未发生频散</strong><br><img src="计算速度测试_512_512.png" alt="计算速度测试_512_512"><br><strong>在不同模型下模拟计算速度对比</strong><br><strong>2048x2048分辨率下稳定240+fps，4096x4096分辨率下稳定60+fps</strong><br><img src="计算速度测试_对比图.png" alt="计算速度测试_对比图"></p>
-<p><strong>内置数据导出与可视化</strong><br><img src="data_analyse.png" alt="data_analyse"><br><strong>marmousi模型波场导出与可视化</strong><br><img src="marmousi_record_vz_snap.png" alt="marmousi_record_vz_snap"><br><strong>marmousi模型模拟地震记录与可视化</strong><br><img src="marmousi_record_vz.png" alt="marmousi_record_vz"><br><strong>不同类型震源激发(主频100Hz)</strong><br><img src="不同类型震源激发.png" alt="不同类型震源激发"><br><strong>实时交互_鼠标点击位置作为震源进行激发</strong><br><img src="鼠标连续激发.png" alt="鼠标连续激发"><br><strong>基于marmousi模型的正演模拟</strong><br><img src="marmousi_model3.png" alt="模拟过程"><br><strong>检波器布设+曲界面模型模拟</strong><br><img src="检波器布设.png" alt="检波器布设"></p>
-<h2 id="1-系统概述-System-Overview"><a href="#1-系统概述-System-Overview" class="headerlink" title="1. 系统概述 (System Overview)"></a><strong>1. 系统概述 (System Overview)</strong></h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为地球物理勘探、地震学研究及波动物理教学打造的下一代数值模拟平台。它采用 <strong>GPU 原生并行架构</strong>，突破了传统 CPU 串行计算的性能瓶颈，实现了百万级网格规模下的实时弹性波场模拟。</p>
-<h3 id="1-1-核心价值-Core-Value"><a href="#1-1-核心价值-Core-Value" class="headerlink" title="1.1 核心价值 (Core Value)"></a><strong>1.1 核心价值 (Core Value)</strong></h3><ul>
-<li><strong>科研级精度</strong>: 空间 8 阶 / 时间 2 阶交错网格有限差分格式（FDTD），将数值频散降至理论极限。</li>
-<li><strong>交互式建模</strong>: 所见即所得的地质模型编辑系统，支持实时修改介质属性（$V_p, V_s, \rho$）。</li>
-<li><strong>工业级采集</strong>: 内置高精度合成地震记录系统，支持大规模阵列数据采集与导出。</li>
-<li><strong>艺术化呈现</strong>: 独创“梵高星空”流体渲染技术，将枯燥的物理数据转化为极具美感的视觉艺术。</li>
-</ul>
-<h3 id="1-2-关键特性清单-Feature-List"><a href="#1-2-关键特性清单-Feature-List" class="headerlink" title="1.2 关键特性清单 (Feature List)"></a><strong>1.2 关键特性清单 (Feature List)</strong></h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模块</th>
-<th style="text-align:left">功能亮点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>计算内核</strong></td>
-<td style="text-align:left">OpenGL 4.3 Compute Shader, 单帧并行处理 &gt;1M 节点, 零拷贝渲染架构。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>物理引擎</strong></td>
-<td style="text-align:left">完整弹性波方程 (P+S波), CPML 吸收边界, 自由表面 (Free Surface), 刚性反射边界。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>震源系统</strong></td>
-<td style="text-align:left">单点脉冲, 线震源, 随机微震源, 旋转定向力源 (Tensor Rotation)。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>可视化</strong></td>
-<td style="text-align:left">速度/应力场切换, P/S 波场分离, 实时频谱分析 (FFT), 多种科学/艺术色谱。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>数据 I/O</strong></td>
-<td style="text-align:left">模型导入/导出, 地震数据 CSV 导出, 4K 序列帧录制, 实时截图。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>稳定性</strong></td>
-<td style="text-align:left">硬件级数值溢出检测 (Explosion Detection), 自动熔断与参数修正。</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
-<h2 id="2-物理与数学原理-Physics-amp-Mathematics"><a href="#2-物理与数学原理-Physics-amp-Mathematics" class="headerlink" title="2. 物理与数学原理 (Physics &amp; Mathematics)"></a><strong>2. 物理与数学原理 (Physics &amp; Mathematics)</strong></h2><p>本系统求解的是二维非均匀、各向同性介质中的<strong>一阶速度-应力弹性波方程</strong>（Velocity-Stress Elastic Wave Equation）。</p>
-<h3 id="2-1-控制方程-Governing-Equations"><a href="#2-1-控制方程-Governing-Equations" class="headerlink" title="2.1 控制方程 (Governing Equations)"></a><strong>2.1 控制方程 (Governing Equations)</strong></h3><p>在二维笛卡尔坐标系 $(x, z)$ 下（对应软件中的 x 和 y，向下为正），方程组由牛顿第二定律（运动方程）和广义胡克定律（本构方程）组成：</p>
+<h1 id="界面展示-Interface-Gallery"><a href="#界面展示-Interface-Gallery" class="headerlink" title="界面展示 (Interface Gallery)"></a>界面展示 (Interface Gallery)</h1><p><strong>欢迎页面</strong><br><img src="main.png" alt="欢迎页面"><br><strong>模拟主界面</strong><br><img src="marmousi_model.png" alt="marmousi_model"><br><strong>模拟参数调整面板</strong><br><img src="sim_parmeter.png" alt="sim_parmeter"><br><strong>重采样后 Marmousi 模型显示</strong><br><img src="marmousi_c2.png" alt="marmousi_c2"><br><strong>模拟计算性能展示（NVIDIA GeForce RTX 4060 Laptop GPU）</strong><br><em>512x512 分辨率下帧率超过 2000 FPS，长时模拟无数值频散。</em><br><img src="计算速度测试_512_512.png" alt="计算速度测试_512_512"><br><strong>多尺度模型计算性能对比</strong><br><em>2048x2048 分辨率下稳定 240+ FPS，4096x4096 分辨率下稳定 60+ FPS。</em><br><img src="计算速度测试_对比图.png" alt="计算速度测试_对比图"></p>
+<p><strong>内置数据分析模块</strong><br><img src="data_analyse.png" alt="data_analyse"><br><strong>Marmousi 模型波场快照与可视化</strong><br><img src="marmousi_record_vz_snap.png" alt="marmousi_record_vz_snap"><br><strong>Marmousi 模型合成地震记录</strong><br><img src="marmousi_record_vz.png" alt="marmousi_record_vz"><br><strong>不同类型震源激发对比 (主频 100Hz)</strong><br><img src="不同类型震源激发.png" alt="不同类型震源激发"><br><strong>实时交互：鼠标点源激发</strong><br><img src="鼠标连续激发.png" alt="鼠标连续激发"><br><strong>Marmousi 模型正演模拟过程</strong><br><img src="marmousi_model3.png" alt="模拟过程"><br><strong>检波器阵列布设与曲界面模型模拟</strong><br><img src="检波器布设.png" alt="检波器布设"></p>
+<hr>
+<h2 id="1-核心技术架构-Core-Technology-Architecture"><a href="#1-核心技术架构-Core-Technology-Architecture" class="headerlink" title="1. 核心技术架构 (Core Technology Architecture)"></a>1. 核心技术架构 (Core Technology Architecture)</h2><p>本系统并非简单的数值求解器，而是一个集成了高性能计算（HPC）、交互式建模与科学可视化的综合平台。</p>
+<h3 id="1-1-高阶数值离散内核-High-Order-Numerical-Kernel"><a href="#1-1-高阶数值离散内核-High-Order-Numerical-Kernel" class="headerlink" title="1.1 高阶数值离散内核 (High-Order Numerical Kernel)"></a>1.1 高阶数值离散内核 (High-Order Numerical Kernel)</h3><p>为了在有限的计算资源下获得极高的模拟精度，本系统采用了 <strong>高阶交错网格有限差分 (Staggered-Grid FDTD)</strong> 格式：</p>
+<ul>
+<li><strong>空间离散</strong>：采用 <strong>8 阶精度 (8th-Order)</strong> 中心差分算子。相比传统的 2 阶或 4 阶格式，该算法在长距离波场传播中能将<strong>数值频散 (Numerical Dispersion)</strong> 降至理论极限，显著提升了波形的保真度。</li>
+<li><strong>时间推进</strong>：采用 <strong>2 阶精度</strong> 的蛙跳格式 (Leapfrog Integration)，确保了计算的稳定性与效率。</li>
+</ul>
+<h3 id="1-2-GPU-原生并行加速-GPU-Parallel-Acceleration"><a href="#1-2-GPU-原生并行加速-GPU-Parallel-Acceleration" class="headerlink" title="1.2 GPU 原生并行加速 (GPU Parallel Acceleration)"></a>1.2 GPU 原生并行加速 (GPU Parallel Acceleration)</h3><p>系统底层完全基于 <strong>OpenGL 4.3+ Compute Shader</strong> 构建，充分利用现代显卡的大规模并行算力：</p>
+<ul>
+<li><strong>细粒度并行</strong>：每个网格节点对应一个 GPU 线程，单帧并行处理能力超过 $10^6$ 个节点。</li>
+<li><strong>零拷贝渲染</strong>：物理计算与图形渲染共享显存数据，避免了 CPU-GPU 之间的高延迟数据传输，实现了毫秒级的物理步进与可视化。</li>
+</ul>
+<h3 id="1-3-全波场物理求解-Full-Wavefield-Physics"><a href="#1-3-全波场物理求解-Full-Wavefield-Physics" class="headerlink" title="1.3 全波场物理求解 (Full-Wavefield Physics)"></a>1.3 全波场物理求解 (Full-Wavefield Physics)</h3><p>求解完整的一阶速度-应力弹性波方程组，支持复杂介质中的多波型耦合传播：</p>
+<ul>
+<li><strong>纵波 ($V_p$) 与 横波 ($V_s$)</strong> 的独立传播与相互转换。</li>
+<li><strong>瑞利面波 (Rayleigh Wave)</strong>：通过精确的<strong>自由表面 (Free Surface)</strong> 边界条件（法向应力归零），准确模拟沿地表传播的面波效应。</li>
+<li><strong>CPML 吸收边界</strong>：引入卷积完美匹配层（Convolutional Perfectly Matched Layer），有效消除截断边界的人工反射。</li>
+</ul>
+<hr>
+<h2 id="2-功能模块详解-Functional-Modules"><a href="#2-功能模块详解-Functional-Modules" class="headerlink" title="2. 功能模块详解 (Functional Modules)"></a>2. 功能模块详解 (Functional Modules)</h2><h3 id="2-1-正演模拟与反演成像-Forward-Modeling-amp-RTM"><a href="#2-1-正演模拟与反演成像-Forward-Modeling-amp-RTM" class="headerlink" title="2.1 正演模拟与反演成像 (Forward Modeling &amp; RTM)"></a>2.1 正演模拟与反演成像 (Forward Modeling &amp; RTM)</h3><ul>
+<li><strong>复杂介质正演</strong>：支持在层状介质、断层、空洞等复杂地质模型中进行波场传播模拟。</li>
+<li><strong>逆时偏移成像 (RTM)</strong>：集成了完整的 RTM 流程，包括正演波场存储、反向传播与互相关成像条件。引入 <strong>拉普拉斯滤波 (Laplacian Filtering)</strong> 技术，有效压制低频噪声，显著提升地下反射结构的成像分辨率。</li>
+</ul>
+<h3 id="2-2-数据采集与观测系统-Data-Acquisition"><a href="#2-2-数据采集与观测系统-Data-Acquisition" class="headerlink" title="2.2 数据采集与观测系统 (Data Acquisition)"></a>2.2 数据采集与观测系统 (Data Acquisition)</h3><p>内置高精度合成地震记录系统，支持灵活的观测系统设计：</p>
+<ul>
+<li><strong>自定义阵列</strong>：支持自定义检波器的位置、深度及道数。</li>
+<li><strong>工业级导出</strong>：支持生成标准地震剖面，并可导出为 <strong>CSV</strong> 或工业标准 <strong>SEGY</strong> 格式，便于后续处理与分析。</li>
+</ul>
+<h3 id="2-3-震源系统-Source-System"><a href="#2-3-震源系统-Source-System" class="headerlink" title="2.3 震源系统 (Source System)"></a>2.3 震源系统 (Source System)</h3><ul>
+<li><strong>多样化震源</strong>：支持单点脉冲、线性震源、爆炸源及<strong>旋转定向力源 (Tensor Rotation)</strong>，可模拟不同类型的震源机制。</li>
+<li><strong>随机微震模拟</strong>：支持在指定区域内生成随机时空的微震事件，用于模拟声发射或诱发地震序列。</li>
+</ul>
+<hr>
+<h2 id="3-可视化与交互设计-Visualization-amp-Interaction"><a href="#3-可视化与交互设计-Visualization-amp-Interaction" class="headerlink" title="3. 可视化与交互设计 (Visualization &amp; Interaction)"></a>3. 可视化与交互设计 (Visualization &amp; Interaction)</h2><h3 id="3-1-多维波场分析"><a href="#3-1-多维波场分析" class="headerlink" title="3.1 多维波场分析"></a>3.1 多维波场分析</h3><p>系统提供了丰富的波场属性查看模式：</p>
+<ul>
+<li><strong>分量切换</strong>：实时切换显示速度场 ($V<em>x, V_y$) 或应力场 ($\sigma</em>{xx}, \sigma<em>{zz}, \sigma</em>{xz}$)。</li>
+<li><strong>波场分离</strong>：基于散度 ($\nabla \cdot \mathbf{v}$) 和旋度 ($\nabla \times \mathbf{v}$) 算子，实时分离并显示纯 P 波与纯 S 波。</li>
+<li><strong>频谱分析</strong>：内置实时 FFT 频谱分析模块，用于监测波场的频率成分。</li>
+</ul>
+<h3 id="3-2-艺术化科学渲染-Scientific-amp-Artistic-Rendering"><a href="#3-2-艺术化科学渲染-Scientific-amp-Artistic-Rendering" class="headerlink" title="3.2 艺术化科学渲染 (Scientific &amp; Artistic Rendering)"></a>3.2 艺术化科学渲染 (Scientific &amp; Artistic Rendering)</h3><p>独创多种渲染模式，兼顾科学性与审美：</p>
+<ul>
+<li><strong>Magma 热力图</strong>：高对比度显示波场能量分布。</li>
+<li><strong>Van Gogh 星空模式</strong>：利用流线与厚涂质感算法，直观展示波前的传播方向与动态流场，具有极高的教学演示价值。</li>
+</ul>
+<h3 id="3-3-交互式建模-Interactive-Modeling"><a href="#3-3-交互式建模-Interactive-Modeling" class="headerlink" title="3.3 交互式建模 (Interactive Modeling)"></a>3.3 交互式建模 (Interactive Modeling)</h3><p>摒弃了传统的脚本建模方式，提供所见即所得的交互工具：</p>
+<ul>
+<li><strong>画笔工具</strong>：支持直接在网格上绘制高速岩体、低速流体或反射壁。</li>
+<li><strong>参数实时修正</strong>：在模拟运行过程中，可实时修改介质的物理属性 ($V_p, V_s, \rho$)，即时观察波场响应的变化。</li>
+</ul>
+<hr>
+<h2 id="4-系统稳定性保障-System-Stability"><a href="#4-系统稳定性保障-System-Stability" class="headerlink" title="4. 系统稳定性保障 (System Stability)"></a>4. 系统稳定性保障 (System Stability)</h2><p>针对高阶差分算法对时间步长 ($dt$) 的敏感性，系统构建了多重稳定性保障机制：</p>
+<ul>
+<li><strong>数值溢出检测 (Explosion Detection)</strong>：通过硬件级原子操作实时监控计算结果。</li>
+<li><strong>自动熔断机制</strong>：一旦检测到数值发散（NaN 或 Infinity），系统将自动暂停模拟并提示参数修正建议，防止显卡驱动崩溃。</li>
+</ul>
+<hr>
+<h2 id="5-数学原理-Mathematical-Formulation"><a href="#5-数学原理-Mathematical-Formulation" class="headerlink" title="5. 数学原理 (Mathematical Formulation)"></a>5. 数学原理 (Mathematical Formulation)</h2><h3 id="5-1-控制方程"><a href="#5-1-控制方程" class="headerlink" title="5.1 控制方程"></a>5.1 控制方程</h3><p>在二维笛卡尔坐标系 $(x, z)$ 下，弹性波传播遵循以下守恒定律：</p>
 <p><strong>A. 运动方程 (Momentum Equations):</strong><br>描述质点加速度与应力梯度的关系：</p>
 <script type="math/tex; mode=display">\rho \frac{\partial v_x}{\partial t} = \frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \sigma_{xz}}{\partial z} + f_x</script><script type="math/tex; mode=display">\rho \frac{\partial v_z}{\partial t} = \frac{\partial \sigma_{xz}}{\partial x} + \frac{\partial \sigma_{zz}}{\partial z} + f_z</script><p><strong>B. 本构方程 (Constitutive Equations):</strong><br>描述应力变化率与应变率（速度梯度）的关系：</p>
-<script type="math/tex; mode=display">\frac{\partial \sigma_{xx}}{\partial t} = (\lambda + 2\mu)\frac{\partial v_x}{\partial x} + \lambda\frac{\partial v_z}{\partial z}</script><script type="math/tex; mode=display">\frac{\partial \sigma_{zz}}{\partial t} = \lambda\frac{\partial v_x}{\partial x} + (\lambda + 2\mu)\frac{\partial v_z}{\partial z}</script><script type="math/tex; mode=display">\frac{\partial \sigma_{xz}}{\partial t} = \mu (\frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x})</script><p><strong>参数定义</strong>:</p>
-<ul>
-<li>$v_x, v_z$: 质点振动速度矢量 (Velocity Vector)。</li>
-<li>$\sigma<em>{xx}, \sigma</em>{zz}$: 正应力分量 (Normal Stress)。</li>
-<li>$\sigma_{xz}$: 剪切应力分量 (Shear Stress)。</li>
-<li>$\rho$: 介质密度。</li>
-<li>$\lambda, \mu$: 拉梅常数 (Lamé parameters)，由纵波速度 $V_p$ 和横波速度 $V_s$ 导出：<ul>
-<li>$\mu = \rho V_s^2$</li>
-<li>$\lambda = \rho V_p^2 - 2\mu$</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-2-高阶数值离散-Numerical-Scheme"><a href="#2-2-高阶数值离散-Numerical-Scheme" class="headerlink" title="2.2 高阶数值离散 (Numerical Scheme)"></a><strong>2.2 高阶数值离散 (Numerical Scheme)</strong></h3><p>为了在有限算力下获得最高精度，系统采用了 <strong>交错网格 (Staggered Grid)</strong> 技术。</p>
-<ol>
-<li><p><strong>网格布局</strong>:</p>
-<ul>
-<li>速度分量 $(v<em>x, v_z)$ 与应力分量 $(\sigma</em>{ij})$ 在空间上交错半个网格步长分布。</li>
-<li>这种布局天然满足中心差分格式，具有更高的数值稳定性，且能自然处理泊松比差异大的介质界面。</li>
-</ul>
-</li>
-<li><p><strong>空间 8 阶精度 (8th-Order Spatial Accuracy)</strong>:</p>
-<ul>
-<li>在计算空间导数时，利用目标点周围 <strong>8 个</strong> 网格点的信息进行加权求和。</li>
-<li><strong>差分算子</strong>: $\frac{\partial f}{\partial x} \approx \frac{1}{\Delta x} \sum_{n=1}^{4} C_n [f(x + \frac{2n-1}{2}\Delta x) - f(x - \frac{2n-1}{2}\Delta x)]$</li>
-<li><strong>系数</strong>: $C_1 \approx 1.19629, C_2 \approx -0.07975, C_3 \approx 0.00957, C_4 \approx -0.00069$。</li>
-<li><strong>优势</strong>: 相比传统的 2 阶或 4 阶精度，8 阶精度能显著抑制<strong>数值频散 (Numerical Dispersion)</strong>，使得波在长距离传播后依然保持清晰的波形，不发生畸变。</li>
-</ul>
-</li>
-<li><p><strong>时间 2 阶精度 (Leapfrog Integration)</strong>:</p>
-<ul>
-<li>采用时间交错更新策略：$t$ 时刻更新速度 $\rightarrow$ $t+0.5$ 时刻更新应力 $\rightarrow$ $t+1$ 时刻更新速度。</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-3-边界条件-Boundary-Conditions"><a href="#2-3-边界条件-Boundary-Conditions" class="headerlink" title="2.3 边界条件 (Boundary Conditions)"></a><strong>2.3 边界条件 (Boundary Conditions)</strong></h3><ol>
-<li><strong>CPML / Cerjan 吸收边界 (Absorb)</strong>:<ul>
-<li>在模拟区域四周设置具有指数衰减特性的海绵层（Sponge Layer）。</li>
-<li><strong>作用</strong>: 模拟无限大的地下空间，防止波传到网格边缘时产生非物理的人工反射。</li>
-</ul>
-</li>
-<li><strong>自由表面 (Free Surface)</strong>:<ul>
-<li><strong>物理含义</strong>: 模拟地表与空气的交界处（空气无法对地面施加应力）。</li>
-<li><strong>实现</strong>: 通过镜像法强制上边界处的法向应力为零 ($\sigma<em>{zz}=0, \sigma</em>{xz}=0$)。</li>
-<li><strong>意义</strong>: 这是产生高能量 <strong>瑞利面波 (Rayleigh Wave)</strong> 的必要条件，也是很多简易模拟器所缺失的高级功能。</li>
-</ul>
-</li>
+<script type="math/tex; mode=display">\frac{\partial \sigma_{xx}}{\partial t} = (\lambda + 2\mu)\frac{\partial v_x}{\partial x} + \lambda\frac{\partial v_z}{\partial z}</script><script type="math/tex; mode=display">\frac{\partial \sigma_{zz}}{\partial t} = \lambda\frac{\partial v_x}{\partial x} + (\lambda + 2\mu)\frac{\partial v_z}{\partial z}</script><script type="math/tex; mode=display">\frac{\partial \sigma_{xz}}{\partial t} = \mu (\frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x})</script><p>其中，$v<em>x, v_z$ 为质点振动速度；$\sigma</em>{xx}, \sigma<em>{zz}, \sigma</em>{xz}$ 为应力张量分量；$\rho$ 为介质密度；$\lambda, \mu$ 为拉梅常数，由纵波速度 $V_p$ 和横波速度 $V_s$ 导出：</p>
+<script type="math/tex; mode=display">\mu = \rho V_s^2, \quad \lambda = \rho V_p^2 - 2\mu</script><h3 id="5-2-数值离散方案"><a href="#5-2-数值离散方案" class="headerlink" title="5.2 数值离散方案"></a>5.2 数值离散方案</h3><ol>
+<li><strong>网格策略</strong>：采用标准交错网格 (Standard Staggered Grid)，将速度分量定义在网格边中点，应力分量定义在网格中心，天然满足中心差分格式。</li>
+<li><strong>空间差分算子</strong>：<script type="math/tex; mode=display">\frac{\partial f}{\partial x} \approx \frac{1}{\Delta x} \sum_{n=1}^{4} C_n [f(x + \frac{2n-1}{2}\Delta x) - f(x - \frac{2n-1}{2}\Delta x)]</script>系数 $C_n$ 经泰勒展开优化，确保在 8 个网格点范围内达到 8 阶精度，极大地减少了数值色散误差。</li>
 </ol>
 <hr>
-<h2 id="3-用户操作手册-User-Manual"><a href="#3-用户操作手册-User-Manual" class="headerlink" title="3. 用户操作手册 (User Manual)"></a><strong>3. 用户操作手册 (User Manual)</strong></h2><h3 id="3-1-界面概览-Interface-Layout"><a href="#3-1-界面概览-Interface-Layout" class="headerlink" title="3.1 界面概览 (Interface Layout)"></a><strong>3.1 界面概览 (Interface Layout)</strong></h3><p>界面遵循现代 macOS Dark 风格，分为三大功能区：</p>
-<ol>
-<li><strong>左侧控制面板 (Control Panel)</strong>: 包含所有模拟参数、工具切换、数据采集设置。</li>
-<li><strong>中央视口 (Viewport)</strong>: 实时渲染波场，支持鼠标交互。</li>
-<li><strong>右上角状态浮窗 (Overlay)</strong>: 实时显示 FPS、模拟时间、鼠标位置的物理参数 ($V_p, V_s, \rho$)。</li>
-</ol>
-<h3 id="3-2-快捷键速查-Shortcuts"><a href="#3-2-快捷键速查-Shortcuts" class="headerlink" title="3.2 快捷键速查 (Shortcuts)"></a><strong>3.2 快捷键速查 (Shortcuts)</strong></h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">按键</th>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">详细描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Space</strong></td>
-<td style="text-align:left"><strong>暂停 / 继续</strong></td>
-<td style="text-align:left">冻结或恢复模拟时钟，方便观察波场细节。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>C</strong></td>
-<td style="text-align:left"><strong>清除波场</strong></td>
-<td style="text-align:left">仅清空当前的波场数值，<strong>保留</strong>地质模型结构。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Backspace</strong></td>
-<td style="text-align:left"><strong>完全重置</strong></td>
-<td style="text-align:left"><strong>危险操作</strong>。清空波场并重置为默认的均匀介质模型。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>P</strong></td>
-<td style="text-align:left"><strong>截图</strong></td>
-<td style="text-align:left">保存当前视口画面为 PNG 图片（不含 UI）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>↑ / ↓</strong></td>
-<td style="text-align:left"><strong>增益调节</strong></td>
-<td style="text-align:left">增加/减小波场显示的亮度系数 (Scale)，用于观察弱信号。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Q</strong></td>
-<td style="text-align:left"><strong>切换波场样式</strong></td>
-<td style="text-align:left">循环切换 Magma / Van Gogh / Coolwarm 等渲染风格。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>W</strong></td>
-<td style="text-align:left"><strong>切换模型样式</strong></td>
-<td style="text-align:left">循环切换地质背景的显示风格（如地质填图、灰度密度等）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Esc</strong></td>
-<td style="text-align:left"><strong>返回欢迎页</strong></td>
-<td style="text-align:left">暂停模拟并返回启动界面（低功耗模式）。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="3-3-工具模式-Tool-Modes-数字键-1-8"><a href="#3-3-工具模式-Tool-Modes-数字键-1-8" class="headerlink" title="3.3 工具模式 (Tool Modes - 数字键 1-8)"></a><strong>3.3 工具模式 (Tool Modes - 数字键 1-8)</strong></h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">键位</th>
-<th style="text-align:left">工具名称</th>
-<th style="text-align:left">鼠标左键操作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>1</strong></td>
-<td style="text-align:left"><strong>Source (震源)</strong></td>
-<td style="text-align:left">点击放置单点震源 (Ricker Wavelet)。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>2</strong></td>
-<td style="text-align:left"><strong>High Speed</strong></td>
-<td style="text-align:left">绘制高速介质（如基岩、花岗岩）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>3</strong></td>
-<td style="text-align:left"><strong>Low Speed</strong></td>
-<td style="text-align:left">绘制低速介质（如水体、疏松沉积物）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>4</strong></td>
-<td style="text-align:left"><strong>Wall</strong></td>
-<td style="text-align:left">绘制刚性反射壁（极高密度障碍物）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>5</strong></td>
-<td style="text-align:left"><strong>Eraser</strong></td>
-<td style="text-align:left">橡皮擦，恢复为背景介质。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>6</strong></td>
-<td style="text-align:left"><strong>Array Tool</strong></td>
-<td style="text-align:left">检波器阵列工具（主要配合右键拖拽使用）。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>7</strong></td>
-<td style="text-align:left"><strong>Rect Fill</strong></td>
-<td style="text-align:left"><strong>矩形填充</strong>：拖拽框选，松手后用指定参数填充该区域。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>8</strong></td>
-<td style="text-align:left"><strong>Rect Select</strong></td>
-<td style="text-align:left"><strong>矩形选择</strong>：仅画框，不修改模型（用于为随机震源指定区域）。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="4-功能模块详解-Feature-Modules"><a href="#4-功能模块详解-Feature-Modules" class="headerlink" title="4. 功能模块详解 (Feature Modules)"></a><strong>4. 功能模块详解 (Feature Modules)</strong></h2><h3 id="A-Simulation-模拟核心设置"><a href="#A-Simulation-模拟核心设置" class="headerlink" title="A. Simulation (模拟核心设置)"></a><strong>A. Simulation (模拟核心设置)</strong></h3><ul>
-<li><strong>Core Control</strong>: <ul>
-<li><code>RUNNING/PAUSED</code>: 状态切换。</li>
-<li><code>RESET TIME</code>: 仅将时间 $t$ 重置为 0，保留波场。</li>
+<h2 id="6-应用前景-Potential-Applications"><a href="#6-应用前景-Potential-Applications" class="headerlink" title="6. 应用前景 (Potential Applications)"></a>6. 应用前景 (Potential Applications)</h2><ol>
+<li><strong>资源勘探 (Resource Exploration)</strong>：<ul>
+<li>作为全波形反演 (FWI) 的高效正演算子，生成海量带标签的训练数据。</li>
+<li>辅助地震观测系统设计与照明度分析。</li>
 </ul>
 </li>
-<li><strong>Physics Parameters</strong>:<ul>
-<li><code>Time Step (dt)</code>: 时间步长。<strong>重要</strong>：8阶精度对 dt 敏感，若发生爆炸请减小此值。</li>
-<li><code>Grid Spacing (dx)</code>: 空间步长（米/像素）。</li>
+<li><strong>地震学研究 (Seismology)</strong>：<ul>
+<li>模拟地壳深部结构（如莫霍面、俯冲带）的波场反射与转换特征。</li>
+<li>研究复杂地表起伏条件下的瑞利面波传播规律。</li>
 </ul>
 </li>
-<li><strong>Grid Size</strong>:<ul>
-<li><code>Width/Height</code>: 设置网格分辨率。</li>
-<li><code>APPLY SIZE</code>: 应用新尺寸并<strong>销毁</strong>当前模型。</li>
+<li><strong>无损检测 (NDT)</strong>：<ul>
+<li>仿真超声波在混凝土、金属构件中的传播，辅助识别裂缝与空洞缺陷。</li>
 </ul>
 </li>
-<li><strong>Boundary Conditions</strong>:<ul>
-<li>快捷按钮：<code>All Absorb</code> (全吸收), <code>All Reflect</code> (全反射), <code>Free Top</code> (地表模式)。</li>
-<li><code>PML Layer</code>: 设置吸收层的厚度及是否显示辅助网格。</li>
-</ul>
-</li>
-<li><strong>Accelerate</strong>: 勾选后<strong>关闭垂直同步和画面渲染</strong>，让 GPU 全速跑物理计算（适合长时数据录制）。</li>
-</ul>
-<h3 id="B-Data-Export-数据采集系统-核心"><a href="#B-Data-Export-数据采集系统-核心" class="headerlink" title="B. Data Export (数据采集系统 - 核心)"></a><strong>B. Data Export (数据采集系统 - 核心)</strong></h3><p>用于生成合成地震记录（Seismogram）。</p>
-<ol>
-<li><strong>Acquisition Settings</strong>:<ul>
-<li><code>Sampling Rate</code>: 采样率（如 1000Hz = 0.001s 记一次）。</li>
-<li><code>Record Duration</code>: 录制总时长（秒）。</li>
-<li><code>Target Samples</code>: 系统自动计算预计生成的总点数。</li>
-</ul>
-</li>
-<li><strong>Receiver Geometry (检波器)</strong>:<ul>
-<li><code>Channels</code>: 检波器道数。</li>
-<li><code>X Range</code>: 首道和尾道的横向坐标。</li>
-<li><code>Depth</code>: 检波器埋深。</li>
-<li><code>DEPLOY LINEAR ARRAY</code>: 点击后在画面生成蓝色倒三角图标。</li>
-</ul>
-</li>
-<li><strong>Recording Control</strong>:<ul>
-<li><strong><code>START CAPTURE</code></strong>: 仅开始录制数据（不重置波场，用于接续录制）。</li>
-<li><strong><code>TRIGGER &amp; ACQUIRE</code> (红色按钮)</strong>: <strong>一键自动化操作</strong>。<ol>
-<li>清空当前所有波场。</li>
-<li>在 <code>Single Shot</code> 设定的位置激发一炮。</li>
-<li>同步开始录制数据。</li>
-<li>达到时长后自动停止并保存 CSV。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="C-Random-Source-随机震源-微震"><a href="#C-Random-Source-随机震源-微震" class="headerlink" title="C. Random Source (随机震源/微震)"></a><strong>C. Random Source (随机震源/微震)</strong></h3><p>用于模拟微震活动或声发射实验。</p>
-<ol>
-<li>切换到工具 <strong>8 (Rect Select)</strong>，在画面中框选一个区域（如断层带）。</li>
-<li>点击面板上的 <code>Snap to Rect Selection</code> 读取坐标。</li>
-<li>设置 <code>Total Shots</code>（总次数）、<code>Duration</code>（持续时间）及频率/振幅范围。</li>
-<li>点击 <code>Start Generation</code>，系统将在该区域内随机时空激发震源。</li>
-</ol>
-<h3 id="D-Visualization-可视化"><a href="#D-Visualization-可视化" class="headerlink" title="D. Visualization (可视化)"></a><strong>D. Visualization (可视化)</strong></h3><ul>
-<li><strong>Vis Mode</strong>: <ul>
-<li><code>Velocity Mag</code>: 速度能量。</li>
-<li><code>P-Wave (Div)</code>: 仅显示纵波（散度场）。</li>
-<li><code>S-Wave (Curl)</code>: 仅显示横波（旋度场）。</li>
-</ul>
-</li>
-<li><strong>Wave Style</strong>: <ul>
-<li><code>Magma</code>: 能量热力图。</li>
-<li><code>Van Gogh</code>: 结合流线与厚涂质感的艺术风格（显示波前方向）。</li>
-<li><code>Coolwarm</code>: 标准科学红蓝配色。</li>
-</ul>
-</li>
-<li><strong>Legend</strong>: 底部集成的色标，实时显示颜色对应的数值含义。</li>
-</ul>
-<hr>
-<h2 id="5-典型工作流-Workflows"><a href="#5-典型工作流-Workflows" class="headerlink" title="5. 典型工作流 (Workflows)"></a><strong>5. 典型工作流 (Workflows)</strong></h2><h3 id="场景-A：合成地震记录生成-Seismic-Data-Acquisition"><a href="#场景-A：合成地震记录生成-Seismic-Data-Acquisition" class="headerlink" title="场景 A：合成地震记录生成 (Seismic Data Acquisition)"></a><strong>场景 A：合成地震记录生成 (Seismic Data Acquisition)</strong></h3><p><strong>目标</strong>: 模拟一次地表主动源勘探，获取炮集记录。</p>
-<ol>
-<li><strong>建模</strong>: 使用矩形工具绘制地层结构，边界设为 <code>Free Top</code>。</li>
-<li><strong>设置</strong>: 在 <code>Single Shot</code> 面板设置激发点坐标（如 X=500, Y=10）。</li>
-<li><strong>布设</strong>: 在 <code>Data Export</code> 面板设置 100 道检波器，点击部署。</li>
-<li><strong>采集</strong>: 设置时长 1.5s，点击 <strong><code>TRIGGER &amp; ACQUIRE</code></strong>。</li>
-<li><strong>结果</strong>: 等待进度条结束，在程序目录查看生成的 <code>seismic_final.csv</code>。</li>
-</ol>
-<h3 id="场景-B：复杂介质波场传播教学"><a href="#场景-B：复杂介质波场传播教学" class="headerlink" title="场景 B：复杂介质波场传播教学"></a><strong>场景 B：复杂介质波场传播教学</strong></h3><p><strong>目标</strong>: 演示波在非均匀介质中的反射、透射和绕射。</p>
-<ol>
-<li><strong>环境</strong>: 选择 <code>Van Gogh</code> 风格，增益调至 50.0。</li>
-<li><strong>操作</strong>: 使用 <code>Wall</code> 工具绘制障碍物（如空洞、隧道）。</li>
-<li><strong>激发</strong>: 使用 <code>Source</code> 工具点击障碍物上方。</li>
-<li><strong>观察</strong>: 实时观察波前的反射、绕射及沿地表传播的瑞利波。</li>
-<li><strong>分析</strong>: 切换 Vis Mode 到 <code>P-Wave</code> 或 <code>S-Wave</code>，观察波场分离现象。</li>
-</ol>
-<hr>
-<h2 id="6-故障排除-Troubleshooting"><a href="#6-故障排除-Troubleshooting" class="headerlink" title="6. 故障排除 (Troubleshooting)"></a><strong>6. 故障排除 (Troubleshooting)</strong></h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">问题现象</th>
-<th style="text-align:left">可能原因</th>
-<th style="text-align:left">解决方案</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>屏幕突然变白 / 提示 EXPLODED</strong></td>
-<td style="text-align:left">数值爆炸 (CFL条件破坏)。</td>
-<td style="text-align:left">1. 减小 <code>Time Step (dt)</code>。<br>2. 点击报警弹窗中的 <code>Auto-Fix</code>。<br>3. 检查是否画了极高速度(&gt;8000)的异常介质。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>震源位置与鼠标点击不重合</strong></td>
-<td style="text-align:left">坐标系 Y 轴未翻转。</td>
-<td style="text-align:left">软件内部已处理（UI左上角为0，物理左下角为0）。请确认未修改核心坐标转换代码。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>导出的数据点数不足 (如1.0s断开)</strong></td>
-<td style="text-align:left">自动停止逻辑冲突。</td>
-<td style="text-align:left">请务必使用 Data Export 面板的 <code>TRIGGER &amp; ACQUIRE</code> 按钮，它会自动接管并协调停止逻辑。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>中文显示乱码</strong></td>
-<td style="text-align:left">编码问题。</td>
-<td style="text-align:left">确保源码文件保存为 <code>UTF-8 with BOM</code> 格式，并正确加载了中文字体文件。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>模拟速度慢</strong></td>
-<td style="text-align:left">渲染开销过大。</td>
-<td style="text-align:left">在进行长时录制时，勾选 <code>Accelerate</code> 复选框，关闭画面渲染以加速计算。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="7-应用前景-Applications"><a href="#7-应用前景-Applications" class="headerlink" title="7. 应用前景 (Applications)"></a><strong>7. 应用前景 (Applications)</strong></h2><ol>
-<li><strong>石油与天然气勘探</strong>:<ul>
-<li><strong>正演模拟 (Forward Modeling)</strong>：验证地质解释模型，辅助观测系统设计。</li>
-<li><strong>全波形反演 (FWI)</strong>：生成海量带标签的合成地震数据，用于算法测试或 AI 训练。</li>
-</ul>
-</li>
-<li><strong>地震学研究</strong>:<ul>
-<li>地壳深部结构成像。</li>
-<li>瑞利面波（Rayleigh Wave）频散特性研究。</li>
-</ul>
-</li>
-<li><strong>工程与无损检测</strong>:<ul>
-<li>混凝土/金属构件超声波检测仿真。</li>
-<li>隧道超前预报模拟。</li>
-</ul>
-</li>
-<li><strong>数据驱动的 AI 训练</strong>:<ul>
-<li>快速批量生成地震数据，用于去噪、插值或反演网络的训练。</li>
-</ul>
-</li>
-<li><strong>科学教育与艺术</strong>:<ul>
-<li>波动方程可视化教学。</li>
-<li>生成具有物理美感的流体艺术动画。</li>
+<li><strong>科学教育 (Education)</strong>：<ul>
+<li>利用其强大的可视化能力，将抽象的波动方程转化为直观的动态图像，用于物理教学与科普展示。</li>
 </ul>
 </li>
 </ol>
@@ -693,12 +414,11 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Wave-Simulator/" rel="tag"># Wave Simulator</a>
-              <a href="/tags/GPU/" rel="tag"># GPU</a>
-              <a href="/tags/Computer-Shader/" rel="tag"># Computer Shader</a>
-              <a href="/tags/C/" rel="tag"># C++</a>
-              <a href="/tags/OpenGL/" rel="tag"># OpenGL</a>
-              <a href="/tags/Imgui/" rel="tag"># Imgui</a>
+              <a href="/tags/Computational-Geophysics/" rel="tag"># Computational Geophysics</a>
+              <a href="/tags/Elastic-Wave/" rel="tag"># Elastic Wave</a>
+              <a href="/tags/GPU-Computing/" rel="tag"># GPU Computing</a>
+              <a href="/tags/FDTD/" rel="tag"># FDTD</a>
+              <a href="/tags/Visualization/" rel="tag"># Visualization</a>
           </div>
 
         
