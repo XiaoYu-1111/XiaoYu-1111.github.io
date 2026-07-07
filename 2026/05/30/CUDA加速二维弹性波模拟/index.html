@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="基于CUDA加速的高性能二维弹性波场模拟平台导言CMakePro_CUDA_SeisSim_V1 是一款基于 C++20 标准、NVIDIA CUDA 加速技术、OpenGL 图形管线以及 Dear ImGui 交互架构开发的实时二维弹性波场数值模拟系统。该系统针对浅层地震勘探、岩石物理分析和教学演示设计，旨在提供一个物理参数可调、波场交互即时、画面高渲染品质的数值仿真“沙盒”平台。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于CUDA加速的高性能二维弹性波场模拟平台">
+<meta property="og:url" content="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:site_name" content="冒牌書生的个人博客">
+<meta property="og:description" content="基于CUDA加速的高性能二维弹性波场模拟平台导言CMakePro_CUDA_SeisSim_V1 是一款基于 C++20 标准、NVIDIA CUDA 加速技术、OpenGL 图形管线以及 Dear ImGui 交互架构开发的实时二维弹性波场数值模拟系统。该系统针对浅层地震勘探、岩石物理分析和教学演示设计，旨在提供一个物理参数可调、波场交互即时、画面高渲染品质的数值仿真“沙盒”平台。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/PR_CUDA_main.png">
+<meta property="og:image" content="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/marmousiA.png">
+<meta property="og:image" content="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/%E8%AE%A1%E7%AE%97%E6%95%88%E7%8E%87%E8%A1%A8.png">
+<meta property="article:published_time" content="2026-05-30T05:01:56.000Z">
+<meta property="article:modified_time" content="2026-07-07T06:19:50.699Z">
+<meta property="article:author" content="XIAO YU">
+<meta property="article:tag" content="Computational Geophysics">
+<meta property="article:tag" content="Elastic Wave">
+<meta property="article:tag" content="FDTD">
+<meta property="article:tag" content="GPU Computing">
+<meta property="article:tag" content="Visualization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/PR_CUDA_main.png">
+
+
+<link rel="canonical" href="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/","path":"2026/05/30/CUDA加速二维弹性波模拟/","title":"基于CUDA加速的高性能二维弹性波场模拟平台"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于CUDA加速的高性能二维弹性波场模拟平台 | 冒牌書生的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js" defer></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冒牌書生的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ECUDA%E5%8A%A0%E9%80%9F%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E5%B9%B3%E5%8F%B0"><span class="nav-number">1.</span> <span class="nav-text">基于CUDA加速的高性能二维弹性波场模拟平台</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">导言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-Technical-Architecture"><span class="nav-number">1.2.</span> <span class="nav-text">一、 技术架构 (Technical Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%B8%E5%BF%83%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E-CUDA-%E6%B1%82%E8%A7%A3%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 核心计算引擎 (CUDA 求解器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9E%81%E8%87%B4%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 极致性能优化策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E4%BC%98%E5%8A%BF%E7%89%B9%E7%82%B9-Key-Features"><span class="nav-number">1.3.</span> <span class="nav-text">二、 优势特点 (Key Features)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A1%B6%E5%B0%96%E7%9A%84%E5%AE%9E%E6%97%B6%E8%BF%90%E7%AE%97%E7%AE%97%E5%8A%9B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 顶尖的实时运算算力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%A5%E8%B0%A8%E7%9A%84%E7%89%A9%E7%90%86%E7%A8%B3%E5%AE%9A%E6%80%A7%E4%BF%9D%E9%9A%9C-CFL-%E6%A3%80%E6%B5%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 严谨的物理稳定性保障 (CFL 检测)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%AC%A6%E5%90%88%E7%89%A9%E7%90%86%E7%8E%B0%E5%AE%9E%E7%9A%84%E5%9B%BE%E5%BD%A2%E7%BE%8E%E5%AD%A6"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 符合物理现实的图形美学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%9A%84%E5%A4%9A%E6%BA%90%E6%B2%99%E7%9B%92%E4%BA%A4%E4%BA%92"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 高精度的多源沙盒交互</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81-UI-%E5%B8%83%E5%B1%80-UI-Layout"><span class="nav-number">1.4.</span> <span class="nav-text">三、 UI 布局 (UI Layout)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81-%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E-Operating-Instructions"><span class="nav-number">1.5.</span> <span class="nav-text">四、 操作说明 (Operating Instructions)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81-%E5%BA%94%E7%94%A8%E5%89%8D%E6%99%AF-Application-Prospects"><span class="nav-number">1.6.</span> <span class="nav-text">五、 应用前景 (Application Prospects)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%AB%98%E7%AD%89%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86%E6%95%99%E5%AD%A6%E4%B8%8E%E7%A7%91%E5%AD%A6%E6%BC%94%E7%A4%BA"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 高等地球物理教学与科学演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%8E%B0%E5%9C%BA%E8%BF%91%E5%9C%B0%E8%A1%A8%E5%B7%A5%E7%A8%8B%E7%89%A9%E6%8E%A2%E9%A2%84%E8%A7%88-Field-Quicklook"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 现场近地表工程物探预览 (Field Quicklook)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%A7%91%E7%A0%94%E4%B8%8E%E5%B0%8F%E6%A0%B7%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA-Data-Augmentation"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 科研与小样本数据增强 (Data Augmentation)</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XIAO YU"
+      src="/images/xiaoyu_base.png">
+  <p class="site-author-name" itemprop="name">XIAO YU</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XiaoYu-1111" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XiaoYu-1111" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/324621201?spm_id_from=333.1007.0.0" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;324621201?spm_id_from&#x3D;333.1007.0.0" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/05/30/CUDA%E5%8A%A0%E9%80%9F%E4%BA%8C%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaoyu_base.png">
+      <meta itemprop="name" content="XIAO YU">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于CUDA加速的高性能二维弹性波场模拟平台 | 冒牌書生的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于CUDA加速的高性能二维弹性波场模拟平台
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-05-30 13:01:56" itemprop="dateCreated datePublished" datetime="2026-05-30T13:01:56+08:00">2026-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-07 14:19:50" itemprop="dateModified" datetime="2026-07-07T14:19:50+08:00">2026-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF%E7%A0%94%E7%A9%B6%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">学术研究与技术项目</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="基于CUDA加速的高性能二维弹性波场模拟平台"><a href="#基于CUDA加速的高性能二维弹性波场模拟平台" class="headerlink" title="基于CUDA加速的高性能二维弹性波场模拟平台"></a>基于CUDA加速的高性能二维弹性波场模拟平台</h1><h2 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h2><p><strong>CMakePro_CUDA_SeisSim_V1</strong> 是一款基于 C++20 标准、NVIDIA CUDA 加速技术、OpenGL 图形管线以及 Dear ImGui 交互架构开发的实时二维弹性波场数值模拟系统。该系统针对浅层地震勘探、岩石物理分析和教学演示设计，旨在提供一个物理参数可调、波场交互即时、画面高渲染品质的数值仿真“沙盒”平台。</p>
+<span id="more"></span>
+<p><strong>欢迎页面</strong><br><img src="PR_CUDA_main.png" alt="Dashboard Screenshot"><br><strong>模型演示</strong><br><img src="marmousiA.png" alt="Dashboard Screenshot"><br><strong>计算效率表</strong><br><img src="计算效率表.png" alt="Dashboard Screenshot"></p>
+<p>通过将有限差分（FDM）算法迁移至 GPU，并深度优化显存与内存间的传输带宽，该系统在主流移动端显卡（如 RTX 4060 Laptop）上实测达到了 <strong>5.0+ GNUPs</strong>（每秒五十亿次网格点更新）的吞吐量，实现了亚秒级的万步波动方程演化。</p>
+<hr>
+<h2 id="一、-技术架构-Technical-Architecture"><a href="#一、-技术架构-Technical-Architecture" class="headerlink" title="一、 技术架构 (Technical Architecture)"></a>一、 技术架构 (Technical Architecture)</h2><p>本系统采用<strong>“渲染层 - 物理计算层 - 状态控制层”</strong>相互解耦的三层软件架构，确保了计算的高吞吐量与界面的高帧率交互。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+-------------------------------------------------------------+</span><br><span class="line">|                状态与参数控制层 (C++20 Host)                 |</span><br><span class="line">|    - 窗口管理 (GLFW)  - 状态管理 (SimState) - 物理参数控制   |</span><br><span class="line">+------------------------------+------------------------------+</span><br><span class="line">                               |</span><br><span class="line">        +----------------------+----------------------+</span><br><span class="line">        |                                             |</span><br><span class="line">+-------v---------------------+             +---------v-------------------+</span><br><span class="line">|     渲染层 (OpenGL 4.3)     |             |      物理计算层 (CUDA)      |</span><br><span class="line">|  - 离屏渲染 (FBO)           |             |  - 8阶交错网格 FDM 求解器    |</span><br><span class="line">|  - 自适应比例控制            |             |  - PML/自由表面边界更新      |</span><br><span class="line">|  - 着色器后期特效 (SDF/Grid) |             |  - 显卡端检波器值并发提取   |</span><br><span class="line">+-------+---------------------+             +---------+-------------------+</span><br><span class="line">        |                                             |</span><br><span class="line">        +----------------------+----------------------+</span><br><span class="line">                               |</span><br><span class="line">                               | (CUDA-GL Interop 零拷贝)</span><br><span class="line">                               v</span><br><span class="line">                +------------------------------+</span><br><span class="line">                |     2D 实时波场高帧率呈现     |</span><br><span class="line">                +------------------------------+</span><br></pre></td></tr></table></figure>
+<h3 id="1-核心计算引擎-CUDA-求解器"><a href="#1-核心计算引擎-CUDA-求解器" class="headerlink" title="1. 核心计算引擎 (CUDA 求解器)"></a>1. 核心计算引擎 (CUDA 求解器)</h3><ul>
+<li><strong>有限差分格式</strong>：空间采用八阶 staggered-grid（交错网格），时间采用二阶差分格式，对位移速度场（$v<em>x, v_z$）和应力场（$\sigma</em>{xx}, \sigma<em>{zz}, \sigma</em>{xz}$）进行交错时间更新。</li>
+<li><strong>物理边界条件支持</strong>：<ul>
+<li><em>Type 1 (全域 PML)</em>：整个计算域内均使用分裂场（Split-field）完美匹配层吸边界条件。</li>
+<li><em>Type 2 (混合 FDM+PML)</em>：内域采用标准的非分裂场更新，仅在边界 PML 区域激活分裂变量，有效降低了内域的计算与访存负载。</li>
+<li><em>Type 3 (自由表面条件)</em>：在模型顶端加载自由表面（Traction-Free Boundary: $\sigma<em>{zz}=0, \sigma</em>{xz}=0$），其余三边采用 PML 吸收层。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-极致性能优化策略"><a href="#2-极致性能优化策略" class="headerlink" title="2. 极致性能优化策略"></a>2. 极致性能优化策略</h3><ul>
+<li><strong>CUDA-GL Interop（零拷贝技术）</strong>：传统的 GPU 计算渲染流程需要将显存数据拷回 CPU（Host），再上传到 OpenGL 纹理，造成严重的 PCIe 带宽瓶颈。系统通过将 OpenGL 纹理直接注册到 CUDA（<code>cudaGraphicsGLRegisterImage</code>），计算出的波场颜色通过 <code>cudaMemcpy2DToArray</code> <strong>在显卡内部直接写入纹理，实现零拷贝数据传输</strong>。</li>
+<li><strong>FBO（离屏帧缓冲区）渲染管线</strong>：波场画面的长宽比例（如 $1000\times 500$）与 ImGui 视口窗口的物理像素尺寸经常不一致。系统通过离屏帧缓冲（Framebuffer Object），将着色器（Shader）处理后的波场画面以正确的宽高比渲染到离屏纹理中，再提交至 ImGui 视口，完全消除了波场在窗口中的拉伸变形与白底残留。</li>
+<li><strong>显卡端检波器值并发抽取</strong>：系统废弃了在 CPU 端拷贝整个网格提取检波器波形的方法，编写了专属的 <code>extract_receivers_kernel</code> 提取核函数。由 GPU 内部线程并发提取少量（如 100 个）检波器位置的值写入一个小显存块，每次<strong>仅向 Host 传输几百字节的数据</strong>，传输量降低了万倍。</li>
+<li><strong>只读数据缓存与代数优化</strong>：核函数内部的只读数组采用 <code>const float* __restrict__</code> 声明，引导编译器将 Stencil 邻域读取路由到只读数据缓存（<code>__ldg</code> 指令）；并将有限差分公式中的高延迟除法指令（Division）全部替换为线程顶部预先算好的乘法倒数（Reciprocal），大幅度降低了硬件指令延迟。</li>
+</ul>
+<hr>
+<h2 id="二、-优势特点-Key-Features"><a href="#二、-优势特点-Key-Features" class="headerlink" title="二、 优势特点 (Key Features)"></a>二、 优势特点 (Key Features)</h2><h3 id="1-顶尖的实时运算算力"><a href="#1-顶尖的实时运算算力" class="headerlink" title="1. 顶尖的实时运算算力"></a>1. 顶尖的实时运算算力</h3><p>在 $1000 \times 500$ 尺寸、PML 宽度为 50 格的物理模型下进行 10,000 次时间步更新，在移动端 RTX 4060 显卡上实测耗时仅为 <strong><code>0.995</code> 秒</strong>。吞吐量稳定在 <strong>$5.02\text{ GNUPs}$</strong>，运算性能可以秒级处理大规模长时演化。</p>
+<h3 id="2-严谨的物理稳定性保障-CFL-检测"><a href="#2-严谨的物理稳定性保障-CFL-检测" class="headerlink" title="2. 严谨的物理稳定性保障 (CFL 检测)"></a>2. 严谨的物理稳定性保障 (CFL 检测)</h3><p>在交互面板调节空间步长（$dx$）或时间步长（$dt$）时，系统会自动提取地层模型中的最大纵波速度 $V_{p, max}$，根据 2D 交错网格稳定系数公式实时计算 CFL 稳定性极限值：</p>
+<script type="math/tex; mode=display">\Delta t \le \frac{CFL \cdot \Delta x}{V_{p, max}}</script><p>并在面板上实时显示稳定性指示灯（<code>CFL STABLE</code> 或 <code>DIVERGENCE RISK</code>），在参数失稳前提前预警，避免计算溢出。</p>
+<h3 id="3-符合物理现实的图形美学"><a href="#3-符合物理现实的图形美学" class="headerlink" title="3. 符合物理现实的图形美学"></a>3. 符合物理现实的图形美学</h3><ul>
+<li><strong>自适应主次双钛金网格</strong>：次网格表示 1m 的物理格点（1.0 像素宽），主网格表示 5m 的标定线（1.5 像素宽，25:125 的物理比例）。通过屏幕偏导数（<code>fwidth</code>）限制其像素线宽不随缩放而变形，且在拉远视图时会自动淡出次网格（消隐机制），完全消除了缩放过程中的摩尔纹（Moiré Pattern）闪烁。</li>
+<li><strong>基于 SDF 的 PML 吸收边界荧光线</strong>：通过计算 2D 矩形的有向距离场（Signed Distance Field），在数学上获得了一条全空间连续、无 <code>if</code> 分支间断性的 PML 内部框架线，选用对比度极佳的荧光琥珀橘色（<code>vec3(1.0, 0.45, 0.0)</code>）。无论如何缩放、平移，该吸收边界线都能够圆润、完整且无锯齿地固定在原位。</li>
+<li><strong>霓虹发光波色重映射</strong>：系统在着色器中对 CUDA 默认输出的白底波色进行逆向实数解构，提取出每个像素的物理有向幅值，并重新映射融合到深钛金属灰（<code>vec3(0.012, 0.015, 0.018)</code>）的科幻质感背景上，并叠加了微弱的扫描线与暗角，渲染效果极为精美。</li>
+</ul>
+<h3 id="4-高精度的多源沙盒交互"><a href="#4-高精度的多源沙盒交互" class="headerlink" title="4. 高精度的多源沙盒交互"></a>4. 高精度的多源沙盒交互</h3><ul>
+<li><strong>多震源实时累加与消亡</strong>：系统打破了单一震源的限制。用户可以在“多震源模式”下，在屏幕上持续按压拖动鼠标，系统会以 $25\text{Hz}$（每 40ms 允许注入一次）的频率限制在鼠标轨迹下持续种下带有独立物理寿命的雷克子波源（Ricker Source）。这些波会在介质中互相干涉、折射，提供极佳的沙盒仿真体验。</li>
+</ul>
+<hr>
+<h2 id="三、-UI-布局-UI-Layout"><a href="#三、-UI-布局-UI-Layout" class="headerlink" title="三、 UI 布局 (UI Layout)"></a>三、 UI 布局 (UI Layout)</h2><p>系统界面采用了经典的<strong>“环绕式数据监控 + 悬浮控制窗”</strong>的设计理念，将所有的操作和状态指示有机融合。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">+---------------------------------------------------------------------------------------------------+</span><br><span class="line">|  [TopBar]  ACTIVE GPU: NVIDIA GeForce RTX...  |  FORMULATION: TYPE 3  |  PHYS: 0.20s  |  [240.0 FPS] [x]  |</span><br><span class="line">+---------------------------------------------------------------------------------------------------+</span><br><span class="line">| (0,0)m                                                                                            |</span><br><span class="line">|   | 50m | 100m | 150m | 200m | 250m | 300m | 350m | 400m ...                                        |</span><br><span class="line">| --+---------------------------------------------------------------+                               |</span><br><span class="line">| 0m|                                                               |  +-------------------------+  |</span><br><span class="line">|   |   +====================== PML Line ====================+      |  |   [SEIS_LAB_CONTROLS]   |  |</span><br><span class="line">|50m|   |                                                    |      |  |  +--------------------+ |  |</span><br><span class="line">|   |   |                                                    |      |  |  |    Simulation      | |  |</span><br><span class="line">|100|   |                    (Wavefield)                     |      |  |  +--------------------+ |  |</span><br><span class="line">|m  |   |                         O                          |      |  |  |  Physics &amp; Source  | |  |</span><br><span class="line">|   |   |                      (Source)                      |      |  |  +--------------------+ |  |</span><br><span class="line">|150|   |                                                    |      |  |  |       vis          | |  |</span><br><span class="line">|m  |   +====================================================+      |  |  +--------------------+ |  |</span><br><span class="line">|   |                                                               |  |                         |  |</span><br><span class="line">|...|                                                               |  |  [EXECUTION CONTROLS]   |  |</span><br><span class="line">|   +---------------------------------------------------------------+  |  - RUN SIMULATION       |  |</span><br><span class="line">|                                                                      |  - RESET VIEWPORT       |  |</span><br><span class="line">|                                                                      |  +----------------------+  |</span><br><span class="line">|                                                                      +----------------------------+</span><br><span class="line">|                                                                                                   |</span><br><span class="line">+---------------------------------------------------------------------------------------------------+</span><br><span class="line">|  [BottomBar]  GRID: X:502, Z:310  |  P-WAVE: 2000.0 m/s  S-WAVE: 1400.0 m/s  |  STATUS: INDEX LINKED      |</span><br><span class="line">+---------------------------------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>顶部状态指示栏 (TopBar)</strong>：<ul>
+<li><strong>左侧</strong>：实时检测并显示当前激活的 NVIDIA 硬件 GPU 型号（如 RTX 4060）。</li>
+<li><strong>中间</strong>：指示当前的物理公式模式（Type 1/2/3）、物理波演化步数（如 <code>10000/10000</code>）或无限模式（<code>current_it / INF</code>）、波场的<strong>物理传播时长</strong>（秒）以及本次模拟在显卡上花费的<strong>真实计算时长</strong>（精确到毫秒）。</li>
+<li><strong>右侧</strong>：当前界面的实时运行帧率（FPS）及控制面板的 OSD 显示总开关。</li>
+</ul>
+</li>
+<li><strong>主视口区域 (Viewport)</strong>：<ul>
+<li>占据屏幕的绝大部分区域。</li>
+<li><strong>动态联动标尺</strong>：在视口的最左侧和最顶侧。当用户缩放、平移画面时，地表水平位置和纵向深度（$0\text{m}, 50\text{m}, 100\text{m}\dots$）会完美跟随画面移动，刻度标记和数字会自动在边缘滑出和滑入，且刻度间距会根据缩放率自适应切换。</li>
+<li><strong>星空科技准星</strong>：当鼠标划入视口时，原有的默认系统光标会自动隐藏，并浮现出带有雷达旋转扫描、黄青双色发光的科技准星。</li>
+</ul>
+</li>
+<li><strong>右侧悬浮控制面板 (SEIS_LAB_CONTROLS)</strong>：<ul>
+<li><strong>Simulation 选项卡</strong>：管理模拟公式选择（Type 1/2/3）、单帧步进数、时间参数（$dt, nt$）控制与安全检测，以及 V-Sync（垂直同步）开关。</li>
+<li><strong>Physics &amp; Source 选项卡</strong>：管理当前激发源的三维网格位置坐标、受力角度，以及地层的纵向/横向波速（$V_p, V_s$）与密度（$\rho$），并内嵌了<strong>雷克子波形的实时动态预览图（示波器风格，黑底绿线）</strong>。</li>
+<li><strong>vis 选项卡</strong>：管理波场的图像增益倍数（Color Gain）、波场分量选择（Vz/Vx）以及三套极为精美的渲染风格选择（发光熔岩、3D 釉面凹凸、荧光双极红蓝）。</li>
+<li><strong>底部固定控制区</strong>：管理模拟演化动作（RUN/PAUSE、RESET）、视口一键吸附对齐（RESET VIEWPORT，一键对齐至 TopBar 下方的 $0\text{m}, 0\text{m}$ 位置）以及全局 UI 荧光主题色的滑动选择器。</li>
+</ul>
+</li>
+<li><strong>底部物理监测条 (BottomBar)</strong>：<ul>
+<li><strong>左侧</strong>：实时监测鼠标当前悬停的网格单元行列号（$X, Z$），并折算为当前的地下物理坐标位置（单位：米）。</li>
+<li><strong>中间</strong>：实时提取当前悬停点地层下的物理参数：纵波速度 $V_p$、横波速度 $V_s$ 以及密度。</li>
+<li><strong>右侧</strong>：状态连接指示，反馈鼠标指针是否落入有效波场范围内。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="四、-操作说明-Operating-Instructions"><a href="#四、-操作说明-Operating-Instructions" class="headerlink" title="四、 操作说明 (Operating Instructions)"></a>四、 操作说明 (Operating Instructions)</h2><ol>
+<li><strong>基本运行与视角变换</strong>：<ul>
+<li>点击控制面板底部的 <strong><code>RUN SIMULATION</code></strong> 开始进行物理演化，再次点击可暂停。</li>
+<li><strong>鼠标滚轮</strong>：在视口区域上下滑动可以对波场、标尺进行高精度的中心无极缩放。</li>
+<li><strong>鼠标中键拖拽</strong>：按住鼠标中键并移动鼠标，可以平移波场视角，标尺和刻度将完美跟手滑动。</li>
+<li>点击 <strong><code>RESET VIEWPORT</code></strong>（或按 <strong><code>R</code></strong> 键），视角和标尺会自动校准，瞬间一键吸附并贴合到屏幕左上角。</li>
+</ul>
+</li>
+<li><strong>物理参数与公式调节</strong>：<ul>
+<li>在 <code>Simulation</code> 中，您可以通过下拉菜单将公式切换到 <code>Type 3: Free Surface</code>。切换后，顶部的 PML 边界线会自动消隐，顶部蜕变为反射地表，模拟出面波（Rayleigh Wave）在表面传播的真实物理现象。</li>
+<li>在 <code>Physics &amp; Source</code> 中调节纵横波波速（例如将 $V_p$ 设定为 $3000\text{ m/s}$），点击 <strong><code>APPLY PHYSICAL MEDIUM</code></strong>，物理介质被立刻刷新。</li>
+<li>调节 <code>Time Step (dt)</code>。如果拖动过大导致红色指示灯亮起（<code>DIVERGENCE RISK</code>），表明超出了该速度下的 CFL 极限。请在红灯亮起时调小 <code>dt</code>，点击 <strong><code>APPLY TIME CONTROLS</code></strong>，重置并应用安全参数。</li>
+</ul>
+</li>
+<li><strong>多源沙盒与单点激发交互</strong>：<ul>
+<li><strong>单点模式</strong>：在 <code>Physics &amp; Source</code> 选项卡中配置好位置后，点击 <strong><code>TRIGGER SINGLE SOURCE SHOT</code></strong>（或按 <strong><code>C</code></strong> 键），物理场一键归零并开始重新演化。</li>
+<li><strong>多点实时模式</strong>：在控制面板中勾选 <strong><code>Enable Multi-Source Real-time Clicks</code></strong>。此时，您可以在黑色渲染背景的任意位置<strong>按住鼠标左键并拖拽涂画</strong>，一连串圆润的涟漪波前会在您指尖后方呈等间距优美释放，互相碰撞、干涉。</li>
+</ul>
+</li>
+<li><strong>键盘快捷键清单</strong>：<ul>
+<li><strong><code>Space</code>（空格键）</strong>：一键切换模拟的运行（RUN）与暂停（PAUSE）。</li>
+<li><strong><code>C</code> 键</strong>：一键清空并重置物理演化场至第 0 步。</li>
+<li><strong><code>R</code> 键</strong>：一键重置标尺和视口对齐至左上角。</li>
+<li><strong><code>Tab</code> 键</strong>：在启动欢迎页（Intro）和波场模拟屏（SeisSim）之间进行平滑的屏幕路由切换。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五、-应用前景-Application-Prospects"><a href="#五、-应用前景-Application-Prospects" class="headerlink" title="五、 应用前景 (Application Prospects)"></a>五、 应用前景 (Application Prospects)</h2><h3 id="1-高等地球物理教学与科学演示"><a href="#1-高等地球物理教学与科学演示" class="headerlink" title="1. 高等地球物理教学与科学演示"></a>1. 高等地球物理教学与科学演示</h3><p>在大学的《地震学》、《地震勘探原理》或《计算地球物理学》课程中，传统的公式推导极其晦涩。使用本系统，教师可以在课堂上进行实时的可视化演示：</p>
+<ul>
+<li><strong>面波演化演示</strong>：一键切换到 Type 3 自由表面，学生能直观看到纵波（P）、横波（S）以及沿表面传播、能量不衰减的面波（Rayleigh 波）的剥离与形成过程。</li>
+<li><strong>频散现象对照</strong>：通过拖拽 <code>Peak Freq</code> 滑块到 $150\text{Hz}$ 和 $15\text{Hz}$，现场给学生演示网格空间步长与物理波长的空间采样关系，展示数值频散的起因与消除。</li>
+<li><strong>透射、折射与干涉</strong>：通过手画高低波速障壁（或直接加载复杂的 SEGY 速度模型），演示地震波遇到岩层界面时的反射、折射、透射以及多源干扰衍射现象。</li>
+</ul>
+<h3 id="2-现场近地表工程物探预览-Field-Quicklook"><a href="#2-现场近地表工程物探预览-Field-Quicklook" class="headerlink" title="2. 现场近地表工程物探预览 (Field Quicklook)"></a>2. 现场近地表工程物探预览 (Field Quicklook)</h3><p>在浅层物探、城市地下管网探测或路基工程检测等野外现场：</p>
+<ul>
+<li>物探工程师可以使用本系统在笔记本电脑（如搭载移动端 RTX 4060）上，根据实地打眼位置（激发点）和检波器铺设参数，进行<strong>秒级的现场数值模拟预演</strong>。</li>
+<li>通过快速输入实地可能存在的异常体（如空洞、岩溶、管线、坚硬基岩）的速度与深度，实时合成并对比检波器的单道波形，辅助工程师进行现场解释、异常判别或设计最佳的震源激发与采集排列方案。</li>
+</ul>
+<h3 id="3-科研与小样本数据增强-Data-Augmentation"><a href="#3-科研与小样本数据增强-Data-Augmentation" class="headerlink" title="3. 科研与小样本数据增强 (Data Augmentation)"></a>3. 科研与小样本数据增强 (Data Augmentation)</h3><ul>
+<li><strong>轻量化科研原型验证</strong>：地球物理学者在开发新型吸收边界条件、有限差分高阶算子或震源激发公式时，不需要直接编写庞大晦涩的商业软件插件。在本系统轻量化、高解耦的 <code>Cuda_Check.cu</code> 中可以直接快速重写核函数，并在可视化窗口中毫秒级、无延迟地验证其数学物理收敛情况。</li>
+<li><strong>深度学习训练集合成</strong>：当前基于神经网络的地震层析成像（Tomography）和全波形反演（FWI）对小样本合成记录需求极大。本求解器达到 $5.0+\text{ GNUPs}$ 的速度，可在后台通过批处理脚本在数分钟内自动合成并导出数万张不同异常体模型对应的 SEGY 地震道记录，为人工智能训练提供海量、高保真的高能训练样本。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Computational-Geophysics/" rel="tag"># Computational Geophysics</a>
+              <a href="/tags/Elastic-Wave/" rel="tag"># Elastic Wave</a>
+              <a href="/tags/GPU-Computing/" rel="tag"># GPU Computing</a>
+              <a href="/tags/FDTD/" rel="tag"># FDTD</a>
+              <a href="/tags/Visualization/" rel="tag"># Visualization</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="prev" title="基于 GPU 原生架构的高性能二维弹性波动力学模拟平台">
+                  <i class="fa fa-angle-left"></i> 基于 GPU 原生架构的高性能二维弹性波动力学模拟平台
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">XIAO YU</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
