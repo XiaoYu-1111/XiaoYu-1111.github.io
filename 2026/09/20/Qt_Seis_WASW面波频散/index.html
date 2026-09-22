@@ -22,28 +22,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="SeisTool-MASW 面波频散分析与处理系统摘要 (Abstract)SeisTool-MASW 是一款面向近地表地球物理工程勘察的专业面波频散分析与正演模拟系统（MASW，Multichannel Analysis of Surface Waves）。系统集成了全格式 SEGY 地震道集解析、多模式剖面显示（Wiggle&#x2F;ColorMap）、层状介质理论面波正演合成、基于 Eigen+Op">
+    <meta name="description" content="SeisTool-MASW 面波频散分析与处理系统摘要 (Abstract)SeisTool-MASW 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SeisTool-MASW 面波频散分析与处理系统">
 <meta property="og:url" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="SeisTool-MASW 面波频散分析与处理系统摘要 (Abstract)SeisTool-MASW 是一款面向近地表地球物理工程勘察的专业面波频散分析与正演模拟系统（MASW，Multichannel Analysis of Surface Waves）。系统集成了全格式 SEGY 地震道集解析、多模式剖面显示（Wiggle&#x2F;ColorMap）、层状介质理论面波正演合成、基于 Eigen+Op">
+<meta property="og:description" content="SeisTool-MASW 面波频散分析与处理系统摘要 (Abstract)SeisTool-MASW 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shi">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main0.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main1.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main2.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main3.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/sync1.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/sync2.png">
 <meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/sync3.png">
+<meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/model_train.png">
+<meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/model_inversion.png">
+<meta property="og:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/model_inversion2.png">
 <meta property="article:published_time" content="2026-09-20T11:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-21T10:55:18.181Z">
+<meta property="article:modified_time" content="2026-09-22T15:11:39.773Z">
 <meta property="article:author" content="XIAO YU">
 <meta property="article:tag" content="Computational Geophysics">
 <meta property="article:tag" content="Elastic Wave">
 <meta property="article:tag" content="MASW">
 <meta property="article:tag" content="Visualization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main1.png">
+<meta name="twitter:image" content="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/main0.png">
 
 
 <link rel="canonical" href="http://example.com/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/">
@@ -178,7 +182,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisTool-MASW-%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">SeisTool-MASW 面波频散分析与处理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81-Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">摘要 (Abstract)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E4%B8%8E%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="nav-number">1.2.</span> <span class="nav-text">界面与效果预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">核心功能特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%93%E4%B8%9A%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E5%89%96%E9%9D%A2%E6%88%90%E5%83%8F%EF%BC%88Tab-1-Shot-Gather%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 专业地震数据读取与剖面成像（Tab 1: Shot Gather）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%AB%98%E6%95%88%E7%A7%BB%E7%9B%B8%E6%B3%95%E9%A2%91%E6%95%A3%E8%AE%A1%E7%AE%97%EF%BC%88Tab-2-Dispersion-Map%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 高效移相法频散计算（Tab 2: Dispersion Map）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%99%BA%E8%83%BD%E6%9B%B2%E7%BA%BF%E6%8B%BE%E5%8F%96%E4%B8%8E%E8%81%94%E5%8A%A8%EF%BC%88Tab-2-leftrightarrow-Tab-3%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 智能曲线拾取与联动（Tab 2 $\leftrightarrow$ Tab 3）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E7%90%86%E8%AE%BA%E6%AD%A3%E6%BC%94%E6%A8%A1%E6%8B%9F%EF%BC%88Forward-Modeling%EF%BC%89"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. 层状介质理论正演模拟（Forward Modeling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BE%85%E5%8A%A9%E6%97%B6%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 辅助时频信号分析工具箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.5.</span> <span class="nav-text">系统架构与工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">核心算法与数学原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A7%BB%E7%9B%B8%E6%B3%95%E7%A9%BA%E9%97%B4%E5%8F%A0%E5%8A%A0%E5%85%AC%E5%BC%8F-Park-et-al-1998"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 移相法空间叠加公式 (Park et al., 1998)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E5%9F%BA%E9%98%B6%E7%91%9E%E9%9B%B7%E9%9D%A2%E6%B3%A2%E7%9B%B8%E9%80%9F%E5%BA%A6%E6%B1%82%E8%A7%A3"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 层状介质基阶瑞雷面波相速度求解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">1.7.</span> <span class="nav-text">开发环境与依赖项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%B8%8E%E8%BF%90%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">1.8.</span> <span class="nav-text">编译与运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.9.</span> <span class="nav-text">项目目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA%E8%A7%84%E8%8C%83"><span class="nav-number">1.10.</span> <span class="nav-text">数据输入与导出规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83"><span class="nav-number">1.10.1.</span> <span class="nav-text">1. 输入数据规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.10.2.</span> <span class="nav-text">2. 导出数据格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-%E9%A2%91%E6%95%A3%E6%9B%B2%E7%BA%BF%E6%96%87%E6%9C%AC%EF%BC%88%E4%BE%9B%E5%8F%8D%E6%BC%94%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.10.2.1.</span> <span class="nav-text">A. 频散曲线文本（供反演软件使用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-%E4%BA%8C%E7%BB%B4%E9%A2%91%E6%95%A3%E8%83%BD%E9%87%8F%E8%B0%B1-%E5%90%88%E6%88%90%E9%81%93%E9%9B%86-SEGY-%E6%96%87%E4%BB%B6"><span class="nav-number">1.10.2.2.</span> <span class="nav-text">B. 二维频散能量谱 &#x2F; 合成道集 SEGY 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">1.11.</span> <span class="nav-text">Python 辅助工具链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%B8%8E%E8%87%B4%E8%B0%A2"><span class="nav-number">1.12.</span> <span class="nav-text">许可证与致谢</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisTool-MASW-%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3%E5%88%86%E6%9E%90%E4%B8%8E%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">SeisTool-MASW 面波频散分析与处理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81-Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">摘要 (Abstract)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9A-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-Project-Address"><span class="nav-number">1.3.</span> <span class="nav-text">📚 项目地址 (Project Address)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E4%B8%8E%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="nav-number">1.4.</span> <span class="nav-text">界面与效果预览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E8%A7%86%E5%9B%BE%E6%A6%82%E8%A7%88"><span class="nav-number">1.4.1.</span> <span class="nav-text">核心功能视图概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%AD%A3%E6%BC%94%E4%B8%8E%E5%A4%9A%E8%A7%86%E5%9B%BE%E8%81%94%E5%8A%A8%E9%AA%8C%E8%AF%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">理论正演与多视图联动验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.5.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="nav-number">1.6.</span> <span class="nav-text">核心功能特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%93%E4%B8%9A%E5%9C%B0%E9%9C%87%E9%81%93%E9%9B%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%88%90%E5%83%8F%EF%BC%88Tab-1-Shot-Gather%EF%BC%89"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 专业地震道集解析与成像（Tab 1: Shot Gather）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%9B%9B%E5%A4%A7%E9%A2%91%E6%95%A3%E8%83%BD%E9%87%8F%E8%B0%B1%E6%88%90%E5%83%8F%E5%85%A8%E5%AE%B6%E6%A1%B6%EF%BC%88Tab-2-Dispersion-Map%EF%BC%89"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%99%BA%E8%83%BD%E6%9B%B2%E7%BA%BF%E6%8B%BE%E5%8F%96%E4%B8%8E%E5%8F%8C%E8%A7%86%E5%9B%BE%E8%81%94%E5%8A%A8%EF%BC%88Tab-2-leftrightarrow-Tab-3%EF%BC%89"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1D-%E6%A8%AA%E6%B3%A2%E9%80%9F%E5%BA%A6%E7%BB%93%E6%9E%84%E5%89%96%E9%9D%A2%E5%B1%95%E7%A4%BA%E4%B8%8E%E5%9C%B0%E5%B1%82%E8%A1%A8%E6%A0%BC%EF%BC%88Tab-4-Vs-Profile%EF%BC%89"><span class="nav-number">1.6.4.</span> <span class="nav-text">4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%B1%82%E7%8A%B6%E4%BB%8B%E8%B4%A8%E7%90%86%E8%AE%BA%E6%AD%A3%E6%BC%94%E4%B8%8E%E6%97%B6%E5%9F%9F%E9%9D%A2%E6%B3%A2%E5%90%88%E6%88%90%EF%BC%88Forward-Modeling%EF%BC%89"><span class="nav-number">1.6.5.</span> <span class="nav-text">5. 层状介质理论正演与时域面波合成（Forward Modeling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E4%B8%8E%E5%B7%A5%E6%8E%A7%E7%BA%A7%E8%A7%86%E8%A7%89%E4%BD%93%E9%AA%8C"><span class="nav-number">1.6.6.</span> <span class="nav-text">6. 人机交互与工控级视觉体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E4%B8%8E%E4%B8%89%E8%BD%A8%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.7.</span> <span class="nav-text">系统架构与三轨工作流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Frequency-Hz-PhaseVelocity-m-s-Wavelength-m"><span class="nav-number">2.</span> <span class="nav-text">Frequency(Hz)    PhaseVelocity(m&#x2F;s)    Wavelength(m)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3"><span class="nav-number">3.</span> <span class="nav-text">Layer    Thickness(m)    Depth_Top(m)    Vs(m&#x2F;s)    Vp(m&#x2F;s)    Density(kg&#x2F;m3)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -279,7 +283,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-21 18:55:18" itemprop="dateModified" datetime="2026-09-21T18:55:18+08:00">2026-09-21</time>
+      <time title="修改时间：2026-09-22 23:11:39" itemprop="dateModified" datetime="2026-09-22T23:11:39+08:00">2026-09-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,10 +311,33 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="SeisTool-MASW-面波频散分析与处理系统"><a href="#SeisTool-MASW-面波频散分析与处理系统" class="headerlink" title="SeisTool-MASW 面波频散分析与处理系统"></a>SeisTool-MASW 面波频散分析与处理系统</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisTool-MASW</strong> 是一款面向近地表地球物理工程勘察的专业面波频散分析与正演模拟系统（MASW，Multichannel Analysis of Surface Waves）。系统集成了全格式 SEGY 地震道集解析、多模式剖面显示（Wiggle/ColorMap）、层状介质理论面波正演合成、基于 Eigen+OpenMP 的多核并行移相法能量谱计算、交互式局部极大值自动吸附拾取（Snap-to-Peak）以及出版级科研图表成图与数据导出功能。</p>
-<span id="more"></span>
-<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><p><strong>原始地震道集</strong><br><img src="main1.png" alt="Dashboard Screenshot"><br><strong>频散能量谱</strong><br><img src="main2.png" alt="Dashboard Screenshot"><br><strong>频散曲线</strong><br><img src="main3.png" alt="Dashboard Screenshot"></p>
-<div class="table-container">
+    <div class="post-body" itemprop="articleBody"><h1 id="SeisTool-MASW-面波频散分析与处理系统"><a href="#SeisTool-MASW-面波频散分析与处理系统" class="headerlink" title="SeisTool-MASW 面波频散分析与处理系统"></a>SeisTool-MASW 面波频散分析与处理系统</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（$\tau-p$）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（$V_s$）剖面反演引擎，可联动生成地下深度-速度阶梯图与分层参数表，全面支持频散曲线文本、频散谱及合成道集的双向 SEG-Y 数据导出，真正实现了从野外波场采集到地下地质成果交付的端到端闭环。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h2><h2 id="📚-项目地址-Project-Address"><a href="#📚-项目地址-Project-Address" class="headerlink" title="📚 项目地址 (Project Address)"></a>📚 项目地址 (Project Address)</h2><p>—- <a target="_blank" rel="noopener" href="https://github.com/XiaoYu-1111/Qt_Seis_MASW">https://github.com/XiaoYu-1111/Qt_Seis_MASW</a></p>
+<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><p><img src="main0.png" alt="原始地震道集"></p>
+<h3 id="核心功能视图概览"><a href="#核心功能视图概览" class="headerlink" title="核心功能视图概览"></a>核心功能视图概览</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">原始道集与波形剖面 (Tab 1)</th>
+<th style="text-align:center">频散能量谱与自动吸附拾取 (Tab 2)</th>
+<th style="text-align:center">频散曲线对比与反演质控 (Tab 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="main1.png" alt="原始地震道集"></td>
+<td style="text-align:center"><img src="main2.png" alt="频散能量谱"></td>
+<td style="text-align:center"><img src="main3.png" alt="频散曲线"></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>Wiggle 抖动线 + 变面积填充叠加变密度底图</em></td>
+<td style="text-align:center"><em>高分辨率相速度谱 (支持色标/归一化即刻切换)</em></td>
+<td style="text-align:center"><em>Plot1D 期刊级展示 (实测点与理论线叠合比对)</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="理论正演与多视图联动验证"><a href="#理论正演与多视图联动验证" class="headerlink" title="理论正演与多视图联动验证"></a>理论正演与多视图联动验证</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -326,9 +353,14 @@
 <td style="text-align:center"><img src="sync3.png" alt="频散曲线对比"></td>
 </tr>
 <tr>
-<td style="text-align:center"><em>Wiggle 抖动线 + 变面积填充叠加变密度</em></td>
-<td style="text-align:center"><em>移相法相速度谱（支持色标/归一化切换）</em></td>
-<td style="text-align:center"><em>Plot1D 期刊级展示（实测点与理论线叠合）</em></td>
+<td style="text-align:center">深度学习训练数据</td>
+<td style="text-align:center">横波速度反演结果</td>
+<td style="text-align:center">结果显示</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="model_train.png" alt="深度学习训练"></td>
+<td style="text-align:center"><img src="model_inversion.png" alt="速度反演"></td>
+<td style="text-align:center"><img src="model_inversion2.png" alt="Qt中结果显示"></td>
 </tr>
 </tbody>
 </table>
@@ -336,112 +368,186 @@
 <hr>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#核心功能特性">核心功能特性</a></li>
-<li><a href="#系统架构与工作流">系统架构与工作流</a></li>
-<li><a href="#核心算法与数学原理">核心算法与数学原理</a></li>
-<li><a href="#开发环境与依赖项">开发环境与依赖项</a></li>
-<li><a href="#编译与运行配置">编译与运行配置</a></li>
-<li><a href="#项目目录结构">项目目录结构</a></li>
+<li><a href="#系统架构与三轨工作流">系统架构与三轨工作流</a></li>
+<li><a href="#核心算法与数学物理原理">核心算法与数学物理原理</a></li>
+<li><a href="#开发环境与依赖库">开发环境与依赖库</a></li>
+<li><a href="#visual-studio-关键配置指南">Visual Studio 关键配置指南</a></li>
+<li><a href="#项目完整目录结构">项目完整目录结构</a></li>
 <li><a href="#数据输入与导出规范">数据输入与导出规范</a></li>
-<li><a href="#python-辅助工具链">Python 辅助工具链</a></li>
+<li><a href="#python-算法实验室与-ai-训练体系">Python 算法实验室与 AI 训练体系</a></li>
 <li><a href="#许可证与致谢">许可证与致谢</a></li>
 </ul>
 <hr>
-<h2 id="核心功能特性"><a href="#核心功能特性" class="headerlink" title="核心功能特性"></a>核心功能特性</h2><h3 id="1-专业地震数据读取与剖面成像（Tab-1-Shot-Gather）"><a href="#1-专业地震数据读取与剖面成像（Tab-1-Shot-Gather）" class="headerlink" title="1. 专业地震数据读取与剖面成像（Tab 1: Shot Gather）"></a>1. 专业地震数据读取与剖面成像（Tab 1: Shot Gather）</h3><ul>
-<li><strong>全格式 SEGY 读取</strong>：支持 IBM Float（代码 1）及 IEEE Float（代码 5）大端序地震数据的快速解码，自动解析二进制卷头及道头参数（道数、采样率 $dt$、采样点数 $nt$）。</li>
-<li><strong>双层混合渲染</strong>：支持<strong>变密度热力图（ColorMap）</strong>与<strong>地震抖动波形（Wiggle）/ 正半周变面积填充（Variable Area）</strong>的无缝叠合呈现。</li>
-<li><strong>视口裁剪与 LOD 渲染</strong>：针对大规模多道测线数据，内置屏幕视口裁剪（Frustum Culling）和基于像素分辨率的动态步长绘制（Level of Detail），确保上千道数据缩放平移丝滑流畅。</li>
-<li><strong>数据双向导出</strong>：支持将当前加载或理论合成的道集一键右键另存为标准 <strong>SEGY (*.sgy)</strong> 文件。</li>
-</ul>
-<h3 id="2-高效移相法频散计算（Tab-2-Dispersion-Map）"><a href="#2-高效移相法频散计算（Tab-2-Dispersion-Map）" class="headerlink" title="2. 高效移相法频散计算（Tab 2: Dispersion Map）"></a>2. 高效移相法频散计算（Tab 2: Dispersion Map）</h3><ul>
-<li><strong>经典相移变换</strong>：基于经典 Park (1998) 移相法，将时空域波场 $u(x, t)$ 映射至高分辨率频率-相速度 $E(f, v)$ 能量谱。</li>
-<li><strong>频域复数线性插值</strong>：采用相邻 FFT 频点复数线性加权插值与纯相位重归一化算法，<strong>彻底消除了离散傅里叶频点量化引起的“平顶台阶效应”</strong>。</li>
-<li><strong>多核并行加速</strong>：基于 <code>Eigen::FFT</code> 与 <code>OpenMP</code> 实现频域相移多线程扫描，计算耗时缩短至毫秒级。</li>
-<li><strong>双模式归一化（1 毫秒免重算切换）</strong>：<ul>
-<li><strong>按频率归一化（每列归一，推荐）</strong>：消除源子波振幅不均影响，使全频段能量峰值达到 $1.0$（深红），基阶与高阶条带清晰连续；</li>
-<li><strong>全局归一化</strong>：真实保留激发能量在不同频段的空间衰减特征。</li>
+<h2 id="核心功能特性"><a href="#核心功能特性" class="headerlink" title="核心功能特性"></a>核心功能特性</h2><h3 id="1-专业地震道集解析与成像（Tab-1-Shot-Gather）"><a href="#1-专业地震道集解析与成像（Tab-1-Shot-Gather）" class="headerlink" title="1. 专业地震道集解析与成像（Tab 1: Shot Gather）"></a>1. 专业地震道集解析与成像（Tab 1: Shot Gather）</h3><ul>
+<li><strong>工业级 SEGY 解析</strong>：支持标准 IBM 32-bit Float（代码 1）与 IEEE 754 Float（代码 5）大端序地震数据的快速解码，自动解析二进制卷头及 240 字节道头（道数、采样率 $dt$、每道样点数 $nt$、最小炮检距 $x_0$、道间距 $dx$）。</li>
+<li><strong>双层混合波场成像</strong>：<ul>
+<li><strong>底图</strong>：变密度伪彩热力图（ColorMap），支持 12 种主流地学色谱切换与对比度滑块无级调节；</li>
+<li><strong>顶层</strong>：高保真地震抖动线（Wiggle Trace）与正半周变面积黑色填充（Variable Area），具备自适应振幅增益控制（Gain Slider）。</li>
 </ul>
 </li>
-<li><strong>清晰色块 / 平滑插值一键切换</strong>：右键支持在 MATLAB 风格离散网格块（Nearest）与双线性平滑渲染（Bilinear）之间自由切换。</li>
+<li><strong>大规模数据视口裁剪与 LOD 加速</strong>：内置视锥裁剪（Frustum Culling）算法与基于屏幕像素密度的动态步长重采样（Level of Detail），即便面对上千道的大型测线道集，缩放平移依然保持 60 FPS 流畅帧率。</li>
+<li><strong>双向数据交互</strong>：不仅支持外部文件拖入，更支持将软件内正演合成的面波道集一键右键另存为标准 <strong>SEGY (*.sgy)</strong> 格式。</li>
 </ul>
-<h3 id="3-智能曲线拾取与联动（Tab-2-leftrightarrow-Tab-3）"><a href="#3-智能曲线拾取与联动（Tab-2-leftrightarrow-Tab-3）" class="headerlink" title="3. 智能曲线拾取与联动（Tab 2 $\leftrightarrow$ Tab 3）"></a>3. 智能曲线拾取与联动（Tab 2 $\leftrightarrow$ Tab 3）</h3><ul>
-<li><strong>局部极大值自动吸附（Snap-to-Peak）</strong>：在能量谱脊线上点击时，算法自动在垂直方向（$\pm 15$ 个速度网格）搜索局部极大值峰顶，彻底规避人工手动拾取的抖动误差。</li>
-<li><strong>实时双向图层联动</strong>：<ul>
-<li>页面二（热力图）同步覆盖醒目的亮黄色连线与红白拾取散点；</li>
-<li>页面三（<code>Plot1D</code>）自动对拾取离散点进行频率升序排序，生成封闭边框（Box Style）期刊级散点折线图。</li>
-</ul>
-</li>
-<li><strong>容错与编辑</strong>：支持单点撤销（Undo）、点位重复覆盖更新及一键清空曲线。</li>
-</ul>
-<h3 id="4-层状介质理论正演模拟（Forward-Modeling）"><a href="#4-层状介质理论正演模拟（Forward-Modeling）" class="headerlink" title="4. 层状介质理论正演模拟（Forward Modeling）"></a>4. 层状介质理论正演模拟（Forward Modeling）</h3><ul>
-<li><strong>Schwab-Knopoff 理论频散求解</strong>：内置高效层状弹性半空间特征超越方程求解器，采用双曲正切消指数增长技术，根治了传统 Thomson-Haskell 传递矩阵的高频数值溢出问题。</li>
-<li><strong>多层模型支持</strong>：支持双层、三层及任意 $N$ 层速度递增或低速夹层地质模型的理论基阶频散曲线正演计算。</li>
-<li><strong>物理频散面波记录时域合成</strong>：基于雷克子波振幅谱与理论相速度相移调制，通过逆傅里叶变换（IFFT）直接合成具有真实物理频散效应的数十道地震记录。</li>
-</ul>
-<h3 id="5-辅助时频信号分析工具箱"><a href="#5-辅助时频信号分析工具箱" class="headerlink" title="5. 辅助时频信号分析工具箱"></a>5. 辅助时频信号分析工具箱</h3><p>内置面向单道/多道地震信号的完整分析模块：</p>
+<h3 id="2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）"><a href="#2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）" class="headerlink" title="2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）"></a>2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）</h3><p>系统集成了面波勘探史上具有里程碑意义的四大频散成像算子，支持在界面中瞬时切换对比：</p>
 <ul>
-<li>连续小波变换（Morlet CWT，集成内存安全防护机制）</li>
-<li>S 变换（Stockwell Transform）与短时傅里叶变换（STFT）</li>
-<li>变分模态分解（VMD）</li>
-<li>希尔伯特包络分析（Hilbert Envelope）</li>
-<li>韦尔奇功率谱密度估计（Welch PSD）</li>
-</ul>
-<hr>
-<h2 id="系统架构与工作流"><a href="#系统架构与工作流" class="headerlink" title="系统架构与工作流"></a>系统架构与工作流</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">       ┌────────────────────────┐         ┌────────────────────────┐</span><br><span class="line">       │   外场实测 SEGY 数据   │         │   1D 地层模型参数输入   │</span><br><span class="line">       │   (*.sgy / *.segy)     │         │   (H, Vs, Vp, Density) │</span><br><span class="line">       └───────────┬────────────┘         └───────────┬────────────┘</span><br><span class="line">                   │                                  │</span><br><span class="line">                   ▼                                  ▼</span><br><span class="line">┌──────────────────────────────────────┐  ┌───────────────────────────────┐</span><br><span class="line">│ Tab 1: 原始地震道集剖面展示与分析     │  │ 理论正演模块 (Forward Solver) │</span><br><span class="line">│ - Wiggle 抖动线 / 变面积填充 / 热力图 │◄─┤ - Schwab-Knopoff 传递矩阵求根 │</span><br><span class="line">│ - 增益滑块 / 右键导出合成 SEGY 记录  │  │ - 频域相位调制 + IFFT 时域合成│</span><br><span class="line">└──────────────────┬───────────────────┘  └───────────────┬───────────────┘</span><br><span class="line">                   │ 几何与网格参数 (dt, dx, x0, f, v)    │</span><br><span class="line">                   ▼                                      │ 理论频散相速度</span><br><span class="line">┌──────────────────────────────────────────────────────┐  │</span><br><span class="line">│ Tab 2: 移相法相速度-频率能量谱 (Dispersion Map)       │  │</span><br><span class="line">│ - 频域复数插值 + OpenMP 并行相移叠加                 │  │</span><br><span class="line">│ - [开启拾取] -&gt; 鼠标点选触发 Snap-to-Peak 局部峰值吸附│  │</span><br><span class="line">│ - 右键导出频散能量谱为 SEGY / 切换平滑无模糊滤镜     │  │</span><br><span class="line">└──────────────────┬───────────────────────────────────┘  │</span><br><span class="line">                   │ 实时数据流同步                       │</span><br><span class="line">                   ▼                                      │</span><br><span class="line">┌──────────────────────────────────────────────────────┐  │</span><br><span class="line">│ Tab 3: 频散曲线对比与反演质控 (Extracted Curves)      │  │</span><br><span class="line">│ - Plot1D 封闭边框期刊级展示                          │  │</span><br><span class="line">│ - 拾取实测点与理论基阶红线叠合比对 (质控质检)        │◄─┘</span><br><span class="line">│ - 一键导出反演标准三列文本 (Freq, PhaseVel, Lambda)  │</span><br><span class="line">└──────────────────┬───────────────────────────────────┘</span><br><span class="line">                   │</span><br><span class="line">                   ▼</span><br><span class="line">       [直接输入 1D S波速度反演内核]</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="核心算法与数学原理"><a href="#核心算法与数学原理" class="headerlink" title="核心算法与数学原理"></a>核心算法与数学原理</h2><h3 id="1-移相法空间叠加公式-Park-et-al-1998"><a href="#1-移相法空间叠加公式-Park-et-al-1998" class="headerlink" title="1. 移相法空间叠加公式 (Park et al., 1998)"></a>1. 移相法空间叠加公式 (Park et al., 1998)</h3><p>对时空波场信号进行时间向傅里叶变换并执行振幅归一化：</p>
-<script type="math/tex; mode=display">P(x_j, \omega) = \frac{U(x_j, \omega)}{|U(x_j, \omega)|}</script><p>沿设定相速度 $v$ 扫描，执行空间相位干涉补偿叠加：</p>
-<script type="math/tex; mode=display">E(v, f) = \frac{1}{N} \left| \sum_{j=1}^{N} P(x_j, 2\pi f) \cdot \exp\left(i \frac{2\pi f \cdot x_j}{v}\right) \right|</script><p>其中 $x_j = x_0 + (j-1)\Delta x$ 代表第 $j$ 道检波器的实际物理偏移距，$x_0$ 为最小炮检距，$\Delta x$ 为道间距。</p>
-<h3 id="2-层状介质基阶瑞雷面波相速度求解"><a href="#2-层状介质基阶瑞雷面波相速度求解" class="headerlink" title="2. 层状介质基阶瑞雷面波相速度求解"></a>2. 层状介质基阶瑞雷面波相速度求解</h3><p>利用 Schwab-Knopoff 降阶 Delta 矩阵算法消除指数溢出项，求解超越特征方程：</p>
-<script type="math/tex; mode=display">F(c, \omega; \mathbf{H}, \mathbf{V_s}, \mathbf{V_p}, \mathbf{\rho}) = 0</script><p>从高频表层渐近值（$c \approx 0.92 V_{s, \text{top}}$）出发，利用 Brent-Dekker 混合求根算法沿频率逆向追踪，确保数值解收敛于基阶模态。</p>
-<hr>
-<h2 id="开发环境与依赖项"><a href="#开发环境与依赖项" class="headerlink" title="开发环境与依赖项"></a>开发环境与依赖项</h2><ul>
-<li><strong>操作系统</strong>：Windows 10 / 11 (x64)</li>
-<li><strong>开发环境</strong>：Microsoft Visual Studio 2019 / 2022 (MSVC v142/v143)</li>
-<li><strong>GUI 框架</strong>：Qt 5.12+ 或 Qt 6.x（Qt Widgets 模块）</li>
-<li><strong>核心依赖库</strong>：<ul>
-<li><strong>Eigen 3.3+</strong>：纯头文件 C++ 矩阵库，包含 <code>&lt;unsupported/Eigen/FFT&gt;</code> 快速傅里叶变换模块</li>
-<li><strong>QCustomPlot 2.1+</strong>：高级科学绘图渲染引擎</li>
-<li><strong>OpenMP</strong>：多核指令级并行加速库</li>
+<li><strong>经典移相法（Phase Shift, Park et al., 1998）</strong>：系统基准算法。具备逐道纯相位归一化，高低频能量极其均衡，抗几何扩散与强衰减能力最强。</li>
+<li><strong>高分辨率 Capon 最小方差法（MVDR / HRFK）</strong>：采用<strong>前向-后向双向空间平滑（FBSS）</strong>构造满秩协方差矩阵，结合对角加载（Diagonal Loading）求逆，将主频散脊线宽度压缩至传统方法的 1/3，高低阶模态分界极其锐利。</li>
+<li><strong>时域倾斜叠加法（Slant-Stack / $\tau-p$ 变换, McMechan &amp; Yedlin, 1981）</strong>：在时空域沿线性时差方向做动校正求和（Radon 变换），结合<strong>分数走时高精度线性插值</strong>，再沿截距时间 $\tau$ 进行 1D FFT，保留最真实的物理波场干涉。</li>
+<li><strong>经典 F-K 变换法（Frequency-Wavenumber）</strong>：时空双重傅里叶变换映射，提供极速的大视场宏观扫描。</li>
+<li><strong>频域复数线性插值技术</strong>：在扫描频率 $f$ 处采用相邻 FFT 频点复数加权插值与纯相位重归一化，<strong>彻底根除了离散傅里叶频点量化引起的“平顶阶梯锯齿效应”</strong>。</li>
+<li><strong>实时色标与滤波控制</strong>：<ul>
+<li><strong>双模式归一化</strong>：支持【按频率列归一化（推荐，全频段深红脊线）】与【全局归一化（保留能量衰减规律）】1 毫秒免重算瞬时切换；</li>
+<li><strong>滤波平滑切换</strong>：右键菜单支持在 MATLAB 风格离散纯净网格块（Nearest）与双线性平滑云雾渐变（Bilinear）之间自由切换。</li>
 </ul>
 </li>
 </ul>
+<h3 id="3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）"><a href="#3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）" class="headerlink" title="3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）"></a>3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）</h3><ul>
+<li><strong>局部极大值自动吸附（Snap-to-Peak）</strong>：用户在能量带附近鼠标轻点，算法自动在垂直速度方向（$\pm 15$ 个网格，约 $\pm 30\text{ m/s}$）内搜索物理极大值峰顶并精准就位，彻底消除手抖误差。</li>
+<li><strong>🤖 ONNX Runtime AI 深度学习一键智能拾取</strong>：<ul>
+<li>内置针对频散谱特征定制的轻量级多尺度空洞残差卷积网络（<code>DispersionRidgeNet</code>）；</li>
+<li>在 C++ 桌面端利用微软 ONNX Runtime 引擎直接进行 CPU 毫秒级推理，自动生成连续骨架曲线。</li>
+</ul>
+</li>
+<li><strong>实时双向图层联动</strong>：<ul>
+<li>Tab 2（能量图）：上方实时绘制高对比度亮黄色实线与红白采样圆点；</li>
+<li>Tab 3（<code>Plot1D</code>）：自动对拾取点按频率升序重排，生成封闭边框（Box Style）期刊级散点折线图。</li>
+</ul>
+</li>
+<li><strong>编辑与导出</strong>：支持单点撤销（Undo）、点位重复覆盖修正、一键清空，以及导出为标准三列反演文本（<code>Frequency, PhaseVelocity, Wavelength</code>）。</li>
+</ul>
+<h3 id="4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）"><a href="#4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）" class="headerlink" title="4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）"></a>4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）</h3><ul>
+<li><strong>地下深度 vs 横波速度阶梯图（1D Vs Step Profile）</strong>：<ul>
+<li>垂直向下延伸的地学标准深度轴（<code>yAxis-&gt;setRangeReversed(true)</code>）；</li>
+<li>采用阶梯线（Step Plot）严谨反映地下不同地质界面的速度突变。</li>
+</ul>
+</li>
+<li><strong>地层参数实时表格（QTableWidget）</strong>：<ul>
+<li>自动同步列出层号、厚度 $H$、顶面埋深、横波速度 $V_s$、纵波速度 $V_p$；</li>
+<li>消除水平滚动条自适应平分列宽，深色主题交替行着色，字迹高亮清晰。</li>
+</ul>
+</li>
+<li><strong>成果导入接口</strong>：支持读取 Python 优化反演生成的 <code>Inverted_Vs_Model.txt</code> 模型文件并直接成图。</li>
+</ul>
+<h3 id="5-层状介质理论正演与时域面波合成（Forward-Modeling）"><a href="#5-层状介质理论正演与时域面波合成（Forward-Modeling）" class="headerlink" title="5. 层状介质理论正演与时域面波合成（Forward Modeling）"></a>5. 层状介质理论正演与时域面波合成（Forward Modeling）</h3><ul>
+<li><strong>Schwab-Knopoff 理论频散求解器</strong>：<ul>
+<li>内置基于传递矩阵的超越特征方程求解器；</li>
+<li>利用双曲正切消指数增长技术，根治了传统 Thomson-Haskell 方法的高频数值溢出问题；</li>
+<li>支持双层、三层及任意 $N$ 层速度递增或低速软弱夹层地质模型的理论基阶相速度正演计算。</li>
+</ul>
+</li>
+<li><strong>物理频散面波记录时域合成</strong>：<ul>
+<li>结合雷克子波振幅谱与理论相速度相移调制：$S(x, f) = A(f) e^{-i 2\pi f x / c(f)}$；</li>
+<li>利用逆傅里叶变换（IFFT）直接合成具有真实频散延迟特征的多道地震炮集（直接载入 Tab 1 供全流程测试）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-人机交互与工控级视觉体验"><a href="#6-人机交互与工控级视觉体验" class="headerlink" title="6. 人机交互与工控级视觉体验"></a>6. 人机交互与工控级视觉体验</h3><ul>
+<li><strong>卡片式空状态指引（Empty State）</strong>：启动初期居中展现现代化操作卡片，提供大图标、快速浏览按钮及【🧪 一键加载理论三层模型】快速体验入口。</li>
+<li><strong>全窗口拖拽载入（Drag &amp; Drop）</strong>：支持从 Windows 桌面直接将 <code>.sgy</code> 文件拖入窗口快速秒开。</li>
+<li><strong>顶部数据看板徽章（Data Badges）</strong>：工具栏右侧动态点亮深蓝微光胶囊标签，实时呈现文件名、道数、采样率与记录时长。</li>
+<li><strong>底部地学仪器级状态指示灯（Status Chips）</strong>：状态栏常驻 4 颗带 LED 色彩的状态指示芯片（算力引擎、当前算法、网格规格、数据道数），随面板操作动态刷新。</li>
+</ul>
 <hr>
-<h2 id="编译与运行配置"><a href="#编译与运行配置" class="headerlink" title="编译与运行配置"></a>编译与运行配置</h2><p>在使用 Visual Studio 编译本工程时，请确保开启以下三项关键编译选项：</p>
+<h2 id="系统架构与三轨工作流"><a href="#系统架构与三轨工作流" class="headerlink" title="系统架构与三轨工作流"></a>系统架构与三轨工作流</h2><p>系统涵盖了<strong>外场实测数据处理</strong>、<strong>理论正演数值模拟</strong>与<strong>AI 模型训练闭环</strong>三条互通的工作流：</p>
+<p>```text<br>               【实测数据流】                               【理论正演流】<br>       ┌────────────────────────┐                   ┌────────────────────────┐<br>       │   外场实测 SEGY 数据   │                   │   1D 地层模型参数输入   │<br>       │   (<em>.sgy / </em>.segy)     │                   │   (H1, H2, Vs1, Vs2…)│<br>       └───────────┬────────────┘                   └───────────┬────────────┘<br>                   │ 拖拽 / 浏览打开                            │ 一键理论正演合成<br>                   ▼                                            ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 1: 原始地震道集剖面展示与分析 (Shot Gather)                               │<br>│ - Wiggle 抖动线 / 变面积填充 / 灰度变密度剖面 / 增益调节                     │<br>│ - 顶部看板显示 [文件名 | 96道 | 1.0ms | 1000ms] / 右键导出合成道集 SEGY 文件 │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 设定观测系统与扫描网格: dt, dx, x0, f, v<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 2: 移相法 / F-K / Capon MVDR / 倾斜叠加 τ-p 频散能量谱 (Dispersion Map)   │<br>│ - 频域复数线性加权插值 (彻底消除阶梯锯齿) + OpenMP 多核极速并行               │<br>│ - [拾取模式] -&gt; 鼠标点选触发 Snap-to-Peak 局部极大值自动吸附 (或点击 🤖 AI一键拾取) │<br>│ - 右键切换清晰色块(Nearest) / 双线性平滑(Bilinear) / 导出频散谱 SEGY 文件    │<br>└──────────────────┬──────────────────────────────────────────┬───────────────┘<br>                   │ 实时同步提取点                           │ 理论相速度真值<br>                   ▼                                          ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 3: 频散曲线对比与反演质控 (Extracted Curves)                            │<br>│ - Plot1D 封闭边框期刊级展示                                                 │<br>│ - 实测提取散点与理论红线叠合比对 (闭环质检)                                  │<br>│ - 一键导出反演标准 ASCII 文本 (Frequency, PhaseVelocity, Wavelength)        │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 输入反演数据<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 4: 1D 横波速度剖面展示与分层参数表 (Vs Profile)                          │<br>│ - 垂直台阶线阶梯剖面 (Depth vs Vs, 深度向下递增)                             │<br>│ - 地层参数表格同步呈现 (层号、厚度、顶深、Vs、Vp)                            │<br>│ - 载入 Python / C++ 优化反演生成的 Inverted_Vs_Model.txt 文件展示成果        │<br>└─────────────────────────────────────────────────────────────────────────────┘</p>
+<p>核心算法与数学物理原理</p>
 <ol>
-<li><strong>启用扩展对象格式 <code>/bigobj</code></strong>（解决 Eigen 复杂模板深度展开引发的 C1128 错误）：<ul>
-<li>项目属性 $\to$ <strong>C/C++</strong> $\to$ <strong>命令行</strong> $\to$ 其他选项添加：<code>/bigobj</code></li>
+<li>四大频散能量谱成像算子</li>
+</ol>
+<p>A. 经典移相法（Phase Shift, Park et al., 1998）</p>
+<p>对地震道进行时间向傅里叶变换并执行纯相位归一化，剔除几何扩散衰减：<br>P(x_j, \omega) = \frac{U(x_j, \omega)}{|U(x_j, \omega)|}</p>
+<p>沿试探相速度 v 扫描，执行空间相位相干补偿叠加：<br>E(v, f) = \frac{1}{N} \left| \sum_{j=1}^{N} P(x_j, 2\pi f) \cdot \exp\left(i \frac{2\pi f \cdot x_j}{v}\right) \right|</p>
+<p>B. 高分辨率 Capon 最小方差法（MVDR / HRFK）</p>
+<p>通过长度为 L 的滑动子阵列计算空间平滑协方差矩阵 \mathbf{R}_f，并引入后向平滑<br>\mathbf{R}_b = \mathbf{J} \mathbf{R}_f^* \mathbf{J} 构造满秩矩阵：<br>\mathbf{R} = \frac{1}{2}(\mathbf{R}_f + \mathbf{R}_b) + \epsilon \mathbf{I}</p>
+<p>定义物理导向矢量<br>\mathbf{a}(v) = \left[ 1, e^{-i \frac{\omega}{v} \Delta x}, \dots, e^{-i \frac{\omega}{v} (L-1)\Delta x} \right]^T，自适应滤除相干旁瓣干扰：<br>E_{\text{Capon}}(v, f) = \frac{1}{\mathbf{a}^H(v) \mathbf{R}^{-1} \mathbf{a}(v)}</p>
+<p>C. 时域倾斜叠加法（Slant-Stack / \tau-p 变换, McMechan &amp; Yedlin, 1981）</p>
+<p>时空域线性动校正（LMO）截距时间叠加：<br>u(\tau, p) = \sum_{j=1}^{N} u(x_j, \tau + p \cdot x_j), \quad p = \frac{1}{v}</p>
+<p>沿截距时间 \tau 执行 1D 傅里叶变换映射至速度谱：<br>E(v, f) = \left| \int u(\tau, 1/v) e^{-i 2\pi f \tau} d\tau \right|</p>
+<ol>
+<li>Schwab-Knopoff 层状弹性介质频散特征方程</li>
+</ol>
+<p>对于 N 层水平均匀各向同性弹性介质，地表满足自由应力边界条件，无限深基底满足波场向下衰减条件。联立各层位移-应力传递矩阵并引入双曲正切消指数项<br>\tanh(k r_m d_m) = \frac{1-e^{-2kr_md_m}}{1+e^{-2kr_md_m}}，构建隐式超越特征方程：<br>F(c, \omega; \mathbf{H}, \mathbf{V_s}, \mathbf{V_p}, \mathbf{\rho}) = 0</p>
+<p>系统从高频渐近线（c \approx 0.92 V<em>{s, \text{top}}）出发，利用 Brent-Dekker<br>混合求根算法沿频率逆序追踪，确保数值解收敛于基阶模态 v</em>{R0}(f)。</p>
+<p>[三层弹性模型: H, Vs, Vp, Rho]<br>              │<br>              ▼ 【公式 1: Schwab-Knopoff 传递矩阵求根】<br>[理论相速度曲线: c(f)] ───────► (直接画在 Tab 3 的理论红线)<br>              │<br>              ▼ 【公式 2: 频域相位调制 + IFFT 时域合成】<br>[多道地震道集: u(x, t)] ─────► (显示在 Tab 1 的合成 Wiggle 波形)<br>              │<br>              ▼ 【公式 3: Park / Capon / τ-p 空间相干叠加】<br>[频散能量谱: E(f, v)] ───────► (显示在 Tab 2 的亮红色能量带)</p>
+<ol>
+<li>1D 横波速度结构反演目标函数（Tikhonov 正则化）</li>
+</ol>
+<p>将观测频散曲线 \mathbf{v}^{\text{obs}} 反演为各层横波速度<br>\mathbf{m} = [V<em>{s1}, V</em>{s2}, \dots, V<em>{sN}] 的目标函数定义为：<br>\Phi(\mathbf{m}) = \frac{1}{2} \sum</em>{i=1}^{M} \left( v_R^{\text{obs}}(f_i) - v_R^{\text{calc}}(f_i, \mathbf{m}) \right)^2 + \frac{\lambda}{2} |\mathbf{L} \mathbf{m}|_2^2</p>
+<p>其中 \mathbf{L} 为一阶平滑差分算子（粗糙度矩阵），有效规避了地层速度在垂向上的锯齿状震荡解。</p>
+<p>开发环境与依赖库</p>
+<ul>
+<li>操作系统：Windows 10 / 11 (x64)</li>
+<li>IDE 与编译器：Microsoft Visual Studio 2022 (MSVC v143, C++17 标准)</li>
+<li>GUI 框架：Qt 5.12+ / Qt 6.x（Widgets 模块）</li>
+<li>核心依赖库：<ul>
+<li>Eigen 3.3+：高性能密集矩阵运算与 <unsupported/Eigen/FFT> 快速傅里叶变换</li>
+<li>QCustomPlot 2.1+：双层混合剖面与出版级曲线绘图引擎</li>
+<li>ONNX Runtime (C++ API v1.30.0)：轻量级深度学习前向推理引擎</li>
+<li>OpenMP：多核 CPU 指令级并行加速</li>
 </ul>
 </li>
-<li><strong>启用 UTF-8 源代码编码 <code>/utf-8</code></strong>（解决 MSVC 中文字符断句与 C2143 语法错误）：<ul>
-<li>项目属性 $\to$ <strong>C/C++</strong> $\to$ <strong>命令行</strong> $\to$ 其他选项添加：<code>/utf-8</code></li>
+</ul>
+<p>Visual Studio 关键配置指南</p>
+<p>在 Visual Studio 2022 中编译运行本系统时，必须确认以下关键工程属性：</p>
+<ol>
+<li><p>编译选项设置</p>
+<ul>
+<li>启用扩展对象格式 /bigobj（解决 Eigen 深度模板展开导致的符号溢出）：<ul>
+<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/bigobj</li>
 </ul>
 </li>
-<li><strong>启用 OpenMP 多线程加速</strong>：<ul>
-<li>项目属性 $\to$ <strong>C/C++</strong> $\to$ <strong>语言</strong> $\to$ <strong>OpenMP 支持</strong> $\to$ 设为 <strong>是 (/openmp)</strong>。</li>
+<li>强制 UTF-8 源代码编码 /utf-8（解决 MSVC 中文字符断句与 C2143 报错）：<ul>
+<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/utf-8</li>
 </ul>
+</li>
+<li>启用 OpenMP 多线程加速：<ul>
+<li>项目属性 \to C/C++ \to 语言 \to OpenMP 支持 \to 设为 是 (/openmp)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ONNX Runtime C++ 库集成配置</p>
 </li>
 </ol>
-<hr>
-<h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Qt_Seis_MASW/</span><br><span class="line">├── Pro_h/                        # 核心接口头文件</span><br><span class="line">│   ├── Plot1D.h                  # 1D 专业科研图表组件 (QCustomPlot 派生类)</span><br><span class="line">│   ├── QCPSeismicWiggle.h        # 地震波形抖动线与变面积填充 Plottable</span><br><span class="line">│   ├── SeismicIO.h               # SEGY 数据底层解析与导出接口</span><br><span class="line">│   ├── SeismicView2D.h            # 2D 剖面多功能查看器接口</span><br><span class="line">│   ├── SignalProcessingUtils.h   # 频散相移法、小波变换、STFT、VMD 算法库</span><br><span class="line">│   └── RayleighForwardSolver.h   # 层状介质理论频散求解与面波时域合成器</span><br><span class="line">├── Pro_cpp/                      # 算法与组件实现源码</span><br><span class="line">│   ├── Plot1D.cpp</span><br><span class="line">│   ├── QCPSeismicWiggle.cpp</span><br><span class="line">│   ├── SeismicIO.cpp</span><br><span class="line">│   ├── SeismicView2D.cpp</span><br><span class="line">│   ├── SignalProcessingUtils.cpp</span><br><span class="line">│   └── RayleighForwardSolver.cpp</span><br><span class="line">├── Python_script/                # 独立 Python 后处理与成图脚本库</span><br><span class="line">│   ├── plot_seismic_gather.py    # 炮集 Wiggle/变面积/灰度剖面成图脚本</span><br><span class="line">│   └── plot_dispersion_map.py    # 导出的频散谱 SEGY 300-DPI 高清成图脚本</span><br><span class="line">├── Pro_image/                    # 系统截图与说明图谱</span><br><span class="line">│   ├── main1.png</span><br><span class="line">│   ├── main2.png</span><br><span class="line">│   └── main3.png</span><br><span class="line">├── style.h                       # 全局 Slate 深色科技风格 QSS 样式定义</span><br><span class="line">├── Pro_Seis_MASW.h               # 主窗口逻辑控制器声明</span><br><span class="line">├── Pro_Seis_MASW.cpp             # 业务流程、UI 交互与拾取逻辑实现</span><br><span class="line">├── main.cpp                      # 应用程序入口</span><br><span class="line">└── README.md                     # 项目说明文档</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="数据输入与导出规范"><a href="#数据输入与导出规范" class="headerlink" title="数据输入与导出规范"></a>数据输入与导出规范</h2><h3 id="1-输入数据规范"><a href="#1-输入数据规范" class="headerlink" title="1. 输入数据规范"></a>1. 输入数据规范</h3><ul>
-<li>标准地震勘探 <strong>SEG-Y / SGY</strong> 文件（二维主动源面波单炮记录，Common Shot Gather）。</li>
-<li>兼容微动台阵与连续线性排列观测记录。</li>
+<p>下载解压 onnxruntime-win-x64-1.30.0.zip 并置于 Pro_Seis_MASW/third_party/onnxruntime：</p>
+<ul>
+<li>包含目录：C/C++ -&gt; 常规 -&gt; 附加包含目录 添加：$(ProjectDir)third_party\onnxruntime\include</li>
+<li>库目录：链接器 -&gt; 常规 -&gt; 附加库目录 添加：$(ProjectDir)third_party\onnxruntime\lib</li>
+<li>依赖项：链接器 -&gt; 输入 -&gt; 附加依赖项 添加：onnxruntime.lib</li>
+<li>运行时动态库：将 onnxruntime.dll 复制到可执行程序目录（如 x64/Release/）。</li>
 </ul>
-<h3 id="2-导出数据格式"><a href="#2-导出数据格式" class="headerlink" title="2. 导出数据格式"></a>2. 导出数据格式</h3><h4 id="A-频散曲线文本（供反演软件使用）"><a href="#A-频散曲线文本（供反演软件使用）" class="headerlink" title="A. 频散曲线文本（供反演软件使用）"></a>A. 频散曲线文本（供反演软件使用）</h4><p>点击 <strong>【导出曲线…】</strong> 生成的标准三列地学 ASCII 文本文件，可直接供 CPS330 (<code>surf96</code>)、Geopsy 或自研反演算法调用：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)</span><br><span class="line">5.000              324.50                64.90</span><br><span class="line">7.500              298.20                39.76</span><br><span class="line">10.000             276.40                27.64</span><br><span class="line">12.500             255.80                20.46</span><br><span class="line">...                ...                   ...</span><br></pre></td></tr></table></figure>
-<h4 id="B-二维频散能量谱-合成道集-SEGY-文件"><a href="#B-二维频散能量谱-合成道集-SEGY-文件" class="headerlink" title="B. 二维频散能量谱 / 合成道集 SEGY 文件"></a>B. 二维频散能量谱 / 合成道集 SEGY 文件</h4><ul>
-<li><strong>频散谱导出</strong>：右键点击能量谱选择 <strong>【💾 导出频散能量谱为 SEGY】</strong>，生成以频率为道（$N_f$）、相速度为采样点（$N_v$）的标准浮点 SEGY 文件。</li>
-<li><strong>合成道集导出</strong>：在道集视图中右键选择 <strong>【💾 导出道集为 SEGY】</strong>，将正演模拟的波形导出为工业标准地震文件。</li>
-</ul>
-<hr>
-<h2 id="Python-辅助工具链"><a href="#Python-辅助工具链" class="headerlink" title="Python 辅助工具链"></a>Python 辅助工具链</h2><p>项目在 <code>Python_script/</code> 目录下配套提供了两套独立的 Python 后处理工具：</p>
+<p>项目完整目录结构</p>
+<p>Qt_Seis_MASW/<br>├── Qt_Seis_MASW.sln              # Visual Studio 2022 解决方案文件<br>├── Pro_Seis_MASW/                # C++ Qt 主工程目录<br>│   ├── Pro_h/                    # 核心接口头文件<br>│   │   ├── Plot1D.h              # 1D 专业科研图表组件 (QCustomPlot 派生类)<br>│   │   ├── QCPSeismicWiggle.h    # 地震波形抖动线与变面积填充 Plottable 图元<br>│   │   ├── SeismicIO.h           # SEGY 数据底层解析与多维导出接口<br>│   │   ├── SeismicView2D.h       # 2D 剖面多功能查看器容器接口<br>│   │   ├── SignalProcessingUtils.h # 移相法、F-K、Capon MVDR、τ-p、CWT、VMD 算法库<br>│   │   └── RayleighForwardSolver.h # 层状介质理论频散求解与多道面波时域合成器<br>│   ├── Pro_cpp/                  # 算法与组件实现源码<br>│   │   ├── Plot1D.cpp<br>│   │   ├── QCPSeismicWiggle.cpp<br>│   │   ├── SeismicIO.cpp<br>│   │   ├── SeismicView2D.cpp<br>│   │   ├── SignalProcessingUtils.cpp<br>│   │   └── RayleighForwardSolver.cpp<br>│   ├── third_party/              # 第三方轻量级依赖库<br>│   │   └── onnxruntime/          # 微软 ONNX Runtime C++ SDK (include/ &amp; lib/)<br>│   ├── models/                   # AI 神经网络模型交付目录<br>│   │   └── dispersion_picker.onnx # 导出的专用频散脊线提取模型<br>│   ├── pro_data/                 # 地震数据与导出成果中转站<br>│   │   └── output_curve/         # 频散曲线文本与反演 Vs 模型保存目录<br>│   ├── Python_script/            # 独立 Python 后处理脚本<br>│   │   ├── plot_seismic_gather.py # 炮集 Wiggle/灰度剖面高清成图工具<br>│   │   └── plot_dispersion_map.py # 导出的频散谱 SEGY 300-DPI 成图工具<br>│   ├── Pro_image/                # 系统各功能界面截图与文档插图<br>│   │   ├── main1.png             # Tab 1 原始道集截图<br>│   │   ├── main2.png             # Tab 2 频散能量谱截图<br>│   │   ├── main3.png             # Tab 3 提取频散曲线截图<br>│   │   ├── sync1.png             # 理论正演道集联动截图<br>│   │   ├── sync2.png             # 理论频散谱联动截图<br>│   │   └── sync3.png             # 理论频散曲线叠合对比截图<br>│   ├── style.h                   # 全局 Slate 深色科技风格 QSS 样式表定义<br>│   ├── Pro_Seis_MASW.h           # 主窗口逻辑控制器声明<br>│   ├── Pro_Seis_MASW.cpp         # 界面构建、业务逻辑、事件响应与 AI 推理实现<br>│   └── main.cpp                  # 桌面应用程序入口<br>├── AI_Train_MASW/                # Python 独立 AI 训练工作台<br>│   ├── dataset/                  # C++ 生成的连续大文件二进制数据集 (.bin)<br>│   ├── Main.ipynb                # 从环境自检、张量载入到训练导出的 Jupyter 实验笔记<br>│   └── run_inversion.py          # 1D 瑞雷波相速度 CoFI/disba 反演验证脚本<br>└── README.md                     # 系统完整技术说明文档</p>
+<p>数据输入与导出规范</p>
 <ol>
-<li><strong><code>plot_seismic_gather.py</code></strong>：基于 <code>segyio</code> 与 <code>matplotlib</code> 读取地震道集，支持自动计算时间轴、自适应调整增益并输出 300-DPI Wiggle 波形与灰度剖面；</li>
-<li><strong><code>plot_dispersion_map.py</code></strong>：专用于读取本系统导出的频散谱 <code>.sgy</code> 文件，支持物理坐标自动映射（Hz 与 m/s）及双三次平滑抗锯齿成图。</li>
+<li><p>输入数据</p>
+<ul>
+<li>支持标准勘探 SEG-Y / SGY 格式（二维主动源单炮道集，Common Shot Gather）。</li>
+<li>兼容工程微动台阵与连续线性排列测量数据。</li>
+</ul>
+</li>
+<li><p>导出成果数据规范</p>
+</li>
 </ol>
-<hr>
-<h2 id="许可证与致谢"><a href="#许可证与致谢" class="headerlink" title="许可证与致谢"></a>许可证与致谢</h2><p>本项目基于科研与工程实践开发。底层绘图组件遵循 <strong>GPLv3 / QCustomPlot 商业许可</strong>；矩阵运算与快速傅里叶变换依赖开源 <strong>Eigen</strong> 库；地层正演超越方程基于 Schwab-Knopoff 理论实现。<br>```</p>
+<p>A. 频散曲线文本格式（供反演软件调用）</p>
+<p>点击 【导出曲线…】 输出的标准三列 ASCII 文本文件，可直接被 CPS330 (surf96)、Geopsy 或 Python 反演脚本调用：</p>
+<h1 id="Frequency-Hz-PhaseVelocity-m-s-Wavelength-m"><a href="#Frequency-Hz-PhaseVelocity-m-s-Wavelength-m" class="headerlink" title="Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)"></a>Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)</h1><p>5.000              324.50                64.90<br>7.500              298.20                39.76<br>10.000             276.40                27.64<br>12.500             255.80                20.46<br>…                …                   …</p>
+<p>B. 1D 反演横波速度地层剖面格式</p>
+<p>反演模块输出的层状速度模型文本（Inverted_Vs_Model.txt），可直接载入 Tab 4 绘制阶梯剖面：</p>
+<h1 id="Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3"><a href="#Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3" class="headerlink" title="Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)"></a>Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)</h1><p>1          2.00            0.00            223.50     447.00     2000.0<br>2          3.00            2.00            319.80     639.60     2000.0<br>3          5.00            5.00            345.90     691.80     2000.0<br>4          8.00            10.00           372.00     744.00     2000.0<br>5          12.00           18.00           398.00     796.00     2000.0<br>6          0.00            30.00           423.80     847.60     2000.0</p>
+<p>C. 二维频散能量谱 / 合成道集 SEGY 格式</p>
+<ul>
+<li>频散谱导出：右键点击谱图选择 【💾 导出频散能量谱为 SEGY】，生成以频率为道（N_f）、相速度为采样点（N_v）的标准浮点 SEGY 文件。</li>
+<li>合成道集导出：在道集视图中右键选择 【💾 导出道集为 SEGY】，将正演模拟的纯物理波场导出为标准地震道集。</li>
+</ul>
+<p>Python 辅助工具链</p>
+<p>系统在 Python_script/ 目录下配套提供了两套即开即用的专业数据可视化工具：</p>
+<ol>
+<li>plot_seismic_gather.py：基于 segyio 与 matplotlib，支持自动计算时间物理轴、自适应增益均衡并导出 300-DPI<br>Wiggle 波形与灰度剖面；</li>
+<li>plot_dispersion_map.py：用于读取本系统导出的频散能量谱 .sgy 文件，支持物理坐标自动映射（Hz 与<br>m/s）及双三次平滑（Bicubic）抗锯齿超高清成图。</li>
+</ol>
+<p>许可证与致谢</p>
+<p>本项目基于工程实践与科研探索开发。底层绘图组件遵循 GPLv3 / QCustomPlot 商业许可；矩阵代数运算与快速傅里叶变换依赖开源 Eigen<br>矩阵库；理论层状介质特征超越方程基于 Schwab-Knopoff 理论构建；AI 部署基于微软开源 ONNX Runtime 引擎。</p>
 
     </div>
 
