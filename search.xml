@@ -231,6 +231,431 @@
       </tags>
   </entry>
   <entry>
+    <title>🌿 RAIN Focus Workstation</title>
+    <url>/2026/09/20/Qt%E6%B2%89%E6%B5%B8%E5%BC%8F%E4%B8%93%E6%B3%A8%E5%BF%83%E6%B5%81%E5%B7%A5%E4%BD%9C%E5%8F%B0/</url>
+    <content><![CDATA[<h1 id="🌿-RAIN-Focus-Workstation"><a href="#🌿-RAIN-Focus-Workstation" class="headerlink" title="🌿 RAIN Focus Workstation"></a>🌿 RAIN Focus Workstation</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>RAIN Focus Workstation</strong> 是一款极简现代的桌面端个人心流与生产力管理套件。</p>
+<p>项目抛弃了传统工具粗糙的厚边框与刺眼的高对比度渐变，汲取了目前流行的 <strong>Bento Grid（便当网格）</strong> 与 <strong>卡片微描边</strong> 交互美学，通过 <strong>全矢量纯代码渲染（0 图片依赖）</strong>、<strong>自适应动态字阶</strong> 和 <strong>5 款精选莫兰迪主题调色盘</strong>，为开发者、创作者及深度工作者提供纯净、无打扰的心流体验。</p>
+<span id="more"></span>
+<p align="center">
+  <strong>基于 Qt 6 & 现代 C++ 打造的 Bento Grid（便当网格）沉浸式专注心流工作台</strong>
+</p>
+
+<h2 id="📚-项目地址-Project-Address"><a href="#📚-项目地址-Project-Address" class="headerlink" title="📚 项目地址 (Project Address)"></a>📚 项目地址 (Project Address)</h2><p>—- <a href="https://github.com/XiaoYu-1111/Qt_focus">https://github.com/XiaoYu-1111/Qt_focus</a></p>
+<h2 id="📖-项目简介-Overview"><a href="#📖-项目简介-Overview" class="headerlink" title="📖 项目简介 (Overview)"></a>📖 项目简介 (Overview)</h2><hr>
+<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><img src="/2026/09/20/Qt%E6%B2%89%E6%B5%B8%E5%BC%8F%E4%B8%93%E6%B3%A8%E5%BF%83%E6%B5%81%E5%B7%A5%E4%BD%9C%E5%8F%B0/main.png" class="" title="界面1">
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">界面1</th>
+<th style="text-align:center">界面2</th>
+<th style="text-align:center">界面3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="page1.png" alt="界面1"></td>
+<td style="text-align:center"><img src="page2.png" alt="界面2"></td>
+<td style="text-align:center"><img src="page3.png" alt="界面3"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="✨-核心亮点-Highlights"><a href="#✨-核心亮点-Highlights" class="headerlink" title="✨ 核心亮点 (Highlights)"></a>✨ 核心亮点 (Highlights)</h2><ul>
+<li><strong>🍱 现代化 Bento Grid 布局</strong>：信息密度恰到好处的模块化卡片设计，主页集成「当前心流时间」、「三联指标矩阵」与「快捷工具坞」。</li>
+<li><strong>🎨 纯代码矢量光栅化（0 PNG 资源）</strong>：<ul>
+<li>核心图标全部依托内存中 <code>QPainter</code> 抓取 <code>FontAwesome</code> 矢量字形动态合成；</li>
+<li>交通灯三色控制点采用纯 QSS 圆角渲染，彻底告别位图模糊与边缘裁切。</li>
+</ul>
+</li>
+<li><strong>🌓 5 种精选调色盘动态换肤</strong>：<ul>
+<li>包含 <strong>清爽米绿</strong>、<strong>优雅薰衣草</strong>、<strong>冰川静蓝</strong>、<strong>夏日草甸</strong> 与 <strong>极客暗黑</strong>；</li>
+<li>右键二级菜单随时即时切色，支持 <code>Q + A</code> 键盘一键循环轮转，所有矢量图标跟随主题色动态重绘。</li>
+</ul>
+</li>
+<li><strong>⏱️ 专注状态显著字号突增</strong>：<ul>
+<li>闲置准备时保持 <code>52px</code> 柔和预览字号；</li>
+<li>点击「开启心流」瞬间，倒计时字体立即膨胀至 <strong><code>110px 醒目超大字阶</code></strong>，带来极具张力的大屏全神贯注体验。</li>
+</ul>
+</li>
+<li><strong>🪟 工业级 28px 基准线对齐</strong>：<ul>
+<li>窗口标题、导航 Tab 栏、认证标头及主卡片在左侧严格遵循 <code>28px</code> 垂直对齐规范，告别错位卡顿感。</li>
+</ul>
+</li>
+<li><strong>🔍 响应式舒适搜索栏</strong>：<ul>
+<li>单行 <code>QLineEdit</code> 纯净居中排版（46px 高度），彻底消灭多行编辑器的文字截断与滚动条滑块，支持回车键一键直达搜索。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🧩-核心功能模块-Features"><a href="#🧩-核心功能模块-Features" class="headerlink" title="🧩 核心功能模块 (Features)"></a>🧩 核心功能模块 (Features)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模块名称</th>
+<th style="text-align:center">图标</th>
+<th style="text-align:left">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>工作台 (Home)</strong></td>
+<td style="text-align:center"><code>icon_home</code></td>
+<td style="text-align:left">核心时间看板、实时年月日星期提醒、25m/0-8/100% 状态概览矩阵、外部反馈及仓库一键直达</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>专注心流 (Focus)</strong></td>
+<td style="text-align:center"><code>icon_time</code></td>
+<td style="text-align:left">自定义番茄钟倒计时（1~300 分钟）、110px 显著醒目大字阶、微细进度条、暂停/继续/重置流转</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>目标清单 (Tasks)</strong></td>
+<td style="text-align:center"><code>icon_tasks</code></td>
+<td style="text-align:left">约束型每日 8 项核心任务管理、彩色微卡片输入框、支持独立增加与安全批量清空</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>启动台 (Resources)</strong></td>
+<td style="text-align:center"><code>icon_external_link</code></td>
+<td style="text-align:left">常用知识库外链跳转、居中舒适搜索栏（支持 Enter 回车直接拉起系统浏览器检索）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="🎨-调色盘规范-Theme-Palettes"><a href="#🎨-调色盘规范-Theme-Palettes" class="headerlink" title="🎨 调色盘规范 (Theme Palettes)"></a>🎨 调色盘规范 (Theme Palettes)</h2><p>系统采用 <strong>设计令牌（Design Tokens）</strong> 架构，将色彩完全解耦，支持以下 5 套主题：</p>
+<ol>
+<li>🌿 清爽米绿 (Light Sage) - 护眼淡绿底色 (#eef3eb) + 森林墨绿 (#344e41)</li>
+<li>🪻 优雅薰衣草 (Lavender) - 柔美灰紫底色 (#f5f3f8) + 莫兰迪紫 (#6b3ba7)</li>
+<li>🌊 冰川静蓝 (Nordic Blue) - 冰川冷灰蓝底 (#edf4f8) + 深邃海洋蓝 (#026896)</li>
+<li>🌻 夏日草甸 (Summer Meadow) - 暖调奶白底色 (#faf7ee) + 草绿 (#467a57) + 暖阳橙 (#f28e00)</li>
+<li>🌙 极客暗黑 (Dark Slate) - 曜石暗黑底色 (#0f172a) + 荧光天蓝 (#38bdf8)</li>
+</ol>
+<hr>
+<h2 id="⌨️-快捷键与交互操作-Shortcuts-amp-Gestures"><a href="#⌨️-快捷键与交互操作-Shortcuts-amp-Gestures" class="headerlink" title="⌨️ 快捷键与交互操作 (Shortcuts &amp; Gestures)"></a>⌨️ 快捷键与交互操作 (Shortcuts &amp; Gestures)</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:left">交互响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>按下 <code>Q + A</code></strong></td>
+<td style="text-align:left">依次在 5 套调色盘主题之间即时平滑轮转</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>鼠标右键单击</strong></td>
+<td style="text-align:left">唤起现代右键上下文菜单（调色盘子菜单、专注模式、还原尺寸、关于）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>双击顶部标题栏</strong></td>
+<td style="text-align:left">在「最大化」与「黄金初始比例 (1020 × 660)」之间切换</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>在搜索栏按回车</strong></td>
+<td style="text-align:left">直接拉起浏览器发起百度检索</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>按住标题栏拖动</strong></td>
+<td style="text-align:left">自由平滑拖动移动无边框窗口</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="🛠️-技术栈与依赖-Tech-Stack"><a href="#🛠️-技术栈与依赖-Tech-Stack" class="headerlink" title="🛠️ 技术栈与依赖 (Tech Stack)"></a>🛠️ 技术栈与依赖 (Tech Stack)</h2><ul>
+<li><strong>语言标准</strong>：C++17 / C++20</li>
+<li><strong>GUI 框架</strong>：Qt 6.6.3 (兼容 Qt 6.2+ LTS)</li>
+<li><strong>编译器</strong>：MSVC 2019 / 2022 (x64)</li>
+<li><strong>矢量图标</strong>：FontAwesome 4.7 字体光栅化引擎</li>
+<li><strong>架构设计</strong>：面向对象设计、设计令牌 (Design Tokens)、RAII 内存管理、事件过滤器 (Event Filter)</li>
+</ul>
+<hr>
+<h2 id="📂-项目文件结构-Project-Structure"><a href="#📂-项目文件结构-Project-Structure" class="headerlink" title="📂 项目文件结构 (Project Structure)"></a>📂 项目文件结构 (Project Structure)</h2><p>```text<br>RAIN_Focus/<br>│<br>├── Qt_focus.h              # 核心主窗口头文件（前置声明、组件生命周期管理）<br>├── Qt_focus.cpp            # 主窗口逻辑实现（Bento 网格构建、计时器、矢量绘制引擎）<br>├── style.h                 # 集中式主题样式类（5 套调色盘 Tokens 与 QSS 模板构建器）<br>├── fontawesomeicons.h      # FontAwesome 矢量字符枚举定义<br>├── fontawesomeicons.cpp    # 矢量字体加载单例实现<br>├── my_button_class.h       # 自定义增强型按钮扩展<br>├── roundprogressbar.h      # 圆形环状进度条扩展组件<br>├── tabhover.h              # Tab 底部悬浮小圆点指示器组件<br>├── main.cpp                # 应用程序入口<br>│<br>└── Resources/              # Qt 资源文件目录 (*.qrc)<br>    └── fontawesome-webfont.ttf  # 字体矢量文件</p>
+<p>🚀 构建与运行 (Build &amp; Run)</p>
+<p>方式一：使用 Visual Studio (推荐)</p>
+<ol>
+<li>确保安装了 Visual Studio 2022 及 Qt Visual Studio Tools 插件；</li>
+<li>确认本地已配置 Qt 6.6+ (msvc2019_64 或 msvc2022_64)；</li>
+<li>双击打开 Qt_focus.sln 解决方案；</li>
+<li>选择编译平台为 Release | x64；</li>
+<li>按下 Ctrl + Shift + B 构建解决方案，生成成功后按 F5 启动。</li>
+</ol>
+<p>方式二：使用 CMake</p>
+<h1 id="1-克隆本仓库"><a href="#1-克隆本仓库" class="headerlink" title="1. 克隆本仓库"></a>1. 克隆本仓库</h1><p>git clone <a href="https://github.com/XiaoYu-1111/Qt_focus.git">https://github.com/XiaoYu-1111/Qt_focus.git</a><br>cd Qt_focus</p>
+<h1 id="2-创建并进入构建目录"><a href="#2-创建并进入构建目录" class="headerlink" title="2. 创建并进入构建目录"></a>2. 创建并进入构建目录</h1><p>mkdir build &amp;&amp; cd build</p>
+<h1 id="3-运行-cmake-生成构建脚本-指定你的-Qt6-安装路径"><a href="#3-运行-cmake-生成构建脚本-指定你的-Qt6-安装路径" class="headerlink" title="3. 运行 cmake 生成构建脚本 (指定你的 Qt6 安装路径)"></a>3. 运行 cmake 生成构建脚本 (指定你的 Qt6 安装路径)</h1><p>cmake .. -DCMAKE_PREFIX_PATH=”D:/Qt/6.6.3/msvc2019_64”</p>
+<h1 id="4-执行编译"><a href="#4-执行编译" class="headerlink" title="4. 执行编译"></a>4. 执行编译</h1><p>cmake —build . —config Release</p>
+<p>📝 贡献与致谢 (Credits)</p>
+<ul>
+<li>开发者：RAIN (XIAOYU)</li>
+<li>开源协议：本项目基于 MIT License 开源。</li>
+<li>关于与支持：欢迎提交 Issue 或 Pull Request，一起让沉浸式生产力工具更加优雅！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术研究与技术项目</category>
+      </categories>
+      <tags>
+        <tag>Computational Geophysics</tag>
+        <tag>Elastic Wave</tag>
+        <tag>Visualization</tag>
+        <tag>MASW</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SeisTool-MASW 面波频散分析与处理系统</title>
+    <url>/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/</url>
+    <content><![CDATA[<h1 id="SeisTool-MASW-面波频散分析与处理系统"><a href="#SeisTool-MASW-面波频散分析与处理系统" class="headerlink" title="SeisTool-MASW 面波频散分析与处理系统"></a>SeisTool-MASW 面波频散分析与处理系统</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（$\tau-p$）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（$V_s$）剖面反演引擎，可联动生成地下深度-速度阶梯图与分层参数表，全面支持频散曲线文本、频散谱及合成道集的双向 SEG-Y 数据导出，真正实现了从野外波场采集到地下地质成果交付的端到端闭环。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h2><h2 id="📚-项目地址-Project-Address"><a href="#📚-项目地址-Project-Address" class="headerlink" title="📚 项目地址 (Project Address)"></a>📚 项目地址 (Project Address)</h2><p>—- <a href="https://github.com/XiaoYu-1111/Qt_Seis_MASW">https://github.com/XiaoYu-1111/Qt_Seis_MASW</a></p>
+<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><p><img src="main0.png" alt="原始地震道集"></p>
+<h3 id="核心功能视图概览"><a href="#核心功能视图概览" class="headerlink" title="核心功能视图概览"></a>核心功能视图概览</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">原始道集与波形剖面 (Tab 1)</th>
+<th style="text-align:center">频散能量谱与自动吸附拾取 (Tab 2)</th>
+<th style="text-align:center">频散曲线对比与反演质控 (Tab 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="main1.png" alt="原始地震道集"></td>
+<td style="text-align:center"><img src="main2.png" alt="频散能量谱"></td>
+<td style="text-align:center"><img src="main3.png" alt="频散曲线"></td>
+</tr>
+<tr>
+<td style="text-align:center"><em>Wiggle 抖动线 + 变面积填充叠加变密度底图</em></td>
+<td style="text-align:center"><em>高分辨率相速度谱 (支持色标/归一化即刻切换)</em></td>
+<td style="text-align:center"><em>Plot1D 期刊级展示 (实测点与理论线叠合比对)</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="理论正演与多视图联动验证"><a href="#理论正演与多视图联动验证" class="headerlink" title="理论正演与多视图联动验证"></a>理论正演与多视图联动验证</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">原始道集与波形剖面 (Tab 1)</th>
+<th style="text-align:center">频散能量谱与自动吸附拾取 (Tab 2)</th>
+<th style="text-align:center">频散曲线对比与反演质控 (Tab 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="sync1.png" alt="原始地震道集"></td>
+<td style="text-align:center"><img src="sync2.png" alt="频散能量谱"></td>
+<td style="text-align:center"><img src="sync3.png" alt="频散曲线对比"></td>
+</tr>
+<tr>
+<td style="text-align:center">深度学习训练数据</td>
+<td style="text-align:center">横波速度反演结果</td>
+<td style="text-align:center">结果显示</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="model_train.png" alt="深度学习训练"></td>
+<td style="text-align:center"><img src="model_inversion.png" alt="速度反演"></td>
+<td style="text-align:center"><img src="model_inversion2.png" alt="Qt中结果显示"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#核心功能特性">核心功能特性</a></li>
+<li><a href="#系统架构与三轨工作流">系统架构与三轨工作流</a></li>
+<li><a href="#核心算法与数学物理原理">核心算法与数学物理原理</a></li>
+<li><a href="#开发环境与依赖库">开发环境与依赖库</a></li>
+<li><a href="#visual-studio-关键配置指南">Visual Studio 关键配置指南</a></li>
+<li><a href="#项目完整目录结构">项目完整目录结构</a></li>
+<li><a href="#数据输入与导出规范">数据输入与导出规范</a></li>
+<li><a href="#python-算法实验室与-ai-训练体系">Python 算法实验室与 AI 训练体系</a></li>
+<li><a href="#许可证与致谢">许可证与致谢</a></li>
+</ul>
+<hr>
+<h2 id="核心功能特性"><a href="#核心功能特性" class="headerlink" title="核心功能特性"></a>核心功能特性</h2><h3 id="1-专业地震道集解析与成像（Tab-1-Shot-Gather）"><a href="#1-专业地震道集解析与成像（Tab-1-Shot-Gather）" class="headerlink" title="1. 专业地震道集解析与成像（Tab 1: Shot Gather）"></a>1. 专业地震道集解析与成像（Tab 1: Shot Gather）</h3><ul>
+<li><strong>工业级 SEGY 解析</strong>：支持标准 IBM 32-bit Float（代码 1）与 IEEE 754 Float（代码 5）大端序地震数据的快速解码，自动解析二进制卷头及 240 字节道头（道数、采样率 $dt$、每道样点数 $nt$、最小炮检距 $x_0$、道间距 $dx$）。</li>
+<li><strong>双层混合波场成像</strong>：<ul>
+<li><strong>底图</strong>：变密度伪彩热力图（ColorMap），支持 12 种主流地学色谱切换与对比度滑块无级调节；</li>
+<li><strong>顶层</strong>：高保真地震抖动线（Wiggle Trace）与正半周变面积黑色填充（Variable Area），具备自适应振幅增益控制（Gain Slider）。</li>
+</ul>
+</li>
+<li><strong>大规模数据视口裁剪与 LOD 加速</strong>：内置视锥裁剪（Frustum Culling）算法与基于屏幕像素密度的动态步长重采样（Level of Detail），即便面对上千道的大型测线道集，缩放平移依然保持 60 FPS 流畅帧率。</li>
+<li><strong>双向数据交互</strong>：不仅支持外部文件拖入，更支持将软件内正演合成的面波道集一键右键另存为标准 <strong>SEGY (*.sgy)</strong> 格式。</li>
+</ul>
+<h3 id="2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）"><a href="#2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）" class="headerlink" title="2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）"></a>2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）</h3><p>系统集成了面波勘探史上具有里程碑意义的四大频散成像算子，支持在界面中瞬时切换对比：</p>
+<ul>
+<li><strong>经典移相法（Phase Shift, Park et al., 1998）</strong>：系统基准算法。具备逐道纯相位归一化，高低频能量极其均衡，抗几何扩散与强衰减能力最强。</li>
+<li><strong>高分辨率 Capon 最小方差法（MVDR / HRFK）</strong>：采用<strong>前向-后向双向空间平滑（FBSS）</strong>构造满秩协方差矩阵，结合对角加载（Diagonal Loading）求逆，将主频散脊线宽度压缩至传统方法的 1/3，高低阶模态分界极其锐利。</li>
+<li><strong>时域倾斜叠加法（Slant-Stack / $\tau-p$ 变换, McMechan &amp; Yedlin, 1981）</strong>：在时空域沿线性时差方向做动校正求和（Radon 变换），结合<strong>分数走时高精度线性插值</strong>，再沿截距时间 $\tau$ 进行 1D FFT，保留最真实的物理波场干涉。</li>
+<li><strong>经典 F-K 变换法（Frequency-Wavenumber）</strong>：时空双重傅里叶变换映射，提供极速的大视场宏观扫描。</li>
+<li><strong>频域复数线性插值技术</strong>：在扫描频率 $f$ 处采用相邻 FFT 频点复数加权插值与纯相位重归一化，<strong>彻底根除了离散傅里叶频点量化引起的“平顶阶梯锯齿效应”</strong>。</li>
+<li><strong>实时色标与滤波控制</strong>：<ul>
+<li><strong>双模式归一化</strong>：支持【按频率列归一化（推荐，全频段深红脊线）】与【全局归一化（保留能量衰减规律）】1 毫秒免重算瞬时切换；</li>
+<li><strong>滤波平滑切换</strong>：右键菜单支持在 MATLAB 风格离散纯净网格块（Nearest）与双线性平滑云雾渐变（Bilinear）之间自由切换。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）"><a href="#3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）" class="headerlink" title="3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）"></a>3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）</h3><ul>
+<li><strong>局部极大值自动吸附（Snap-to-Peak）</strong>：用户在能量带附近鼠标轻点，算法自动在垂直速度方向（$\pm 15$ 个网格，约 $\pm 30\text{ m/s}$）内搜索物理极大值峰顶并精准就位，彻底消除手抖误差。</li>
+<li><strong>🤖 ONNX Runtime AI 深度学习一键智能拾取</strong>：<ul>
+<li>内置针对频散谱特征定制的轻量级多尺度空洞残差卷积网络（<code>DispersionRidgeNet</code>）；</li>
+<li>在 C++ 桌面端利用微软 ONNX Runtime 引擎直接进行 CPU 毫秒级推理，自动生成连续骨架曲线。</li>
+</ul>
+</li>
+<li><strong>实时双向图层联动</strong>：<ul>
+<li>Tab 2（能量图）：上方实时绘制高对比度亮黄色实线与红白采样圆点；</li>
+<li>Tab 3（<code>Plot1D</code>）：自动对拾取点按频率升序重排，生成封闭边框（Box Style）期刊级散点折线图。</li>
+</ul>
+</li>
+<li><strong>编辑与导出</strong>：支持单点撤销（Undo）、点位重复覆盖修正、一键清空，以及导出为标准三列反演文本（<code>Frequency, PhaseVelocity, Wavelength</code>）。</li>
+</ul>
+<h3 id="4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）"><a href="#4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）" class="headerlink" title="4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）"></a>4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）</h3><ul>
+<li><strong>地下深度 vs 横波速度阶梯图（1D Vs Step Profile）</strong>：<ul>
+<li>垂直向下延伸的地学标准深度轴（<code>yAxis-&gt;setRangeReversed(true)</code>）；</li>
+<li>采用阶梯线（Step Plot）严谨反映地下不同地质界面的速度突变。</li>
+</ul>
+</li>
+<li><strong>地层参数实时表格（QTableWidget）</strong>：<ul>
+<li>自动同步列出层号、厚度 $H$、顶面埋深、横波速度 $V_s$、纵波速度 $V_p$；</li>
+<li>消除水平滚动条自适应平分列宽，深色主题交替行着色，字迹高亮清晰。</li>
+</ul>
+</li>
+<li><strong>成果导入接口</strong>：支持读取 Python 优化反演生成的 <code>Inverted_Vs_Model.txt</code> 模型文件并直接成图。</li>
+</ul>
+<h3 id="5-层状介质理论正演与时域面波合成（Forward-Modeling）"><a href="#5-层状介质理论正演与时域面波合成（Forward-Modeling）" class="headerlink" title="5. 层状介质理论正演与时域面波合成（Forward Modeling）"></a>5. 层状介质理论正演与时域面波合成（Forward Modeling）</h3><ul>
+<li><strong>Schwab-Knopoff 理论频散求解器</strong>：<ul>
+<li>内置基于传递矩阵的超越特征方程求解器；</li>
+<li>利用双曲正切消指数增长技术，根治了传统 Thomson-Haskell 方法的高频数值溢出问题；</li>
+<li>支持双层、三层及任意 $N$ 层速度递增或低速软弱夹层地质模型的理论基阶相速度正演计算。</li>
+</ul>
+</li>
+<li><strong>物理频散面波记录时域合成</strong>：<ul>
+<li>结合雷克子波振幅谱与理论相速度相移调制：$S(x, f) = A(f) e^{-i 2\pi f x / c(f)}$；</li>
+<li>利用逆傅里叶变换（IFFT）直接合成具有真实频散延迟特征的多道地震炮集（直接载入 Tab 1 供全流程测试）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-人机交互与工控级视觉体验"><a href="#6-人机交互与工控级视觉体验" class="headerlink" title="6. 人机交互与工控级视觉体验"></a>6. 人机交互与工控级视觉体验</h3><ul>
+<li><strong>卡片式空状态指引（Empty State）</strong>：启动初期居中展现现代化操作卡片，提供大图标、快速浏览按钮及【🧪 一键加载理论三层模型】快速体验入口。</li>
+<li><strong>全窗口拖拽载入（Drag &amp; Drop）</strong>：支持从 Windows 桌面直接将 <code>.sgy</code> 文件拖入窗口快速秒开。</li>
+<li><strong>顶部数据看板徽章（Data Badges）</strong>：工具栏右侧动态点亮深蓝微光胶囊标签，实时呈现文件名、道数、采样率与记录时长。</li>
+<li><strong>底部地学仪器级状态指示灯（Status Chips）</strong>：状态栏常驻 4 颗带 LED 色彩的状态指示芯片（算力引擎、当前算法、网格规格、数据道数），随面板操作动态刷新。</li>
+</ul>
+<hr>
+<h2 id="系统架构与三轨工作流"><a href="#系统架构与三轨工作流" class="headerlink" title="系统架构与三轨工作流"></a>系统架构与三轨工作流</h2><p>系统涵盖了<strong>外场实测数据处理</strong>、<strong>理论正演数值模拟</strong>与<strong>AI 模型训练闭环</strong>三条互通的工作流：</p>
+<p>```text<br>               【实测数据流】                               【理论正演流】<br>       ┌────────────────────────┐                   ┌────────────────────────┐<br>       │   外场实测 SEGY 数据   │                   │   1D 地层模型参数输入   │<br>       │   (<em>.sgy / </em>.segy)     │                   │   (H1, H2, Vs1, Vs2…)│<br>       └───────────┬────────────┘                   └───────────┬────────────┘<br>                   │ 拖拽 / 浏览打开                            │ 一键理论正演合成<br>                   ▼                                            ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 1: 原始地震道集剖面展示与分析 (Shot Gather)                               │<br>│ - Wiggle 抖动线 / 变面积填充 / 灰度变密度剖面 / 增益调节                     │<br>│ - 顶部看板显示 [文件名 | 96道 | 1.0ms | 1000ms] / 右键导出合成道集 SEGY 文件 │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 设定观测系统与扫描网格: dt, dx, x0, f, v<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 2: 移相法 / F-K / Capon MVDR / 倾斜叠加 τ-p 频散能量谱 (Dispersion Map)   │<br>│ - 频域复数线性加权插值 (彻底消除阶梯锯齿) + OpenMP 多核极速并行               │<br>│ - [拾取模式] -&gt; 鼠标点选触发 Snap-to-Peak 局部极大值自动吸附 (或点击 🤖 AI一键拾取) │<br>│ - 右键切换清晰色块(Nearest) / 双线性平滑(Bilinear) / 导出频散谱 SEGY 文件    │<br>└──────────────────┬──────────────────────────────────────────┬───────────────┘<br>                   │ 实时同步提取点                           │ 理论相速度真值<br>                   ▼                                          ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 3: 频散曲线对比与反演质控 (Extracted Curves)                            │<br>│ - Plot1D 封闭边框期刊级展示                                                 │<br>│ - 实测提取散点与理论红线叠合比对 (闭环质检)                                  │<br>│ - 一键导出反演标准 ASCII 文本 (Frequency, PhaseVelocity, Wavelength)        │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 输入反演数据<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 4: 1D 横波速度剖面展示与分层参数表 (Vs Profile)                          │<br>│ - 垂直台阶线阶梯剖面 (Depth vs Vs, 深度向下递增)                             │<br>│ - 地层参数表格同步呈现 (层号、厚度、顶深、Vs、Vp)                            │<br>│ - 载入 Python / C++ 优化反演生成的 Inverted_Vs_Model.txt 文件展示成果        │<br>└─────────────────────────────────────────────────────────────────────────────┘</p>
+<p>核心算法与数学物理原理</p>
+<ol>
+<li>四大频散能量谱成像算子</li>
+</ol>
+<p>A. 经典移相法（Phase Shift, Park et al., 1998）</p>
+<p>对地震道进行时间向傅里叶变换并执行纯相位归一化，剔除几何扩散衰减：<br>P(x_j, \omega) = \frac{U(x_j, \omega)}{|U(x_j, \omega)|}</p>
+<p>沿试探相速度 v 扫描，执行空间相位相干补偿叠加：<br>E(v, f) = \frac{1}{N} \left| \sum_{j=1}^{N} P(x_j, 2\pi f) \cdot \exp\left(i \frac{2\pi f \cdot x_j}{v}\right) \right|</p>
+<p>B. 高分辨率 Capon 最小方差法（MVDR / HRFK）</p>
+<p>通过长度为 L 的滑动子阵列计算空间平滑协方差矩阵 \mathbf{R}_f，并引入后向平滑<br>\mathbf{R}_b = \mathbf{J} \mathbf{R}_f^* \mathbf{J} 构造满秩矩阵：<br>\mathbf{R} = \frac{1}{2}(\mathbf{R}_f + \mathbf{R}_b) + \epsilon \mathbf{I}</p>
+<p>定义物理导向矢量<br>\mathbf{a}(v) = \left[ 1, e^{-i \frac{\omega}{v} \Delta x}, \dots, e^{-i \frac{\omega}{v} (L-1)\Delta x} \right]^T，自适应滤除相干旁瓣干扰：<br>E_{\text{Capon}}(v, f) = \frac{1}{\mathbf{a}^H(v) \mathbf{R}^{-1} \mathbf{a}(v)}</p>
+<p>C. 时域倾斜叠加法（Slant-Stack / \tau-p 变换, McMechan &amp; Yedlin, 1981）</p>
+<p>时空域线性动校正（LMO）截距时间叠加：<br>u(\tau, p) = \sum_{j=1}^{N} u(x_j, \tau + p \cdot x_j), \quad p = \frac{1}{v}</p>
+<p>沿截距时间 \tau 执行 1D 傅里叶变换映射至速度谱：<br>E(v, f) = \left| \int u(\tau, 1/v) e^{-i 2\pi f \tau} d\tau \right|</p>
+<ol>
+<li>Schwab-Knopoff 层状弹性介质频散特征方程</li>
+</ol>
+<p>对于 N 层水平均匀各向同性弹性介质，地表满足自由应力边界条件，无限深基底满足波场向下衰减条件。联立各层位移-应力传递矩阵并引入双曲正切消指数项<br>\tanh(k r_m d_m) = \frac{1-e^{-2kr_md_m}}{1+e^{-2kr_md_m}}，构建隐式超越特征方程：<br>F(c, \omega; \mathbf{H}, \mathbf{V_s}, \mathbf{V_p}, \mathbf{\rho}) = 0</p>
+<p>系统从高频渐近线（c \approx 0.92 V<em>{s, \text{top}}）出发，利用 Brent-Dekker<br>混合求根算法沿频率逆序追踪，确保数值解收敛于基阶模态 v</em>{R0}(f)。</p>
+<p>[三层弹性模型: H, Vs, Vp, Rho]<br>              │<br>              ▼ 【公式 1: Schwab-Knopoff 传递矩阵求根】<br>[理论相速度曲线: c(f)] ───────► (直接画在 Tab 3 的理论红线)<br>              │<br>              ▼ 【公式 2: 频域相位调制 + IFFT 时域合成】<br>[多道地震道集: u(x, t)] ─────► (显示在 Tab 1 的合成 Wiggle 波形)<br>              │<br>              ▼ 【公式 3: Park / Capon / τ-p 空间相干叠加】<br>[频散能量谱: E(f, v)] ───────► (显示在 Tab 2 的亮红色能量带)</p>
+<ol>
+<li>1D 横波速度结构反演目标函数（Tikhonov 正则化）</li>
+</ol>
+<p>将观测频散曲线 \mathbf{v}^{\text{obs}} 反演为各层横波速度<br>\mathbf{m} = [V<em>{s1}, V</em>{s2}, \dots, V<em>{sN}] 的目标函数定义为：<br>\Phi(\mathbf{m}) = \frac{1}{2} \sum</em>{i=1}^{M} \left( v_R^{\text{obs}}(f_i) - v_R^{\text{calc}}(f_i, \mathbf{m}) \right)^2 + \frac{\lambda}{2} |\mathbf{L} \mathbf{m}|_2^2</p>
+<p>其中 \mathbf{L} 为一阶平滑差分算子（粗糙度矩阵），有效规避了地层速度在垂向上的锯齿状震荡解。</p>
+<p>开发环境与依赖库</p>
+<ul>
+<li>操作系统：Windows 10 / 11 (x64)</li>
+<li>IDE 与编译器：Microsoft Visual Studio 2022 (MSVC v143, C++17 标准)</li>
+<li>GUI 框架：Qt 5.12+ / Qt 6.x（Widgets 模块）</li>
+<li>核心依赖库：<ul>
+<li>Eigen 3.3+：高性能密集矩阵运算与 <unsupported/Eigen/FFT> 快速傅里叶变换</li>
+<li>QCustomPlot 2.1+：双层混合剖面与出版级曲线绘图引擎</li>
+<li>ONNX Runtime (C++ API v1.30.0)：轻量级深度学习前向推理引擎</li>
+<li>OpenMP：多核 CPU 指令级并行加速</li>
+</ul>
+</li>
+</ul>
+<p>Visual Studio 关键配置指南</p>
+<p>在 Visual Studio 2022 中编译运行本系统时，必须确认以下关键工程属性：</p>
+<ol>
+<li><p>编译选项设置</p>
+<ul>
+<li>启用扩展对象格式 /bigobj（解决 Eigen 深度模板展开导致的符号溢出）：<ul>
+<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/bigobj</li>
+</ul>
+</li>
+<li>强制 UTF-8 源代码编码 /utf-8（解决 MSVC 中文字符断句与 C2143 报错）：<ul>
+<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/utf-8</li>
+</ul>
+</li>
+<li>启用 OpenMP 多线程加速：<ul>
+<li>项目属性 \to C/C++ \to 语言 \to OpenMP 支持 \to 设为 是 (/openmp)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ONNX Runtime C++ 库集成配置</p>
+</li>
+</ol>
+<p>下载解压 onnxruntime-win-x64-1.30.0.zip 并置于 Pro_Seis_MASW/third_party/onnxruntime：</p>
+<ul>
+<li>包含目录：C/C++ -&gt; 常规 -&gt; 附加包含目录 添加：$(ProjectDir)third_party\onnxruntime\include</li>
+<li>库目录：链接器 -&gt; 常规 -&gt; 附加库目录 添加：$(ProjectDir)third_party\onnxruntime\lib</li>
+<li>依赖项：链接器 -&gt; 输入 -&gt; 附加依赖项 添加：onnxruntime.lib</li>
+<li>运行时动态库：将 onnxruntime.dll 复制到可执行程序目录（如 x64/Release/）。</li>
+</ul>
+<p>项目完整目录结构</p>
+<p>Qt_Seis_MASW/<br>├── Qt_Seis_MASW.sln              # Visual Studio 2022 解决方案文件<br>├── Pro_Seis_MASW/                # C++ Qt 主工程目录<br>│   ├── Pro_h/                    # 核心接口头文件<br>│   │   ├── Plot1D.h              # 1D 专业科研图表组件 (QCustomPlot 派生类)<br>│   │   ├── QCPSeismicWiggle.h    # 地震波形抖动线与变面积填充 Plottable 图元<br>│   │   ├── SeismicIO.h           # SEGY 数据底层解析与多维导出接口<br>│   │   ├── SeismicView2D.h       # 2D 剖面多功能查看器容器接口<br>│   │   ├── SignalProcessingUtils.h # 移相法、F-K、Capon MVDR、τ-p、CWT、VMD 算法库<br>│   │   └── RayleighForwardSolver.h # 层状介质理论频散求解与多道面波时域合成器<br>│   ├── Pro_cpp/                  # 算法与组件实现源码<br>│   │   ├── Plot1D.cpp<br>│   │   ├── QCPSeismicWiggle.cpp<br>│   │   ├── SeismicIO.cpp<br>│   │   ├── SeismicView2D.cpp<br>│   │   ├── SignalProcessingUtils.cpp<br>│   │   └── RayleighForwardSolver.cpp<br>│   ├── third_party/              # 第三方轻量级依赖库<br>│   │   └── onnxruntime/          # 微软 ONNX Runtime C++ SDK (include/ &amp; lib/)<br>│   ├── models/                   # AI 神经网络模型交付目录<br>│   │   └── dispersion_picker.onnx # 导出的专用频散脊线提取模型<br>│   ├── pro_data/                 # 地震数据与导出成果中转站<br>│   │   └── output_curve/         # 频散曲线文本与反演 Vs 模型保存目录<br>│   ├── Python_script/            # 独立 Python 后处理脚本<br>│   │   ├── plot_seismic_gather.py # 炮集 Wiggle/灰度剖面高清成图工具<br>│   │   └── plot_dispersion_map.py # 导出的频散谱 SEGY 300-DPI 成图工具<br>│   ├── Pro_image/                # 系统各功能界面截图与文档插图<br>│   │   ├── main1.png             # Tab 1 原始道集截图<br>│   │   ├── main2.png             # Tab 2 频散能量谱截图<br>│   │   ├── main3.png             # Tab 3 提取频散曲线截图<br>│   │   ├── sync1.png             # 理论正演道集联动截图<br>│   │   ├── sync2.png             # 理论频散谱联动截图<br>│   │   └── sync3.png             # 理论频散曲线叠合对比截图<br>│   ├── style.h                   # 全局 Slate 深色科技风格 QSS 样式表定义<br>│   ├── Pro_Seis_MASW.h           # 主窗口逻辑控制器声明<br>│   ├── Pro_Seis_MASW.cpp         # 界面构建、业务逻辑、事件响应与 AI 推理实现<br>│   └── main.cpp                  # 桌面应用程序入口<br>├── AI_Train_MASW/                # Python 独立 AI 训练工作台<br>│   ├── dataset/                  # C++ 生成的连续大文件二进制数据集 (.bin)<br>│   ├── Main.ipynb                # 从环境自检、张量载入到训练导出的 Jupyter 实验笔记<br>│   └── run_inversion.py          # 1D 瑞雷波相速度 CoFI/disba 反演验证脚本<br>└── README.md                     # 系统完整技术说明文档</p>
+<p>数据输入与导出规范</p>
+<ol>
+<li><p>输入数据</p>
+<ul>
+<li>支持标准勘探 SEG-Y / SGY 格式（二维主动源单炮道集，Common Shot Gather）。</li>
+<li>兼容工程微动台阵与连续线性排列测量数据。</li>
+</ul>
+</li>
+<li><p>导出成果数据规范</p>
+</li>
+</ol>
+<p>A. 频散曲线文本格式（供反演软件调用）</p>
+<p>点击 【导出曲线…】 输出的标准三列 ASCII 文本文件，可直接被 CPS330 (surf96)、Geopsy 或 Python 反演脚本调用：</p>
+<h1 id="Frequency-Hz-PhaseVelocity-m-s-Wavelength-m"><a href="#Frequency-Hz-PhaseVelocity-m-s-Wavelength-m" class="headerlink" title="Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)"></a>Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)</h1><p>5.000              324.50                64.90<br>7.500              298.20                39.76<br>10.000             276.40                27.64<br>12.500             255.80                20.46<br>…                …                   …</p>
+<p>B. 1D 反演横波速度地层剖面格式</p>
+<p>反演模块输出的层状速度模型文本（Inverted_Vs_Model.txt），可直接载入 Tab 4 绘制阶梯剖面：</p>
+<h1 id="Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3"><a href="#Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3" class="headerlink" title="Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)"></a>Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)</h1><p>1          2.00            0.00            223.50     447.00     2000.0<br>2          3.00            2.00            319.80     639.60     2000.0<br>3          5.00            5.00            345.90     691.80     2000.0<br>4          8.00            10.00           372.00     744.00     2000.0<br>5          12.00           18.00           398.00     796.00     2000.0<br>6          0.00            30.00           423.80     847.60     2000.0</p>
+<p>C. 二维频散能量谱 / 合成道集 SEGY 格式</p>
+<ul>
+<li>频散谱导出：右键点击谱图选择 【💾 导出频散能量谱为 SEGY】，生成以频率为道（N_f）、相速度为采样点（N_v）的标准浮点 SEGY 文件。</li>
+<li>合成道集导出：在道集视图中右键选择 【💾 导出道集为 SEGY】，将正演模拟的纯物理波场导出为标准地震道集。</li>
+</ul>
+<p>Python 辅助工具链</p>
+<p>系统在 Python_script/ 目录下配套提供了两套即开即用的专业数据可视化工具：</p>
+<ol>
+<li>plot_seismic_gather.py：基于 segyio 与 matplotlib，支持自动计算时间物理轴、自适应增益均衡并导出 300-DPI<br>Wiggle 波形与灰度剖面；</li>
+<li>plot_dispersion_map.py：用于读取本系统导出的频散能量谱 .sgy 文件，支持物理坐标自动映射（Hz 与<br>m/s）及双三次平滑（Bicubic）抗锯齿超高清成图。</li>
+</ol>
+<p>许可证与致谢</p>
+<p>本项目基于工程实践与科研探索开发。底层绘图组件遵循 GPLv3 / QCustomPlot 商业许可；矩阵代数运算与快速傅里叶变换依赖开源 Eigen<br>矩阵库；理论层状介质特征超越方程基于 Schwab-Knopoff 理论构建；AI 部署基于微软开源 ONNX Runtime 引擎。</p>
+]]></content>
+      <categories>
+        <category>学术研究与技术项目</category>
+      </categories>
+      <tags>
+        <tag>Computational Geophysics</tag>
+        <tag>Elastic Wave</tag>
+        <tag>Visualization</tag>
+        <tag>MASW</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pysider6_无边框_DEMO</title>
     <url>/2026/01/18/Pysider6-%E6%97%A0%E8%BE%B9%E6%A1%86-DEMO/</url>
     <content><![CDATA[<h1 id="Modern-PySide6-System-Dashboard"><a href="#Modern-PySide6-System-Dashboard" class="headerlink" title="Modern PySide6 System Dashboard"></a>Modern PySide6 System Dashboard</h1><blockquote>
@@ -487,180 +912,6 @@
         <tag>Qt</tag>
         <tag>C++</tag>
         <tag>OpenMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>🌿 RAIN Focus Workstation</title>
-    <url>/2026/09/20/Qt%E6%B2%89%E6%B5%B8%E5%BC%8F%E4%B8%93%E6%B3%A8%E5%BF%83%E6%B5%81%E5%B7%A5%E4%BD%9C%E5%8F%B0/</url>
-    <content><![CDATA[<h1 id="🌿-RAIN-Focus-Workstation"><a href="#🌿-RAIN-Focus-Workstation" class="headerlink" title="🌿 RAIN Focus Workstation"></a>🌿 RAIN Focus Workstation</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>RAIN Focus Workstation</strong> 是一款极简现代的桌面端个人心流与生产力管理套件。</p>
-<p>项目抛弃了传统工具粗糙的厚边框与刺眼的高对比度渐变，汲取了目前流行的 <strong>Bento Grid（便当网格）</strong> 与 <strong>卡片微描边</strong> 交互美学，通过 <strong>全矢量纯代码渲染（0 图片依赖）</strong>、<strong>自适应动态字阶</strong> 和 <strong>5 款精选莫兰迪主题调色盘</strong>，为开发者、创作者及深度工作者提供纯净、无打扰的心流体验。</p>
-<span id="more"></span>
-<p align="center">
-  <strong>基于 Qt 6 & 现代 C++ 打造的 Bento Grid（便当网格）沉浸式专注心流工作台</strong>
-</p>
-
-<h2 id="📚-项目地址-Project-Address"><a href="#📚-项目地址-Project-Address" class="headerlink" title="📚 项目地址 (Project Address)"></a>📚 项目地址 (Project Address)</h2><p>—- <a href="https://github.com/XiaoYu-1111/Qt_focus">https://github.com/XiaoYu-1111/Qt_focus</a></p>
-<h2 id="📖-项目简介-Overview"><a href="#📖-项目简介-Overview" class="headerlink" title="📖 项目简介 (Overview)"></a>📖 项目简介 (Overview)</h2><hr>
-<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><img src="/2026/09/20/Qt%E6%B2%89%E6%B5%B8%E5%BC%8F%E4%B8%93%E6%B3%A8%E5%BF%83%E6%B5%81%E5%B7%A5%E4%BD%9C%E5%8F%B0/main.png" class="" title="界面1">
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">界面1</th>
-<th style="text-align:center">界面2</th>
-<th style="text-align:center">界面3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="main.png" alt="界面1"></td>
-<td style="text-align:center"><img src="page2.png" alt="界面2"></td>
-<td style="text-align:center"><img src="page3.png" alt="界面3"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="✨-核心亮点-Highlights"><a href="#✨-核心亮点-Highlights" class="headerlink" title="✨ 核心亮点 (Highlights)"></a>✨ 核心亮点 (Highlights)</h2><ul>
-<li><strong>🍱 现代化 Bento Grid 布局</strong>：信息密度恰到好处的模块化卡片设计，主页集成「当前心流时间」、「三联指标矩阵」与「快捷工具坞」。</li>
-<li><strong>🎨 纯代码矢量光栅化（0 PNG 资源）</strong>：<ul>
-<li>核心图标全部依托内存中 <code>QPainter</code> 抓取 <code>FontAwesome</code> 矢量字形动态合成；</li>
-<li>交通灯三色控制点采用纯 QSS 圆角渲染，彻底告别位图模糊与边缘裁切。</li>
-</ul>
-</li>
-<li><strong>🌓 5 种精选调色盘动态换肤</strong>：<ul>
-<li>包含 <strong>清爽米绿</strong>、<strong>优雅薰衣草</strong>、<strong>冰川静蓝</strong>、<strong>夏日草甸</strong> 与 <strong>极客暗黑</strong>；</li>
-<li>右键二级菜单随时即时切色，支持 <code>Q + A</code> 键盘一键循环轮转，所有矢量图标跟随主题色动态重绘。</li>
-</ul>
-</li>
-<li><strong>⏱️ 专注状态显著字号突增</strong>：<ul>
-<li>闲置准备时保持 <code>52px</code> 柔和预览字号；</li>
-<li>点击「开启心流」瞬间，倒计时字体立即膨胀至 <strong><code>110px 醒目超大字阶</code></strong>，带来极具张力的大屏全神贯注体验。</li>
-</ul>
-</li>
-<li><strong>🪟 工业级 28px 基准线对齐</strong>：<ul>
-<li>窗口标题、导航 Tab 栏、认证标头及主卡片在左侧严格遵循 <code>28px</code> 垂直对齐规范，告别错位卡顿感。</li>
-</ul>
-</li>
-<li><strong>🔍 响应式舒适搜索栏</strong>：<ul>
-<li>单行 <code>QLineEdit</code> 纯净居中排版（46px 高度），彻底消灭多行编辑器的文字截断与滚动条滑块，支持回车键一键直达搜索。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="🧩-核心功能模块-Features"><a href="#🧩-核心功能模块-Features" class="headerlink" title="🧩 核心功能模块 (Features)"></a>🧩 核心功能模块 (Features)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模块名称</th>
-<th style="text-align:center">图标</th>
-<th style="text-align:left">功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>工作台 (Home)</strong></td>
-<td style="text-align:center"><code>icon_home</code></td>
-<td style="text-align:left">核心时间看板、实时年月日星期提醒、25m/0-8/100% 状态概览矩阵、外部反馈及仓库一键直达</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>专注心流 (Focus)</strong></td>
-<td style="text-align:center"><code>icon_time</code></td>
-<td style="text-align:left">自定义番茄钟倒计时（1~300 分钟）、110px 显著醒目大字阶、微细进度条、暂停/继续/重置流转</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>目标清单 (Tasks)</strong></td>
-<td style="text-align:center"><code>icon_tasks</code></td>
-<td style="text-align:left">约束型每日 8 项核心任务管理、彩色微卡片输入框、支持独立增加与安全批量清空</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>启动台 (Resources)</strong></td>
-<td style="text-align:center"><code>icon_external_link</code></td>
-<td style="text-align:left">常用知识库外链跳转、居中舒适搜索栏（支持 Enter 回车直接拉起系统浏览器检索）</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="🎨-调色盘规范-Theme-Palettes"><a href="#🎨-调色盘规范-Theme-Palettes" class="headerlink" title="🎨 调色盘规范 (Theme Palettes)"></a>🎨 调色盘规范 (Theme Palettes)</h2><p>系统采用 <strong>设计令牌（Design Tokens）</strong> 架构，将色彩完全解耦，支持以下 5 套主题：</p>
-<ol>
-<li>🌿 清爽米绿 (Light Sage) - 护眼淡绿底色 (#eef3eb) + 森林墨绿 (#344e41)</li>
-<li>🪻 优雅薰衣草 (Lavender) - 柔美灰紫底色 (#f5f3f8) + 莫兰迪紫 (#6b3ba7)</li>
-<li>🌊 冰川静蓝 (Nordic Blue) - 冰川冷灰蓝底 (#edf4f8) + 深邃海洋蓝 (#026896)</li>
-<li>🌻 夏日草甸 (Summer Meadow) - 暖调奶白底色 (#faf7ee) + 草绿 (#467a57) + 暖阳橙 (#f28e00)</li>
-<li>🌙 极客暗黑 (Dark Slate) - 曜石暗黑底色 (#0f172a) + 荧光天蓝 (#38bdf8)</li>
-</ol>
-<hr>
-<h2 id="⌨️-快捷键与交互操作-Shortcuts-amp-Gestures"><a href="#⌨️-快捷键与交互操作-Shortcuts-amp-Gestures" class="headerlink" title="⌨️ 快捷键与交互操作 (Shortcuts &amp; Gestures)"></a>⌨️ 快捷键与交互操作 (Shortcuts &amp; Gestures)</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th style="text-align:left">交互响应</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>按下 <code>Q + A</code></strong></td>
-<td style="text-align:left">依次在 5 套调色盘主题之间即时平滑轮转</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>鼠标右键单击</strong></td>
-<td style="text-align:left">唤起现代右键上下文菜单（调色盘子菜单、专注模式、还原尺寸、关于）</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>双击顶部标题栏</strong></td>
-<td style="text-align:left">在「最大化」与「黄金初始比例 (1020 × 660)」之间切换</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>在搜索栏按回车</strong></td>
-<td style="text-align:left">直接拉起浏览器发起百度检索</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>按住标题栏拖动</strong></td>
-<td style="text-align:left">自由平滑拖动移动无边框窗口</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="🛠️-技术栈与依赖-Tech-Stack"><a href="#🛠️-技术栈与依赖-Tech-Stack" class="headerlink" title="🛠️ 技术栈与依赖 (Tech Stack)"></a>🛠️ 技术栈与依赖 (Tech Stack)</h2><ul>
-<li><strong>语言标准</strong>：C++17 / C++20</li>
-<li><strong>GUI 框架</strong>：Qt 6.6.3 (兼容 Qt 6.2+ LTS)</li>
-<li><strong>编译器</strong>：MSVC 2019 / 2022 (x64)</li>
-<li><strong>矢量图标</strong>：FontAwesome 4.7 字体光栅化引擎</li>
-<li><strong>架构设计</strong>：面向对象设计、设计令牌 (Design Tokens)、RAII 内存管理、事件过滤器 (Event Filter)</li>
-</ul>
-<hr>
-<h2 id="📂-项目文件结构-Project-Structure"><a href="#📂-项目文件结构-Project-Structure" class="headerlink" title="📂 项目文件结构 (Project Structure)"></a>📂 项目文件结构 (Project Structure)</h2><p>```text<br>RAIN_Focus/<br>│<br>├── Qt_focus.h              # 核心主窗口头文件（前置声明、组件生命周期管理）<br>├── Qt_focus.cpp            # 主窗口逻辑实现（Bento 网格构建、计时器、矢量绘制引擎）<br>├── style.h                 # 集中式主题样式类（5 套调色盘 Tokens 与 QSS 模板构建器）<br>├── fontawesomeicons.h      # FontAwesome 矢量字符枚举定义<br>├── fontawesomeicons.cpp    # 矢量字体加载单例实现<br>├── my_button_class.h       # 自定义增强型按钮扩展<br>├── roundprogressbar.h      # 圆形环状进度条扩展组件<br>├── tabhover.h              # Tab 底部悬浮小圆点指示器组件<br>├── main.cpp                # 应用程序入口<br>│<br>└── Resources/              # Qt 资源文件目录 (*.qrc)<br>    └── fontawesome-webfont.ttf  # 字体矢量文件</p>
-<p>🚀 构建与运行 (Build &amp; Run)</p>
-<p>方式一：使用 Visual Studio (推荐)</p>
-<ol>
-<li>确保安装了 Visual Studio 2022 及 Qt Visual Studio Tools 插件；</li>
-<li>确认本地已配置 Qt 6.6+ (msvc2019_64 或 msvc2022_64)；</li>
-<li>双击打开 Qt_focus.sln 解决方案；</li>
-<li>选择编译平台为 Release | x64；</li>
-<li>按下 Ctrl + Shift + B 构建解决方案，生成成功后按 F5 启动。</li>
-</ol>
-<p>方式二：使用 CMake</p>
-<h1 id="1-克隆本仓库"><a href="#1-克隆本仓库" class="headerlink" title="1. 克隆本仓库"></a>1. 克隆本仓库</h1><p>git clone <a href="https://github.com/XiaoYu-1111/Qt_focus.git">https://github.com/XiaoYu-1111/Qt_focus.git</a><br>cd Qt_focus</p>
-<h1 id="2-创建并进入构建目录"><a href="#2-创建并进入构建目录" class="headerlink" title="2. 创建并进入构建目录"></a>2. 创建并进入构建目录</h1><p>mkdir build &amp;&amp; cd build</p>
-<h1 id="3-运行-cmake-生成构建脚本-指定你的-Qt6-安装路径"><a href="#3-运行-cmake-生成构建脚本-指定你的-Qt6-安装路径" class="headerlink" title="3. 运行 cmake 生成构建脚本 (指定你的 Qt6 安装路径)"></a>3. 运行 cmake 生成构建脚本 (指定你的 Qt6 安装路径)</h1><p>cmake .. -DCMAKE_PREFIX_PATH=”D:/Qt/6.6.3/msvc2019_64”</p>
-<h1 id="4-执行编译"><a href="#4-执行编译" class="headerlink" title="4. 执行编译"></a>4. 执行编译</h1><p>cmake —build . —config Release</p>
-<p>📝 贡献与致谢 (Credits)</p>
-<ul>
-<li>开发者：RAIN (XIAOYU)</li>
-<li>开源协议：本项目基于 MIT License 开源。</li>
-<li>关于与支持：欢迎提交 Issue 或 Pull Request，一起让沉浸式生产力工具更加优雅！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术研究与技术项目</category>
-      </categories>
-      <tags>
-        <tag>Computational Geophysics</tag>
-        <tag>Elastic Wave</tag>
-        <tag>Visualization</tag>
-        <tag>MASW</tag>
       </tags>
   </entry>
   <entry>
@@ -1009,257 +1260,6 @@
         <tag>C++</tag>
         <tag>三维数据可视化</tag>
         <tag>VTK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SeisTool-MASW 面波频散分析与处理系统</title>
-    <url>/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/</url>
-    <content><![CDATA[<h1 id="SeisTool-MASW-面波频散分析与处理系统"><a href="#SeisTool-MASW-面波频散分析与处理系统" class="headerlink" title="SeisTool-MASW 面波频散分析与处理系统"></a>SeisTool-MASW 面波频散分析与处理系统</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（$\tau-p$）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（$V_s$）剖面反演引擎，可联动生成地下深度-速度阶梯图与分层参数表，全面支持频散曲线文本、频散谱及合成道集的双向 SEG-Y 数据导出，真正实现了从野外波场采集到地下地质成果交付的端到端闭环。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h2><h2 id="📚-项目地址-Project-Address"><a href="#📚-项目地址-Project-Address" class="headerlink" title="📚 项目地址 (Project Address)"></a>📚 项目地址 (Project Address)</h2><p>—- <a href="https://github.com/XiaoYu-1111/Qt_Seis_MASW">https://github.com/XiaoYu-1111/Qt_Seis_MASW</a></p>
-<h2 id="界面与效果预览"><a href="#界面与效果预览" class="headerlink" title="界面与效果预览"></a>界面与效果预览</h2><p><img src="main0.png" alt="原始地震道集"></p>
-<h3 id="核心功能视图概览"><a href="#核心功能视图概览" class="headerlink" title="核心功能视图概览"></a>核心功能视图概览</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">原始道集与波形剖面 (Tab 1)</th>
-<th style="text-align:center">频散能量谱与自动吸附拾取 (Tab 2)</th>
-<th style="text-align:center">频散曲线对比与反演质控 (Tab 3)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="main1.png" alt="原始地震道集"></td>
-<td style="text-align:center"><img src="main2.png" alt="频散能量谱"></td>
-<td style="text-align:center"><img src="main3.png" alt="频散曲线"></td>
-</tr>
-<tr>
-<td style="text-align:center"><em>Wiggle 抖动线 + 变面积填充叠加变密度底图</em></td>
-<td style="text-align:center"><em>高分辨率相速度谱 (支持色标/归一化即刻切换)</em></td>
-<td style="text-align:center"><em>Plot1D 期刊级展示 (实测点与理论线叠合比对)</em></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="理论正演与多视图联动验证"><a href="#理论正演与多视图联动验证" class="headerlink" title="理论正演与多视图联动验证"></a>理论正演与多视图联动验证</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">原始道集与波形剖面 (Tab 1)</th>
-<th style="text-align:center">频散能量谱与自动吸附拾取 (Tab 2)</th>
-<th style="text-align:center">频散曲线对比与反演质控 (Tab 3)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="sync1.png" alt="原始地震道集"></td>
-<td style="text-align:center"><img src="sync2.png" alt="频散能量谱"></td>
-<td style="text-align:center"><img src="sync3.png" alt="频散曲线对比"></td>
-</tr>
-<tr>
-<td style="text-align:center">深度学习训练数据</td>
-<td style="text-align:center">横波速度反演结果</td>
-<td style="text-align:center">结果显示</td>
-</tr>
-<tr>
-<td style="text-align:center"><img src="model_train.png" alt="深度学习训练"></td>
-<td style="text-align:center"><img src="model_inversion.png" alt="速度反演"></td>
-<td style="text-align:center"><img src="model_inversion2.png" alt="Qt中结果显示"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#核心功能特性">核心功能特性</a></li>
-<li><a href="#系统架构与三轨工作流">系统架构与三轨工作流</a></li>
-<li><a href="#核心算法与数学物理原理">核心算法与数学物理原理</a></li>
-<li><a href="#开发环境与依赖库">开发环境与依赖库</a></li>
-<li><a href="#visual-studio-关键配置指南">Visual Studio 关键配置指南</a></li>
-<li><a href="#项目完整目录结构">项目完整目录结构</a></li>
-<li><a href="#数据输入与导出规范">数据输入与导出规范</a></li>
-<li><a href="#python-算法实验室与-ai-训练体系">Python 算法实验室与 AI 训练体系</a></li>
-<li><a href="#许可证与致谢">许可证与致谢</a></li>
-</ul>
-<hr>
-<h2 id="核心功能特性"><a href="#核心功能特性" class="headerlink" title="核心功能特性"></a>核心功能特性</h2><h3 id="1-专业地震道集解析与成像（Tab-1-Shot-Gather）"><a href="#1-专业地震道集解析与成像（Tab-1-Shot-Gather）" class="headerlink" title="1. 专业地震道集解析与成像（Tab 1: Shot Gather）"></a>1. 专业地震道集解析与成像（Tab 1: Shot Gather）</h3><ul>
-<li><strong>工业级 SEGY 解析</strong>：支持标准 IBM 32-bit Float（代码 1）与 IEEE 754 Float（代码 5）大端序地震数据的快速解码，自动解析二进制卷头及 240 字节道头（道数、采样率 $dt$、每道样点数 $nt$、最小炮检距 $x_0$、道间距 $dx$）。</li>
-<li><strong>双层混合波场成像</strong>：<ul>
-<li><strong>底图</strong>：变密度伪彩热力图（ColorMap），支持 12 种主流地学色谱切换与对比度滑块无级调节；</li>
-<li><strong>顶层</strong>：高保真地震抖动线（Wiggle Trace）与正半周变面积黑色填充（Variable Area），具备自适应振幅增益控制（Gain Slider）。</li>
-</ul>
-</li>
-<li><strong>大规模数据视口裁剪与 LOD 加速</strong>：内置视锥裁剪（Frustum Culling）算法与基于屏幕像素密度的动态步长重采样（Level of Detail），即便面对上千道的大型测线道集，缩放平移依然保持 60 FPS 流畅帧率。</li>
-<li><strong>双向数据交互</strong>：不仅支持外部文件拖入，更支持将软件内正演合成的面波道集一键右键另存为标准 <strong>SEGY (*.sgy)</strong> 格式。</li>
-</ul>
-<h3 id="2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）"><a href="#2-四大频散能量谱成像全家桶（Tab-2-Dispersion-Map）" class="headerlink" title="2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）"></a>2. 四大频散能量谱成像全家桶（Tab 2: Dispersion Map）</h3><p>系统集成了面波勘探史上具有里程碑意义的四大频散成像算子，支持在界面中瞬时切换对比：</p>
-<ul>
-<li><strong>经典移相法（Phase Shift, Park et al., 1998）</strong>：系统基准算法。具备逐道纯相位归一化，高低频能量极其均衡，抗几何扩散与强衰减能力最强。</li>
-<li><strong>高分辨率 Capon 最小方差法（MVDR / HRFK）</strong>：采用<strong>前向-后向双向空间平滑（FBSS）</strong>构造满秩协方差矩阵，结合对角加载（Diagonal Loading）求逆，将主频散脊线宽度压缩至传统方法的 1/3，高低阶模态分界极其锐利。</li>
-<li><strong>时域倾斜叠加法（Slant-Stack / $\tau-p$ 变换, McMechan &amp; Yedlin, 1981）</strong>：在时空域沿线性时差方向做动校正求和（Radon 变换），结合<strong>分数走时高精度线性插值</strong>，再沿截距时间 $\tau$ 进行 1D FFT，保留最真实的物理波场干涉。</li>
-<li><strong>经典 F-K 变换法（Frequency-Wavenumber）</strong>：时空双重傅里叶变换映射，提供极速的大视场宏观扫描。</li>
-<li><strong>频域复数线性插值技术</strong>：在扫描频率 $f$ 处采用相邻 FFT 频点复数加权插值与纯相位重归一化，<strong>彻底根除了离散傅里叶频点量化引起的“平顶阶梯锯齿效应”</strong>。</li>
-<li><strong>实时色标与滤波控制</strong>：<ul>
-<li><strong>双模式归一化</strong>：支持【按频率列归一化（推荐，全频段深红脊线）】与【全局归一化（保留能量衰减规律）】1 毫秒免重算瞬时切换；</li>
-<li><strong>滤波平滑切换</strong>：右键菜单支持在 MATLAB 风格离散纯净网格块（Nearest）与双线性平滑云雾渐变（Bilinear）之间自由切换。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）"><a href="#3-智能曲线拾取与双视图联动（Tab-2-leftrightarrow-Tab-3）" class="headerlink" title="3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）"></a>3. 智能曲线拾取与双视图联动（Tab 2 $\leftrightarrow$ Tab 3）</h3><ul>
-<li><strong>局部极大值自动吸附（Snap-to-Peak）</strong>：用户在能量带附近鼠标轻点，算法自动在垂直速度方向（$\pm 15$ 个网格，约 $\pm 30\text{ m/s}$）内搜索物理极大值峰顶并精准就位，彻底消除手抖误差。</li>
-<li><strong>🤖 ONNX Runtime AI 深度学习一键智能拾取</strong>：<ul>
-<li>内置针对频散谱特征定制的轻量级多尺度空洞残差卷积网络（<code>DispersionRidgeNet</code>）；</li>
-<li>在 C++ 桌面端利用微软 ONNX Runtime 引擎直接进行 CPU 毫秒级推理，自动生成连续骨架曲线。</li>
-</ul>
-</li>
-<li><strong>实时双向图层联动</strong>：<ul>
-<li>Tab 2（能量图）：上方实时绘制高对比度亮黄色实线与红白采样圆点；</li>
-<li>Tab 3（<code>Plot1D</code>）：自动对拾取点按频率升序重排，生成封闭边框（Box Style）期刊级散点折线图。</li>
-</ul>
-</li>
-<li><strong>编辑与导出</strong>：支持单点撤销（Undo）、点位重复覆盖修正、一键清空，以及导出为标准三列反演文本（<code>Frequency, PhaseVelocity, Wavelength</code>）。</li>
-</ul>
-<h3 id="4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）"><a href="#4-1D-横波速度结构剖面展示与地层表格（Tab-4-Vs-Profile）" class="headerlink" title="4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）"></a>4. 1D 横波速度结构剖面展示与地层表格（Tab 4: Vs Profile）</h3><ul>
-<li><strong>地下深度 vs 横波速度阶梯图（1D Vs Step Profile）</strong>：<ul>
-<li>垂直向下延伸的地学标准深度轴（<code>yAxis-&gt;setRangeReversed(true)</code>）；</li>
-<li>采用阶梯线（Step Plot）严谨反映地下不同地质界面的速度突变。</li>
-</ul>
-</li>
-<li><strong>地层参数实时表格（QTableWidget）</strong>：<ul>
-<li>自动同步列出层号、厚度 $H$、顶面埋深、横波速度 $V_s$、纵波速度 $V_p$；</li>
-<li>消除水平滚动条自适应平分列宽，深色主题交替行着色，字迹高亮清晰。</li>
-</ul>
-</li>
-<li><strong>成果导入接口</strong>：支持读取 Python 优化反演生成的 <code>Inverted_Vs_Model.txt</code> 模型文件并直接成图。</li>
-</ul>
-<h3 id="5-层状介质理论正演与时域面波合成（Forward-Modeling）"><a href="#5-层状介质理论正演与时域面波合成（Forward-Modeling）" class="headerlink" title="5. 层状介质理论正演与时域面波合成（Forward Modeling）"></a>5. 层状介质理论正演与时域面波合成（Forward Modeling）</h3><ul>
-<li><strong>Schwab-Knopoff 理论频散求解器</strong>：<ul>
-<li>内置基于传递矩阵的超越特征方程求解器；</li>
-<li>利用双曲正切消指数增长技术，根治了传统 Thomson-Haskell 方法的高频数值溢出问题；</li>
-<li>支持双层、三层及任意 $N$ 层速度递增或低速软弱夹层地质模型的理论基阶相速度正演计算。</li>
-</ul>
-</li>
-<li><strong>物理频散面波记录时域合成</strong>：<ul>
-<li>结合雷克子波振幅谱与理论相速度相移调制：$S(x, f) = A(f) e^{-i 2\pi f x / c(f)}$；</li>
-<li>利用逆傅里叶变换（IFFT）直接合成具有真实频散延迟特征的多道地震炮集（直接载入 Tab 1 供全流程测试）。</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-人机交互与工控级视觉体验"><a href="#6-人机交互与工控级视觉体验" class="headerlink" title="6. 人机交互与工控级视觉体验"></a>6. 人机交互与工控级视觉体验</h3><ul>
-<li><strong>卡片式空状态指引（Empty State）</strong>：启动初期居中展现现代化操作卡片，提供大图标、快速浏览按钮及【🧪 一键加载理论三层模型】快速体验入口。</li>
-<li><strong>全窗口拖拽载入（Drag &amp; Drop）</strong>：支持从 Windows 桌面直接将 <code>.sgy</code> 文件拖入窗口快速秒开。</li>
-<li><strong>顶部数据看板徽章（Data Badges）</strong>：工具栏右侧动态点亮深蓝微光胶囊标签，实时呈现文件名、道数、采样率与记录时长。</li>
-<li><strong>底部地学仪器级状态指示灯（Status Chips）</strong>：状态栏常驻 4 颗带 LED 色彩的状态指示芯片（算力引擎、当前算法、网格规格、数据道数），随面板操作动态刷新。</li>
-</ul>
-<hr>
-<h2 id="系统架构与三轨工作流"><a href="#系统架构与三轨工作流" class="headerlink" title="系统架构与三轨工作流"></a>系统架构与三轨工作流</h2><p>系统涵盖了<strong>外场实测数据处理</strong>、<strong>理论正演数值模拟</strong>与<strong>AI 模型训练闭环</strong>三条互通的工作流：</p>
-<p>```text<br>               【实测数据流】                               【理论正演流】<br>       ┌────────────────────────┐                   ┌────────────────────────┐<br>       │   外场实测 SEGY 数据   │                   │   1D 地层模型参数输入   │<br>       │   (<em>.sgy / </em>.segy)     │                   │   (H1, H2, Vs1, Vs2…)│<br>       └───────────┬────────────┘                   └───────────┬────────────┘<br>                   │ 拖拽 / 浏览打开                            │ 一键理论正演合成<br>                   ▼                                            ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 1: 原始地震道集剖面展示与分析 (Shot Gather)                               │<br>│ - Wiggle 抖动线 / 变面积填充 / 灰度变密度剖面 / 增益调节                     │<br>│ - 顶部看板显示 [文件名 | 96道 | 1.0ms | 1000ms] / 右键导出合成道集 SEGY 文件 │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 设定观测系统与扫描网格: dt, dx, x0, f, v<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 2: 移相法 / F-K / Capon MVDR / 倾斜叠加 τ-p 频散能量谱 (Dispersion Map)   │<br>│ - 频域复数线性加权插值 (彻底消除阶梯锯齿) + OpenMP 多核极速并行               │<br>│ - [拾取模式] -&gt; 鼠标点选触发 Snap-to-Peak 局部极大值自动吸附 (或点击 🤖 AI一键拾取) │<br>│ - 右键切换清晰色块(Nearest) / 双线性平滑(Bilinear) / 导出频散谱 SEGY 文件    │<br>└──────────────────┬──────────────────────────────────────────┬───────────────┘<br>                   │ 实时同步提取点                           │ 理论相速度真值<br>                   ▼                                          ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 3: 频散曲线对比与反演质控 (Extracted Curves)                            │<br>│ - Plot1D 封闭边框期刊级展示                                                 │<br>│ - 实测提取散点与理论红线叠合比对 (闭环质检)                                  │<br>│ - 一键导出反演标准 ASCII 文本 (Frequency, PhaseVelocity, Wavelength)        │<br>└──────────────────────────────────────┬──────────────────────────────────────┘<br>                                       │ 输入反演数据<br>                                       ▼<br>┌─────────────────────────────────────────────────────────────────────────────┐<br>│ Tab 4: 1D 横波速度剖面展示与分层参数表 (Vs Profile)                          │<br>│ - 垂直台阶线阶梯剖面 (Depth vs Vs, 深度向下递增)                             │<br>│ - 地层参数表格同步呈现 (层号、厚度、顶深、Vs、Vp)                            │<br>│ - 载入 Python / C++ 优化反演生成的 Inverted_Vs_Model.txt 文件展示成果        │<br>└─────────────────────────────────────────────────────────────────────────────┘</p>
-<p>核心算法与数学物理原理</p>
-<ol>
-<li>四大频散能量谱成像算子</li>
-</ol>
-<p>A. 经典移相法（Phase Shift, Park et al., 1998）</p>
-<p>对地震道进行时间向傅里叶变换并执行纯相位归一化，剔除几何扩散衰减：<br>P(x_j, \omega) = \frac{U(x_j, \omega)}{|U(x_j, \omega)|}</p>
-<p>沿试探相速度 v 扫描，执行空间相位相干补偿叠加：<br>E(v, f) = \frac{1}{N} \left| \sum_{j=1}^{N} P(x_j, 2\pi f) \cdot \exp\left(i \frac{2\pi f \cdot x_j}{v}\right) \right|</p>
-<p>B. 高分辨率 Capon 最小方差法（MVDR / HRFK）</p>
-<p>通过长度为 L 的滑动子阵列计算空间平滑协方差矩阵 \mathbf{R}_f，并引入后向平滑<br>\mathbf{R}_b = \mathbf{J} \mathbf{R}_f^* \mathbf{J} 构造满秩矩阵：<br>\mathbf{R} = \frac{1}{2}(\mathbf{R}_f + \mathbf{R}_b) + \epsilon \mathbf{I}</p>
-<p>定义物理导向矢量<br>\mathbf{a}(v) = \left[ 1, e^{-i \frac{\omega}{v} \Delta x}, \dots, e^{-i \frac{\omega}{v} (L-1)\Delta x} \right]^T，自适应滤除相干旁瓣干扰：<br>E_{\text{Capon}}(v, f) = \frac{1}{\mathbf{a}^H(v) \mathbf{R}^{-1} \mathbf{a}(v)}</p>
-<p>C. 时域倾斜叠加法（Slant-Stack / \tau-p 变换, McMechan &amp; Yedlin, 1981）</p>
-<p>时空域线性动校正（LMO）截距时间叠加：<br>u(\tau, p) = \sum_{j=1}^{N} u(x_j, \tau + p \cdot x_j), \quad p = \frac{1}{v}</p>
-<p>沿截距时间 \tau 执行 1D 傅里叶变换映射至速度谱：<br>E(v, f) = \left| \int u(\tau, 1/v) e^{-i 2\pi f \tau} d\tau \right|</p>
-<ol>
-<li>Schwab-Knopoff 层状弹性介质频散特征方程</li>
-</ol>
-<p>对于 N 层水平均匀各向同性弹性介质，地表满足自由应力边界条件，无限深基底满足波场向下衰减条件。联立各层位移-应力传递矩阵并引入双曲正切消指数项<br>\tanh(k r_m d_m) = \frac{1-e^{-2kr_md_m}}{1+e^{-2kr_md_m}}，构建隐式超越特征方程：<br>F(c, \omega; \mathbf{H}, \mathbf{V_s}, \mathbf{V_p}, \mathbf{\rho}) = 0</p>
-<p>系统从高频渐近线（c \approx 0.92 V<em>{s, \text{top}}）出发，利用 Brent-Dekker<br>混合求根算法沿频率逆序追踪，确保数值解收敛于基阶模态 v</em>{R0}(f)。</p>
-<p>[三层弹性模型: H, Vs, Vp, Rho]<br>              │<br>              ▼ 【公式 1: Schwab-Knopoff 传递矩阵求根】<br>[理论相速度曲线: c(f)] ───────► (直接画在 Tab 3 的理论红线)<br>              │<br>              ▼ 【公式 2: 频域相位调制 + IFFT 时域合成】<br>[多道地震道集: u(x, t)] ─────► (显示在 Tab 1 的合成 Wiggle 波形)<br>              │<br>              ▼ 【公式 3: Park / Capon / τ-p 空间相干叠加】<br>[频散能量谱: E(f, v)] ───────► (显示在 Tab 2 的亮红色能量带)</p>
-<ol>
-<li>1D 横波速度结构反演目标函数（Tikhonov 正则化）</li>
-</ol>
-<p>将观测频散曲线 \mathbf{v}^{\text{obs}} 反演为各层横波速度<br>\mathbf{m} = [V<em>{s1}, V</em>{s2}, \dots, V<em>{sN}] 的目标函数定义为：<br>\Phi(\mathbf{m}) = \frac{1}{2} \sum</em>{i=1}^{M} \left( v_R^{\text{obs}}(f_i) - v_R^{\text{calc}}(f_i, \mathbf{m}) \right)^2 + \frac{\lambda}{2} |\mathbf{L} \mathbf{m}|_2^2</p>
-<p>其中 \mathbf{L} 为一阶平滑差分算子（粗糙度矩阵），有效规避了地层速度在垂向上的锯齿状震荡解。</p>
-<p>开发环境与依赖库</p>
-<ul>
-<li>操作系统：Windows 10 / 11 (x64)</li>
-<li>IDE 与编译器：Microsoft Visual Studio 2022 (MSVC v143, C++17 标准)</li>
-<li>GUI 框架：Qt 5.12+ / Qt 6.x（Widgets 模块）</li>
-<li>核心依赖库：<ul>
-<li>Eigen 3.3+：高性能密集矩阵运算与 <unsupported/Eigen/FFT> 快速傅里叶变换</li>
-<li>QCustomPlot 2.1+：双层混合剖面与出版级曲线绘图引擎</li>
-<li>ONNX Runtime (C++ API v1.30.0)：轻量级深度学习前向推理引擎</li>
-<li>OpenMP：多核 CPU 指令级并行加速</li>
-</ul>
-</li>
-</ul>
-<p>Visual Studio 关键配置指南</p>
-<p>在 Visual Studio 2022 中编译运行本系统时，必须确认以下关键工程属性：</p>
-<ol>
-<li><p>编译选项设置</p>
-<ul>
-<li>启用扩展对象格式 /bigobj（解决 Eigen 深度模板展开导致的符号溢出）：<ul>
-<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/bigobj</li>
-</ul>
-</li>
-<li>强制 UTF-8 源代码编码 /utf-8（解决 MSVC 中文字符断句与 C2143 报错）：<ul>
-<li>项目属性 \to C/C++ \to 命令行 \to 其他选项添加：/utf-8</li>
-</ul>
-</li>
-<li>启用 OpenMP 多线程加速：<ul>
-<li>项目属性 \to C/C++ \to 语言 \to OpenMP 支持 \to 设为 是 (/openmp)。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>ONNX Runtime C++ 库集成配置</p>
-</li>
-</ol>
-<p>下载解压 onnxruntime-win-x64-1.30.0.zip 并置于 Pro_Seis_MASW/third_party/onnxruntime：</p>
-<ul>
-<li>包含目录：C/C++ -&gt; 常规 -&gt; 附加包含目录 添加：$(ProjectDir)third_party\onnxruntime\include</li>
-<li>库目录：链接器 -&gt; 常规 -&gt; 附加库目录 添加：$(ProjectDir)third_party\onnxruntime\lib</li>
-<li>依赖项：链接器 -&gt; 输入 -&gt; 附加依赖项 添加：onnxruntime.lib</li>
-<li>运行时动态库：将 onnxruntime.dll 复制到可执行程序目录（如 x64/Release/）。</li>
-</ul>
-<p>项目完整目录结构</p>
-<p>Qt_Seis_MASW/<br>├── Qt_Seis_MASW.sln              # Visual Studio 2022 解决方案文件<br>├── Pro_Seis_MASW/                # C++ Qt 主工程目录<br>│   ├── Pro_h/                    # 核心接口头文件<br>│   │   ├── Plot1D.h              # 1D 专业科研图表组件 (QCustomPlot 派生类)<br>│   │   ├── QCPSeismicWiggle.h    # 地震波形抖动线与变面积填充 Plottable 图元<br>│   │   ├── SeismicIO.h           # SEGY 数据底层解析与多维导出接口<br>│   │   ├── SeismicView2D.h       # 2D 剖面多功能查看器容器接口<br>│   │   ├── SignalProcessingUtils.h # 移相法、F-K、Capon MVDR、τ-p、CWT、VMD 算法库<br>│   │   └── RayleighForwardSolver.h # 层状介质理论频散求解与多道面波时域合成器<br>│   ├── Pro_cpp/                  # 算法与组件实现源码<br>│   │   ├── Plot1D.cpp<br>│   │   ├── QCPSeismicWiggle.cpp<br>│   │   ├── SeismicIO.cpp<br>│   │   ├── SeismicView2D.cpp<br>│   │   ├── SignalProcessingUtils.cpp<br>│   │   └── RayleighForwardSolver.cpp<br>│   ├── third_party/              # 第三方轻量级依赖库<br>│   │   └── onnxruntime/          # 微软 ONNX Runtime C++ SDK (include/ &amp; lib/)<br>│   ├── models/                   # AI 神经网络模型交付目录<br>│   │   └── dispersion_picker.onnx # 导出的专用频散脊线提取模型<br>│   ├── pro_data/                 # 地震数据与导出成果中转站<br>│   │   └── output_curve/         # 频散曲线文本与反演 Vs 模型保存目录<br>│   ├── Python_script/            # 独立 Python 后处理脚本<br>│   │   ├── plot_seismic_gather.py # 炮集 Wiggle/灰度剖面高清成图工具<br>│   │   └── plot_dispersion_map.py # 导出的频散谱 SEGY 300-DPI 成图工具<br>│   ├── Pro_image/                # 系统各功能界面截图与文档插图<br>│   │   ├── main1.png             # Tab 1 原始道集截图<br>│   │   ├── main2.png             # Tab 2 频散能量谱截图<br>│   │   ├── main3.png             # Tab 3 提取频散曲线截图<br>│   │   ├── sync1.png             # 理论正演道集联动截图<br>│   │   ├── sync2.png             # 理论频散谱联动截图<br>│   │   └── sync3.png             # 理论频散曲线叠合对比截图<br>│   ├── style.h                   # 全局 Slate 深色科技风格 QSS 样式表定义<br>│   ├── Pro_Seis_MASW.h           # 主窗口逻辑控制器声明<br>│   ├── Pro_Seis_MASW.cpp         # 界面构建、业务逻辑、事件响应与 AI 推理实现<br>│   └── main.cpp                  # 桌面应用程序入口<br>├── AI_Train_MASW/                # Python 独立 AI 训练工作台<br>│   ├── dataset/                  # C++ 生成的连续大文件二进制数据集 (.bin)<br>│   ├── Main.ipynb                # 从环境自检、张量载入到训练导出的 Jupyter 实验笔记<br>│   └── run_inversion.py          # 1D 瑞雷波相速度 CoFI/disba 反演验证脚本<br>└── README.md                     # 系统完整技术说明文档</p>
-<p>数据输入与导出规范</p>
-<ol>
-<li><p>输入数据</p>
-<ul>
-<li>支持标准勘探 SEG-Y / SGY 格式（二维主动源单炮道集，Common Shot Gather）。</li>
-<li>兼容工程微动台阵与连续线性排列测量数据。</li>
-</ul>
-</li>
-<li><p>导出成果数据规范</p>
-</li>
-</ol>
-<p>A. 频散曲线文本格式（供反演软件调用）</p>
-<p>点击 【导出曲线…】 输出的标准三列 ASCII 文本文件，可直接被 CPS330 (surf96)、Geopsy 或 Python 反演脚本调用：</p>
-<h1 id="Frequency-Hz-PhaseVelocity-m-s-Wavelength-m"><a href="#Frequency-Hz-PhaseVelocity-m-s-Wavelength-m" class="headerlink" title="Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)"></a>Frequency(Hz)    PhaseVelocity(m/s)    Wavelength(m)</h1><p>5.000              324.50                64.90<br>7.500              298.20                39.76<br>10.000             276.40                27.64<br>12.500             255.80                20.46<br>…                …                   …</p>
-<p>B. 1D 反演横波速度地层剖面格式</p>
-<p>反演模块输出的层状速度模型文本（Inverted_Vs_Model.txt），可直接载入 Tab 4 绘制阶梯剖面：</p>
-<h1 id="Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3"><a href="#Layer-Thickness-m-Depth-Top-m-Vs-m-s-Vp-m-s-Density-kg-m3" class="headerlink" title="Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)"></a>Layer    Thickness(m)    Depth_Top(m)    Vs(m/s)    Vp(m/s)    Density(kg/m3)</h1><p>1          2.00            0.00            223.50     447.00     2000.0<br>2          3.00            2.00            319.80     639.60     2000.0<br>3          5.00            5.00            345.90     691.80     2000.0<br>4          8.00            10.00           372.00     744.00     2000.0<br>5          12.00           18.00           398.00     796.00     2000.0<br>6          0.00            30.00           423.80     847.60     2000.0</p>
-<p>C. 二维频散能量谱 / 合成道集 SEGY 格式</p>
-<ul>
-<li>频散谱导出：右键点击谱图选择 【💾 导出频散能量谱为 SEGY】，生成以频率为道（N_f）、相速度为采样点（N_v）的标准浮点 SEGY 文件。</li>
-<li>合成道集导出：在道集视图中右键选择 【💾 导出道集为 SEGY】，将正演模拟的纯物理波场导出为标准地震道集。</li>
-</ul>
-<p>Python 辅助工具链</p>
-<p>系统在 Python_script/ 目录下配套提供了两套即开即用的专业数据可视化工具：</p>
-<ol>
-<li>plot_seismic_gather.py：基于 segyio 与 matplotlib，支持自动计算时间物理轴、自适应增益均衡并导出 300-DPI<br>Wiggle 波形与灰度剖面；</li>
-<li>plot_dispersion_map.py：用于读取本系统导出的频散能量谱 .sgy 文件，支持物理坐标自动映射（Hz 与<br>m/s）及双三次平滑（Bicubic）抗锯齿超高清成图。</li>
-</ol>
-<p>许可证与致谢</p>
-<p>本项目基于工程实践与科研探索开发。底层绘图组件遵循 GPLv3 / QCustomPlot 商业许可；矩阵代数运算与快速傅里叶变换依赖开源 Eigen<br>矩阵库；理论层状介质特征超越方程基于 Schwab-Knopoff 理论构建；AI 部署基于微软开源 ONNX Runtime 引擎。</p>
-]]></content>
-      <categories>
-        <category>学术研究与技术项目</category>
-      </categories>
-      <tags>
-        <tag>Computational Geophysics</tag>
-        <tag>Elastic Wave</tag>
-        <tag>Visualization</tag>
-        <tag>MASW</tag>
       </tags>
   </entry>
 </search>
