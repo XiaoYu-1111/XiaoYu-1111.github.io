@@ -67,12 +67,6 @@
 
 
 
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -292,7 +286,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="SeisWave-Lab：曲网格二维与三维弹性波模拟的理论、实现与应用"><a href="#SeisWave-Lab：曲网格二维与三维弹性波模拟的理论、实现与应用" class="headerlink" title="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用"></a>SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用</h1><p>修订日期：2026 年 10 月 18 日。</p>
+          <h1 id="SeisWave-Lab：曲网格二维与三维弹性波模拟的理论、实现与应用">SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用</h1>
+<p>修订日期：2026 年 10 月 18 日。</p>
 <p><strong>摘要</strong>　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的曲网格，求解二维 P–SV 平面应变及三维各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供 CPU/OpenMP 和 CUDA 双后端，并集成材料建模、定向体力与各向同性矩源、分量接收记录、波场切片和数据导出。本文以三维理论为基础，说明二维约化与相应工作流，依次介绍研究背景、理论方法、计算实现、界面使用及推导附录，明确时间稳定性、空间分辨率和物理精度之间的区别。已有内点分析与计算检查仅支持其各自条件下的结论；曲面表面波、突变界面及人工边界仍需进一步定量验证。</p>
 <p><strong>关键词</strong>　弹性波；曲网格；有限差分；自由表面；数值频散；CUDA；三分量地震记录</p>
           <!--noindex-->
@@ -380,7 +375,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="CUDA加速3D弹性波模拟"><a href="#CUDA加速3D弹性波模拟" class="headerlink" title="CUDA加速3D弹性波模拟"></a>CUDA加速3D弹性波模拟</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisWave Lab</strong>（当前版本 <strong>v2.0.0</strong>，源码工程 <code>CMakePro_CUDA_SeisSim_V2</code>）是一套基于 <strong>C++20、NVIDIA CUDA 12.8、OpenGL 4.3 与 Dear ImGui Docking / ImPlot</strong> 构建的交互式弹性波数值模拟软件。项目保留原有二维模拟管线，并通过独立的 <strong>Seis3D</strong> 子系统扩展三维各向同性弹性波正演、空间波场可视化与三分量地震数据采集。</p>
+          <h1 id="CUDA加速3D弹性波模拟">CUDA加速3D弹性波模拟</h1>
+<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
+<p><strong>SeisWave Lab</strong>（当前版本 <strong>v2.0.0</strong>，源码工程 <code>CMakePro_CUDA_SeisSim_V2</code>）是一套基于 <strong>C++20、NVIDIA CUDA 12.8、OpenGL 4.3 与 Dear ImGui Docking / ImPlot</strong> 构建的交互式弹性波数值模拟软件。项目保留原有二维模拟管线，并通过独立的 <strong>Seis3D</strong> 子系统扩展三维各向同性弹性波正演、空间波场可视化与三分量地震数据采集。</p>
 <p>Seis3D 将模型配置、GPU 有限差分求解、正交三剖面、半透明体绘制、接收波形和 SEG-Y 导出整合到统一工作区。用户可以配置分层介质与震源，在计算过程中观察空间传播，并将地表接收网格记录导出用于后续分析。</p>
 <p>本文结合实际运行截图，介绍系统的计算方法、可视化设计和完整操作流程。当前版本面向<strong>计算地球物理教学、波场传播理解与算法原型探索</strong>；文中的大网格显存数值为代码预算估算。</p>
 <p><strong>当前初始参数：</strong> 300 × 50 × 300 物理网格；X 向每排 50 道、Y 向 3 排，共 150 个接收点，总上限 300 道；每炮 1000 样点、每 2 个计算步采样一次。初始显示为 <strong>Vz + Geological layers + Coolwarm</strong>，历史峰值保持关闭。默认采用自动 CFL 安全步长，也可在安全范围内手动设置 0.5 ms 等整数微秒步长。</p>
@@ -476,7 +473,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="🌿-RAIN-Focus-Workstation"><a href="#🌿-RAIN-Focus-Workstation" class="headerlink" title="🌿 RAIN Focus Workstation"></a>🌿 RAIN Focus Workstation</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>RAIN Focus Workstation</strong> 是一款极简现代的桌面端个人心流与生产力管理套件。</p>
+          <h1 id="🌿-RAIN-Focus-Workstation">🌿 RAIN Focus Workstation</h1>
+<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
+<p><strong>RAIN Focus Workstation</strong> 是一款极简现代的桌面端个人心流与生产力管理套件。</p>
 <p>项目抛弃了传统工具粗糙的厚边框与刺眼的高对比度渐变，汲取了目前流行的 <strong>Bento Grid（便当网格）</strong> 与 <strong>卡片微描边</strong> 交互美学，通过 <strong>全矢量纯代码渲染（0 图片依赖）</strong>、<strong>自适应动态字阶</strong> 和 <strong>5 款精选莫兰迪主题调色盘</strong>，为开发者、创作者及深度工作者提供纯净、无打扰的心流体验。</p>
           <!--noindex-->
             <div class="post-button">
@@ -569,8 +568,331 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="SeisTool-MASW-面波频散分析与处理系统"><a href="#SeisTool-MASW-面波频散分析与处理系统" class="headerlink" title="SeisTool-MASW 面波频散分析与处理系统"></a>SeisTool-MASW 面波频散分析与处理系统</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（$\tau-p$）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（$V_s$）剖面反演引擎，可联动生成地下深度-速度阶梯图与分层参数表，全面支持频散曲线文本、频散谱及合成道集的双向 SEG-Y 数据导出，真正实现了从野外波场采集到地下地质成果交付的端到端闭环。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+          <h1 id="SeisTool-MASW-面波频散分析与处理系统">SeisTool-MASW 面波频散分析与处理系统</h1>
+<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
+<p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（
+    <span id="mjx-d215884">
+      <style>
+      #mjx-d215884{
+        display:contents;
+        mjx-assistive-mml {
+          user-select: text !important;
+          clip: auto !important;
+          color: rgba(0,0,0,0);
+        }
+        
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+      }
+      </style>
+      <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="5.073ex" height="1.758ex" role="img" focusable="false" viewBox="0 -583 2242.4 777" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></g><g data-mml-node="mo" transform="translate(739.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1739.4,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>τ</mi><mo>−</mo><mi>p</mi></math></mjx-assistive-mml></mjx-container>
+    </span>
+  ）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（
+    <span id="mjx-3eb1b8e">
+      <style>
+      #mjx-3eb1b8e{
+        display:contents;
+        mjx-assistive-mml {
+          user-select: text !important;
+          clip: auto !important;
+          color: rgba(0,0,0,0);
+        }
+        
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+      }
+      </style>
+      <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.355ex;" xmlns="http://www.w3.org/2000/svg" width="2.257ex" height="1.901ex" role="img" focusable="false" viewBox="0 -683 997.6 840.1" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></g><g data-mml-node="mi" transform="translate(616,-150) scale(0.707)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>V</mi><mi>s</mi></msub></math></mjx-assistive-mml></mjx-container>
+    </span>
+  ）剖面反演引擎，可联动生成地下深度-速度阶梯图与分层参数表，全面支持频散曲线文本、频散谱及合成道集的双向 SEG-Y 数据导出，真正实现了从野外波场采集到地下地质成果交付的端到端闭环。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/09/20/Qt_Seis_WASW%E9%9D%A2%E6%B3%A2%E9%A2%91%E6%95%A3/#more" rel="contents">
@@ -662,7 +984,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="基于CUDA加速的高性能二维弹性波场模拟平台"><a href="#基于CUDA加速的高性能二维弹性波场模拟平台" class="headerlink" title="基于CUDA加速的高性能二维弹性波场模拟平台"></a>基于CUDA加速的高性能二维弹性波场模拟平台</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>CMakePro_CUDA_SeisSim</strong> 是一套基于 <strong>C++17 + NVIDIA CUDA + OpenGL 4.3 + Dear ImGui / ImPlot</strong> 构建的实时二维弹性波场数值模拟与地震数据分析系统。</p>
+          <h1 id="基于CUDA加速的高性能二维弹性波场模拟平台">基于CUDA加速的高性能二维弹性波场模拟平台</h1>
+<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
+<p><strong>CMakePro_CUDA_SeisSim</strong> 是一套基于 <strong>C++17 + NVIDIA CUDA + OpenGL 4.3 + Dear ImGui / ImPlot</strong> 构建的实时二维弹性波场数值模拟与地震数据分析系统。</p>
 <p>系统以 GPU 异构并行计算为核心，将弹性波有限差分（FDM）求解、实时波场可视化、地震数据采集、SEG-Y 数据 I/O、地震记录分析以及波场电影回放整合到统一的交互式物理仿真环境中。</p>
           <!--noindex-->
             <div class="post-button">
@@ -755,7 +1079,170 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="基于-GPU-Compute-Shader-的高性能二维弹性波动力学模拟平台"><a href="#基于-GPU-Compute-Shader-的高性能二维弹性波动力学模拟平台" class="headerlink" title="基于 GPU Compute Shader 的高性能二维弹性波动力学模拟平台"></a>基于 GPU Compute Shader 的高性能二维弹性波动力学模拟平台</h1><h2 id="摘要-Abstract"><a href="#摘要-Abstract" class="headerlink" title="摘要 (Abstract)"></a>摘要 (Abstract)</h2><p><strong>HPEW-Sim v3.0</strong> 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 <strong>OpenGL Compute Shader</strong> 的 <strong>GPU 原生并行架构</strong>，实现了在千万级网格规模(实现了在 <strong>1600 万 (1.6 $\times$ 10^7)</strong> 网格节点规模)下的实时、高精度弹性波场模拟。系统内核集成了空间 8 阶/时间 2 阶交错网格有限差分（FDTD）算法，有效抑制了数值频散。此外，平台融合了逆时偏移（RTM）成像、实时波场分离及艺术化渲染技术，为复杂介质中的波传播研究提供了一站式的高性能解决方案。</p>
+          <h1 id="基于-GPU-Compute-Shader-的高性能二维弹性波动力学模拟平台">基于 GPU Compute Shader 的高性能二维弹性波动力学模拟平台</h1>
+<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
+<p><strong>HPEW-Sim v3.0</strong> 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 <strong>OpenGL Compute Shader</strong> 的 <strong>GPU 原生并行架构</strong>，实现了在千万级网格规模(实现了在 <strong>1600 万 (1.6 
+    <span id="mjx-80d9264">
+      <style>
+      #mjx-80d9264{
+        display:contents;
+        mjx-assistive-mml {
+          user-select: text !important;
+          clip: auto !important;
+          color: rgba(0,0,0,0);
+        }
+        
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+      }
+      </style>
+      <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: 0.02ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewBox="0 -491 778 482" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>×</mo></math></mjx-assistive-mml></mjx-container>
+    </span>
+   10^7)</strong> 网格节点规模)下的实时、高精度弹性波场模拟。系统内核集成了空间 8 阶/时间 2 阶交错网格有限差分（FDTD）算法，有效抑制了数值频散。此外，平台融合了逆时偏移（RTM）成像、实时波场分离及艺术化渲染技术，为复杂介质中的波传播研究提供了一站式的高性能解决方案。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/01/21/GPU%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/#more" rel="contents">
@@ -847,7 +1334,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation"><a href="#Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation" class="headerlink" title="Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation"></a>Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1><h1 id="高性能二维弹性波场模拟系统-CPU-技术手册"><a href="#高性能二维弹性波场模拟系统-CPU-技术手册" class="headerlink" title="高性能二维弹性波场模拟系统(CPU)技术手册"></a>高性能二维弹性波场模拟系统(CPU)技术手册</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Seis-FDM-Tool 是一款基于 Qt、C++ 的高性能二维弹性波场模拟软件。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。<br>该软件结合了 C++17 的高性能计算能力与 Qt 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 OpenMP 并行加速和内存扁平化技术，能够在大规模网格下实现近实时的波场模拟。</p>
+          <h1 id="Seis-FDM-Tool-High-Performance-2D-Elastic-Wave-Simulation">Seis-FDM-Tool: High-Performance 2D Elastic Wave Simulation</h1>
+<h1 id="高性能二维弹性波场模拟系统-CPU-技术手册">高性能二维弹性波场模拟系统(CPU)技术手册</h1>
+<h2 id="简介">简介</h2>
+<p>Seis-FDM-Tool 是一款基于 Qt、C++ 的高性能二维弹性波场模拟软件。它实现了二维各向同性弹性波方程（P-SV波）的高精度数值模拟。<br>
+该软件结合了 C++17 的高性能计算能力与 Qt 的现代化图形界面，旨在解决传统科学计算程序“交互差、配置难、可视化弱”的痛点。核心计算引擎采用 OpenMP 并行加速和内存扁平化技术，能够在大规模网格下实现近实时的波场模拟。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/01/19/Seis-Simulation%E5%9C%B0%E9%9C%87%E6%B3%A2%E5%9C%BA%E6%A8%A1%E6%8B%9F/#more" rel="contents">
@@ -939,7 +1430,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="VTK三维数据可视化模块说明文档"><a href="#VTK三维数据可视化模块说明文档" class="headerlink" title="VTK三维数据可视化模块说明文档"></a>VTK三维数据可视化模块说明文档</h1><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>基于 <strong>Qt</strong>、<strong>VTK</strong> 的三维数据可视化模块，提供了一个高性能的交互式三维渲染窗口，专门用于展示地质勘探、气象数据及通用科学计算数据。</p>
+          <h1 id="VTK三维数据可视化模块说明文档">VTK三维数据可视化模块说明文档</h1>
+<h1 id="简介">简介</h1>
+<p>基于 <strong>Qt</strong>、<strong>VTK</strong> 的三维数据可视化模块，提供了一个高性能的交互式三维渲染窗口，专门用于展示地质勘探、气象数据及通用科学计算数据。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/01/18/VTK%E4%B8%89%E7%BB%B4%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%9D%97/#more" rel="contents">
@@ -1031,7 +1524,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Modern-PySide6-System-Dashboard"><a href="#Modern-PySide6-System-Dashboard" class="headerlink" title="Modern PySide6 System Dashboard"></a>Modern PySide6 System Dashboard</h1><blockquote>
+          <h1 id="Modern-PySide6-System-Dashboard">Modern PySide6 System Dashboard</h1>
+<blockquote>
 <p>一个基于 Python 和 PySide6 构建的现代化、无边框桌面应用程序模板。采用解耦架构设计，具有高端的视觉效果和流畅的交互体验。</p>
 </blockquote>
           <!--noindex-->
@@ -1125,7 +1619,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="基于C-、omp并行的信号处理工具箱——SignalProcessingUtils"><a href="#基于C-、omp并行的信号处理工具箱——SignalProcessingUtils" class="headerlink" title="基于C++、omp并行的信号处理工具箱——SignalProcessingUtils"></a>基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>SignalProcessingUtils</strong> 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。</p>
+          <h1 id="基于C-、omp并行的信号处理工具箱——SignalProcessingUtils">基于C++、omp并行的信号处理工具箱——SignalProcessingUtils</h1>
+<h2 id="简介">简介</h2>
+<p><strong>SignalProcessingUtils</strong> 是一个用C++编写的高性能数字信号处理工具箱，集成了多种时频分析方法，包括短时傅里叶变换（STFT）、S变换和连续小波变换（CWT）。该工具箱利用OpenMP实现并行计算，显著提升了大规模数据处理的效率，适用于地震信号处理、语音分析和其他需要时频分析的领域。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2026/01/17/SignalProcessingUtils/#more" rel="contents">
