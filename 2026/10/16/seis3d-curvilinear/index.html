@@ -22,18 +22,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用修订日期：2026 年 10 月 17 日。 摘要　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的三维曲网格，求解各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供 CPU&#x2F;OpenMP 和 CU">
+    <meta name="description" content="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用修订日期：2026 年 10 月 18 日。 摘要　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的曲网格，求解二维 P–SV 平面应变及三维各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用">
+<meta property="og:title" content="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用">
 <meta property="og:url" content="http://example.com/2026/10/16/seis3d-curvilinear/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用修订日期：2026 年 10 月 17 日。 摘要　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的三维曲网格，求解各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供 CPU&#x2F;OpenMP 和 CU">
+<meta property="og:description" content="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用修订日期：2026 年 10 月 18 日。 摘要　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的曲网格，求解二维 P–SV 平面应变及三维各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-home.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/dispersion-comparison.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/01-model.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/14-layered-model.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-workbench.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-layers.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-terrain.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-source-explosion.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/02-source.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/03-receivers.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-elevation-examples.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/04-run-start.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/05-wave-010.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/06-wave-025.png">
@@ -43,13 +49,17 @@
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/09-records-agc.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/10-single-3c.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/13-export.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-model-io.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-export.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-segy.png">
+<meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-record-options.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/12-shortcuts.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/15-high-30hz.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/16-high-50hz.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/17-high-60hz.png">
 <meta property="og:image" content="http://example.com/2026/10/16/seis3d-curvilinear/18-receivers-1024.png">
 <meta property="article:published_time" content="2026-10-16T05:01:56.000Z">
-<meta property="article:modified_time" content="2026-10-17T01:09:29.198Z">
+<meta property="article:modified_time" content="2026-10-18T08:48:17.585Z">
 <meta property="article:author" content="XIAO YU">
 <meta property="article:tag" content="CUDA">
 <meta property="article:tag" content="Curvilinear Grid">
@@ -57,16 +67,16 @@
 <meta property="article:tag" content="Finite Difference">
 <meta property="article:tag" content="Seismology">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/10/16/seis3d-curvilinear/dispersion-comparison.png">
+<meta name="twitter:image" content="http://example.com/2026/10/16/seis3d-curvilinear/two-d-home.png">
 
 
 <link rel="canonical" href="http://example.com/2026/10/16/seis3d-curvilinear/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/10/16/seis3d-curvilinear/","path":"2026/10/16/seis3d-curvilinear/","title":"SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/10/16/seis3d-curvilinear/","path":"2026/10/16/seis3d-curvilinear/","title":"SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用 | 冒牌書生的个人博客</title>
+<title>SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用 | 冒牌書生的个人博客</title>
   
 
 
@@ -192,7 +202,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisWave-Lab%EF%BC%9A%E6%9B%B2%E7%BD%91%E6%A0%BC%E4%B8%89%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F%E7%9A%84%E7%90%86%E8%AE%BA%E3%80%81%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 研究问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E9%A1%B9%E7%9B%AE%E5%AE%9A%E4%BD%8D%E4%B8%8E%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 项目定位与适用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%95%B0%E5%80%BC%E5%AE%9E%E9%AA%8C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%88%A4%E6%8D%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 数值实验的基本判据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">2 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%90%84%E5%90%91%E5%90%8C%E6%80%A7%E9%80%9F%E5%BA%A6%E2%80%94%E5%BA%94%E5%8A%9B%E6%96%B9%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 各向同性速度—应力方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9B%B2%E7%BD%91%E6%A0%BC%E6%98%A0%E5%B0%84%E4%B8%8E%E7%89%A9%E7%90%86%E5%AF%BC%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 曲网格映射与物理导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%A9%BA%E9%97%B4%E7%A6%BB%E6%95%A3%E4%B8%8E%E6%97%B6%E9%97%B4%E7%BB%84%E5%90%88"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 空间离散与时间组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%9B%B2%E9%9D%A2%E8%87%AA%E7%94%B1%E8%A1%A8%E9%9D%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 曲面自由表面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E4%BE%A7%E9%9D%A2%E5%8F%8A%E5%BA%95%E9%9D%A2%E6%B5%B7%E7%BB%B5%E5%90%B8%E6%94%B6"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 侧面及底面海绵吸收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E9%9C%87%E6%BA%90%E6%97%B6%E7%A9%BA%E7%A6%BB%E6%95%A3"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 震源时空离散</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E6%97%B6%E9%97%B4%E6%AD%A5%E3%80%81CFL-%E4%B8%8E%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 时间步、CFL 与终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E7%A9%BA%E9%97%B4%E9%87%87%E6%A0%B7%E4%B8%8E%E9%AB%98%E9%A2%91%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 空间采样与高频分辨率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3 实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E4%BC%9A%E8%AF%9D%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 模型初始化与会话建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%88%86%E5%B1%82%E7%89%A9%E6%80%A7%E6%98%A0%E5%B0%84"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 分层物性映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%8D%95%E6%AD%A5%E6%8E%A8%E8%BF%9B%E4%B8%8E%E6%95%B0%E5%80%BC%E8%AF%8A%E6%96%AD"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 单步推进与数值诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-CPU-%E4%B8%8E-CUDA-%E5%90%8E%E7%AB%AF"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 CPU 与 CUDA 后端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%8E%A5%E6%94%B6%E6%8E%92%E5%88%97%E4%B8%8E%E5%AE%B9%E9%87%8F"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 接收排列与容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E4%B8%8E%E5%B7%B2%E6%9C%89%E8%AF%81%E6%8D%AE"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.6 数值分析与已有证据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E5%90%8E%E7%BB%AD%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E5%90%91"><span class="nav-number">1.3.7.</span> <span class="nav-text">3.7 后续研究与升级方向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.4.</span> <span class="nav-text">4 界面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 工作区与建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%9C%87%E6%BA%90%E4%B8%8E%E8%A7%82%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 震源与观测系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%BF%90%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%B3%A2%E5%9C%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 运行控制与波场过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%B3%A2%E5%9C%BA%E3%80%81%E6%9D%90%E6%96%99%E4%B8%8E%E7%BD%91%E6%A0%BC%E6%98%BE%E7%A4%BA"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 波场、材料与网格显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%9C%B0%E9%9C%87%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%98%BE%E7%A4%BA%E5%A4%84%E7%90%86"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 地震记录与显示处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E5%AF%BC%E5%87%BA%E4%B8%8E%E6%93%8D%E4%BD%9C%E9%94%AE"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 导出与操作键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%99%84%E5%BD%95"><span class="nav-number">1.5.</span> <span class="nav-text">5 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-A%EF%BC%9A%E7%AC%A6%E5%8F%B7%E3%80%81%E5%87%A0%E4%BD%95%E4%B8%8E%E6%9D%90%E6%96%99%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">附录 A：符号、几何与材料约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-B%EF%BC%9A%E5%B7%AE%E5%88%86%E7%B3%BB%E6%95%B0%E4%B8%8E%E6%96%B9%E5%90%91%E8%B0%83%E5%BA%A6"><span class="nav-number">1.5.2.</span> <span class="nav-text">附录 B：差分系数与方向调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-C%EF%BC%9A%E9%9B%B6%E7%89%B5%E5%BC%95%E5%8F%98%E5%8C%96%E7%8E%87%E9%97%AD%E5%90%88%E7%9A%84%E5%B1%80%E9%83%A8%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.5.3.</span> <span class="nav-text">附录 C：零牵引变化率闭合的局部推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-D%EF%BC%9A%E5%86%85%E7%82%B9-Fourier-%E5%AF%B9%E7%85%A7%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">附录 D：内点 Fourier 对照的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-E%EF%BC%9A%E9%87%87%E6%A0%B7%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%9B%BE%E7%A4%BA%E7%AE%97%E4%BE%8B%E5%8F%82%E6%95%B0"><span class="nav-number">1.5.5.</span> <span class="nav-text">附录 E：采样设计与图示算例参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-F%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E4%B8%8E%E7%BB%93%E6%9E%9C%E8%A7%A3%E9%87%8A"><span class="nav-number">1.5.6.</span> <span class="nav-text">附录 F：数据输出与结果解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-G%EF%BC%9A%E9%AA%8C%E8%AF%81%E8%BE%B9%E7%95%8C%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.5.7.</span> <span class="nav-text">附录 G：验证边界与后续实验设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-H%EF%BC%9A%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8E%E8%BD%AF%E4%BB%B6%E6%9D%A5%E6%BA%90"><span class="nav-number">1.5.8.</span> <span class="nav-text">附录 H：参考文献与软件来源</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SeisWave-Lab%EF%BC%9A%E6%9B%B2%E7%BD%91%E6%A0%BC%E4%BA%8C%E7%BB%B4%E4%B8%8E%E4%B8%89%E7%BB%B4%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F%E7%9A%84%E7%90%86%E8%AE%BA%E3%80%81%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%A0%94%E7%A9%B6%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 研究问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E9%A1%B9%E7%9B%AE%E5%AE%9A%E4%BD%8D%E4%B8%8E%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 项目定位与适用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%95%B0%E5%80%BC%E5%AE%9E%E9%AA%8C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%88%A4%E6%8D%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 数值实验的基本判据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">2 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%90%84%E5%90%91%E5%90%8C%E6%80%A7%E9%80%9F%E5%BA%A6%E2%80%94%E5%BA%94%E5%8A%9B%E6%96%B9%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 各向同性速度—应力方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9B%B2%E7%BD%91%E6%A0%BC%E6%98%A0%E5%B0%84%E4%B8%8E%E7%89%A9%E7%90%86%E5%AF%BC%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 曲网格映射与物理导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%A9%BA%E9%97%B4%E7%A6%BB%E6%95%A3%E4%B8%8E%E6%97%B6%E9%97%B4%E7%BB%84%E5%90%88"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 空间离散与时间组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%9B%B2%E9%9D%A2%E8%87%AA%E7%94%B1%E8%A1%A8%E9%9D%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 曲面自由表面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E4%BE%A7%E9%9D%A2%E5%8F%8A%E5%BA%95%E9%9D%A2%E6%B5%B7%E7%BB%B5%E5%90%B8%E6%94%B6"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 侧面及底面海绵吸收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E9%9C%87%E6%BA%90%E6%97%B6%E7%A9%BA%E7%A6%BB%E6%95%A3"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 震源时空离散</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E6%97%B6%E9%97%B4%E6%AD%A5%E3%80%81CFL-%E4%B8%8E%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 时间步、CFL 与终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E7%A9%BA%E9%97%B4%E9%87%87%E6%A0%B7%E4%B8%8E%E9%AB%98%E9%A2%91%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 空间采样与高频分辨率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3 实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E4%BC%9A%E8%AF%9D%E5%BB%BA%E7%AB%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 模型初始化与会话建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%88%86%E5%B1%82%E7%89%A9%E6%80%A7%E6%98%A0%E5%B0%84"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 分层物性映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%8D%95%E6%AD%A5%E6%8E%A8%E8%BF%9B%E4%B8%8E%E6%95%B0%E5%80%BC%E8%AF%8A%E6%96%AD"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 单步推进与数值诊断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-CPU-%E4%B8%8E-CUDA-%E5%90%8E%E7%AB%AF"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 CPU 与 CUDA 后端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%8E%A5%E6%94%B6%E6%8E%92%E5%88%97%E4%B8%8E%E5%AE%B9%E9%87%8F"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 接收排列与容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E4%B8%8E%E5%B7%B2%E6%9C%89%E8%AF%81%E6%8D%AE"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.6 数值分析与已有证据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E5%90%8E%E7%BB%AD%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%8D%87%E7%BA%A7%E6%96%B9%E5%90%91"><span class="nav-number">1.3.7.</span> <span class="nav-text">3.7 后续研究与升级方向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.4.</span> <span class="nav-text">4 界面介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%8E%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 工作区与建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%9C%87%E6%BA%90%E4%B8%8E%E8%A7%82%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 震源与观测系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%BF%90%E8%A1%8C%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%B3%A2%E5%9C%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 运行控制与波场过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%B3%A2%E5%9C%BA%E3%80%81%E6%9D%90%E6%96%99%E4%B8%8E%E7%BD%91%E6%A0%BC%E6%98%BE%E7%A4%BA"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 波场、材料与网格显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%9C%B0%E9%9C%87%E8%AE%B0%E5%BD%95%E4%B8%8E%E6%98%BE%E7%A4%BA%E5%A4%84%E7%90%86"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 地震记录与显示处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E5%AF%BC%E5%87%BA%E4%B8%8E%E6%93%8D%E4%BD%9C%E9%94%AE"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 导出与操作键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%99%84%E5%BD%95"><span class="nav-number">1.5.</span> <span class="nav-text">5 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-A%EF%BC%9A%E7%AC%A6%E5%8F%B7%E3%80%81%E5%87%A0%E4%BD%95%E4%B8%8E%E6%9D%90%E6%96%99%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">附录 A：符号、几何与材料约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-B%EF%BC%9A%E5%B7%AE%E5%88%86%E7%B3%BB%E6%95%B0%E4%B8%8E%E6%96%B9%E5%90%91%E8%B0%83%E5%BA%A6"><span class="nav-number">1.5.2.</span> <span class="nav-text">附录 B：差分系数与方向调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-C%EF%BC%9A%E9%9B%B6%E7%89%B5%E5%BC%95%E5%8F%98%E5%8C%96%E7%8E%87%E9%97%AD%E5%90%88%E7%9A%84%E5%B1%80%E9%83%A8%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.5.3.</span> <span class="nav-text">附录 C：零牵引变化率闭合的局部推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-D%EF%BC%9A%E5%86%85%E7%82%B9-Fourier-%E5%AF%B9%E7%85%A7%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">附录 D：内点 Fourier 对照的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-E%EF%BC%9A%E9%87%87%E6%A0%B7%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%9B%BE%E7%A4%BA%E7%AE%97%E4%BE%8B%E5%8F%82%E6%95%B0"><span class="nav-number">1.5.5.</span> <span class="nav-text">附录 E：采样设计与图示算例参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-F%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E4%B8%8E%E7%BB%93%E6%9E%9C%E8%A7%A3%E9%87%8A"><span class="nav-number">1.5.6.</span> <span class="nav-text">附录 F：数据输出与结果解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-G%EF%BC%9A%E9%AA%8C%E8%AF%81%E8%BE%B9%E7%95%8C%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.5.7.</span> <span class="nav-text">附录 G：验证边界与后续实验设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E5%BD%95-H%EF%BC%9A%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E4%B8%8E%E8%BD%AF%E4%BB%B6%E6%9D%A5%E6%BA%90"><span class="nav-number">1.5.8.</span> <span class="nav-text">附录 H：参考文献与软件来源</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -207,13 +217,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -270,12 +280,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用 | 冒牌書生的个人博客">
+      <meta itemprop="name" content="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用 | 冒牌書生的个人博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用
+          SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用
         </h1>
 
         <div class="post-meta-container">
@@ -293,7 +303,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-17 09:09:29" itemprop="dateModified" datetime="2026-10-17T09:09:29+08:00">2026-10-17</time>
+      <time title="修改时间：2026-10-18 16:48:17" itemprop="dateModified" datetime="2026-10-18T16:48:17+08:00">2026-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -306,6 +316,10 @@
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/%E8%AE%A1%E7%AE%97%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86/%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" itemprop="url" rel="index"><span itemprop="name">数值模拟</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E5%9C%B0%E7%90%83%E7%89%A9%E7%90%86/%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/%E5%AD%A6%E6%9C%AF%E7%A0%94%E7%A9%B6%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">学术研究与技术项目</span></a>
         </span>
     </span>
 
@@ -325,14 +339,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="SeisWave-Lab：曲网格三维弹性波模拟的理论、实现与应用"><a href="#SeisWave-Lab：曲网格三维弹性波模拟的理论、实现与应用" class="headerlink" title="SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用"></a>SeisWave Lab：曲网格三维弹性波模拟的理论、实现与应用</h1><p>修订日期：2026 年 10 月 17 日。</p>
-<p><strong>摘要</strong>　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的三维曲网格，求解各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供 CPU/OpenMP 和 CUDA 双后端，并集成材料建模、三分量接收、波场切片和数据导出。本文依次介绍研究背景、理论方法、计算实现、界面使用及推导附录，明确时间稳定性、空间分辨率和物理精度之间的区别。已有内点分析与计算检查仅支持其各自条件下的结论；曲面表面波、突变界面及人工边界仍需进一步定量验证。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="SeisWave-Lab：曲网格二维与三维弹性波模拟的理论、实现与应用"><a href="#SeisWave-Lab：曲网格二维与三维弹性波模拟的理论、实现与应用" class="headerlink" title="SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用"></a>SeisWave Lab：曲网格二维与三维弹性波模拟的理论、实现与应用</h1><p>修订日期：2026 年 10 月 18 日。</p>
+<p><strong>摘要</strong>　地形起伏会改变地震波的传播路径、自由表面反射及波型转换。为在结构化数据布局中描述连续地表，本项目采用浅部贴体、深部展平的曲网格，求解二维 P–SV 平面应变及三维各向同性线弹性速度—应力方程。计算系统采用同位网格交替 MacCormack-DRP 空间差分与四阶段时间组合，提供 CPU/OpenMP 和 CUDA 双后端，并集成材料建模、定向体力与各向同性矩源、分量接收记录、波场切片和数据导出。本文以三维理论为基础，说明二维约化与相应工作流，依次介绍研究背景、理论方法、计算实现、界面使用及推导附录，明确时间稳定性、空间分辨率和物理精度之间的区别。已有内点分析与计算检查仅支持其各自条件下的结论；曲面表面波、突变界面及人工边界仍需进一步定量验证。</p>
 <p><strong>关键词</strong>　弹性波；曲网格；有限差分；自由表面；数值频散；CUDA；三分量地震记录</p>
 <span id="more"></span>
 <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><h3 id="1-1-研究问题"><a href="#1-1-研究问题" class="headerlink" title="1.1 研究问题"></a>1.1 研究问题</h3><p>三维弹性波正演通过给定介质、震源和边界条件，计算地下质点速度与应力的时空演化，可用于传播机理分析、观测系统设计和反演方法研究。地表起伏尤其影响近地表散射、反射相位和表面波；如果以台阶近似连续地形，几何离散误差可能与目标地质响应叠加。</p>
 <p>曲网格通过坐标映射使计算层贴合地表，将复杂几何转化为方程中的度量系数。它保留结构化索引和邻点访问，便于并行计算，同时引入网格拉伸、倾斜及曲面边界闭合问题。同位网格与牵引镜像处理的三维理论可参见 <a target="_blank" rel="noopener" href="https://doi.org/10.1111/j.1365-246X.2012.05472.x">Zhang、Zhang 与 Chen（2012）</a>。文献中的准确性结论属于其原始算法及算例，不直接构成本项目的精度证明。</p>
-<h3 id="1-2-项目定位与适用范围"><a href="#1-2-项目定位与适用范围" class="headerlink" title="1.2 项目定位与适用范围"></a>1.2 项目定位与适用范围</h3><p>SeisWave Lab 是一个面向交互式数值实验的三维弹性波工作台：在统一会话中编辑几何与物性、布置震源及接收器、选择计算后端、观察传播并导出原始数据。数值方法参考 <a target="_blank" rel="noopener" href="https://github.com/zw-sustech/CGFD3D">CGFD3D</a> 的曲网格同位有限差分路线，界面围绕“建模—采集—运行—显示—导出”组织。</p>
-<p>当前模型假设介质静止、各向同性、线弹性，支持均匀与分层物性、正弦起伏地表、竖直体力源及节点接收。模型不包含流体、黏弹性 Q 衰减、各向异性、非线性和动态破裂。侧面与底面采用海绵吸收区；完整 CPML/CFS-PML、任意外部模型导入和多 GPU 分解属于后续研究内容。</p>
+<h3 id="1-2-项目定位与适用范围"><a href="#1-2-项目定位与适用范围" class="headerlink" title="1.2 项目定位与适用范围"></a>1.2 项目定位与适用范围</h3><p>软件现提供二维和三维曲面模拟两个独立工作区。主页左侧是 X–Z 平面应变 P–SV 五场求解，右侧是三维弹性九场求解；二者均有 CPU/OpenMP 和 CUDA 后端。二维使用沿 Y 不变的线源假设，不能与三维点源直接比较绝对振幅。本文的理论、算例和三分量数据定义主要针对三维工作区，二维功能不改变这些三维结果的证据范围。</p>
+<p><img src="two-d-home.png" alt="二维曲面剖面与三维曲面体网格主页"></p>
+<p>主页采用单色密集曲网格表示二维剖面与三维体网格，图形按窗口可用高度伸展；这些几何是界面示意，非正演结果。切换维度保留窗口位置、大小、最大化状态和还原尺寸。进入后分别维护本维度模型和记录，返回主页结束当前会话。</p>
+<p>主页及底部流动波形由程序逐帧绘制，随主题切换。主页显示署名 XIAO YU 及 C++20、CUDA、OpenMP、OpenGL、GLFW、Dear ImGui、ImPlot、CMake 技术栈。二维参数通过面板底部的重置/应用控件生效，运行前也会应用待修改参数。二维和三维共用地震记录显示模块，提供独立色标、增益与 AGC；二维支持 SEG-Y 记录导入及分量导出。显示处理不改变原始样本，导入记录也不改变模拟模型或时间步。</p>
+<p>SeisWave Lab 是一个面向交互式数值实验的三维弹性波工作台：在统一会话中编辑几何与物性、布置震源及接收器、选择计算后端、观察传播并导出原始数据。数值方法参考 <a target="_blank" rel="noopener" href="https://github.com/zw-sustech/CGFD3D">CGFD3D</a> 的曲网格同位有限差分路线，界面围绕“建模—采集—运行—显示—导出”组织。</p>
+<p>当前模型假设介质静止、各向同性、线弹性，支持均匀与分层物性、正弦起伏地表、可定向的体力源、各向同性矩源及节点接收。模型不包含流体、黏弹性 Q 衰减、各向异性、非线性和动态破裂。侧面与底面采用海绵吸收区；完整 CPML/CFS-PML、任意外部模型导入和多 GPU 分解属于后续研究内容。</p>
 <h3 id="1-3-数值实验的基本判据"><a href="#1-3-数值实验的基本判据" class="headerlink" title="1.3 数值实验的基本判据"></a>1.3 数值实验的基本判据</h3><p>计算能够完成，只说明给定运行中没有触发相应失败条件。数值稳定性关注扰动是否异常增长；频散与耗散关注波速和振幅的离散误差；物理准确性还要求正确表示震源、几何、材料界面和边界。缩短时间步主要控制时间离散与稳定性，不能补偿空间欠采样。</p>
 <p>评价本项目应同时检查原始接收波形、到时、振幅、网格加密结果及边界敏感性。波场图适合展示传播形态，但自动色标、显示增益和透明度会改变视觉对比，图像平滑程度不构成无频散判据。</p>
 <h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2 原理"></a>2 原理</h2><h3 id="2-1-各向同性速度—应力方程"><a href="#2-1-各向同性速度—应力方程" class="headerlink" title="2.1 各向同性速度—应力方程"></a>2.1 各向同性速度—应力方程</h3><p>采用右手坐标系，z 轴向下为正。状态向量为</p>
@@ -398,15 +416,18 @@ U_{n+1}&=\mathcal P\left[U_n+\frac{\Delta t}{6}(K_1+2K_2+2K_3+K_4)\right].
 b(\mathbf r)=\sum_{\alpha=x,y,z}\frac{\beta V_{p,\max}}{w_\alpha h}\left[\operatorname{clamp}\left(1-\frac{d_\alpha}{w_\alpha},0,1\right)\right]^2.
 \tag{11}</script><p>X、Y 分别取两侧的最近距离，Z 只取到底面的距离；关闭的方向不贡献阻尼。有效宽度不超过该轴节点数的三分之一。顶面内部不设置竖向海绵，但顶面靠近侧边的位置仍受侧向阻尼。</p>
 <p>海绵是一种人工衰减区，并不等价于 CPML，也不表示材料的物理 Q 衰减。加大强度可能增强边界过渡处的反射并压缩时间步；加宽海绵会占用更多物理节点。吸收区叠加开关只控制显示，求解器中的吸收启停与宽度修改需重新应用。</p>
-<h3 id="2-6-震源时空离散"><a href="#2-6-震源时空离散" class="headerlink" title="2.6 震源时空离散"></a>2.6 震源时空离散</h3><p>当前震源为竖直体力，时间函数为 Ricker 子波：</p>
+<h3 id="2-6-震源时空离散"><a href="#2-6-震源时空离散" class="headerlink" title="2.6 震源时空离散"></a>2.6 震源时空离散</h3><p>当前支持定向体力和各向同性爆炸矩源，默认保留竖直体力。两者时间函数均为 Ricker 子波：</p>
 <script type="math/tex; mode=display">
 R(t)=(1-2\tau^2)e^{-\tau^2},\qquad
 \tau=\pi f_0(t-t_0),\qquad t_0=\frac{1.5}{f_0}.
-\tag{12}</script><p>力幅值 $F<em>0=2\times10^8$ N，通过以源节点为中心的 5×5×5 高斯支撑分配。令 $g</em>{abc}=e^{-(a^2+b^2+c^2)/2}$、$S=\sum g_{abc}$，其中 $a,b,c\in[-2,2]$，则</p>
+\tag{12}</script><p>默认可调力幅值 $F<em>0=2\times10^8$ N，通过以源节点为中心的 5×5×5 高斯支撑分配。令 $g</em>{abc}=e^{-(a^2+b^2+c^2)/2}$、$S=\sum g_{abc}$，其中 $a,b,c\in[-2,2]$，则</p>
 <script type="math/tex; mode=display">
 \left.\dot v_z(q)\right|_{\rm source}=\frac{F_0R(t)}{\rho(q)J(q)h^3}\frac{g_q}{S},\qquad
 \sum_q\rho(q)\left.\dot v_z(q)\right|_{\rm source}J(q)h^3=F_0R(t).
 \tag{13}</script><p>该归一化保持离散总力，但固定五节点支撑意味着加密网格会缩小震源的物理宽度。严谨的网格收敛实验应保持物理源宽度和总力一致，或明确量化源宽变化的影响。竖直体力在均匀无限介质中直接辐射 P、S 波；各向同性爆炸源的直接辐射主要为 P 波，二者不能仅按同一主频比较。</p>
+<p>任意体力方向先单位化，在式（13）中将竖直分量替换为各物理方向对应的分量。三维体力幅值单位为 N，二维采用单位 Y 长度的力，单位 N/m。</p>
+<p>各向同性爆炸源定义为 $M<em>{ij}(t)=M_dR(t)\delta</em>{ij}$，每个对角矩相等，剪切矩为零；采用等效体力 $f_i=-M_dR(t)\partial_i\delta_h$ 注入速度右端。三维的 $M_d$ 单位为 N·m，二维是单位 Y 长度的对角矩，单位为 N；它不是合力或矩张量迹。默认幅值分别为 2×10⁹ N·m 和 2×10⁶ N。</p>
+<p>曲网格中的源梯度使用保守形式 $J^{-1}\sum<em>a D_a(Jm</em>{ai}\delta<em>h)$，其中 $m</em>{ai}=(\nabla\xi_a)_i$，$D_a$ 是初始化时使用的中心四阶导数。反对称系数和完整支撑使离散体积加权合力消去，而源的一阶空间矩为各向同性。梯度源支撑半径扩展到四格，源心距每个物理边界至少五格；每轴至少 11 个物理节点。固定源分布由 CPU 构造并供 CPU/CUDA 共用，阶段时刻仍重新计算 Ricker 函数，传播的交替 DRP 格式不变。二维采用等效体力后仍保持五场平面应变本构，不向部分法向应力额外累加源应力。该线弹性矩源不包含爆炸腔体或热化学过程。</p>
 <h3 id="2-7-时间步、CFL-与终止条件"><a href="#2-7-时间步、CFL-与终止条件" class="headerlink" title="2.7 时间步、CFL 与终止条件"></a>2.7 时间步、CFL 与终止条件</h3><p>令 M 为全域逆度量矩阵的最大 Frobenius 范数，$L<em>{\min}$ 为相邻节点构成的八组平面所给出的最小几何距离，$b</em>{\max}$ 为最大阻尼率。当前时间步规划采用</p>
 <script type="math/tex; mode=display">
 \Delta t_{\rm safe}=\min\left[
@@ -427,6 +448,7 @@ n_{\lambda,\rm ref}=\frac{V_{s,\min}}{2.5f_0h_{\max}}.
 <p>两点/波长是均匀采样的 Nyquist 必要条件，不是工程精度条件。以参考频带内至少八点/波长作为起始设计，仍需按允许的相位、振幅误差检验；低速薄层、Rayleigh 波和陡峭地表可能提出更严格要求。有关边界离散对表面波精度的影响可参见 <a target="_blank" rel="noopener" href="https://www.wit.uni-hamburg.de/import/documents/reports/2005/wit2005-bohlen.pdf">Bohlen 与 Saenger 的研究报告</a>。</p>
 <h2 id="3-实现过程"><a href="#3-实现过程" class="headerlink" title="3 实现过程"></a>3 实现过程</h2><h3 id="3-1-模型初始化与会话建立"><a href="#3-1-模型初始化与会话建立" class="headerlink" title="3.1 模型初始化与会话建立"></a>3.1 模型初始化与会话建立</h3><p>输入参数先完成几何、材料正定性、源支撑和接收容量校验，再进行主机及显存容量预检。模型初始化依次生成物理坐标、度量与 Jacobian、材料场、阻尼场、时间步、源空间权重及接收位置，随后建立计算工作区和初始诊断。新会话只有在初始化成功后才替换旧会话。</p>
 <p>控制面板中的编辑参数与已生效会话分开保存。修改间距、节点数、地形、材料或边界后，需要应用并重建；当前状态栏 dt 始终属于生效会话。几何变化时必须重新计算度量，不能用旧模型的 M 或 $L_{\min}$ 推断新时间步。源频率、最大 Vp 和海绵强度也分别影响式（14）的不同限制项。</p>
+<p>二维和三维均可保存版本化的自包含模型 VTS，记录网格、材料和完整求解参数；二维还保存外部高程样点，三维保存层名与层深解释方式。保存使用当前生效模型，存在待应用修改时禁用。导入时校验版本、维度、有限性和数值完整性，再从零时刻重建；参考 dt 用于核对，实际时间步重新计算。此文件用于复现实验配置，未保存波场或阶段缓冲，不是续算检查点。</p>
 <h3 id="3-2-分层物性映射"><a href="#3-2-分层物性映射" class="headerlink" title="3.2 分层物性映射"></a>3.2 分层物性映射</h3><p>均匀材料使用统一弹性系数；分层模式逐节点存储 $\lambda,\mu,\rho$。默认按计算深度 $d=kh$ 归层，使固定 k 上所有 i、j 节点使用相同物性。这样界面沿曲网格层连续，其物理厚度可随地形映射改变。</p>
 <p>另有当地埋深 $d=z-H(x,y)$ 和基准深度 $d=z$ 两种归层方式，适合不同的地层解释。固定物理深度界面通常穿越多层曲网格，逐节点归层因而可能形成台阶；三种定义不应混用。累计厚度边界上的节点归入下层，末层自动延伸至模型底部。</p>
 <div class="table-container">
@@ -488,6 +510,7 @@ m=\frac{\operatorname{tr}\sigma}{3},\quad\mathbf s=\sigma-mI.
 \tag{17}</script><p>剪应力在 $\mathbf s:\mathbf s$ 中计入两次。震源输入能量，海绵消耗能量，边界投影和差分也可能引入数值耗散。能量监视是运行诊断，尚不能据此宣称实现离散能量守恒或获得任意配置的稳定性证明。</p>
 <h3 id="3-4-CPU-与-CUDA-后端"><a href="#3-4-CPU-与-CUDA-后端" class="headerlink" title="3.4 CPU 与 CUDA 后端"></a>3.4 CPU 与 CUDA 后端</h3><p>CPU/OpenMP 与 CUDA 采用相同的 Float64 点算子、物理参数、阶段顺序和接收几何。九场使用分量分离布局，CUDA 将传播工作区常驻显存；交互显示只回传所需切片、归约统计及接收样本，显式体积导出时才下载完整场。</p>
 <p>应用默认优先使用可用 CUDA，否则启动 CPU；显式选择 CUDA 的初始化失败会报告错误。切换后端需要重建并从 t=0 开始。CPU/CUDA 一致性能够发现实现差异，但两者使用同一离散方法，一致并不意味着共同的离散误差为零。</p>
+<p>多显卡环境下先枚举全部 CUDA 可见设备，逐一检查计算能力、内核兼容性与显存；首张设备不可用不会阻止检查后续设备。自动模式选择总显存最大的可用设备，也可明确指定设备编号。显存预检、分配、推进、采样、回传及释放均绑定到所选设备；设备查询保留原有 CUDA 上下文，失败切换保留原会话。一次模拟由一块 CUDA 卡承担，尚未实现多 GPU 区域分解。OpenGL 渲染设备与 CUDA 求解设备可以不同。</p>
 <p>按相同配置完成相同步数后，以 $S=t<em>{\rm CPU}/t</em>{\rm CUDA}$ 表示应用层加速比。推进计时覆盖完整有效步、诊断、采样及必要同步，初始化另列，不包括绘图、暂停和导出。公平比较还应固定实际 dt、线程数、精度、源、材料、边界和接收数量，并报告硬件、重复次数与计时波动。截图状态栏耗时不作为受控性能实验结果。</p>
 <h3 id="3-5-接收排列与容量"><a href="#3-5-接收排列与容量" class="headerlink" title="3.5 接收排列与容量"></a>3.5 接收排列与容量</h3><p>接收器直接读取物理节点的 Vx、Vy、Vz，当前不做任意空间位置插值。上限为 1024 个接收位置，每位置三分量。对某轴 N 个节点、零基起点 s 和正整数间隔 d，允许的位置数为</p>
 <script type="math/tex; mode=display">
@@ -553,7 +576,7 @@ s+(n-1)d\le N-1,\qquad n_{\max}=1+\left\lfloor\frac{N-1-s}{d}\right\rfloor.
 </tr>
 <tr>
 <td>震源一致性</td>
-<td>增加爆炸与矩张量源，固定总力／总矩和物理支撑，完成解析解与加密对照</td>
+<td>扩展一般矩张量源，固定总力／总矩和物理支撑，完成解析解与加密对照</td>
 </tr>
 <tr>
 <td>曲面自由表面</td>
@@ -579,20 +602,34 @@ s+(n-1)d\le N-1,\qquad n_{\max}=1+\left\lfloor\frac{N-1-s}{d}\right\rfloor.
 </table>
 </div>
 <p>升级应围绕明确误差目标开展；仅放宽 CFL、降低采样警告门槛或调整显示增益，不能解决空间分辨率不足。</p>
-<h2 id="4-界面介绍"><a href="#4-界面介绍" class="headerlink" title="4 界面介绍"></a>4 界面介绍</h2><h3 id="4-1-工作区与建模"><a href="#4-1-工作区与建模" class="headerlink" title="4.1 工作区与建模"></a>4.1 工作区与建模</h3><p>顶层保留“建模、采集、运行、显示、导出”横向入口。左侧为参数与诊断，中部为三维视图和 X-Z、Y-Z、X-Y 切片，接收区显示道集及单道三分量。面板支持停靠、关闭和重新打开，语言与主题即时切换。</p>
+<h2 id="4-界面介绍"><a href="#4-界面介绍" class="headerlink" title="4 界面介绍"></a>4 界面介绍</h2><h3 id="4-1-工作区与建模"><a href="#4-1-工作区与建模" class="headerlink" title="4.1 工作区与建模"></a>4.1 工作区与建模</h3><p>本节界面图于 2026 年 10 月 18 日从当前程序原生采集，完整客户区为 2560×1494 像素，没有裁剪、重采样或重着色。图中时间来自真实已接受步骤；主页为程序绘制的功能示意。</p>
+<p>顶层保留“建模、采集、运行、显示、导出”横向入口。左侧为参数与诊断，中部为三维视图和 X-Z、Y-Z、X-Y 切片，接收区显示道集及单道三分量。面板支持停靠、关闭和重新打开，语言与主题即时切换。</p>
 <p><img src="01-model.png" alt="建模页与曲面三维工作台"></p>
 <p><em>图 2　基准会话初始界面：200×20×200 节点，h=10 m，Vp/Vs/ρ=3000/1700/2200，f₀=12 Hz，A=20 m，L=300 m，源索引（100，10，50）。坐标向下为正，真实包围盒约为 1990×190×2010 m。此配置用于界面与传播展示，参考频带的最短波采样仅约 5.23，不作为精度达标算例。</em></p>
 <p>建模时先确定物理研究域，再按波长选择间距和节点数。100³、200³、300³ 等几何预设载入节点数、间距和地形，保留物性、主频与运行设置，并适配越界索引；完整基准预设还包含材料、源和停止条件。每轴允许 8 至 300 个物理节点，三层虚点使最大存储尺寸为 306³。Float64 CUDA 均匀 300³ 的主要工作区约需 16.67 GiB 显存，尺寸允许值并不保证当前设备能够分配。</p>
 <p>“按可用内存适配网格”保持 h、减少节点数，因此同时缩小物理区域；它不保持原研究域。应用前应重新确认源、接收、吸收宽度和物理尺寸。</p>
 <p><img src="14-layered-model.png" alt="按计算层归属的五层材料显示"></p>
 <p><em>图 3　100×20×100、h=1 m、A=2 m、L=60 m 的黄土五层材料展示。t=0，仅展示材料映射；没有据此评价动态波场。</em></p>
-<h3 id="4-2-震源与观测系统"><a href="#4-2-震源与观测系统" class="headerlink" title="4.2 震源与观测系统"></a>4.2 震源与观测系统</h3><p>震源控件指定从零开始的 X/Y/Z 索引，并显示对应物理坐标。中心需要距物理边界至少两格以容纳高斯支撑。修改 h 时，同一源索引对应的物理位置会改变，应重新检查埋深和与边界的距离。</p>
+<p>二维工作区每方向支持 8–16384 个物理节点，几何预设扩展至 4000×2000；资源预检使用当前可用内存和显存，尺寸上限不代表设备实际容量。大模型显示按屏幕像素抽样，并标注网格显示步距；计算与原始导出保留完整网格。参数面板底部保留独立的会话与重置区，修改参数后重建并重新计算 dt。</p>
+<p>二维默认将“参数与运行”和“当前模拟参数”并排停靠，核对面板直接读取当前求解器的参数、dt、采样间隔、进度和接收数据。参数页提供全部展开/折叠，并将选择应用到随后打开的功能页；重置按钮固定在底部。适配按钮右侧的进度条显示有效步比例、当前时间和实际 dt。编辑值与生效值分列，失败初始化不替换旧会话。</p>
+<p><img src="two-d-workbench.png" alt="二维并排参数核对和运行进度"></p>
+<p>二维分层介质改为独立表格弹窗，支持 1–16 层，提供均匀、冲积层—砂岩—基岩、黄土五层、风化岩和沉积盆地示例。末层自动填充剩余深度，相同计算深度索引采用相同物性。预设不会自动改变主频或网格间距，应结合最小 Vs、薄层厚度和目标频带检查采样。</p>
+<p><img src="two-d-layers.png" alt="二维分层介质表格与常用预设"></p>
+<p>二维外部地表支持两列 X–高程 CSV/TXT，高程向上为正，X 严格递增且须覆盖完整模型跨度。默认将首点 X 平移至零，以样点高程平均值作为可修改的初始基准；模型坐标满足 $z<em>s=z</em>\mathrm{datum}-e(x)$。程序用保形三次 Hermite 插值计算地表及其一阶导数，再代入同一展平映射生成坐标、Jacobian、逆度量和自由表面法向，重建时重新约束 dt。物理域不使用外推，三层虚节点采用端点切线延拓。这是二维剖面导入；三维任意 DEM 导入仍属后续扩展。原始高程的噪声或陡坡仍需分辨率与收敛检查。</p>
+<p><img src="two-d-terrain.png" alt="二维外部高程输入和插值预览"></p>
+<h3 id="4-2-震源与观测系统"><a href="#4-2-震源与观测系统" class="headerlink" title="4.2 震源与观测系统"></a>4.2 震源与观测系统</h3><p>二维与三维的采集页均可选择“定向体力源”或“各向同性爆炸源”，并输入相应物理幅值。体力可选坐标轴或自定义方向，二维限制在 X–Z 平面；矩源没有优选方向。切换类型、位置、幅值或主频后应用重建。默认仍使用竖直体力，已有竖直源算例的机制保持一致。</p>
+<p><img src="two-d-source-explosion.png" alt="二维爆炸矩源设置及波场"></p>
+<p>震源控件指定从零开始的 X/Y/Z 索引，并显示对应物理坐标。中心需要距物理边界至少两格以容纳高斯支撑。修改 h 时，同一源索引对应的物理位置会改变，应重新检查埋深和与边界的距离。</p>
 <p><img src="02-source.png" alt="震源位置与有效频带采样提示"></p>
 <p><em>图 4　基准会话的震源设置。采样建议根据当前介质和实际物理边长给出，提示值不代表频率输入上限。</em></p>
 <p><img src="03-receivers.png" alt="接收测线与容量设置"></p>
 <p><em>图 5　基准会话采用 X 向 196 位置排列，起点为 2，间隔为 1，Y 起点取中心，深度索引为 1。三分量共用同一位置。</em></p>
 <p>接收器可选自动 X 线、自定义 X/Y 线和 X-Y 面阵。应同时检查节点间隔对应的物理距离、末点索引和吸收区域。空间排列不影响求解器时间步，但其数量增加采样、存储和回传成本。</p>
+<p>示例高程随程序保存在 <code>examples/elevation</code>：平地 2 km、平滑丘陵 2 km、不等距采样 2 km、宽域山谷 20 km，以及山丘—沟谷 1 km。二维高程弹窗可直接选择载入，路径按运行程序位置定位；选择示例不改变模型尺寸或主频，仍须检查覆盖范围并重建。全部为人工构造示例，不是实测数据。前三种可使用默认 200×200、h=2.5 m；查看完整 2 km 可取 Nx=801。宽域山谷可取 Nx=2001、Nz=400、h=5 m、f0=12 Hz 查看前 10 km，并检查当前设备容量。1 km 剖面的山丘位于 200–400 m、峰高 +100 m，沟谷位于 600–800 m、谷底 −100 m；两者的零高程处宽度均为 200 m，查看完整剖面可取 Nx=401、Nz=401、h=2.5 m、高程基准 0 m、展平深度自动。</p>
+<p>示例文件：、、、、。</p>
+<p><img src="two-d-elevation-examples.png" alt="二维示例高程选择及预览"></p>
 <h3 id="4-3-运行控制与波场过程"><a href="#4-3-运行控制与波场过程" class="headerlink" title="4.3 运行控制与波场过程"></a>4.3 运行控制与波场过程</h3><p>选择计算后端，设置 CFL、目标时长和步数上限后应用重建，核对生效 dt、实际结束时刻和采样指标，再启动推进。“清空波场”原位重置场、记录、时间与推进计时，保留当前几何和 dt；改变模型需重新应用。</p>
+<p>“运行 → 性能对比 → 计算后端”提供显卡重新检测和 CUDA 设备选择，显示设备型号、计算能力、PCI 地址、空闲/总显存与不可用原因。Windows 显示适配器列表同时列出核显及其他厂商显卡，只有通过 CUDA 检查的 NVIDIA 设备可承担当前 GPU 求解器。显卡编号属于本次枚举，不跨计算机持久保存。选择新设备后需点击应用/重建，刷新清单本身不改变正在运行的会话。</p>
 <p><img src="04-run-start.png" alt="运行页中的时间步与终止条件"></p>
 <p><em>图 6　基准会话设 T=0.5 s、步数上限 5000，实际 dt=1.111111 ms，450 步完成，记录含 451 个样本。该预设时长与程序默认 1 s 不同。</em></p>
 <p><img src="05-wave-010.png" alt="0.10 s 波场"></p>
@@ -615,7 +652,13 @@ s+(n-1)d\le N-1,\qquad n_{\max}=1+\left\lfloor\frac{N-1-s}{d}\right\rfloor.
 <p><em>图 13　单位置三分量视图。逐道归一化会消除不同道的相对振幅关系，应在定量分析时关闭或使用原始导出。</em></p>
 <p>长记录预览存在抽稀：波形最多预览 2048 点，密度图最多 1024 个时间行。显示细节减少不意味着原始数据少采样。面阵展平后的相邻道号也未必对应同一条物理测线，解释同相轴时须结合接收坐标。</p>
 <h3 id="4-6-导出与操作键"><a href="#4-6-导出与操作键" class="headerlink" title="4.6 导出与操作键"></a>4.6 导出与操作键</h3><p><img src="13-export.png" alt="原始记录与曲网格快照导出"></p>
-<p><em>图 14　导出区支持原始接收 CSV 和曲网格 VTS 快照。导出不包含显示增益、AGC 或色带变换，字段定义见附录 F。</em></p>
+<p><em>图 14　三维导出区分别提供可复现模型保存/导入、所选波场分量快照和接收 CSV。完整物理场导出不包含显示增益、AGC 或色带变换，字段定义见附录 F。</em></p>
+<p>模型文件保存完整参数和材料，并从 t=0 重建；波场快照保存当前有效步的数值，二者用途不同。二维与三维的波场导出默认跟随当前激活分量，关闭跟随后可多选速度、幅值、压力和应力，三维另可附带速度矢量；三维接收 CSV 可任意组合 Vx/Vy/Vz。数组及坐标使用 ASCII Float64 和 17 位有效数字，完整物理网格不按屏幕显示步距抽稀。</p>
+<p><img src="two-d-model-io.png" alt="二维模型保存与复现"></p>
+<p><img src="two-d-export.png" alt="二维波场快照分量选择"></p>
+<p>二维记录可按每步或 0.5/1 ms 等独立间隔采样，相邻已接受步之间采用线性插值。该输出间隔不改变 CFL dt，不是高阶稠密时间输出，也不包含抗混叠滤波。三维仍按有效步采样。二维 SEG-Y 可按 Vx/Vz 分别导出，保留精确时间步的 rev 2 IEEE32/64 与旧软件兼容的 rev 1 IBM32/IEEE32 分开选择；兼容格式可显式线性重采样至整微秒间隔。输出固定倍率默认为 1；非 1 时文本头标记倍率与 scaled 单位。显示 AGC 和逐道归一化不会写入原始导出。</p>
+<p><img src="two-d-segy.png" alt="二维 SEG-Y 旧软件兼容设置"></p>
+<p><img src="two-d-record-options.png" alt="二维记录显示参数"></p>
 <p><img src="12-shortcuts.png" alt="工作区快捷键说明"></p>
 <p><em>图 15　F1 快捷键帮助。输入框编辑或菜单交互期间，工作区快捷操作受到抑制，避免误触。</em></p>
 <div class="table-container">
@@ -927,20 +970,24 @@ h_{\max}\le\frac{V_{s,\min}}{20f_0}.
 </thead>
 <tbody>
 <tr>
-<td>接收 CSV</td>
-<td>文件含单位与源／接收坐标注释；数据首列 time_s，可选仅 Vz 或三分量，三分量列序为各位置 Vx、Vy、Vz</td>
+<td>三维接收 CSV</td>
+<td>文件含单位与源／接收坐标注释；首列 time_s，可任选 Vx/Vy/Vz，按各位置内 Vx、Vy、Vz 的所选子序列排列</td>
 </tr>
 <tr>
 <td>时间轴</td>
-<td>初始 t=0 加每个有效步；等间隔 dt，N 步对应 N+1 行样本</td>
+<td>三维初始 t=0 加每个有效步，N 步对应 N+1 样本；二维可另设等间隔接收采样时间轴</td>
 </tr>
 <tr>
 <td>三分量最大排列</td>
 <td>1024 位置对应 3072 个分量列，加时间共 3073 列</td>
 </tr>
 <tr>
-<td>曲网格 VTS</td>
-<td>显式三维节点坐标及速度、应力、压力、材料属性，按各字段 SI 单位解释；节点属性及坐标声明为 Float32，ASCII 写出九位有效数字，不能视为 Float64 状态的无损存档</td>
+<td>模型 VTS</td>
+<td>版本化 StructuredGrid；Points 与材料属性、Jacobian，FieldData 包含完整模型、源、接收、时间、边界和计算设置；仅支持本程序对应维度模型文件导入</td>
+</tr>
+<tr>
+<td>波场 VTS</td>
+<td>所选速度、应力、压力、可选材料及显式坐标，ASCII Float64、17 位有效数字；保留时刻与 dt，未保存 RK 缓冲和历史记录，不是续算状态</td>
 </tr>
 <tr>
 <td>压力字段</td>
@@ -953,7 +1000,7 @@ h_{\max}\le\frac{V_{s,\min}}{20f_0}.
 </tbody>
 </table>
 </div>
-<p>当前支持导出而未实现任意 VTS 模型导入和 SEG-Y 写出。后处理时应保留接收几何、坐标正方向、源类型、物性、吸收设置及实际 dt，避免仅以文件名推断实验条件。</p>
+<p>当前支持本程序保存的二维/三维模型 VTS 导入和从零重建，以及二维 SEG-Y 导入/写出；尚不支持第三方任意 VTS 模型或三维 SEG-Y 界面写出。完整性校验用于发现模型文件损坏，不是密码学认证。后处理时应保留接收几何、坐标正方向、源类型、物性、吸收设置及实际 dt，避免仅以文件名推断实验条件。</p>
 <h3 id="附录-G：验证边界与后续实验设计"><a href="#附录-G：验证边界与后续实验设计" class="headerlink" title="附录 G：验证边界与后续实验设计"></a>附录 G：验证边界与后续实验设计</h3><div class="table-container">
 <table>
 <thead>
@@ -1032,9 +1079,6 @@ h_{\max}\le\frac{V_{s,\min}}{20f_0}.
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2026/10/17/%E6%9B%B2%E7%BD%91%E6%A0%BC%E5%BC%B9%E6%80%A7%E6%B3%A2%E5%9C%BA%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/" rel="next" title="曲网格弹性波场数值模拟：控制方程、离散方法与计算实现">
-                  曲网格弹性波场数值模拟：控制方程、离散方法与计算实现 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
