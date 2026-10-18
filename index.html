@@ -182,7 +182,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -323,7 +323,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/10/14/CUDA%E5%8A%A0%E9%80%9F3D%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/10/15/CUDA_Seis3D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaoyu_base.png">
@@ -341,7 +341,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/10/14/CUDA%E5%8A%A0%E9%80%9F3D%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/" class="post-title-link" itemprop="url">CUDA加速3D弹性波模拟</a>
+          <a href="/2026/10/15/CUDA_Seis3D/" class="post-title-link" itemprop="url">SeisWave Lab：笛卡尔网格二维与三维弹性波模拟的理论、实现与工作流程</a>
         </h2>
 
         <div class="post-meta-container">
@@ -351,9 +351,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-10-14 13:01:56 / 修改时间：21:56:46" itemprop="dateCreated datePublished" datetime="2026-10-14T13:01:56+08:00">2026-10-14</time>
+      <time title="创建时间：2026-10-15 13:01:56" itemprop="dateCreated datePublished" datetime="2026-10-15T13:01:56+08:00">2026-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-18 00:00:00" itemprop="dateModified" datetime="2026-10-18T00:00:00+08:00">2026-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -375,16 +381,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="CUDA加速3D弹性波模拟">CUDA加速3D弹性波模拟</h1>
-<h2 id="摘要-Abstract">摘要 (Abstract)</h2>
-<p><strong>SeisWave Lab</strong>（当前版本 <strong>v2.0.0</strong>，源码工程 <code>CMakePro_CUDA_SeisSim_V2</code>）是一套基于 <strong>C++20、NVIDIA CUDA 12.8、OpenGL 4.3 与 Dear ImGui Docking / ImPlot</strong> 构建的交互式弹性波数值模拟软件。项目保留原有二维模拟管线，并通过独立的 <strong>Seis3D</strong> 子系统扩展三维各向同性弹性波正演、空间波场可视化与三分量地震数据采集。</p>
-<p>Seis3D 将模型配置、GPU 有限差分求解、正交三剖面、半透明体绘制、接收波形和 SEG-Y 导出整合到统一工作区。用户可以配置分层介质与震源，在计算过程中观察空间传播，并将地表接收网格记录导出用于后续分析。</p>
-<p>本文结合实际运行截图，介绍系统的计算方法、可视化设计和完整操作流程。当前版本面向<strong>计算地球物理教学、波场传播理解与算法原型探索</strong>；文中的大网格显存数值为代码预算估算。</p>
-<p><strong>当前初始参数：</strong> 300 × 50 × 300 物理网格；X 向每排 50 道、Y 向 3 排，共 150 个接收点，总上限 300 道；每炮 1000 样点、每 2 个计算步采样一次。初始显示为 <strong>Vz + Geological layers + Coolwarm</strong>，历史峰值保持关闭。默认采用自动 CFL 安全步长，也可在安全范围内手动设置 0.5 ms 等整数微秒步长。</p>
-<p>本文保留的六张 Paper 风格截图来自较早的 96³、10 × 10 接收阵列演示，用于说明视图和操作方式；截图中的旧参数不代表当前默认值。最新参数和功能以本文表格与文字为准。</p>
+          <h1 id="SeisWave-Lab：笛卡尔网格二维与三维弹性波模拟的理论、实现与工作流程">SeisWave Lab：笛卡尔网格二维与三维弹性波模拟的理论、实现与工作流程</h1>
+<p>修订日期：2026 年 10 月 18 日。软件版本：v2.0.0；三维模块：Seis3D。</p>
+<p><strong>摘要</strong>　SeisWave Lab 将各向同性弹性波有限差分正演、GPU 并行计算、空间波场观察与地震记录分析整合为一个交互式工作台。当前项目采用笛卡尔规则网格，保留二维 X–Z 平面模拟，并提供独立的三维速度—应力求解、薄层存储 CPML、平面自由表面、正交切片、辅助体绘制、三分量采集及 SEG-Y / VTK 数据交换。本文按照背景、理论、实现、界面流程和复现附录组织，区分数学模型、代码实现、显示处理及已有验证范围。配图全部来自当前程序实际运行，保存完整客户区原图。</p>
+<p><strong>关键词</strong>　弹性波；笛卡尔网格；交错网格有限差分；CUDA；CPML；地震采集；科学可视化</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2026/10/14/CUDA%E5%8A%A0%E9%80%9F3D%E5%BC%B9%E6%80%A7%E6%B3%A2%E6%A8%A1%E6%8B%9F/#more" rel="contents">
+              <a class="btn" href="/2026/10/15/CUDA_Seis3D/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -476,9 +479,9 @@
           <h1 id="SeisTool-MASW-面波频散分析与处理系统">SeisTool-MASW 面波频散分析与处理系统</h1>
 <h2 id="摘要-Abstract">摘要 (Abstract)</h2>
 <p><strong>SeisTool-MASW</strong> 具备完整的一体化面波分析核心功能：系统支持全格式标准 SEG-Y 地震道集的极速解码、文件拖拽载入与“Wiggle 抖动波形+变密度热力图”双层混合波场可视化；集成了基于 Schwab-Knopoff 算法的多层介质理论频散正演与多道时域物理波场合成能力；内置了涵盖经典移相法（Phase Shift）、F-K 变换法、高分辨率 Capon 最小方差法（MVDR）与时域倾斜叠加法（
-    <span id="mjx-5ca6165">
+    <span id="mjx-659d1a8">
       <style>
-      #mjx-5ca6165{
+      #mjx-659d1a8{
         display:contents;
         mjx-assistive-mml {
           user-select: text !important;
@@ -637,9 +640,9 @@ g[data-mml-node="xypic"] path {
       <mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="5.073ex" height="1.758ex" role="img" focusable="false" viewBox="0 -583 2242.4 777" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></g><g data-mml-node="mo" transform="translate(739.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(1739.4,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>τ</mi><mo>−</mo><mi>p</mi></math></mjx-assistive-mml></mjx-container>
     </span>
   ）的四大频散能量成像算子，配合频域复数线性插值彻底消除离散阶梯锯齿；支持局部极大值自适应寻峰吸附（Snap-to-Peak）与基于内置轻量级空洞残差网络的 ONNX Runtime 毫秒级 AI 一键智能拾取；并构建了基于 Tikhonov 平滑正则化的 1D 横波速度（
-    <span id="mjx-e33561d">
+    <span id="mjx-df2d313">
       <style>
-      #mjx-e33561d{
+      #mjx-df2d313{
         display:contents;
         mjx-assistive-mml {
           user-select: text !important;
@@ -1082,9 +1085,9 @@ g[data-mml-node="xypic"] path {
           <h1 id="基于-GPU-Compute-Shader-的高性能二维弹性波动力学模拟平台">基于 GPU Compute Shader 的高性能二维弹性波动力学模拟平台</h1>
 <h2 id="摘要-Abstract">摘要 (Abstract)</h2>
 <p><strong>HPEW-Sim v3.0</strong> 是一款专为计算地球物理学、地震勘探及波动物理教学设计的下一代数值模拟平台。该系统针对传统 CPU 串行计算在处理大规模网格时的性能瓶颈，创新性地采用基于 <strong>OpenGL Compute Shader</strong> 的 <strong>GPU 原生并行架构</strong>，实现了在千万级网格规模(实现了在 <strong>1600 万 (1.6 
-    <span id="mjx-bd84ac2">
+    <span id="mjx-1d20099">
       <style>
-      #mjx-bd84ac2{
+      #mjx-1d20099{
         display:contents;
         mjx-assistive-mml {
           user-select: text !important;
