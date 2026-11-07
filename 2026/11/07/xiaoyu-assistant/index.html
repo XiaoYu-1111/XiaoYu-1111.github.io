@@ -22,22 +22,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。界面图来自 Andr">
+    <meta name="description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小羽助手 · Android 个人工具、交互设计与传感器分析">
 <meta property="og:url" content="http://example.com/2026/11/07/xiaoyu-assistant/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。界面图来自 Andr">
+<meta property="og:description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/01-home-portrait.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/02-home-tools.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/03-weather.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/04-study.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/05-analysis.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/06-vibration-axes.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/09-monster-game.png">
 <meta property="article:published_time" content="2026-11-06T16:00:00.000Z">
 <meta property="article:modified_time" content="2026-11-06T16:00:00.000Z">
 <meta property="article:author" content="XIAO YU">
@@ -47,7 +47,7 @@
 <meta property="article:tag" content="传感器">
 <meta property="article:tag" content="频谱分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/11/07/xiaoyu-assistant/undefined">
+<meta name="twitter:image" content="http://example.com/2026/11/07/xiaoyu-assistant/01-home-portrait.png">
 
 
 <link rel="canonical" href="http://example.com/2026/11/07/xiaoyu-assistant/">
@@ -304,7 +304,7 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="小羽助手-·-Android-个人工具、交互设计与传感器分析">小羽助手 · Android 个人工具、交互设计与传感器分析</h1>
 <p>小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。</p>
-<p>本文围绕功能组织、操作流程和数据处理说明当前实现。界面图来自 Android 模拟器，采用一致的深色主题。点击图片可查看原尺寸截图。</p>
+<p>本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 13 的环境音实际采样，其余界面图来自 Android 模拟器，均采用深色主题。点击图片可查看原尺寸截图。</p>
 <span id="more"></span>
 <h2 id="1-项目定位与交互设计">1 项目定位与交互设计</h2>
 <h3 id="1-1-首页的两种使用方式">1.1 首页的两种使用方式</h3>
@@ -312,11 +312,11 @@
 <p>在「设置 → 外观」关闭「显示首页形象卡」后，首页会用两列快捷工具补上空间。当天步数与倒计时概览继续位于工具区前方，方便直接开始一次操作。</p>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/01-home-portrait.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="小羽助手首页的角色卡、今日概览和底栏" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/01-home-portrait.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/01-home-portrait.png' alt="小羽助手首页的角色卡、今日概览和底栏" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 1　首页形象卡</figcaption>
   </figure>
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/02-home-tools.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="关闭形象卡后的两列快捷工具布局" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/02-home-tools.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/02-home-tools.png' alt="关闭形象卡后的两列快捷工具布局" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 2　关闭形象卡后的快捷工具</figcaption>
   </figure>
 </div>
@@ -368,11 +368,11 @@
 <p>拍照识别模块可以调用系统相机，也可以从相册选择图片。识别文字可编辑后再翻译或复制，首次翻译需要下载语言模型。文字识别使用 ML Kit 的设备端识别组件。<a target="_blank" rel="noopener" href="https://developers.google.com/ml-kit/vision/text-recognition/v2">ML Kit 文字识别</a></p>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/03-weather.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="北京天气预报、观测条件和更新时间" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/03-weather.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/03-weather.png' alt="北京天气预报、观测条件和更新时间" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 3　天气查询与更新时间</figcaption>
   </figure>
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/04-study.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="英语学习页面的词库、学习统计和练习区" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/04-study.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/04-study.png' alt="英语学习页面的词库、学习统计和练习区" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 4　英语词库与学习入口</figcaption>
   </figure>
 </div>
@@ -384,11 +384,11 @@
 <p>振动采集、频谱计算和界面绘制分别处理。采样线程持续接收传感器事件，后台计算按窗口取出数据，界面约每秒刷新 10 次。波形显示按屏幕分辨率合并样本并保留极值，CSV 导出使用原始数据。</p>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/05-analysis.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="分析页中的环境噪音分析和振动频谱仪入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/05-analysis.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/05-analysis.png' alt="分析页中的环境噪音分析和振动频谱仪入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 5　声音与振动分析入口</figcaption>
   </figure>
   <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/06-vibration-axes.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="振动频谱仪的 X、Y、Z 轴示意和三轴 RMS、主频统计" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+    <a href="/2026/11/07/xiaoyu-assistant/06-vibration-axes.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/06-vibration-axes.png' alt="振动频谱仪的 X、Y、Z 轴示意和三轴 RMS、主频统计" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
     <figcaption style="text-align:center;margin-top:8px;">图 6　三轴方向与振动统计</figcaption>
   </figure>
 </div>
@@ -442,7 +442,7 @@
 </table>
 <p>采样率按 <code>fs = (N − 1) / (t末 − t初)</code> 估算，时间戳换算为秒。RMS 按 <code>sqrt(mean((a − mean(a))²))</code> 计算。FFT 前先按时间戳插值到等间隔，去均值并乘 Hann 窗，存在明显断档的窗口会跳过频谱计算。Android 传感器时间戳使用单调递增的纳秒时间基准。<a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/hardware/SensorEvent#timestamp">SensorEvent 时间戳</a></p>
 <figure style="max-width:500px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="三轴振动实时频谱与按轴排列的瀑布图" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <a href="/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png' alt="三轴振动实时频谱与按轴排列的瀑布图" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
   <figcaption style="text-align:center;margin-top:8px;">图 7　三轴振动频谱与瀑布图，虚拟传感器示例</figcaption>
 </figure>
 <p>CSV 记录所选 10 秒或 30 秒窗口中的原始三轴加速度。列名与单位直接写入表头，便于后续使用 Python、MATLAB 或表格软件复算。</p>
@@ -450,10 +450,10 @@
 <p>手机转动会改变重力在各轴上的分量，稳定放置后采样更便于比较振动。图中的幅值和主频应结合传感器性能、放置方式与窗口长度理解。</p>
 <h3 id="3-3-声音频谱与色标">3.3 声音频谱与色标</h3>
 <p>声音分析采用 44.1 kHz、16 位单声道采样，使用 4096 点 FFT。界面显示 RMS 电平、峰值、实时频谱及 2、5、10、30 秒瀑布图窗口，提供柱状、曲线和镜像频谱样式。</p>
-<p>dBFS 描述数字音频相对满幅的电平。麦克风响应和自动增益都会影响读数，定量环境声压测量需要经过声学校准。图 8 展示模拟器静音状态，用于说明坐标、窗口与色标控件的位置。</p>
+<p>dBFS 描述数字音频相对满幅的电平。麦克风响应和自动增益都会影响读数，定量环境声压测量需要经过声学校准。图 8 使用小米 13 的麦克风采集环境音，展示实际计算的频谱曲线、最近 5 秒瀑布图与 Turbo 色标；停止采样后保留结果用于截图。</p>
 <figure style="max-width:500px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="声音实时频谱、瀑布图窗口与色标，静音状态" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-  <figcaption style="text-align:center;margin-top:8px;">图 8　声音分析界面，模拟器静音示例</figcaption>
+  <a href="/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png' alt="小米 13 环境音采样的频谱曲线、5 秒瀑布图与 Turbo 色标" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;">图 8　手机环境音实际采样：频谱曲线与 5 秒瀑布图</figcaption>
 </figure>
 <p>声音与振动瀑布图均可切换 Viridis、Turbo、Inferno、Plasma、Magma、灰度及其他色标。色标控制数值到颜色的映射，读取时需要同时查看图旁的单位、范围与时间窗口。</p>
 <h2 id="4-运动、密码库与全屏工具">4 运动、密码库与全屏工具</h2>
@@ -462,7 +462,7 @@
 <p>霓虹文字牌和倒计时支持全屏展示，适合把文字或剩余时间放大给旁人查看。</p>
 <p>横屏小游戏「小怪弹弹」提供点击连击、震荡波和连锁闪电。它从生活页启动，退出后返回工具箱。</p>
 <figure style="max-width:720px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/09-monster-game.png" title="查看原图"><img src="/2026/11/07/xiaoyu-assistant/undefined"  alt="小怪弹弹横屏战斗界面，显示连击、技能能量和两个技能按钮" width="720" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <a href="/2026/11/07/xiaoyu-assistant/09-monster-game.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/09-monster-game.png' alt="小怪弹弹横屏战斗界面，显示连击、技能能量和两个技能按钮" width="720" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
   <figcaption style="text-align:center;margin-top:8px;">图 9　小怪弹弹横屏界面</figcaption>
 </figure>
 <h2 id="5-实现方式与运行环境">5 实现方式与运行环境</h2>
