@@ -22,22 +22,40 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac","show_result":true},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 1">
+    <meta name="description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用，把计划提醒、英语学习、天气、运动记录与传感器分析放在同一个工具箱中。二维小羽负责首页的陪伴展示，独立功能页负责实际操作，开发者为 XIAO YU。 本页依据 2026 年 11 月 7 日连接的小米 13 实际页面重新整理，全部图片均为手机原始截图。 手机系统为 Android 16，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小羽助手 · Android 个人工具、交互设计与传感器分析">
 <meta property="og:url" content="http://example.com/2026/11/07/xiaoyu-assistant/index.html">
 <meta property="og:site_name" content="冒牌書生的个人博客">
-<meta property="og:description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。 本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 1">
+<meta property="og:description" content="小羽助手 · Android 个人工具、交互设计与传感器分析 小羽助手是一款个人使用的 Android 工具应用，把计划提醒、英语学习、天气、运动记录与传感器分析放在同一个工具箱中。二维小羽负责首页的陪伴展示，独立功能页负责实际操作，开发者为 XIAO YU。 本页依据 2026 年 11 月 7 日连接的小米 13 实际页面重新整理，全部图片均为手机原始截图。 手机系统为 Android 16，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/01-home-portrait.png">
 <meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/02-home-tools.png">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/03-weather.png">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/04-study.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/20-settings.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/31-full-portrait.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/10-plan-hub.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/15-study-hub.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/19-life-hub.png">
 <meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/05-analysis.png">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/06-vibration-axes.png">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png">
-<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/13-focus.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/14-timer.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/04-study.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/16-study-units.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/17-reading.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/18-ocr.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/03-weather.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/21-weather-trend.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/25-weather-30days.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/22-activity.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/23-track-map.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/26-neon-sign.png">
 <meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/09-monster-game.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/28-sound-level.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/06-vibration-axes.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/29-vibration-waveform.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png">
+<meta property="og:image" content="http://example.com/2026/11/07/xiaoyu-assistant/30-vibration-waterfalls.png">
 <meta property="article:published_time" content="2026-11-06T16:00:00.000Z">
 <meta property="article:modified_time" content="2026-11-06T16:00:00.000Z">
 <meta property="article:author" content="XIAO YU">
@@ -176,7 +194,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BE%BD%E5%8A%A9%E6%89%8B-%C2%B7-Android-%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7%E3%80%81%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BC%A0%E6%84%9F%E5%99%A8%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">小羽助手 · Android 个人工具、交互设计与传感器分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A1%B9%E7%9B%AE%E5%AE%9A%E4%BD%8D%E4%B8%8E%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1 项目定位与交互设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%A6%96%E9%A1%B5%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 首页的两种使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%8C%89%E4%BB%BB%E5%8A%A1%E7%BB%84%E7%BB%87%E4%BA%94%E4%B8%AA%E9%A1%B5%E9%9D%A2"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 按任务组织五个页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2 日常工具的使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A4%A9%E6%B0%94%E6%9F%A5%E8%AF%A2%E4%B8%8E%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 天气查询与离线缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%8B%8D%E7%85%A7%E7%BF%BB%E8%AF%91"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 英语学习与拍照翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%8F%90%E9%86%92%E3%80%81%E5%A4%87%E5%BF%98%E4%B8%8E%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 提醒、备忘与时间管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8%E7%9A%84%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%98%BE%E7%A4%BA"><span class="nav-number">1.3.</span> <span class="nav-text">3 手机传感器的计算与显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%BB%8E%E9%87%87%E6%A0%B7%E5%88%B0%E5%9B%BE%E8%A1%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 从采样到图表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8C%AF%E5%8A%A8%E9%A2%91%E8%B0%B1%E4%BB%AA"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 振动频谱仪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%A3%B0%E9%9F%B3%E9%A2%91%E8%B0%B1%E4%B8%8E%E8%89%B2%E6%A0%87"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 声音频谱与色标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%90%E5%8A%A8%E3%80%81%E5%AF%86%E7%A0%81%E5%BA%93%E4%B8%8E%E5%85%A8%E5%B1%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">4 运动、密码库与全屏工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">1.5.</span> <span class="nav-text">5 实现方式与运行环境</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BE%BD%E5%8A%A9%E6%89%8B-%C2%B7-Android-%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7%E3%80%81%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BC%A0%E6%84%9F%E5%99%A8%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">小羽助手 · Android 个人工具、交互设计与传感器分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E9%A1%B5%E3%80%81%E4%BA%8C%E7%BB%B4%E5%BD%A2%E8%B1%A1%E4%B8%8E%E5%A4%96%E8%A7%82"><span class="nav-number">1.1.</span> <span class="nav-text">1 首页、二维形象与外观</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%99%AA%E4%BC%B4%E9%A6%96%E9%A1%B5%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%A6%96%E9%A1%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 陪伴首页与工具首页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E4%B8%BB%E9%A2%98%E4%B8%8E%E7%B2%92%E5%AD%90%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 主题与粒子设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%BD%A2%E8%B1%A1%E7%8A%B6%E6%80%81%E4%B8%8E%E5%85%A8%E5%B1%8F%E5%B1%95%E7%A4%BA"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 形象状态与全屏展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BA%94%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%BB%84%E7%BB%87%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">2 五个页面组织工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%A1%E5%88%92%E4%B8%8E%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">3 计划与时间管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%BE%85%E5%8A%9E%E4%B8%8E%E5%A4%87%E5%BF%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 待办与备忘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E7%95%AA%E8%8C%84%E4%B8%93%E6%B3%A8%E9%92%9F%E4%B8%8E%E5%80%92%E8%AE%A1%E6%97%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 番茄专注钟与倒计时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%AF%8D%E6%B1%87%E3%80%81%E9%98%85%E8%AF%BB%E4%B8%8E%E6%96%87%E5%AD%97%E5%A4%84%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">4 学习：词汇、阅读与文字处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%89%8B%E6%9C%BA%E5%BD%93%E5%89%8D%E8%AF%8D%E5%BA%93%E8%A7%84%E6%A8%A1"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 手机当前词库规模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AD%A6%E4%B9%A0%E6%97%B6%E9%95%BF%E4%B8%8E%E7%BB%8F%E5%85%B8%E9%98%85%E8%AF%BB"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 学习时长与经典阅读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%8B%8D%E7%85%A7%E8%AF%86%E5%88%AB%E4%B8%8E%E7%BF%BB%E8%AF%91"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 拍照识别与翻译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A4%A9%E6%B0%94%EF%BC%9A%E5%9F%8E%E5%B8%82%E3%80%81%E4%BD%8D%E7%BD%AE%E4%B8%8E%E6%B8%A9%E5%BA%A6%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.5.</span> <span class="nav-text">5 天气：城市、位置与温度趋势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BB%A5%E5%AE%9E%E9%99%85%E6%89%8B%E6%9C%BA%E6%8E%A7%E4%BB%B6%E4%B8%BA%E5%87%86"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 以实际手机控件为准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-7-%E5%A4%A9%E3%80%8115-%E5%A4%A9%E4%B8%8E-30-%E5%A4%A9%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 7 天、15 天与 30 天趋势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%A4%A9%E6%B0%94%E7%BC%93%E5%AD%98%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 天气缓存的使用方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E7%94%9F%E6%B4%BB%EF%BC%9A%E8%BF%90%E5%8A%A8%E3%80%81%E5%AF%86%E7%A0%81%E4%B8%8E%E5%85%A8%E5%B1%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.6.</span> <span class="nav-text">6 生活：运动、密码与全屏工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E8%AE%A1%E6%AD%A5%E4%B8%8E%E8%BD%A8%E8%BF%B9%E5%88%86%E5%88%AB%E6%8E%A7%E5%88%B6"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 计步与轨迹分别控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%AF%86%E7%A0%81%E8%AE%B0%E4%BA%8B%E6%9C%AC"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 密码记事本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E9%9C%93%E8%99%B9%E6%96%87%E5%AD%97%E7%89%8C"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 霓虹文字牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E5%B0%8F%E6%80%AA%E5%BC%B9%E5%BC%B9"><span class="nav-number">1.6.4.</span> <span class="nav-text">6.4 小怪弹弹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%88%86%E6%9E%90%EF%BC%9A%E6%8A%8A%E9%87%87%E6%A0%B7%E5%8F%98%E6%88%90%E5%9B%BE%E8%A1%A8"><span class="nav-number">1.7.</span> <span class="nav-text">7 分析：把采样变成图表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E5%A3%B0%E9%9F%B3%E7%94%B5%E5%B9%B3%E4%B8%8E%E9%A2%91%E8%B0%B1"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 声音电平与频谱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E4%B8%89%E8%BD%B4%E6%8C%AF%E5%8A%A8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 三轴振动设置与统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E6%B3%A2%E5%BD%A2%E3%80%81%E9%A2%91%E8%B0%B1%E4%B8%8E%E7%80%91%E5%B8%83%E5%9B%BE%E6%80%8E%E4%B9%88%E8%AF%BB"><span class="nav-number">1.7.3.</span> <span class="nav-text">7.3 波形、频谱与瀑布图怎么读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E6%B8%85%E9%99%A4%E6%95%B0%E6%8D%AE%E4%B8%8E-CSV-%E5%AF%BC%E5%87%BA"><span class="nav-number">1.7.4.</span> <span class="nav-text">7.4 清除数据与 CSV 导出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E4%B8%8E%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">1.8.</span> <span class="nav-text">8 实现方式与运行说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E5%BD%93%E5%89%8D%E6%A8%A1%E5%9D%97%E5%88%86%E5%B7%A5"><span class="nav-number">1.8.1.</span> <span class="nav-text">8.1 当前模块分工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E9%87%87%E6%A0%B7%E4%B8%8E%E7%BB%98%E5%9B%BE%E5%88%86%E5%BC%80%E5%A4%84%E7%90%86"><span class="nav-number">1.8.2.</span> <span class="nav-text">8.2 采样与绘图分开处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-%E6%9C%AC%E6%AC%A1%E6%A0%B8%E5%AF%B9%E8%8C%83%E5%9B%B4"><span class="nav-number">1.8.3.</span> <span class="nav-text">8.3 本次核对范围</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -303,209 +321,430 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="小羽助手-·-Android-个人工具、交互设计与传感器分析">小羽助手 · Android 个人工具、交互设计与传感器分析</h1>
-<p>小羽助手是一款个人使用的 Android 工具应用。日常功能包括计划提醒、备忘、天气、英语学习和拍照翻译，分析功能则把手机麦克风与加速度计的数据转换成波形、频谱和瀑布图。应用使用 Kotlin 与 Jetpack Compose 开发，由 XIAO YU 持续维护。</p>
-<p>本文围绕功能组织、操作流程和数据处理说明当前实现。图 8 来自小米 13 的环境音实际采样，其余界面图来自 Android 模拟器，均采用深色主题。点击图片可查看原尺寸截图。</p>
+<p>小羽助手是一款个人使用的 Android 工具应用，把计划提醒、英语学习、天气、运动记录与传感器分析放在同一个工具箱中。二维小羽负责首页的陪伴展示，独立功能页负责实际操作，开发者为 XIAO YU。</p>
+<p><strong>本页依据 2026 年 11 月 7 日连接的小米 13 实际页面重新整理，全部图片均为手机原始截图。</strong> 手机系统为 Android 16，当前安装版本为 1.0（versionCode 1）。竖屏截图为 1080 × 2400，横屏为 2400 × 1080；保留手机当前的中间色主题与黄绿色强调色。点击图片可查看原图，窄屏会自动改为单列。</p>
+<p>声音和振动图表来自本次手机实际采样。天气选用杭州城市预设，地图展示无轨迹时的默认底图。密码记录和个人备忘内容不用于公开截图。</p>
 <span id="more"></span>
-<h2 id="1-项目定位与交互设计">1 项目定位与交互设计</h2>
-<h3 id="1-1-首页的两种使用方式">1.1 首页的两种使用方式</h3>
-<p>首页同时承担陪伴展示与常用工具入口。形象卡开启时，可以点击二维小羽切换姿势，或进入全屏查看。连帽衫挥手、运动装慢跑和围裙搅拌采用逐帧图像播放。</p>
-<p>在「设置 → 外观」关闭「显示首页形象卡」后，首页会用两列快捷工具补上空间。当天步数与倒计时概览继续位于工具区前方，方便直接开始一次操作。</p>
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/01-home-portrait.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/01-home-portrait.png' alt="小羽助手首页的角色卡、今日概览和底栏" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 1　首页形象卡</figcaption>
-  </figure>
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/02-home-tools.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/02-home-tools.png' alt="关闭形象卡后的两列快捷工具布局" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 2　关闭形象卡后的快捷工具</figcaption>
-  </figure>
+<h2 id="1-首页、二维形象与外观">1 首页、二维形象与外观</h2>
+<h3 id="1-1-陪伴首页与工具首页">1.1 陪伴首页与工具首页</h3>
+<p>首页顶部显示时段问候与季节提示，右上角齿轮进入设置。当前手机页面显示秋日问候，背景使用与强调色一致的粒子连线。形象卡下方是天气、倒计时和文字牌入口，再往下是今日步数与倒计时概览。</p>
+<p>在「设置 → 外观」关闭「显示首页形象卡」后，首页保留今日概览，并把天气、待办、备忘、专注、英语、翻译、声音分析、振动分析、文字牌和密码库排列为两列快捷工具。本次为拍摄临时切换过开关，拍摄后已恢复开启。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/01-home-portrait.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/01-home-portrait.png' alt="小米13首页，显示下厨姿势、秋日问候、粒子连线和今日概览" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 1　开启形象卡的首页</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/02-home-tools.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/02-home-tools.png' alt="小米13首页关闭形象卡后的两列快捷工具布局" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 2　关闭形象卡后的两列工具入口</figcaption>
+</figure>
 </div>
-<h3 id="1-2-按任务组织五个页面">1.2 按任务组织五个页面</h3>
-<p>底栏分为首页、计划、学习、生活和分析，支持点击及左右滑动切换。从详情返回时恢复对应分页和滚动位置。页面统一使用圆角卡片、细边缘高光与可调强调色，五个主页面共用粒子连线和点击聚集效果。</p>
+<h3 id="1-2-主题与粒子设置">1.2 主题与粒子设置</h3>
+<p>设置页提供深色、中间色和浅色三种模式，强调色可选择黄绿、蓝、紫、珊瑚和金黄。卡片通过圆角、边缘高光、灰色面层和阴影形成悬浮质感，五个主页面沿用同一套控件外观。</p>
+<p>粒子运动速度可以通过滑杆调整，本次截图保留原设置 <strong>2.50×</strong>。背景粒子会连接邻近粒子，并响应手指点击位置的聚集交互。静态截图只记录某一时刻的画面。</p>
+<figure style="max-width:360px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/20-settings.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/20-settings.png' alt="手机设置页，中间色主题、形象卡开关、五种强调色和2.50倍粒子速度" width="360" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 3　外观设置：三种主题、强调色和粒子速度</figcaption>
+</figure>
+<h3 id="1-3-形象状态与全屏展示">1.3 形象状态与全屏展示</h3>
+<p>当前助手使用二维图像，包括站立、挥手、看书、编程、跑步与娱乐等姿势，可点击切换并自动轮换。连帽衫挥手、运动装慢跑和围裙搅拌使用逐帧动画；普通单张姿势保留轻微呼吸和摆动。</p>
+<p>点击形象卡右上角「全屏」可以进入独立展示页。下方直接提供「挥手」「慢跑」「下厨」按钮，页面提示约 22 秒自动切换。下图为手机横屏下的实际全屏形象页。</p>
+<figure style="max-width:720px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/31-full-portrait.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/31-full-portrait.png' alt="小羽全屏形象页，显示连帽衫挥手和挥手、慢跑、下厨切换按钮" width="720" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 4　横屏全屏形象与动作入口</figcaption>
+</figure>
+<h2 id="2-五个页面组织工具">2 五个页面组织工具</h2>
+<p>底栏依次为首页、计划、学习、生活和分析，可点击或左右滑动切换。常用入口放在首页，完整工具按任务类型分组，避免一个页面不断向下堆积。</p>
 <table>
 <thead>
 <tr>
 <th>页面</th>
-<th>使用场景</th>
-<th>主要功能</th>
+<th>页面标题</th>
+<th>当前主要内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>首页</td>
-<td>开始一次常用操作</td>
-<td>形象卡、今日概览、快捷工具</td>
+<td>下午好，我是小羽等时段问候</td>
+<td>形象、今日概览、常用快捷入口</td>
 </tr>
 <tr>
 <td>计划</td>
-<td>安排任务和专注时段</td>
+<td>计划与专注</td>
 <td>待办与提醒、快捷备忘录、番茄专注钟、倒计时</td>
 </tr>
 <tr>
 <td>学习</td>
-<td>词汇积累与文字处理</td>
-<td>英语词汇、日常短句、经典阅读、拍照识别与中英翻译</td>
+<td>学习空间</td>
+<td>英语学习、拍照识别与翻译</td>
 </tr>
 <tr>
 <td>生活</td>
-<td>查询、记录与展示</td>
-<td>天气预报、运动与轨迹、密码记事本、霓虹文字牌、小怪弹弹</td>
+<td>生活工具</td>
+<td>小怪弹弹、运动与轨迹、密码记事本、天气预报、霓虹文字牌</td>
 </tr>
 <tr>
 <td>分析</td>
-<td>观察传感器数据</td>
-<td>环境噪音分析、三轴振动频谱仪</td>
+<td>分析</td>
+<td>环境噪音分析、振动频谱仪</td>
 </tr>
 </tbody>
 </table>
-<h2 id="2-日常工具的使用流程">2 日常工具的使用流程</h2>
-<h3 id="2-1-天气查询与离线缓存">2.1 天气查询与离线缓存</h3>
-<p>天气页可通过预设城市、城市搜索或当前位置查询，查看当前温度、风速以及最高和最低温度趋势。界面提供 7 天、15 天与 30 天趋势选项，较远日期以长期模型趋势呈现。</p>
-<p>成功查询后，本机保存对应地点的天气结果和获取时间。下次进入先读取已有缓存，联网后重新查询。网络更新失败时继续显示缓存，页面会标注状态与原更新时间。选择一个没有缓存的地点时，需要先完成一次在线查询。</p>
-<p>天气数据来自 Open-Meteo。图 3 使用预设城市北京，页面中的坐标与地形估算海拔属于该查询地点。<a target="_blank" rel="noopener" href="https://open-meteo.com/en/docs">Open-Meteo 预报接口</a></p>
-<h3 id="2-2-英语学习与拍照翻译">2.2 英语学习与拍照翻译</h3>
-<p>英语学习页按词库和学习方式组织内容，包括六级、托福、四级、高中常用词和日常短句。可以通过学习卡片练习、按单元查看词表，或进入经典阅读区。页面显示各词库数量以及每周和累计学习时长。</p>
-<p>拍照识别模块可以调用系统相机，也可以从相册选择图片。识别文字可编辑后再翻译或复制，首次翻译需要下载语言模型。文字识别使用 ML Kit 的设备端识别组件。<a target="_blank" rel="noopener" href="https://developers.google.com/ml-kit/vision/text-recognition/v2">ML Kit 文字识别</a></p>
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/03-weather.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/03-weather.png' alt="北京天气预报、观测条件和更新时间" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 3　天气查询与更新时间</figcaption>
-  </figure>
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/04-study.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/04-study.png' alt="英语学习页面的词库、学习统计和练习区" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 4　英语词库与学习入口</figcaption>
-  </figure>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/10-plan-hub.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/10-plan-hub.png' alt="计划主页，显示待办、备忘、番茄钟和倒计时四个入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 5　计划与专注</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/15-study-hub.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/15-study-hub.png' alt="学习主页，显示英语学习与拍照识别翻译入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 6　学习空间</figcaption>
+</figure>
 </div>
-<h3 id="2-3-提醒、备忘与时间管理">2.3 提醒、备忘与时间管理</h3>
-<p>待办可记录任务和提醒时间，备忘录支持本机保存、编辑与搜索。番茄专注钟采用 25 分钟工作和 5 分钟休息阶段，每个阶段手动开始。倒计时支持直接输入时长，也可以进入大字全屏展示。提醒的实际到达时间受通知授权和系统后台调度影响。</p>
-<h2 id="3-手机传感器的计算与显示">3 手机传感器的计算与显示</h2>
-<h3 id="3-1-从采样到图表">3.1 从采样到图表</h3>
-<p>分析页将声音和振动放在独立入口。两者采用相似的阅读方式，先看时间域中的变化，再用频谱定位主要频率，用瀑布图观察频率成分随时间的演变。</p>
-<p>振动采集、频谱计算和界面绘制分别处理。采样线程持续接收传感器事件，后台计算按窗口取出数据，界面约每秒刷新 10 次。波形显示按屏幕分辨率合并样本并保留极值，CSV 导出使用原始数据。</p>
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:1.5em 0;">
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/05-analysis.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/05-analysis.png' alt="分析页中的环境噪音分析和振动频谱仪入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 5　声音与振动分析入口</figcaption>
-  </figure>
-  <figure style="flex:1 1 250px;max-width:320px;margin:0;">
-    <a href="/2026/11/07/xiaoyu-assistant/06-vibration-axes.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/06-vibration-axes.png' alt="振动频谱仪的 X、Y、Z 轴示意和三轴 RMS、主频统计" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-    <figcaption style="text-align:center;margin-top:8px;">图 6　三轴方向与振动统计</figcaption>
-  </figure>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/19-life-hub.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/19-life-hub.png' alt="生活主页，显示小游戏、运动轨迹、密码库、天气和文字牌" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 7　生活工具</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/05-analysis.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/05-analysis.png' alt="分析主页，显示环境噪音和振动频谱仪两个入口" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 8　分析工具</figcaption>
+</figure>
 </div>
-<p>图 6 的三轴示例来自虚拟传感器，输入频率分别为约 1.6、2.6 和 4.0 Hz。该模拟器报告的设备上限为 100 Hz，图中同时保留目标值与实测值，便于理解设备限制。</p>
-<h3 id="3-2-振动频谱仪">3.2 振动频谱仪</h3>
-<p>振动频谱仪支持 X、Y、Z 单轴及三轴模式。X、Y 轴按照设备默认方向定义，Z 轴垂直屏幕向外。三轴模式将三条波形和频谱叠加，使用蓝、橙、紫区分各轴，RMS、主频和瀑布图分别展示。</p>
-<p>一次观察可按以下顺序进行。</p>
-<ol>
-<li>将手机放在稳定表面，选择需要观察的轴。</li>
-<li>输入 100–1000 Hz 范围内的目标采样率并点击「应用」。</li>
-<li>开始采样，等待最近约 2.6 秒的数据形成频谱。</li>
-<li>选择 10 秒或 30 秒窗口，比较波形和瀑布图。</li>
-<li>停止后查看结果，或导出 CSV。采样中清除数据会从空窗口继续记录。</li>
-</ol>
-<p>目标采样率代表请求值。应用还会显示设备标称上限，并根据传感器时间戳估算实际速率。设备能力与 Android 的速率限制共同决定可获得的数据。<a target="_blank" rel="noopener" href="https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview#sensors-rate-limiting">Android 传感器与速率限制</a></p>
+<h2 id="3-计划与时间管理">3 计划与时间管理</h2>
+<h3 id="3-1-待办与备忘">3.1 待办与备忘</h3>
+<p>「待办与提醒」可以输入任务、选择可选提醒时间、添加任务，并管理完成状态。页面显示待完成数量与任务总数。提醒能否及时到达还受系统通知权限与省电调度影响。</p>
+<p>「快捷备忘录」提供本机保存、搜索、编辑和删除，适合记录临时想法。备忘内容与待办分别管理，避免把任务清单与长文本混在一起。本次检查保留原有记录，文档不展示个人备忘正文。</p>
+<h3 id="3-2-番茄专注钟与倒计时">3.2 番茄专注钟与倒计时</h3>
+<p>番茄钟采用 25 分钟专注、5 分钟休息，显示已完成专注次数。每个阶段需手动开始，本次截图处于「休息结束，准备专注」状态。</p>
+<p>倒计时支持时、分、秒直接输入，提供 1、5、10、25 分钟快捷选项，最长 24 小时。可以清除计时，也可进入全屏展示。下图保留手机原有的已结束状态，没有额外启动提醒。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/13-focus.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/13-focus.png' alt="手机番茄专注钟，显示25分钟、休息结束状态和完成次数" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 9　番茄钟的阶段与完成次数</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/14-timer.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/14-timer.png' alt="手机倒计时页，显示时分秒输入、快捷时长和全屏展示按钮" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 10　倒计时的时长设置与全屏入口</figcaption>
+</figure>
+</div>
+<h2 id="4-学习：词汇、阅读与文字处理">4 学习：词汇、阅读与文字处理</h2>
+<h3 id="4-1-手机当前词库规模">4.1 手机当前词库规模</h3>
+<p>手机学习页显示 <strong>5 个词库，共 24,185 条</strong>。这里的“共”是各分类条目相加，分类间可能重复，不能直接理解为去重后的独立单词数。</p>
 <table>
 <thead>
 <tr>
-<th>读数</th>
-<th>含义</th>
-<th>单位或约定</th>
+<th>词库</th>
+<th style="text-align:right">手机显示条数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>实测采样率</td>
-<td>窗口内样本数相对于真实时间跨度的比值</td>
-<td>Hz</td>
+<td>英语六级</td>
+<td style="text-align:right">3,991</td>
 </tr>
 <tr>
-<td>RMS</td>
-<td>去除窗口均值后，加速度的均方根</td>
-<td>m/s²</td>
+<td>托福词汇</td>
+<td style="text-align:right">10,367</td>
 </tr>
 <tr>
-<td>主频</td>
-<td>满足幅值阈值的主要频率成分</td>
-<td>Hz</td>
+<td>日常短句</td>
+<td style="text-align:right">1,541</td>
 </tr>
 <tr>
-<td>振动频谱</td>
-<td>加窗后的单边幅值谱</td>
-<td>dB，相对 1 m/s²</td>
+<td>英语四级</td>
+<td style="text-align:right">4,543</td>
 </tr>
 <tr>
-<td>瀑布图</td>
-<td>不同时刻的频谱排列</td>
-<td>横轴为 Hz，纵轴为 s</td>
+<td>高中常用</td>
+<td style="text-align:right">3,743</td>
+</tr>
+<tr>
+<td>合计</td>
+<td style="text-align:right">24,185</td>
 </tr>
 </tbody>
 </table>
-<p>采样率按 <code>fs = (N − 1) / (t末 − t初)</code> 估算，时间戳换算为秒。RMS 按 <code>sqrt(mean((a − mean(a))²))</code> 计算。FFT 前先按时间戳插值到等间隔，去均值并乘 Hann 窗，存在明显断档的窗口会跳过频谱计算。Android 传感器时间戳使用单调递增的纳秒时间基准。<a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/hardware/SensorEvent#timestamp">SensorEvent 时间戳</a></p>
-<figure style="max-width:500px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png' alt="三轴振动实时频谱与按轴排列的瀑布图" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-  <figcaption style="text-align:center;margin-top:8px;">图 7　三轴振动频谱与瀑布图，虚拟传感器示例</figcaption>
+<p>学习卡片可点击查看释义，提供发音、掌握标记、上一条和下一条。当前页面说明词库可离线使用，点击「更新当前词库」可手动联网更新；内容来自第三方词库，词库归类与释义需结合实际学习材料理解。</p>
+<p>「单元词表」提供英文或中文搜索，每单元 10 条，可上一单元、下一单元或输入单元号跳转。截图中的六级词库显示第 1 / 400 单元。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/04-study.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/04-study.png' alt="手机英语学习页，显示24185条、五个词库数量和consistent学习卡片" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 11　词库总量、分类与学习卡片</figcaption>
 </figure>
-<p>CSV 记录所选 10 秒或 30 秒窗口中的原始三轴加速度。列名与单位直接写入表头，便于后续使用 Python、MATLAB 或表格软件复算。</p>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/16-study-units.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/16-study-units.png' alt="手机六级单元词表，显示搜索、3991条和第1至400单元分页" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 12　词表搜索与单元跳转</figcaption>
+</figure>
+</div>
+<h3 id="4-2-学习时长与经典阅读">4.2 学习时长与经典阅读</h3>
+<p>英语页同时显示本周与累计学习时长。时长来自学习页面处于前台的停留时间，本次检查页面也会自然增加统计值；它不等同于答题次数或有效记忆时长。</p>
+<p>「经典阅读」列出《傲慢与偏见》《爱丽丝梦游仙境》《福尔摩斯探案集》等英文原文入口，点击后使用浏览器联网阅读。当前页面明确标注为公开领域英文原文推荐。</p>
+<h3 id="4-3-拍照识别与翻译">4.3 拍照识别与翻译</h3>
+<p>学习主页的另一个入口为「拍照识别与翻译」。可以拍摄高清照片、从相册选图，也可以直接输入文本。识别结果允许编辑、复制、清空，并可切换中英翻译方向。</p>
+<p>页面提示识别在设备端进行，首次翻译需联网准备语言模型。拍摄时应靠近文字、保证光照并避免倾斜。本次截图展示功能入口和编辑区，没有使用私人相册或拍摄周围环境。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/17-reading.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/17-reading.png' alt="手机经典阅读页，显示三部英文原文阅读推荐" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 13　经典英文阅读入口</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/18-ocr.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/18-ocr.png' alt="手机文字识别翻译页，显示相机、相册、编辑和翻译控件" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 14　拍照识别与中英翻译</figcaption>
+</figure>
+</div>
+<h2 id="5-天气：城市、位置与温度趋势">5 天气：城市、位置与温度趋势</h2>
+<h3 id="5-1-以实际手机控件为准">5.1 以实际手机控件为准</h3>
+<p>当前手机天气页顶部有「使用当前位置」「我的城市」与「管理」，城市名称以预设按钮展示。本次选用<strong>杭州</strong>，页面显示天气现象、温度、风速、更新时间、城市参考经纬度和地形估算海拔。</p>
+<p>手机当前安装版的这一屏<strong>没有城市搜索输入框</strong>。本文按已安装页面记录操作入口；本地开发代码与手机安装包之间的迭代差异不视为已在手机上提供的功能。</p>
+<p>坐标来自城市预设时，页面会明确说明它是城市参考位置；使用定位时则会说明大致位置可能存在偏差。海拔为天气服务基于地形数据的估算值，并非手机 GPS 实测高度。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/03-weather.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/03-weather.png' alt="手机天气页，选择杭州预设，显示阴天、温度、更新时间和城市参考坐标" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 15　杭州天气与位置说明</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/21-weather-trend.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/21-weather-trend.png' alt="杭州未来7天温度变化趋势，显示日期、温度单位和最高最低图例" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 16　7 天最高与最低温度曲线</figcaption>
+</figure>
+</div>
+<h3 id="5-2-7-天、15-天与-30-天趋势">5.2 7 天、15 天与 30 天趋势</h3>
+<p>页面提供「7天」「15天」「30天趋势」三个选项。最高温与最低温使用两种颜色，横轴为日期，纵轴为摄氏温度，并同步改变展示天数。</p>
+<p>30 天页面用竖线区分短期预报和长期趋势，说明前 15 天为逐日预报，之后为长期模型温度趋势。后半段用于观察大致变化，不应当作远期某一天的精确天气。下图是在手机上切换到 30 天后重新获取的实际页面。</p>
+<figure style="max-width:500px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/25-weather-30days.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/25-weather-30days.png' alt="杭州30天温度曲线，竖线后为长期温度趋势，并显示预报不确定性说明" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 17　30 天温度趋势与长期区间分界</figcaption>
+</figure>
+<h3 id="5-3-天气缓存的使用方式">5.3 天气缓存的使用方式</h3>
+<p>当前实现会在成功查询后保存地点、天气结果与获取时间。再次进入可先读取已有结果，联网后刷新；更新失败时沿用已有缓存并显示其状态与时间。一个地点尚未缓存时，需要先成功在线查询。</p>
+<p>本次重新拍摄核对了城市预设、联网更新和三种天数切换；没有通过关闭手机网络重新验证离线恢复。截图中的「更新于」表示本次在线查询时间，不能当作离线缓存演示。</p>
+<h2 id="6-生活：运动、密码与全屏工具">6 生活：运动、密码与全屏工具</h2>
+<h3 id="6-1-计步与轨迹分别控制">6.1 计步与轨迹分别控制</h3>
+<p>「运动与轨迹」将计步和轨迹记录放在同一页，但分别提供开始、暂停操作。计步从开启后累计，未开启前的步数不会补录。</p>
+<p>页面明确提示：离开本页或切到后台后继续记录；手动暂停或从最近任务关闭应用会停止。实际连续性还取决于设备传感器、定位权限与系统后台策略。本次拍摄未额外启动计步或轨迹记录，保留原有 402 步、0 个轨迹点的状态。</p>
+<p>轨迹主题包括晴空蓝、夜行紫、卫星橙和森林绿。高德地图区提供全屏、2D / 3D 切换以及有轨迹时的全程查看。无轨迹时下图显示北京默认底图，<strong>不是本次行走路线或手机当前位置</strong>。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/22-activity.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/22-activity.png' alt="手机运动页，显示原有402步、未启动的计步和无轨迹状态" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 18　计步状态与轨迹主题</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/23-track-map.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/23-track-map.png' alt="无轨迹时的北京默认高德底图，显示主题、全屏地图和3D切换按钮" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 19　地图主题、全屏与 3D 入口</figcaption>
+</figure>
+</div>
+<h3 id="6-2-密码记事本">6.2 密码记事本</h3>
+<p>密码库在本机加密保存多条账号记录，入口当前显示「指纹 / 生物识别解锁」与「验证锁屏凭据」。验证通过后才能管理记录，离开应用会重新锁定，删除操作需要二次确认；实现中还提供独立口令保护的加密备份。</p>
+<p>该页面启用了系统截屏保护，普通截图会是黑色，因此本文不放置密码页图片，也没有为拍摄关闭保护或读取密码。此次只核对了未解锁入口，没有代替用户完成指纹或锁屏验证。</p>
+<h3 id="6-3-霓虹文字牌">6.3 霓虹文字牌</h3>
+<p>文字牌提供大字预览，点击预览可修改文字，选择光色后进入全屏展示，点击屏幕返回。它与倒计时都适合把关键信息放大给旁人查看，支持横屏使用。</p>
+<figure style="max-width:360px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/26-neon-sign.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/26-neon-sign.png' alt="手机霓虹文字牌，显示大字预览、颜色选择和全屏展示入口" width="360" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 20　文字牌预览、光色与全屏展示</figcaption>
+</figure>
+<h3 id="6-4-小怪弹弹">6.4 小怪弹弹</h3>
+<p>生活页还提供横屏小游戏「小怪弹弹」。点击小怪形成连击并积累技能能量，震荡波消耗 35 点，连锁闪电消耗 55 点。顶部显示得分、连击、最高分、音效触感开关和暂停按钮。</p>
+<p>下图是本次手机启动游戏后的实际战斗界面，退出后回到工具页。游戏画面使用独立深紫色场景，技能按钮与场景形成明显区分。</p>
+<figure style="max-width:720px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/09-monster-game.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/09-monster-game.png' alt="手机横屏小游戏，显示小怪、能量100、震荡波和连锁闪电按钮" width="720" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 21　小怪弹弹横屏战斗与技能按钮</figcaption>
+</figure>
+<h2 id="7-分析：把采样变成图表">7 分析：把采样变成图表</h2>
+<p>分析页集中管理声音和振动。两者都先观察时间域变化，再看频谱与瀑布图。声音使用麦克风，振动使用三轴加速度计，界面均标明坐标、单位、时间窗口与色标。</p>
+<h3 id="7-1-声音电平与频谱">7.1 声音电平与频谱</h3>
+<p>手机实际声音页显示以下参数：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>当前页面显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>音频输入</td>
+<td>44.1 kHz、16 位、单声道</td>
+</tr>
+<tr>
+<td>FFT</td>
+<td>4096 点，约 10.8 Hz / 频点</td>
+</tr>
+<tr>
+<td>电平</td>
+<td>当前 RMS、峰值，单位 dBFS</td>
+</tr>
+<tr>
+<td>电平曲线</td>
+<td>最近 10 秒</td>
+</tr>
+<tr>
+<td>频谱样式</td>
+<td>柱状、曲线、镜像</td>
+</tr>
+<tr>
+<td>瀑布图窗口</td>
+<td>2、5、10、30 秒</td>
+</tr>
+<tr>
+<td>示例色标</td>
+<td>Turbo；还可切换 Viridis 等其他色标</td>
+</tr>
+</tbody>
+</table>
+<p>本次录入约 11.2 秒环境音，停止时 RMS 为约 <strong>−61.3 dBFS</strong>，峰值约 <strong>−48.9 dBFS</strong>。这只是该时刻的数字输入电平，受麦克风响应、自动增益和环境影响。页面明确区分 dBFS 与环境声压 dB SPL，未经校准不能据此认定环境噪声的绝对声压级。</p>
+<p>下方第二张图从同一批采样中截取频谱曲线、最近 5 秒瀑布图及 Turbo 色标。两图均在停止采样后拍摄，保留的曲线和图像来自应用的实际计算。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/28-sound-level.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/28-sound-level.png' alt="手机实际声音采样，显示负61.3dBFS电平、峰值和10秒历史曲线" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 22　手机环境音电平与 10 秒曲线</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png' alt="手机环境音实际频谱曲线、5秒瀑布图和Turbo色标" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 23　同次采样的频谱与 5 秒瀑布图</figcaption>
+</figure>
+</div>
+<p>声音页可以清空显示。页面说明仅在本页采样，不保存或上传音频；离开分析页或应用进入后台时结束采样。</p>
+<h3 id="7-2-三轴振动设置与统计">7.2 三轴振动设置与统计</h3>
+<p>振动频谱仪支持输入 100–1000 Hz 的目标采样率，点击「应用」后在下次采样生效。目标值是请求，设备标称上限与实测速率分别显示。</p>
+<p>本次保留手机已有 <strong>400 Hz</strong> 设置，页面报告设备标称上限约 <strong>400 Hz</strong>，实际采样约 <strong>399.9 Hz</strong>。选择三轴模式和 30 秒窗口，持续采样后停止，查看最后一段结果。</p>
+<p>轴向示意图按设备默认方向标注：X 朝屏幕右侧、Y 朝屏幕上方、Z 垂直屏幕向外。三轴模式分别统计 RMS 与主频，波形和频谱用蓝、橙、紫色区分 X、Y、Z。</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px;margin:1.5em 0;">
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/06-vibration-axes.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/06-vibration-axes.png' alt="手机振动频谱仪设置，显示目标400Hz、设备上限400Hz、三轴及30秒选项" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 24　400 Hz 请求、三轴选择与方向示意</figcaption>
+</figure>
+<figure style="flex:1 1 250px;max-width:320px;margin:0;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/29-vibration-waveform.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/29-vibration-waveform.png' alt="手机三轴统计，显示各轴RMS、399.9Hz实测速率和30秒波形" width="320" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 25　轴向、三轴 RMS 与实测采样率</figcaption>
+</figure>
+</div>
+<p>本次手机基本静止，三轴 RMS 约为 <strong>0.022、0.020、0.021 m/s²</strong>，未识别到满足条件的稳定主频，所以主频栏保留“—”。这组数据用于展示静置时的小幅波动和传感器底噪，不是人为生成的周期振动。</p>
+<h3 id="7-3-波形、频谱与瀑布图怎么读">7.3 波形、频谱与瀑布图怎么读</h3>
+<p>波形显示所选 10 秒或 30 秒内去均值加速度，横轴为时间，纵轴为 m/s²。频谱横轴为 Hz，纵轴为相对 1 m/s² 的幅值 dB；不能把这里的 dB 与声音页的 dBFS 混用。</p>
+<p>本次设备在约 400 Hz 采样时，频谱横轴显示到约 200 Hz。三条曲线来自同一时间窗口，各轴分别绘制瀑布图，最新数据在上方。读颜色时需要一起查看图下的色标范围。</p>
+<figure style="max-width:500px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/07-vibration-spectrum.png' alt="手机三轴加速度实采波形和频谱，显示时间秒、加速度单位、频率Hz和幅值dB" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 26　手机静置时的三轴 30 秒波形与实时频谱</figcaption>
+</figure>
+<p>三轴瀑布图沿用相同的时间窗口和色标。本次截图使用 30 秒窗口与 Turbo，完整保留 X、Y、Z 三幅图及色标；颜色主要集中在低幅值区域，与静置采样一致。</p>
+<figure style="max-width:500px;margin:1.5em auto;min-width:0;">
+  <a href="/2026/11/07/xiaoyu-assistant/30-vibration-waterfalls.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/30-vibration-waterfalls.png' alt="手机实际三轴振动瀑布图，显示30秒窗口、0至200Hz频率轴和负60至正20dB色标" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
+  <figcaption style="text-align:center;margin-top:8px;line-height:1.6;">图 27　X、Y、Z 三轴 30 秒瀑布图与共享色标</figcaption>
+</figure>
+<h3 id="7-4-清除数据与-CSV-导出">7.4 清除数据与 CSV 导出</h3>
+<p>「清除数据」重置当前缓存；采样中清除后会继续记录新数据。「导出 CSV」保存所选 10 秒或 30 秒窗口中的原始三轴加速度与时间戳，列名为：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elapsed_s,sensor_timestamp_ns,x_m_s2,y_m_s2,z_m_s2</span><br></pre></td></tr></table></figure>
-<p>手机转动会改变重力在各轴上的分量，稳定放置后采样更便于比较振动。图中的幅值和主频应结合传感器性能、放置方式与窗口长度理解。</p>
-<h3 id="3-3-声音频谱与色标">3.3 声音频谱与色标</h3>
-<p>声音分析采用 44.1 kHz、16 位单声道采样，使用 4096 点 FFT。界面显示 RMS 电平、峰值、实时频谱及 2、5、10、30 秒瀑布图窗口，提供柱状、曲线和镜像频谱样式。</p>
-<p>dBFS 描述数字音频相对满幅的电平。麦克风响应和自动增益都会影响读数，定量环境声压测量需要经过声学校准。图 8 使用小米 13 的麦克风采集环境音，展示实际计算的频谱曲线、最近 5 秒瀑布图与 Turbo 色标；停止采样后保留结果用于截图。</p>
-<figure style="max-width:500px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/08-sound-spectrum.png' alt="小米 13 环境音采样的频谱曲线、5 秒瀑布图与 Turbo 色标" width="500" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-  <figcaption style="text-align:center;margin-top:8px;">图 8　手机环境音实际采样：频谱曲线与 5 秒瀑布图</figcaption>
-</figure>
-<p>声音与振动瀑布图均可切换 Viridis、Turbo、Inferno、Plasma、Magma、灰度及其他色标。色标控制数值到颜色的映射，读取时需要同时查看图旁的单位、范围与时间窗口。</p>
-<h2 id="4-运动、密码库与全屏工具">4 运动、密码库与全屏工具</h2>
-<p>运动页可分别开启计步与轨迹记录。记录由前台服务维护，可以在返回其他页面后继续运行。轨迹页提供地图全屏查看、地图样式及三维视角选项，记录效果依赖定位权限、位置精度和系统后台策略。</p>
-<p>密码记事本在本机加密保存多条记录，使用 Android Keystore 管理密钥，通过系统锁屏凭据或设备支持的强生物识别解锁。旧版密码库需先用 PIN、密码或图案验证一次，迁移成功后启用指纹。离开应用会锁定页面，删除记录需要再次确认，也可导出带口令保护的加密备份。</p>
-<p>霓虹文字牌和倒计时支持全屏展示，适合把文字或剩余时间放大给旁人查看。</p>
-<p>横屏小游戏「小怪弹弹」提供点击连击、震荡波和连锁闪电。它从生活页启动，退出后返回工具箱。</p>
-<figure style="max-width:720px;margin:1.5em auto;">
-  <a href="/2026/11/07/xiaoyu-assistant/09-monster-game.png" title="查看原图"><img src='/2026/11/07/xiaoyu-assistant/09-monster-game.png' alt="小怪弹弹横屏战斗界面，显示连击、技能能量和两个技能按钮" width="720" style="display:block;width:100%;height:auto;border-radius:12px;" loading="lazy"></a>
-  <figcaption style="text-align:center;margin-top:8px;">图 9　小怪弹弹横屏界面</figcaption>
-</figure>
-<h2 id="5-实现方式与运行环境">5 实现方式与运行环境</h2>
+<p>图表用去均值结果突出波动，CSV 保留原始加速度，后续计算应区别这两种数据。手机转动会改变重力在三轴上的分量，做对比时应保持放置方式与朝向一致。本次没有创建额外 CSV 文件。</p>
+<h2 id="8-实现方式与运行说明">8 实现方式与运行说明</h2>
+<h3 id="8-1-当前模块分工">8.1 当前模块分工</h3>
 <table>
 <thead>
 <tr>
 <th>部分</th>
-<th>当前实现</th>
+<th>实现方式</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>界面与导航</td>
+<td>界面</td>
 <td>Kotlin、Jetpack Compose，五个主页面与独立功能页</td>
 </tr>
 <tr>
-<td>主题与形象</td>
-<td>深色、中间色、浅色主题，可选强调色与二维角色帧</td>
+<td>形象</td>
+<td>二维图片、逐帧动画、全屏动作切换</td>
+</tr>
+<tr>
+<td>导航与外观</td>
+<td>主页面滑动、页面进入过渡、主题、强调色、粒子层</td>
 </tr>
 <tr>
 <td>天气</td>
-<td>Open-Meteo 查询、本机缓存、网络恢复后刷新</td>
+<td>Open-Meteo、地点预设、本机结果缓存</td>
+</tr>
+<tr>
+<td>英语</td>
+<td>本机词库、单元词表、掌握标记、前台学习时长</td>
 </tr>
 <tr>
 <td>文字处理</td>
-<td>ML Kit 中文识别和设备端翻译模型</td>
+<td>ML Kit 设备端文字识别与翻译模型</td>
 </tr>
 <tr>
-<td>运动与地图</td>
-<td>计步传感器、位置服务、高德地图 SDK</td>
+<td>运动</td>
+<td>计步传感器、定位服务、前台记录、高德地图 SDK</td>
 </tr>
 <tr>
-<td>信号分析</td>
-<td>传感器时间戳、窗口处理、FFT、定时绘制与 CSV</td>
+<td>声音</td>
+<td>AudioRecord、FFT、频谱与瀑布图</td>
 </tr>
 <tr>
-<td>数据保存</td>
-<td>本机偏好与文件，密码库使用 Keystore 和 AES-GCM</td>
+<td>振动</td>
+<td>加速度计、时间戳、窗口分析、FFT、CSV</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>Android Keystore、AES-GCM、系统身份验证</td>
 </tr>
 </tbody>
 </table>
-<p>应用最低支持 Android 7.0（API 24）。位置、麦克风、相机和运动相关功能按需使用系统权限。离线可使用已经保存在本机的内容，天气刷新、词库更新及首次翻译模型准备等操作需要网络。</p>
-<p>应用安装后可先从「设置 → 外观」选择主题与首页形象卡，再从底栏进入对应工具。采样功能进入页面后由用户主动开始，退出分析页或应用进入后台时结束采样。</p>
+<h3 id="8-2-采样与绘图分开处理">8.2 采样与绘图分开处理</h3>
+<p>振动采样持续接收传感器事件，后台按时间窗口进行计算，界面定时读取结果，避免每到一个样本就重绘。波形按显示宽度合并样本并保留极值，原始样本用于导出。</p>
+<p>实际采样率按窗口内样本数和传感器时间戳跨度估算：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs = (N - 1) / (t_last - t_first)</span><br><span class="line">RMS = sqrt(mean((a - mean(a))²))</span><br></pre></td></tr></table></figure>
+<p>时间戳先换算为秒。频谱计算按时间戳插值到等间隔，去均值后施加 Hann 窗；存在明显断档时跳过对应频谱窗口。界面显示的“实测速率”比单看目标输入值更能反映本次采样条件。</p>
+<h3 id="8-3-本次核对范围">8.3 本次核对范围</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>本次手机核对结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首页与外观</td>
+<td>形象卡开关、两列工具、设置与全屏形象已查看</td>
+</tr>
+<tr>
+<td>页面组织</td>
+<td>五个主页面及对应功能入口已查看</td>
+</tr>
+<tr>
+<td>英语</td>
+<td>词库数量、卡片、单元分页与阅读列表已查看</td>
+</tr>
+<tr>
+<td>文字处理</td>
+<td>拍照、相册、编辑和翻译入口已查看；未使用私人图片</td>
+</tr>
+<tr>
+<td>天气</td>
+<td>杭州预设在线刷新，7 / 15 / 30 天切换已查看</td>
+</tr>
+<tr>
+<td>运动</td>
+<td>现有步数、空轨迹、默认地图及视角入口已查看；未新建轨迹</td>
+</tr>
+<tr>
+<td>声音</td>
+<td>手机麦克风实际采样，曲线与瀑布图有数据</td>
+</tr>
+<tr>
+<td>振动</td>
+<td>手机三轴实际采样，目标 400 Hz、实测约 399.9 Hz</td>
+</tr>
+<tr>
+<td>密码</td>
+<td>未解锁入口已查看；保留截屏保护，未读取记录</td>
+</tr>
+<tr>
+<td>游戏</td>
+<td>手机横屏启动并进入战斗画面</td>
+</tr>
+</tbody>
+</table>
+<p>本次是页面核对与截图更新，离线天气恢复、长时间后台轨迹、密码验证及相机识别准确率没有据此宣称完成全面回归测试。</p>
+<p>应用最低支持 Android 7.0（API 24），具体传感器能力依手机而定。位置、麦克风、相机和运动权限按模块使用；联网查询、词库更新、在线阅读和首次翻译模型准备需要网络。天气、地图和学习材料均应结合页面提示与数据来源使用。</p>
 
     </div>
 
